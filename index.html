@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Biblia Reina-Valera 1960</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- NAV personalizable -->
+  <header>
+    <div class="top-nav">
+      <h1>Mi Biblia</h1>
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#planes">Planes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#app">Obtener la App</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="busqueda-centrada">
+      <input type="text" id="buscarLibro" placeholder="Buscar libros..." />
+      <select id="libro"></select>
+      <select id="capitulo"></select>
+      <button id="aumentarLetra">A+</button>
+    </div>
+  </header>
+
+  <!-- MAIN con versículos y navegación lateral -->
+  <main>
+    <div class="contenedor-versiculos">
+      <button id="anteriorCapitulo" class="nav-capitulo">&lt;</button>
+      
+      <div id="versiculos" class="versiculos"></div>
+      
+      <button id="siguienteCapitulo" class="nav-capitulo">&gt;</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Circe Hathaway</p>
+  </footer>
+
+  <script type="module" src="js/biblia.js"></script>
+</body>
+</html>

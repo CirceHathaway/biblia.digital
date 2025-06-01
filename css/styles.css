@@ -28,10 +28,17 @@ header {
   color: #ffffff;
   margin: 0;
   font-size: 24px;
-  text-decoration: none;
 }
 
-.top-nav nav ul {
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-items {
   list-style: none;
   display: flex;
   gap: 20px;
@@ -39,16 +46,35 @@ header {
   padding: 0;
 }
 
-.top-nav nav a, h1 a {
+.menu-items a, h1 a {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  transition: color 0.3s;
+  transition: color 0.3s, text-decoration 0.3s;
 }
 
-.top-nav nav a:hover, h1 a:hover {
+.menu-items a:hover , h1 a:hover {
   color: #ff0404;
-  text-decoration: underline; /* Subraya al pasar el mouse */
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .menu-items {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  .menu-items.show {
+    display: flex;
+  }
 }
 
 /* === Selector personalizado (libros/capítulos) === */
@@ -125,21 +151,23 @@ header {
   background-color: #f0f0f0;
 }
 
-
-/* Aumento la letra*/
-.dropdown-aumento{
-  font-weight: bold;
+/* Botón A+ circular alineado */
+#aumentarLetra {
   background-color: #eee;
   border: none;
-  font-size: 15px;
-  padding: 15px 18px;
-  cursor: pointer;
+  font-size: 18px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-weight: bold;
+  cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.dropdown-aumento:hover {
+#aumentarLetra:hover {
   background-color: #ddd;
 }
 
@@ -174,7 +202,6 @@ header {
   font-size: 16px;
 }
 
-/* === Contenido principal === */
 main {
   padding-top: 30px;
   max-width: 900px;
@@ -191,7 +218,6 @@ main {
   line-height: 1.6;
 }
 
-/* === Botones de capítulo < y > === */
 .nav-capitulo {
   position: fixed;
   top: 450px;
@@ -211,14 +237,16 @@ main {
 }
 
 .izquierda {
-  left: 100px;
+  left: 20px;
 }
 
 .derecha {
-  right: 100px;
+  right: 20px;
 }
 
-/*Estilo del Formulario*/
+/* ====================
+      FORMULARIO
+==================== */
 .contacto-titulo {
     font-family: "Monoton", sans-serif;
     font-size: 2rem;
@@ -295,14 +323,17 @@ form button:hover {
     border-radius: 10px;
 }
 
-/* === Pie de página === */
+/* ====================
+   PIE DE PÁGINA
+==================== */
+
 footer {
   background-color: #222;
   color: #eee;
   text-align: center;
-  padding: 20px 15px;
-  margin-top: 40px;
+  padding: 25px 15px 10px;
   font-size: 20px;
+  position: relative;
 }
 
 .footer-redes {
@@ -310,64 +341,45 @@ footer {
 }
 
 .footer-redes a {
-  color: #eee;
   margin: 0 8px;
   font-size: 25px;
   transition: color 0.3s;
 }
 
-.footer-redes a:hover {
-  color: #ff0404;
-}
-
 .footer-info {
   display: flex;
   justify-content: center;
-  gap: 480px;
   flex-wrap: wrap;
+  gap: 500px;
+  padding-bottom: 10px;
 }
 
-/* === Responsive === */
 @media (max-width: 600px) {
-    .dropdown-content {
-      max-height: 250px;
-      font-size: 14px;
-    }
+  .dropdown-content {
+    max-height: 250px;
+    font-size: 14px;
+  }
 
-    .dropdown-toggle {
-      font-size: 14px;
-    }
+  .dropdown-toggle {
+    font-size: 14px;
+  }
 
-    .version-biblia {
-      font-size: 14px;
-      padding: 6px 10px;
-    }
+  .version-biblia {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
 
-    .nav-capitulo {
-      top: 400px;
-      font-size: 22px;
-      padding: 10px 14px;
-    }
+  .nav-capitulo {
+    top: 400px;
+    font-size: 22px;
+    padding: 10px 14px;
+  }
 
-    .izquierda {
-      left: 20px;
-    }
+  .chapter-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-    .derecha {
-      right: 20px;
-    }
-
-    .chapter-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-  /* ------------------- Formulario ------------------- */
-    form {
-        padding: 1rem;
-        width: 90%;
-    }
-
-    form button {
-        width: 100%;
-    }
-} 
+  footer {
+    padding-bottom: 60px;
+  }
+}

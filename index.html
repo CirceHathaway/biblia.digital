@@ -25,7 +25,7 @@
     </div>
   </header>
 
-  <!-- Sección central de controles -->
+  <!-- Selector de libro, versión y botón de aumento -->
   <section class="busqueda-centrada">
     <div class="dropdown" id="selector-libro">
       <button class="dropdown-toggle" id="selector-toggle">Génesis</button>
@@ -40,7 +40,7 @@
   <button class="nav-capitulo izquierda" id="anteriorCapitulo">&lt;</button>
   <button class="nav-capitulo derecha" id="siguienteCapitulo">&gt;</button>
 
-  <!-- Contenedor de versículos -->
+  <!-- Contenido principal -->
   <main>
     <div class="versiculos" id="versiculos"></div>
   </main>
@@ -63,13 +63,20 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script type="module" src="js/biblia.js"></script>
   <script>
     // Mostrar/ocultar menú en móviles
     document.getElementById('menuToggle').addEventListener('click', () => {
       document.getElementById('menuItems').classList.toggle('show');
     });
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.menu-items a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('menuItems').classList.remove('show');
+      });
+    });
   </script>
 </body>
 </html>
-

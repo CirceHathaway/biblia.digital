@@ -3,7 +3,7 @@ body {
   font-family: Georgia, serif;
   margin: 0;
   background: #f4f4f4;
-  color: #333; /*color de los versiculos*/
+  color: #333;
 }
 
 /* === Header fijo === */
@@ -20,14 +20,16 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  flex-wrap: wrap;
+  padding: 15px 20px;
+  flex-wrap: nowrap;
+  position: relative;
 }
 
 .top-nav h1 {
   color: #ffffff;
   margin: 0;
   font-size: 24px;
+  flex: 1;
 }
 
 .menu-toggle {
@@ -36,6 +38,7 @@ header {
   background: none;
   border: none;
   cursor: pointer;
+  color: #ffffff;
 }
 
 .menu-items {
@@ -62,18 +65,26 @@ header {
   .menu-toggle {
     display: block;
   }
+
   .menu-items {
     display: none;
     flex-direction: column;
-    background: #fff;
-    width: 100%;
+    background-color: #333;
     position: absolute;
-    top: 60px;
+    top: 100%;
     left: 0;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    width: 100vw;
+    z-index: 999;
   }
+
   .menu-items.show {
     display: flex;
+  }
+
+  .menu-items a {
+    padding: 12px 20px;
+    color: #fff;
+    border-bottom: 1px solid #444;
   }
 }
 
@@ -220,7 +231,7 @@ main {
 
 .nav-capitulo {
   position: fixed;
-  top: 450px;
+  bottom: 160px;
   z-index: 950;
   background-color: #eee;
   border: none;
@@ -244,9 +255,7 @@ main {
   right: 20px;
 }
 
-/* ====================
-      FORMULARIO
-==================== */
+/*Estilo del Formulario*/
 .contacto-titulo {
     font-family: "Monoton", sans-serif;
     font-size: 2rem;
@@ -323,15 +332,12 @@ form button:hover {
     border-radius: 10px;
 }
 
-/* ====================
-   PIE DE PÁGINA
-==================== */
-
+/* === Footer === */
 footer {
   background-color: #222;
   color: #eee;
   text-align: center;
-  padding: 25px 15px 10px;
+  padding: 20px 15px 20px;
   font-size: 20px;
   position: relative;
 }
@@ -348,10 +354,10 @@ footer {
 
 .footer-info {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 500px;
-  padding-bottom: 10px;
+  padding: 0 20px 10px;
+  font-size: 16px;
 }
 
 @media (max-width: 600px) {
@@ -370,7 +376,7 @@ footer {
   }
 
   .nav-capitulo {
-    top: 400px;
+    bottom: 140px;
     font-size: 22px;
     padding: 10px 14px;
   }
@@ -379,7 +385,13 @@ footer {
     grid-template-columns: repeat(3, 1fr);
   }
 
+  .footer-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
   footer {
-    padding-bottom: 60px;
+    padding-bottom: 10px;
   }
 }

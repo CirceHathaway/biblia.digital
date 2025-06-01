@@ -84,6 +84,20 @@
         </div>
   </footer>
 
-    <script type="module" src="js/biblia.js"></script>
+   <!-- Scripts -->
+  <script type="module" src="js/biblia.js"></script>
+  <script>
+    // Mostrar/ocultar menú en móviles
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('menuItems').classList.toggle('show');
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    document.querySelectorAll('.menu-items a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('menuItems').classList.remove('show');
+      });
+    });
+  </script>
 </body>
 </html>

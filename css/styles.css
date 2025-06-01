@@ -28,6 +28,7 @@ header {
   color: #ffffff;
   margin: 0;
   font-size: 24px;
+  text-decoration: none;
 }
 
 .top-nav nav ul {
@@ -38,14 +39,14 @@ header {
   padding: 0;
 }
 
-.top-nav nav a {
+.top-nav nav a, h1 a {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
   transition: color 0.3s;
 }
 
-.top-nav nav a:hover {
+.top-nav nav a:hover, h1 a:hover {
   color: #ff0404;
   text-decoration: underline; /* Subraya al pasar el mouse */
 }

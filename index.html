@@ -2,47 +2,68 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblia Reina-Valera 1960</title>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <!-- NAV personalizable -->
+    <header>
+      <div class="top-nav">
+        <h1>Mi Biblia</h1>
+        <nav>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#planes">Planes</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="#app">Obtener la App</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
 
-  <!-- NAV personalizable -->
-  <header>
-    <div class="top-nav">
-      <h1>Mi Biblia</h1>
-      <nav>
-        <ul>
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#planes">Planes</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="#app">Obtener la App</a></li>
-        </ul>
-      </nav>
-    </div>
+    <!-- MAIN con versículos y navegación lateral -->
+    <main>
+      <!-- Controles -->
+      <div class="busqueda-centrada">
+      <div id="selector-libro" class="dropdown">
+        <button id="selector-toggle" class="dropdown-toggle">Seleccionar libro</button>
+        <div id="selector-content" class="dropdown-content"></div>
+      </div>
 
-    <div class="busqueda-centrada">
-      <input type="text" id="buscarLibro" placeholder="Buscar libros..." />
-      <select id="libro"></select>
-      <select id="capitulo"></select>
-      <button id="aumentarLetra">A+</button>
-    </div>
-  </header>
+      <div id="selector-version" class="dropdown">
+        <button id="selector-toggle" class="dropdown-toggle">RVR1960</button>
+        <div id="selector-content" class="dropdown-content"></div>
+      </div>
 
-  <!-- MAIN con versículos y navegación lateral -->
-  <main>
-    <div class="contenedor-versiculos">
-      <button id="anteriorCapitulo" class="nav-capitulo">&lt;</button>
-      
+        <button id="aumentarLetra" class="dropdown-aumento">A+</button>
+      </div>
+
+      <!-- Botones de capítulo (izquierda y derecha) -->
+      <button id="anteriorCapitulo" class="nav-capitulo izquierda">&lt;</button>
+      <button id="siguienteCapitulo" class="nav-capitulo derecha">&gt;</button>
+
+      <!-- Contenido de versículos -->
       <div id="versiculos" class="versiculos"></div>
-      
-      <button id="siguienteCapitulo" class="nav-capitulo">&gt;</button>
-    </div>
-  </main>
+    </main>
 
-  <footer>
-    <p>&copy; 2025 Circe Hathaway</p>
-  </footer>
+    <footer>
+      <div class="footer-redes">
+        <a href="https://www.facebook.com/profile.php?id=100076584407771" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/radionuevavida19" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.twitch.tv/radiodigitalnuevavida" target="_blank" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+        <a href="https://wa.me/+5491127005824" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.youtube.com/@Ecos_de_EsperanzaNV" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="https://music.youtube.com/watch?v=l6WYVWeSnis&si=K8mk_Cl2JZkYqUbu" target="_blank" aria-label="YouTube Music"><i class="fas fa-music"></i></a>
+        <a href="https://open.spotify.com/intl-es/artist/5p1Ixdpl6I5fFb11MSeVXu?si=1N-_nxbSS1Sx5im_dbIU2w" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="https://music.apple.com/ar/album/oh-jes%C3%BAs/1755010670?i=1755010673" target="_blank" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+      </div>
+      <div class="footer-info">
+        <span>&copy; 2025 | Mi Biblia</span>
+        <div>Servicio hecho por: <span style="color: #ff0404;">CirceHathaway</span></div>
+      </div>
+    </footer>
 
   <script type="module" src="js/biblia.js"></script>
 </body>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto </title>
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- NAV personalizable -->
+    <header>
+        <div class="top-nav">
+            <h1>Mi Biblia</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="#planes">Planes</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="#app">Obtener la App</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <h1 class="contacto-titulo">Comunicate con nosotros</h1>
+        </article>
+        <form action="https://formspree.io/f/xpwraedb" method="post">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" required placeholder="Ingresar nombre">
+
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido" required placeholder="Ingresar apellido">
+
+            <label for="telefono">Telefono</label>
+            <input type="number" name="telefono" id="telefono" placeholder="Ingresar telefono">
+
+            <label for="">Correo</label>
+            <input type="email" name="correo" id="correo" required placeholder="Ingresar correo">
+
+            <br><br>
+            <label for="tema">Motivo de Contacto</label>
+            <select name="tema" id="tema">
+                <option value="peticion">Petición</option>
+                <option value="oracion">Oración</option>
+                <option value="otro">Otro</option>
+            </select>
+
+            <br><br>
+            <label for="mensaje">Mensaje</label>
+            <textarea name="mensaje" id="mensaje" placeholder="Ingresar mensaje"></textarea>
+
+            <br><br>
+            <button type="submit">Enviar</button>
+        </form>
+    </main>
+
+    <br><br>
+    <div class="mapa" id="mapa">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3288.550519999426!2d-58.66087069999999!3d-34.488925099999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca30068674c85%3A0x16569b2943f15a08!2sIglesia%20Mensaje%20de%20Nueva%20Vida%20y%20Esperanza%20(Al%20mundo%20con%20Amor)!5e0!3m2!1ses!2sar!4v1748760072428!5m2!1ses!2sar"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <footer>
+        <div class="footer-redes">
+            <a href="https://www.facebook.com/profile.php?id=100076584407771" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/radionuevavida19" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.twitch.tv/radiodigitalnuevavida" target="_blank" aria-label="Twitch"><i class="fab fa-twitch"></i></a>
+            <a href="https://wa.me/+5491127005824" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@Ecos_de_EsperanzaNV" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://music.youtube.com/watch?v=l6WYVWeSnis&si=K8mk_Cl2JZkYqUbu" target="_blank" aria-label="YouTube Music"><i class="fas fa-music"></i></a>
+            <a href="https://open.spotify.com/intl-es/artist/5p1Ixdpl6I5fFb11MSeVXu?si=1N-_nxbSS1Sx5im_dbIU2w" target="_blank" aria-label="Spotify"><i class="fab fa-spotify"></i></a>
+            <a href="https://music.apple.com/ar/album/oh-jes%C3%BAs/1755010670?i=1755010673" target="_blank" aria-label="Apple Music"><i class="fab fa-apple"></i></a>
+        </div>
+        <div class="footer-info">
+            <span>&copy; 2025 | Mi Biblia</span>
+            <div>Servicio hecho por: <span style="color: #ff0404;">CirceHathaway</span></div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/biblia.js"></script>
+</body>
+</html>

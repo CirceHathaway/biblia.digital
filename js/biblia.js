@@ -152,7 +152,7 @@ function mostrarVersiculo(capIndex, versIndex) {
   mostrarCapitulo(capIndex);
   const target = document.getElementById(`vers-${versIndex + 1}`);
   if (target) {
-    target.style.backgroundColor = '#ffff99';
+    target.style.backgroundColor = '#f64444';
     target.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }

@@ -34,11 +34,22 @@ header {
 
 .menu-toggle {
   display: none;
-  font-size: 24px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #fff;
   background: none;
-  border: none;
   cursor: pointer;
-  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  font-size: 0;
+  position: relative;
+}
+
+.menu-toggle i {
+  color: #fff;
+  font-size: 20px;
 }
 
 .menu-items {
@@ -56,14 +67,14 @@ header {
   transition: color 0.3s, text-decoration 0.3s;
 }
 
-.menu-items a:hover , h1 a:hover {
+.menu-items a:hover, h1 a:hover {
   color: #ff0404;
   text-decoration: underline;
 }
 
 @media (max-width: 768px) {
   .menu-toggle {
-    display: block;
+    display: flex;
   }
 
   .menu-items {
@@ -71,10 +82,13 @@ header {
     flex-direction: column;
     background-color: #333;
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100vw;
+    top: 50px;
+    right: 10px;
+    width: 220px;
     z-index: 999;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding: 10px 0;
   }
 
   .menu-items.show {
@@ -82,9 +96,7 @@ header {
   }
 
   .menu-items a {
-    padding: 12px 20px;
-    color: #fff;
-    border-bottom: 1px solid #444;
+    padding: 10px 20px;
   }
 }
 

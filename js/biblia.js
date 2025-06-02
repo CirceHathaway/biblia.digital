@@ -1,4 +1,4 @@
-// biblia.js (completo con cuadrícula de capítulos, reinicio, y Génesis 1:1 al inicio)
+// js/biblia.js
 import { libros } from './libros.js';
 
 const dropdown = document.getElementById("selector-libro");
@@ -12,8 +12,8 @@ const btnSiguiente = document.getElementById("siguienteCapitulo");
 let libroActual = null;
 let capitulos = [];
 let capituloSelectIndex = 0;
+let versiculoSelectIndex = 0;
 let fontSize = 18;
-
 let estadoSelector = "libros";
 let libroSeleccionado = "";
 
@@ -35,9 +35,28 @@ function crearInputBusqueda() {
   return input;
 }
 
+function agregarBotonVolver(destino) {
+  const btn = document.createElement("button");
+  btn.textContent = "Volver";
+  btn.className = "dropdown-option";
+  btn.style.fontWeight = "bold";
+  btn.style.backgroundColor = "#ddd";
+  btn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (destino === "libros") {
+      cargarLibros();
+    } else if (destino === "capitulos") {
+      cargarCapitulos(libroActual);
+    }
+    dropdown.classList.add("open");
+  });
+  dropdownContent.insertBefore(btn, dropdownContent.firstChild);
+}
+
 function cargarLibros() {
   dropdownContent.innerHTML = '';
   estadoSelector = "libros";
+  dropdownToggle.textContent = "Libro";
 
   const inputBusqueda = crearInputBusqueda();
   dropdownContent.appendChild(inputBusqueda);
@@ -46,10 +65,12 @@ function cargarLibros() {
     const opcion = document.createElement("div");
     opcion.className = "dropdown-option";
     opcion.textContent = nombre;
-    opcion.addEventListener("click", async () => {
+    opcion.addEventListener("click", async (e) => {
+      e.stopPropagation();
       libroSeleccionado = nombre;
       dropdownToggle.textContent = nombre;
       await cargarCapitulos(nombre);
+      dropdown.classList.add("open");
     });
     dropdownContent.appendChild(opcion);
   });
@@ -62,9 +83,9 @@ async function cargarCapitulos(nombreLibro) {
   libroActual = nombreLibro;
   capituloSelectIndex = 0;
   estadoSelector = "capitulos";
+  dropdownToggle.textContent = "Capítulo";
 
   dropdownContent.innerHTML = '';
-
   const grid = document.createElement("div");
   grid.className = "chapter-grid";
 
@@ -72,14 +93,50 @@ async function cargarCapitulos(nombreLibro) {
     const btn = document.createElement("div");
     btn.className = "chapter-item";
     btn.textContent = index + 1;
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      capituloSelectIndex = index;
+      dropdownToggle.textContent = `Capítulo ${index + 1}`;
       mostrarCapitulo(index);
+      cargarVersiculos(index);
+      setTimeout(() => {
+        dropdown.classList.add("open");
+      }, 0);
+    });
+    grid.appendChild(btn);
+  });
+
+  dropdownContent.appendChild(grid);
+
+
+  agregarBotonVolver("libros");
+}
+
+function cargarVersiculos(indexCapitulo) {
+  estadoSelector = "versiculos";
+  dropdownToggle.textContent = "Versículo";
+
+  dropdownContent.innerHTML = '';
+  const versiculos = capitulos[indexCapitulo];
+  const grid = document.createElement("div");
+  grid.className = "chapter-grid";
+
+  versiculos.forEach((_, i) => {
+    const btn = document.createElement("div");
+    btn.className = "chapter-item";
+    btn.textContent = i + 1;
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      versiculoSelectIndex = i;
+      dropdownToggle.textContent = `Versículo ${i + 1}`;
+      mostrarVersiculo(indexCapitulo, i);
       dropdown.classList.remove("open");
     });
     grid.appendChild(btn);
   });
 
   dropdownContent.appendChild(grid);
+  agregarBotonVolver("capitulos");
 }
 
 function mostrarCapitulo(index) {
@@ -87,22 +144,33 @@ function mostrarCapitulo(index) {
   capituloSelectIndex = index;
   versiculosDiv.innerHTML = `<h2>${libroActual} ${index + 1}</h2>`;
   versiculos.forEach((verso, i) => {
-    versiculosDiv.innerHTML += `<p><strong>${i + 1}</strong> ${verso}</p>`;
+    versiculosDiv.innerHTML += `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
   });
 }
 
-dropdownToggle.addEventListener("click", () => {
-  const estabaAbierto = dropdown.classList.contains("open");
+function mostrarVersiculo(capIndex, versIndex) {
+  mostrarCapitulo(capIndex);
+  const target = document.getElementById(`vers-${versIndex + 1}`);
+  if (target) {
+    target.style.backgroundColor = '#ffff99';
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+
+dropdownToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
   dropdown.classList.toggle("open");
 
-  if (!estabaAbierto || estadoSelector !== "libros") {
-    cargarLibros();
-  }
+  // Siempre cargar libros cuando se abre el dropdown
+  cargarLibros();
 });
 
 document.addEventListener("click", (e) => {
   if (!dropdown.contains(e.target)) {
     dropdown.classList.remove("open");
+    // Reiniciar el estado al cerrar el dropdown
+    estadoSelector = "libros";
+    dropdownToggle.textContent = "Libro";
   }
 });
 
@@ -114,24 +182,30 @@ btnAumentar.addEventListener("click", () => {
 btnAnterior.addEventListener("click", () => {
   if (capituloSelectIndex > 0) {
     capituloSelectIndex--;
+    versiculoSelectIndex = 0;
     mostrarCapitulo(capituloSelectIndex);
+    dropdownToggle.textContent = "Capítulo";
+    cargarVersiculos(capituloSelectIndex);
   }
 });
 
 btnSiguiente.addEventListener("click", () => {
   if (capituloSelectIndex < capitulos.length - 1) {
     capituloSelectIndex++;
+    versiculoSelectIndex = 0;
     mostrarCapitulo(capituloSelectIndex);
+    dropdownToggle.textContent = "Capítulo";
+    cargarVersiculos(capituloSelectIndex);
   }
 });
 
-// Mostrar Génesis 1:1 al cargar la página
 (async function mostrarGenesis1() {
   const ruta = libros["Génesis"];
   const modulo = await import(`./${ruta}`);
   capitulos = modulo.default;
   libroActual = "Génesis";
   capituloSelectIndex = 0;
+  versiculoSelectIndex = 0;
   mostrarCapitulo(0);
-  dropdownToggle.textContent = "Génesis";
+  dropdownToggle.textContent = "Libro";
 })();

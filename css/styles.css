@@ -100,7 +100,7 @@ header {
   }
 }
 
-/* === Selector personalizado (libros/capítulos) === */
+/* === Selector personalizado (libros/capítulos/versículos) === */
 .busqueda-centrada {
   display: flex;
   justify-content: center;

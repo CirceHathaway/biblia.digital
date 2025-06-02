@@ -25,14 +25,24 @@
     </div>
   </header>
 
-  <!-- Selector de libro, versión y botón de aumento -->
+  <!-- Sección de selección -->
   <section class="busqueda-centrada">
+    <!-- Selector de Libro -->
     <div class="dropdown" id="selector-libro">
       <button class="dropdown-toggle" id="selector-toggle">Génesis</button>
       <div class="dropdown-content" id="selector-content"></div>
     </div>
 
+    <!-- Selector de Capítulo -->
+    <div class="dropdown" id="selector-capitulo" style="display: none;">
+      <button class="dropdown-toggle" id="capitulo-toggle">Capítulo</button>
+      <div class="dropdown-content" id="capitulo-content"></div>
+    </div>
+
+    <!-- Versión de la Biblia -->
     <div class="version-biblia">RVR1960</div>
+
+    <!-- Botón A+ -->
     <button id="aumentarLetra" class="dropdown-toggle">A+</button>
   </section>
 
@@ -40,7 +50,7 @@
   <button class="nav-capitulo izquierda" id="anteriorCapitulo">&lt;</button>
   <button class="nav-capitulo derecha" id="siguienteCapitulo">&gt;</button>
 
-  <!-- Contenido principal -->
+  <!-- Contenedor de versículos -->
   <main>
     <div class="versiculos" id="versiculos"></div>
   </main>
@@ -63,19 +73,12 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Script principal -->
   <script type="module" src="js/biblia.js"></script>
   <script>
-    // Mostrar/ocultar menú en móviles
+    // Mostrar/ocultar menú hamburguesa en celular
     document.getElementById('menuToggle').addEventListener('click', () => {
       document.getElementById('menuItems').classList.toggle('show');
-    });
-
-    // Cerrar menú al hacer clic en un enlace
-    document.querySelectorAll('.menu-items a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('menuItems').classList.remove('show');
-      });
     });
   </script>
 </body>

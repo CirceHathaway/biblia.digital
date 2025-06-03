@@ -232,7 +232,6 @@ main {
   touch-action: pan-y; /* Permitir desplazamiento vertical */
   -webkit-user-select: none; /* Desactivar selección de texto */
   user-select: none; /* Desactivar selección de texto */
-  -webkit-touch-callout: none; /* Desactivar la barra de herramientas nativa en WebKit */
 }
 
 /* Ajustar el espaciado de los versículos */
@@ -241,7 +240,6 @@ main {
   touch-action: pan-y; /* Permitir desplazamiento vertical */
   -webkit-user-select: none;
   user-select: none;
-  -webkit-touch-callout: none;
 }
 
 /* En móvil: ajustar el espaciado del contenedor versiculo-item */
@@ -251,7 +249,6 @@ main {
   touch-action: pan-y; /* Permitir desplazamiento vertical */
   -webkit-user-select: none;
   user-select: none;
-  -webkit-touch-callout: none;
 }
 
 .versiculo-item p {
@@ -260,7 +257,6 @@ main {
   touch-action: pan-y; /* Permitir desplazamiento vertical */
   -webkit-user-select: none;
   user-select: none;
-  -webkit-touch-callout: none;
 }
 
 .nav-capitulo {

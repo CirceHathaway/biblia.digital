@@ -230,22 +230,33 @@ main {
   line-height: 1.6;
   transition: font-size 0.3s ease;
   touch-action: pan-y; /* Permitir desplazamiento vertical */
+  -webkit-user-select: none; /* Desactivar selección de texto */
+  user-select: none; /* Desactivar selección de texto */
 }
 
 /* Ajustar el espaciado de los versículos */
 .versiculos p {
   margin: 0.5em 0; /* Espaciado mínimo para que los versículos estén más juntos */
+  touch-action: pan-y; /* Permitir desplazamiento vertical */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 /* En móvil: ajustar el espaciado del contenedor versiculo-item */
 .versiculo-item {
   margin: 0;
   padding: 0;
+  touch-action: pan-y; /* Permitir desplazamiento vertical */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .versiculo-item p {
   margin: 0.5em 0;
   padding: 0;
+  touch-action: pan-y; /* Permitir desplazamiento vertical */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .nav-capitulo {

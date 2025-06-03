@@ -17,6 +17,10 @@ let fontSize = 18;
 let estadoSelector = "libros";
 let libroSeleccionado = "";
 
+// Variables para manejar el long press y evitar conflictos con el desplazamiento
+let touchMoved = false; // Bandera para detectar si hubo movimiento (desplazamiento)
+let pressTimer; // Temporizador para el long press
+
 // Detectar si es un dispositivo móvil
 const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
@@ -152,7 +156,7 @@ function cargarResaltados() {
     }
     if (elemento && fav.libro === libroActual && fav.capitulo === (capituloSelectIndex + 1)) {
       if (esMovil) {
-        elemento.style.backgroundColor = fav.color || '#ffff99'; // Usar el color guardado
+        elemento.style.backgroundColor = fav.color || '#ffff99';
       } else {
         elemento.parentElement.style.backgroundColor = fav.color || '#ffff99';
       }
@@ -169,23 +173,29 @@ function mostrarCapitulo(index) {
     if (esMovil) {
       const versiculoDiv = document.createElement('div');
       versiculoDiv.className = 'versiculo-item';
+      // Paso 3: Añadir un identificador único (data-id)
+      versiculoDiv.setAttribute('data-id', `${libroActual}-${index + 1}-${i + 1}`);
       versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
       versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
 
-      let pressTimer;
+      // Paso 2: Ajustar el manejo del long press para evitar conflictos con el desplazamiento
       versiculoDiv.addEventListener('touchstart', (e) => {
-        e.preventDefault();
+        touchMoved = false; // Reiniciar la bandera de movimiento
         pressTimer = setTimeout(() => {
-          mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
+          if (!touchMoved) { // Solo activar el long press si no hubo movimiento
+            e.preventDefault(); // Evitar el desplazamiento solo durante el long press
+            mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
+          }
         }, 500);
       });
 
-      versiculoDiv.addEventListener('touchend', () => {
-        clearTimeout(pressTimer);
+      versiculoDiv.addEventListener('touchmove', () => {
+        touchMoved = true; // Marcar que hubo movimiento (desplazamiento)
+        clearTimeout(pressTimer); // Cancelar el long press si el usuario se mueve
       });
 
-      versiculoDiv.addEventListener('touchmove', () => {
-        clearTimeout(pressTimer);
+      versiculoDiv.addEventListener('touchend', () => {
+        clearTimeout(pressTimer); // Cancelar el temporizador si se suelta antes
       });
 
       versiculosDiv.appendChild(versiculoDiv);

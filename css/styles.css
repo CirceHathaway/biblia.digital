@@ -238,25 +238,25 @@ main {
 .versiculos p {
   margin: 0.5em 0; /* Espaciado mínimo para que los versículos estén más juntos */
   touch-action: pan-y; /* Permitir desplazamiento vertical */
-  -webkit-user-select: none;
-  user-select: none;
+  -webkit-user-select: none; /* Desactivar selección de texto */
+  user-select: none; /* Desactivar selección de texto */
 }
 
-/* En móvil: ajustar el espaciado del contenedor versiculo-item */
+/* En móvil y escritorio: ajustar el espaciado del contenedor versiculo-item */
 .versiculo-item {
   margin: 0;
   padding: 0;
   touch-action: pan-y; /* Permitir desplazamiento vertical */
-  -webkit-user-select: none;
-  user-select: none;
+  -webkit-user-select: none; /* Desactivar selección de texto */
+  user-select: none; /* Desactivar selección de texto */
 }
 
 .versiculo-item p {
   margin: 0.5em 0;
   padding: 0;
   touch-action: pan-y; /* Permitir desplazamiento vertical */
-  -webkit-user-select: none;
-  user-select: none;
+  -webkit-user-select: none; /* Desactivar selección de texto */
+  user-select: none; /* Desactivar selección de texto */
 }
 
 .nav-capitulo {
@@ -443,7 +443,7 @@ footer.footer2 {
   background-color: #cc0000;
 }
 
-/* Estilos para la ventana emergente de "Destacar" en móvil */
+/* Estilos para la ventana emergente de "Destacar" en móvil y escritorio */
 .ventana-destacar {
   position: fixed;
   top: 50%;

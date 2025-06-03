@@ -6,6 +6,9 @@ body {
   margin: 0;
   background: #f4f4f4;
   color: #333;
+  overflow-y: auto; /* Permitir desplazamiento vertical */
+  height: 100vh; /* Asegurar que el body ocupe toda la altura */
+  touch-action: pan-y; /* Permitir desplazamiento vertical táctil */
 }
 
 /* === Header fijo === */
@@ -210,9 +213,12 @@ header {
 
 main {
   padding-top: 15px;
+  padding-bottom: 80px; /* Añadir espacio para evitar que el footer fijo tape contenido */
   max-width: 900px;
   margin: auto;
   position: relative;
+  overflow-y: auto; /* Asegurar que el main permita desplazamiento */
+  touch-action: pan-y; /* Asegurar que el desplazamiento táctil funcione */
 }
 
 .versiculos {
@@ -223,6 +229,7 @@ main {
   font-size: 18px;
   line-height: 1.6;
   transition: font-size 0.3s ease;
+  touch-action: pan-y; /* Permitir desplazamiento vertical */
 }
 
 /* Ajustar el espaciado de los versículos */
@@ -243,7 +250,7 @@ main {
 
 .nav-capitulo {
   position: fixed;
-  bottom: 160px;
+  bottom: 120px;
   z-index: 950;
   background-color: #eee;
   border: none;
@@ -384,6 +391,7 @@ footer.footer2 {
   width: 100%;
   z-index: 1000; /* Asegurar que esté por encima de otros elementos */
   flex-shrink: 0; /* Evitar que el footer se encoja */
+  touch-action: none; /* Evitar que el footer capture eventos de desplazamiento */
 }
 
 .favoritos-page {
@@ -528,9 +536,13 @@ footer.footer2 {
   }
 
   .nav-capitulo {
-    bottom: 140px;
+    bottom: 100px;
     font-size: 22px;
     padding: 10px 14px;
+  }
+
+  main {
+    padding-bottom: 60px; /* Ajustar el padding en móvil */
   }
 
   .chapter-grid {

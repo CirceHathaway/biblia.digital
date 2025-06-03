@@ -1,3 +1,5 @@
+/* css/styles.css */
+
 /* === Reset general === */
 body {
   font-family: Georgia, serif;
@@ -72,34 +74,6 @@ header {
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
-  }
-
-  .menu-items {
-    display: none;
-    flex-direction: column;
-    background-color: #333;
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    width: 220px;
-    z-index: 999;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    padding: 10px 0;
-  }
-
-  .menu-items.show {
-    display: flex;
-  }
-
-  .menu-items a {
-    padding: 10px 20px;
-  }
-}
-
 /* === Selector personalizado (libros/capítulos/versículos) === */
 .busqueda-centrada {
   display: flex;
@@ -108,14 +82,14 @@ header {
   gap: 10px;
   padding: 15px 10px 20px;
   flex-wrap: wrap;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-top: 1px solid #000000;
+  border-bottom: 1px solid #000000;
   margin-top: 110px;
 }
 
 .dropdown {
   position: relative;
-  min-width: 260px;
+  min-width: 290px;
 }
 
 .dropdown-toggle {
@@ -123,7 +97,7 @@ header {
   font-size: 16px;
   cursor: pointer;
   background-color: #eee;
-  border: none;
+  border: 1px solid #000; /* Borde negro */
   border-radius: 6px;
   font-weight: bold;
   transition: background 0.2s;
@@ -185,7 +159,7 @@ header {
 /* Botón A+ circular alineado */
 #aumentarLetra {
   background-color: #eee;
-  border: none;
+  border: 1px solid #000; /* Borde negro */
   font-size: 18px;
   width: 42px;
   height: 42px;
@@ -229,12 +203,13 @@ header {
   font-weight: bold;
   padding: 8px 14px;
   background: #eee;
+  border: 1px solid #000; /* Borde negro */
   border-radius: 6px;
   font-size: 16px;
 }
 
 main {
-  padding-top: 30px;
+  padding-top: 15px;
   max-width: 900px;
   margin: auto;
   position: relative;
@@ -248,6 +223,22 @@ main {
   font-size: 18px;
   line-height: 1.6;
   transition: font-size 0.3s ease;
+}
+
+/* Ajustar el espaciado de los versículos */
+.versiculos p {
+  margin: 0.5em 0; /* Espaciado mínimo para que los versículos estén más juntos */
+}
+
+/* En móvil: ajustar el espaciado del contenedor versiculo-item */
+.versiculo-item {
+  margin: 0;
+  padding: 0;
+}
+
+.versiculo-item p {
+  margin: 0.5em 0;
+  padding: 0;
 }
 
 .nav-capitulo {
@@ -269,88 +260,88 @@ main {
 }
 
 .izquierda {
-  left: 20px;
+  left: 25px;
 }
 
 .derecha {
-  right: 20px;
+  right: 25px;
 }
 
-/*Estilo del Formulario*/
+/* Estilo del Formulario */
 .contacto-titulo {
-    font-family: "Monoton", sans-serif;
-    font-size: 2rem;
-    color: #ff0404;
-    text-align: center;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
+  font-family: "Monoton", sans-serif;
+  font-size: 2rem;
+  color: #ff0404;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 form {
-    max-width: 600px;
-    margin: 1rem auto;
-    padding: 2rem;
-    background-color: #2a2929;
-    border: 2px solid #ff0404;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  max-width: 600px;
+  margin: 1rem auto;
+  padding: 2rem;
+  background-color: #2a2929;
+  border: 2px solid #ff0404;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 form label {
-    font-weight: bold;
-    color: #ffffff;
+  font-weight: bold;
+  color: #ffffff;
 }
 
 form input, form select, form textarea {
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fffef8;
-    color: #222;
-    font-family: inherit;
-    width: 100%;
-    box-sizing: border-box;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fffef8;
+  color: #222;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 form textarea {
-    resize: vertical;
-    min-height: 120px;
+  resize: vertical;
+  min-height: 120px;
 }
 
 form button {
-    padding: 0.9rem;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: #ff0404;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: center;
-    width: 50%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: #ff0404;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+  width: 50%;
 }
 
 form button:hover {
-    background-color: #9e1800;
+  background-color: #9e1800;
 }
 
 /* Centrar Mapa */
-.mapa{
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0;
+.mapa {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
 .mapa iframe {
-    max-width: 100%;
-    border: 0;
-    border-radius: 10px;
+  max-width: 100%;
+  border: 0;
+  border-radius: 10px;
 }
 
 /* === Footer === */
@@ -379,6 +370,172 @@ footer {
   flex-wrap: wrap;
   padding: 0 20px 10px;
   font-size: 16px;
+}
+
+/* Ajustes específicos para favorito.html */
+footer.footer2 {
+  background-color: #222;
+  color: #eee;
+  text-align: center;
+  padding: 20px 15px;
+  font-size: 20px;
+  position: fixed; /* Fijar el footer en la parte inferior */
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
+  flex-shrink: 0; /* Evitar que el footer se encoja */
+}
+
+.favoritos-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Aseguramos que ocupe toda la altura de la ventana */
+}
+
+.favoritos-page main {
+  flex: 1 0 auto; /* El main crece para ocupar el espacio disponible */
+  padding-bottom: 100px; /* Espacio para que el footer no tape el contenido */
+}
+
+.favoritos-page footer.footer2 {
+  flex-shrink: 0; /* Evitar que el footer se encoja */
+}
+
+/* Estilos para favorito.html */
+.favorito-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.eliminar-favorito {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.eliminar-favorito:hover {
+  background-color: #cc0000;
+}
+
+/* Estilos para la ventana emergente de "Destacar" en móvil */
+.ventana-destacar {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1002;
+}
+
+.ventana-contenido {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.ventana-contenido p {
+  margin: 0 0 10px;
+}
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.color-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#btn-confirmar {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btn-cancelar {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Media queries para móvil */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .menu-items {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    width: 220px;
+    z-index: 999;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    padding: 10px 0;
+  }
+
+  .menu-items.show {
+    display: flex;
+  }
+
+  .menu-items a {
+    padding: 10px 20px;
+  }
+
+  .dropdown-content {
+    max-height: 250px;
+    font-size: 14px;
+  }
+
+  .dropdown-toggle {
+    font-size: 14px;
+  }
+
+  .version-biblia {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .nav-capitulo {
+    bottom: 140px;
+    font-size: 22px;
+    padding: 10px 14px;
+  }
+
+  .chapter-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 600px) {

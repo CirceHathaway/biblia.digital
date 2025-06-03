@@ -2,12 +2,13 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Biblia Reina-Valera 1960</title>
+  <title>Favoritos | Mi Biblia</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body> <!-- Agregamos una clase para identificar esta página -->
+<body class="favoritos-page">
+
   <!-- Encabezado -->
   <header>
     <div class="top-nav">
@@ -24,32 +25,16 @@
     </div>
   </header>
 
-  <!-- Sección de selección -->
-  <section class="busqueda-centrada">
-    <!-- Selector unificado -->
-    <div class="dropdown" id="selector-libro">
-      <button class="dropdown-toggle" id="selector-toggle">Génesis</button>
-      <div class="dropdown-content" id="selector-content"></div>
-    </div>
-
-    <!-- Versión de la Biblia -->
-    <div class="version-biblia">RVR1960</div>
-
-    <!-- Botón A+ -->
-    <button id="aumentarLetra" class="dropdown-toggle">A+</button>
-  </section>
-
-  <!-- Botones fijos de navegación entre capítulos -->
-  <button class="nav-capitulo izquierda" id="anteriorCapitulo"><</button>
-  <button class="nav-capitulo derecha" id="siguienteCapitulo">></button>
-
-  <!-- Contenedor de versículos -->
+  <!-- Contenedor de versículos favoritos -->
   <main>
-    <div class="versiculos" id="versiculos"></div>
+    <div class="versiculos" id="favoritos">
+      <h2>Favoritos</h2>
+      <div id="lista-favoritos"></div>
+    </div>
   </main>
 
   <!-- Pie de página -->
-  <footer>
+  <footer class="footer2">
     <div class="footer-redes">
       <a href="https://www.facebook.com/profile.php?id=100076584407771" target="_blank" aria-label="Facebook" style="color: #1877F2;"><i class="fab fa-facebook"></i></a>
       <a href="https://www.instagram.com/radionuevavida19" target="_blank" aria-label="Instagram" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
@@ -66,13 +51,77 @@
     </div>
   </footer>
 
-  <!-- Script principal -->
-  <script type="module" src="js/biblia.js"></script>
+  <!-- Script para manejar favoritos -->
   <script>
     // Mostrar/ocultar menú hamburguesa en celular
     document.getElementById('menuToggle').addEventListener('click', () => {
       document.getElementById('menuItems').classList.toggle('show');
     });
+
+    // Cargar versículos favoritos desde localStorage
+    function cargarFavoritos() {
+      const listaFavoritos = document.getElementById('lista-favoritos');
+      const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+
+      if (favoritos.length === 0) {
+        listaFavoritos.innerHTML = '<p>No tienes versículos favoritos guardados.</p>';
+        return;
+      }
+
+      listaFavoritos.innerHTML = '';
+      favoritos.forEach((favorito, index) => {
+        const versiculoDiv = document.createElement('div');
+        versiculoDiv.className = 'favorito-item';
+        versiculoDiv.innerHTML = `
+          <p><strong>${favorito.libro} ${favorito.capitulo}:${favorito.versiculo}</strong> ${favorito.texto}</p>
+          <button class="eliminar-favorito" data-index="${index}">Eliminar</button>
+        `;
+        listaFavoritos.appendChild(versiculoDiv);
+      });
+
+      // Agregar eventos a los botones de eliminar
+      document.querySelectorAll('.eliminar-favorito').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const index = e.target.getAttribute('data-index');
+          eliminarFavorito(index);
+        });
+      });
+    }
+
+    // Eliminar un versículo favorito
+    function eliminarFavorito(index) {
+      let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
+      favoritos.splice(index, 1);
+      localStorage.setItem('favoritos', JSON.stringify(favoritos));
+      cargarFavoritos();
+    }
+
+    // Cargar los favoritos al iniciar la página
+    window.onload = cargarFavoritos;
   </script>
+
+  <style>
+    .favorito-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .eliminar-favorito {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .eliminar-favorito:hover {
+      background-color: #cc0000;
+    }
+  </style>
 </body>
 </html>

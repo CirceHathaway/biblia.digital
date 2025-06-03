@@ -16,7 +16,7 @@
             <nav>
                 <ul class="menu-items" id="menuItems">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="#planes">Planes</a></li>
+                <li><a href="favorito.html">Favoritos</a></li>
                 <li><a href="contacto.html">Contacto</a></li>
                 <li><a href="#app">Obtener la App</a></li>
                 </ul>
@@ -38,7 +38,7 @@
             <label for="telefono">Telefono</label>
             <input type="number" name="telefono" id="telefono" placeholder="Ingresar telefono">
 
-            <label for="">Correo</label>
+            <label for="correo">Correo</label>
             <input type="email" name="correo" id="correo" required placeholder="Ingresar correo">
 
             <br><br>
@@ -84,19 +84,11 @@
         </div>
   </footer>
 
-   <!-- Scripts -->
-  <script type="module" src="js/biblia.js"></script>
+   <!-- Script para el menú hamburguesa -->
   <script>
-    // Mostrar/ocultar menú en móviles
+    // Mostrar/ocultar menú hamburguesa en celular
     document.getElementById('menuToggle').addEventListener('click', () => {
       document.getElementById('menuItems').classList.toggle('show');
-    });
-
-    // Cerrar menú al hacer clic en un enlace
-    document.querySelectorAll('.menu-items a').forEach(link => {
-      link.addEventListener('click', () => {
-        document.getElementById('menuItems').classList.remove('show');
-      });
     });
   </script>
 </body>

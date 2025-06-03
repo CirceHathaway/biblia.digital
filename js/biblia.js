@@ -289,7 +289,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
   btnCancelar.style.border = 'none';
   btnCancelar.style.padding = '5px 10px';
   btnCancelar.style.margin = '5px';
-  btnConfirmar.style.borderRadius = '5px';
   btnCancelar.style.cursor = 'pointer';
 
   btnConfirmar.addEventListener('click', () => {
@@ -383,3 +382,50 @@ btnSiguiente.addEventListener("click", () => {
   mostrarCapitulo(0);
   dropdownToggle.textContent = "Libro";
 })();
+
+// --- Código para PWA ---
+
+// Registrar el Service Worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(registration => {
+        console.log('Service Worker registrado con éxito:', registration);
+      })
+      .catch(error => {
+        console.log('Error al registrar el Service Worker:', error);
+      });
+  });
+}
+
+// Manejar la instalación de la PWA con el enlace "Obtener la App"
+const linkObtenerApp = document.querySelector('a[href="#app"]');
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevenir que el navegador muestre automáticamente el prompt de instalación
+  e.preventDefault();
+  // Guardar el evento para usarlo más tarde
+  deferredPrompt = e;
+  // El enlace "Obtener la App" ya es visible en el menú, así que no necesitamos modificarlo
+});
+
+linkObtenerApp.addEventListener('click', (e) => {
+  e.preventDefault(); // Evitar el comportamiento por defecto del enlace (#app)
+  if (deferredPrompt) {
+    // Mostrar el prompt de instalación
+    deferredPrompt.prompt();
+    // Esperar a que el usuario responda
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('Usuario aceptó instalar la PWA');
+      } else {
+        console.log('Usuario canceló la instalación de la PWA');
+      }
+      // Limpiar el deferredPrompt
+      deferredPrompt = null;
+    });
+  } else {
+    console.log('La PWA no está lista para instalarse aún.');
+  }
+});

@@ -504,6 +504,20 @@ footer.footer2 {
   cursor: pointer;
 }
 
+#obtenerApp {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#obtenerApp:hover {
+  background-color: #45a049;
+}
+
 /* Media queries para móvil */
 @media (max-width: 768px) {
   .menu-toggle {

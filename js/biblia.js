@@ -18,8 +18,8 @@ let estadoSelector = "libros";
 let libroSeleccionado = "";
 
 // Variables para manejar el long press y evitar conflictos con el desplazamiento
-let touchMoved = false; // Bandera para detectar si hubo movimiento (desplazamiento)
-let pressTimer; // Temporizador para el long press
+let touchMoved = false;
+let pressTimer;
 
 // Detectar si es un dispositivo móvil
 const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -173,29 +173,35 @@ function mostrarCapitulo(index) {
     if (esMovil) {
       const versiculoDiv = document.createElement('div');
       versiculoDiv.className = 'versiculo-item';
-      // Paso 3: Añadir un identificador único (data-id)
       versiculoDiv.setAttribute('data-id', `${libroActual}-${index + 1}-${i + 1}`);
       versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
       versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
 
-      // Paso 2: Ajustar el manejo del long press para evitar conflictos con el desplazamiento
+      // Manejo del long press con prevención de la ventana nativa
       versiculoDiv.addEventListener('touchstart', (e) => {
-        touchMoved = false; // Reiniciar la bandera de movimiento
+        e.preventDefault(); // Prevenir la acción predeterminada del navegador
+        touchMoved = false;
         pressTimer = setTimeout(() => {
-          if (!touchMoved) { // Solo activar el long press si no hubo movimiento
-            e.preventDefault(); // Evitar el desplazamiento solo durante el long press
+          if (!touchMoved) {
             mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
           }
         }, 500);
       });
 
-      versiculoDiv.addEventListener('touchmove', () => {
-        touchMoved = true; // Marcar que hubo movimiento (desplazamiento)
-        clearTimeout(pressTimer); // Cancelar el long press si el usuario se mueve
+      versiculoDiv.addEventListener('touchmove', (e) => {
+        e.preventDefault(); // Prevenir la acción predeterminada durante el movimiento
+        touchMoved = true;
+        clearTimeout(pressTimer);
       });
 
-      versiculoDiv.addEventListener('touchend', () => {
-        clearTimeout(pressTimer); // Cancelar el temporizador si se suelta antes
+      versiculoDiv.addEventListener('touchend', (e) => {
+        e.preventDefault(); // Prevenir la acción predeterminada al soltar
+        clearTimeout(pressTimer);
+      });
+
+      // Prevenir el menú contextual del navegador
+      versiculoDiv.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
       });
 
       versiculosDiv.appendChild(versiculoDiv);
@@ -250,7 +256,7 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
   const btnCancelar = document.getElementById('btn-cancelar');
   const colorButtons = ventana.querySelectorAll('.color-btn');
 
-  let colorSeleccionado = '#ffff99'; // Color por defecto
+  let colorSeleccionado = '#ffff99';
 
   colorButtons.forEach(btn => {
     btn.addEventListener('click', () => {

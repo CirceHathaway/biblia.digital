@@ -173,18 +173,29 @@ function mostrarCapitulo(index) {
       versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
       versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
 
+      let startY = 0;
+      let moved = false;
+
       versiculoDiv.addEventListener('touchstart', (e) => {
-        e.preventDefault();
+        startY = e.touches[0].clientY; // Guardar la posición inicial del toque
+        moved = false; // Reiniciar el estado de movimiento
         pressTimer = setTimeout(() => {
-          mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
+          if (!moved) { // Solo activar si no hubo movimiento significativo
+            mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
+          }
         }, 500);
       });
 
-      versiculoDiv.addEventListener('touchend', () => {
-        clearTimeout(pressTimer);
+      versiculoDiv.addEventListener('touchmove', (e) => {
+        const currentY = e.touches[0].clientY;
+        const diffY = Math.abs(currentY - startY);
+        if (diffY > 10) { // Si el movimiento vertical es mayor a 10px, considerarlo un scroll
+          moved = true;
+          clearTimeout(pressTimer);
+        }
       });
 
-      versiculoDiv.addEventListener('touchmove', () => {
+      versiculoDiv.addEventListener('touchend', () => {
         clearTimeout(pressTimer);
       });
 
@@ -403,26 +414,21 @@ const linkObtenerApp = document.querySelector('a[href="#app"]');
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevenir que el navegador muestre automáticamente el prompt de instalación
+  console.log('Evento beforeinstallprompt disparado');
   e.preventDefault();
-  // Guardar el evento para usarlo más tarde
   deferredPrompt = e;
-  // El enlace "Obtener la App" ya es visible en el menú, así que no necesitamos modificarlo
 });
 
 linkObtenerApp.addEventListener('click', (e) => {
-  e.preventDefault(); // Evitar el comportamiento por defecto del enlace (#app)
+  e.preventDefault();
   if (deferredPrompt) {
-    // Mostrar el prompt de instalación
     deferredPrompt.prompt();
-    // Esperar a que el usuario responda
     deferredPrompt.userChoice.then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
         console.log('Usuario aceptó instalar la PWA');
       } else {
         console.log('Usuario canceló la instalación de la PWA');
       }
-      // Limpiar el deferredPrompt
       deferredPrompt = null;
     });
   } else {

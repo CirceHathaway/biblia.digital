@@ -1,4 +1,3 @@
-// js/biblia.js
 import { libros } from './libros.js';
 
 const dropdown = document.getElementById("selector-libro");
@@ -17,12 +16,10 @@ let fontSize = 18;
 let estadoSelector = "libros";
 let libroSeleccionado = "";
 
-// Variables para manejar el long press en móvil y escritorio
 let pressTimer;
-let mouseMoved = false; // Para escritorio
-let touchMoved = false; // Para móvil (aunque no lo usamos ahora, lo dejamos por consistencia)
+let mouseMoved = false;
+let touchMoved = false;
 
-// Detectar si es un dispositivo móvil
 const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 function crearInputBusqueda() {
@@ -30,7 +27,6 @@ function crearInputBusqueda() {
   input.type = "text";
   input.placeholder = "Buscar libros...";
   input.classList.add("dropdown-search");
-
   input.addEventListener("input", () => {
     const texto = input.value.toLowerCase();
     const opciones = dropdownContent.querySelectorAll(".dropdown-option");
@@ -39,7 +35,6 @@ function crearInputBusqueda() {
       opcion.style.display = visible ? "block" : "none";
     });
   });
-
   return input;
 }
 
@@ -65,10 +60,8 @@ function cargarLibros() {
   dropdownContent.innerHTML = '';
   estadoSelector = "libros";
   dropdownToggle.textContent = "Libro";
-
   const inputBusqueda = crearInputBusqueda();
   dropdownContent.appendChild(inputBusqueda);
-
   Object.keys(libros).forEach(nombre => {
     const opcion = document.createElement("div");
     opcion.className = "dropdown-option";
@@ -92,11 +85,9 @@ async function cargarCapitulos(nombreLibro) {
   capituloSelectIndex = 0;
   estadoSelector = "capitulos";
   dropdownToggle.textContent = "Capítulo";
-
   dropdownContent.innerHTML = '';
   const grid = document.createElement("div");
   grid.className = "chapter-grid";
-
   capitulos.forEach((_, index) => {
     const btn = document.createElement("div");
     btn.className = "chapter-item";
@@ -113,7 +104,6 @@ async function cargarCapitulos(nombreLibro) {
     });
     grid.appendChild(btn);
   });
-
   dropdownContent.appendChild(grid);
   agregarBotonVolver("libros");
 }
@@ -121,12 +111,10 @@ async function cargarCapitulos(nombreLibro) {
 function cargarVersiculos(indexCapitulo) {
   estadoSelector = "versiculos";
   dropdownToggle.textContent = "Versículo";
-
   dropdownContent.innerHTML = '';
   const versiculos = capitulos[indexCapitulo];
   const grid = document.createElement("div");
   grid.className = "chapter-grid";
-
   versiculos.forEach((_, i) => {
     const btn = document.createElement("div");
     btn.className = "chapter-item";
@@ -140,7 +128,6 @@ function cargarVersiculos(indexCapitulo) {
     });
     grid.appendChild(btn);
   });
-
   dropdownContent.appendChild(grid);
   agregarBotonVolver("capitulos");
 }
@@ -165,50 +152,42 @@ function mostrarCapitulo(index) {
   const versiculos = capitulos[index];
   capituloSelectIndex = index;
   versiculosDiv.innerHTML = `<h2>${libroActual} ${index + 1}</h2>`;
-
   versiculos.forEach((verso, i) => {
     if (esMovil) {
       const versiculoDiv = document.createElement('div');
       versiculoDiv.className = 'versiculo-item';
       versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
       versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
-
       let startY = 0;
       let moved = false;
-
       versiculoDiv.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY; // Guardar la posición inicial del toque
-        moved = false; // Reiniciar el estado de movimiento
+        startY = e.touches[0].clientY;
+        moved = false;
         pressTimer = setTimeout(() => {
-          if (!moved) { // Solo activar si no hubo movimiento significativo
+          if (!moved) {
             mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
           }
         }, 500);
       });
-
       versiculoDiv.addEventListener('touchmove', (e) => {
         const currentY = e.touches[0].clientY;
         const diffY = Math.abs(currentY - startY);
-        if (diffY > 10) { // Si el movimiento vertical es mayor a 10px, considerarlo un scroll
+        if (diffY > 10) {
           moved = true;
           clearTimeout(pressTimer);
         }
       });
-
       versiculoDiv.addEventListener('touchend', () => {
         clearTimeout(pressTimer);
       });
-
       versiculosDiv.appendChild(versiculoDiv);
     } else {
-      // En escritorio: usar un div para manejar eventos del mouse
       const versiculoDiv = document.createElement('div');
       versiculoDiv.className = 'versiculo-item';
       versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
       versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
-
       versiculoDiv.addEventListener('mousedown', (e) => {
-        e.preventDefault(); // Evitar selección de texto o menú contextual
+        e.preventDefault();
         mouseMoved = false;
         pressTimer = setTimeout(() => {
           if (!mouseMoved) {
@@ -216,24 +195,19 @@ function mostrarCapitulo(index) {
           }
         }, 500);
       });
-
       versiculoDiv.addEventListener('mousemove', () => {
-        mouseMoved = true; // Marcar que el mouse se movió
+        mouseMoved = true;
         clearTimeout(pressTimer);
       });
-
       versiculoDiv.addEventListener('mouseup', () => {
         clearTimeout(pressTimer);
       });
-
       versiculoDiv.addEventListener('contextmenu', (e) => {
-        e.preventDefault(); // Evitar el menú contextual del navegador
+        e.preventDefault();
       });
-
       versiculosDiv.appendChild(versiculoDiv);
     }
   });
-
   cargarResaltados();
 }
 
@@ -254,7 +228,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     </div>
   `;
   document.body.appendChild(ventana);
-
   ventana.style.position = 'fixed';
   ventana.style.top = '50%';
   ventana.style.left = '50%';
@@ -266,19 +239,15 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
   ventana.style.alignItems = 'center';
   ventana.style.justifyContent = 'center';
   ventana.style.zIndex = '1002';
-
   const contenido = ventana.querySelector('.ventana-contenido');
   contenido.style.backgroundColor = '#fff';
   contenido.style.padding = '20px';
   contenido.style.borderRadius = '8px';
   contenido.style.textAlign = 'center';
-
   const btnConfirmar = document.getElementById('btn-confirmar');
   const btnCancelar = document.getElementById('btn-cancelar');
   const colorButtons = ventana.querySelectorAll('.color-btn');
-
   let colorSeleccionado = '#ffff99';
-
   colorButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       colorSeleccionado = btn.getAttribute('data-color');
@@ -286,7 +255,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
       btn.style.border = '2px solid #333';
     });
   });
-
   btnConfirmar.style.backgroundColor = '#4CAF50';
   btnConfirmar.style.color = 'white';
   btnConfirmar.style.border = 'none';
@@ -294,20 +262,17 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
   btnConfirmar.style.margin = '5px';
   btnConfirmar.style.borderRadius = '5px';
   btnConfirmar.style.cursor = 'pointer';
-
   btnCancelar.style.backgroundColor = '#ff4444';
   btnCancelar.style.color = 'white';
   btnCancelar.style.border = 'none';
   btnCancelar.style.padding = '5px 10px';
   btnCancelar.style.margin = '5px';
   btnCancelar.style.cursor = 'pointer';
-
   btnConfirmar.addEventListener('click', () => {
     destacarVersiculo(versiculoDiv, colorSeleccionado);
     guardarFavorito(libro, capitulo, versiculo, texto, colorSeleccionado);
     document.body.removeChild(ventana);
   });
-
   btnCancelar.addEventListener('click', () => {
     document.body.removeChild(ventana);
   });
@@ -394,9 +359,6 @@ btnSiguiente.addEventListener("click", () => {
   dropdownToggle.textContent = "Libro";
 })();
 
-// --- Código para PWA ---
-
-// Registrar el Service Worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./service-worker.js')
@@ -409,29 +371,56 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Manejar la instalación de la PWA con el enlace "Obtener la App"
-const linkObtenerApp = document.querySelector('a[href="#app"]');
+const appLink = document.querySelector('#appLink');
+const appLinkText = document.querySelector('#appLinkText');
 let deferredPrompt;
 
 window.addEventListener('beforeinstallprompt', (e) => {
   console.log('Evento beforeinstallprompt disparado');
   e.preventDefault();
   deferredPrompt = e;
-});
-
-linkObtenerApp.addEventListener('click', (e) => {
-  e.preventDefault();
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('Usuario aceptó instalar la PWA');
-      } else {
-        console.log('Usuario canceló la instalación de la PWA');
-      }
-      deferredPrompt = null;
-    });
-  } else {
-    console.log('La PWA no está lista para instalarse aún.');
+  if (esMovil && !window.matchMedia('(display-mode: standalone)').matches) {
+    appLinkText.textContent = 'Obtener la App';
+    appLink.href = '#app';
   }
 });
+
+function shareApp() {
+  if (navigator.share) {
+    navigator.share({
+      title: 'Mi Biblia',
+      text: 'Descubre la Biblia Reina-Valera 1960 con Mi Biblia, una app para leer y destacar versículos.',
+      url: window.location.origin + 'https://circehathaway.github.io/biblia.digital/',
+    })
+    .then(() => console.log('Enlace compartido con éxito'))
+    .catch(error => console.log('Error al compartir:', error));
+  } else {
+    alert('La función de compartir no está soportada en este navegador.');
+  }
+}
+
+if (esMovil && window.matchMedia('(display-mode: standalone)').matches) {
+  appLinkText.textContent = 'Compartir App';
+  appLink.href = '#share';
+  appLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    shareApp();
+  });
+} else {
+  appLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('Usuario aceptó instalar la PWA');
+        } else {
+          console.log('Usuario canceló la instalación de la PWA');
+        }
+        deferredPrompt = null;
+      });
+    } else {
+      console.log('La PWA no está lista para instalarse aún.');
+    }
+  });
+}

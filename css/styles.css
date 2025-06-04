@@ -25,7 +25,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 4px 20px;
   flex-wrap: nowrap;
   position: relative;
 }
@@ -378,7 +378,7 @@ form button:hover {
 .mapa {
   display: flex;
   justify-content: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 .mapa iframe {

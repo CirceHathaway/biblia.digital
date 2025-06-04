@@ -2,7 +2,7 @@
   "name": "Mi Biblia",
   "short_name": "Biblia",
   "description": "Una aplicación web para leer y destacar versículos de la Biblia Reina-Valera 1960",
-  "start_url": "biblia.digital/index.html",
+  "start_url": "/biblia.digital/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",

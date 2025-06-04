@@ -63,24 +63,37 @@ header {
   gap: 20px;
   margin: 0;
   padding: 0;
+  align-items: center;
+}
+
+.menu-items li {
+  display: inline-flex;
+  align-items: center;
 }
 
 .menu-items a, h1 a {
   text-decoration: none;
   color: #ffffff;
   font-weight: bold;
-  transition: color 0.3s, text-decoration 0.3s;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 5px;
+  line-height: 1.5;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .menu-items a:hover, h1 a:hover {
-  color: #ff0404;
-  text-decoration: underline;
+  background-color: #ff0404;
+  color: #ffffff;
 }
 
 #appLink {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 8px 12px;
   border-radius: 5px;
+  line-height: 1.5;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -554,8 +567,16 @@ footer.footer2 {
     display: flex;
   }
 
+  .menu-items li {
+    display: flex;
+    justify-content: flex-start;
+  }
+
   .menu-items a {
-    padding: 10px 20px;
+    padding: 5px 20px;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.5;
   }
 
   .dropdown-content {

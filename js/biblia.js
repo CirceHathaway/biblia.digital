@@ -390,12 +390,12 @@ function shareApp() {
     navigator.share({
       title: 'Mi Biblia',
       text: 'Descubre la Biblia Reina-Valera 1960 con Mi Biblia, una app para leer y destacar versículos.',
-      url: window.location.origin + 'https://circehathaway.github.io/biblia.digital/',
+      url: 'https://circehathaway.github.io/biblia.digital/',
     })
     .then(() => console.log('Enlace compartido con éxito'))
     .catch(error => console.log('Error al compartir:', error));
   } else {
-    alert('La función de compartir no está soportada en este navegador.');
+    alert('La función de compartir no está soportada en este navegador. Copia este enlace: https://circehathaway.github.io/biblia.digital/');
   }
 }
 

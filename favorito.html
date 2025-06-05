@@ -78,7 +78,7 @@
         versiculoDiv.className = 'favorito-item';
         versiculoDiv.innerHTML = `
           <p><strong>${favorito.libro} ${favorito.capitulo}:${favorito.versiculo}</strong> ${favorito.texto}</p>
-          <button class="eliminar-favorito" data-index="${index}">Eliminar</button>
+          <button class="eliminar-favorito" data-index="${index}" title="Eliminar favorito"><i class="fas fa-trash"></i></button>
         `;
         listaFavoritos.appendChild(versiculoDiv);
       });
@@ -86,7 +86,7 @@
       // Agregar eventos a los botones de eliminar
       document.querySelectorAll('.eliminar-favorito').forEach(btn => {
         btn.addEventListener('click', (e) => {
-          const index = e.target.getAttribute('data-index');
+          const index = e.target.closest('.eliminar-favorito').getAttribute('data-index');
           eliminarFavorito(index);
         });
       });
@@ -104,28 +104,5 @@
     window.onload = cargarFavoritos;
   </script>
 
-  <style>
-    .favorito-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .eliminar-favorito {
-      background-color: #ff4444;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-    }
-
-    .eliminar-favorito:hover {
-      background-color: #cc0000;
-    }
-  </style>
 </body>
 </html>

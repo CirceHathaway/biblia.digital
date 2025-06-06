@@ -1,23 +1,36 @@
-a// service-worker.js
-const CACHE_NAME = 'biblia-app-v1';
+const CACHE_NAME = 'biblia-digital-v2';
 const urlsToCache = [
-  './index.html',
-  './css/styles.css',
-  './js/biblia.js',
-  './js/libros.js'
+  '/',
+  '/index.html',
+  '/favorito.html',
+  '/contacto.html',
+  '/css/styles.css',
+  '/js/biblia.js',
+  '/js/appLink.js',
+  '/js/libros.js',
+  '/manifest.json',
+  '/icons/icon-192x192.png',
+  '/images/background-versiculo.jpg'
 ];
 
-// Instalación del Service Worker y cacheo de recursos
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        return cache.addAll(urlsToCache);
+      .then(cache => cache.addAll(urlsToCache))
+      .catch(error => console.error('Error al cachear recursos:', error))
+  );
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
+      .catch(() => {
+        console.log('Recurso no encontrado en caché ni en la red:', event.request.url);
       })
   );
 });
 
-// Activar el Service Worker
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -26,15 +39,5 @@ self.addEventListener('activate', event => {
           .map(name => caches.delete(name))
       );
     })
-  );
-});
-
-// Interceptar solicitudes de red y servir desde el caché
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        return response || fetch(event.request);
-      })
   );
 });

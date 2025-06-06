@@ -21,7 +21,7 @@ const urlsToCache = [
   '/biblia.digital/js/libros/deuteronomio.js',
   '/biblia.digital/js/libros/josue.js',
   '/biblia.digital/js/libros/jueces.js',
-  '/biblia.digital/js/libros/rut.js',
+  '/biblia.digital/js/libros/ruth.js',
   '/biblia.digital/js/libros/1_samuel.js',
   '/biblia.digital/js/libros/2_samuel.js',
   '/biblia.digital/js/libros/1_reyes.js',

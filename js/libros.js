@@ -41,6 +41,7 @@ export const libros = {
   "S.Mateo": "libros/mateo.js",
   "S.Marcos": "libros/marcos.js",
   "S.Lucas": "libros/lucas.js",
+  "S.Juan": "libros/juan.js",
   "Hechos": "libros/hechos.js",
   "Romanos": "libros/romanos.js",
   "1 Corintios": "libros/1_corintios.js",

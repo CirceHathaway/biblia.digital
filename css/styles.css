@@ -545,6 +545,89 @@ footer.footer2 {
   background-color: #45a049;
 }
 
+/* Estilos para la ventana del versículo del día */
+.versiculo-dia {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002;
+}
+
+.versiculo-dia .contenido {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 300px;
+  width: 90%;
+}
+
+.versiculo-dia h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+.versiculo-dia .texto-versiculo {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.versiculo-dia .referencia {
+  font-size: 1rem;
+  font-style: italic;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.versiculo-dia .botones {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.versiculo-dia button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#btn-compartir-dia {
+  background-color: #2196F3;
+  color: white;
+}
+
+#btn-copiar-dia {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#btn-cerrar-dia {
+  background-color: #ff4444;
+  color: white;
+}
+
+#btn-compartir-dia:hover {
+  background-color: #1976D2;
+}
+
+#btn-copiar-dia:hover {
+  background-color: #388E3C;
+}
+
+#btn-cerrar-dia:hover {
+  background-color: #cc0000;
+}
+
 /* Media queries para móvil */
 @media (max-width: 768px) {
   .menu-toggle {

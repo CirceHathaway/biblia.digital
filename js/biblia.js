@@ -22,6 +22,78 @@ let touchMoved = false;
 
 const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+// Lista predefinida de versículos destacados para el versículo del día
+const versiculosDestacados = [
+  { libro: "Juan", capitulo: 3, versiculo: 16, texto: "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna." },
+  { libro: "Salmos", capitulo: 23, versiculo: 1, texto: "Jehová es mi pastor; nada me faltará." },
+  { libro: "Filipenses", capitulo: 4, versiculo: 13, texto: "Todo lo puedo en Cristo que me fortalece." },
+  { libro: "Proverbios", capitulo: 3, versiculo: 5, texto: "Fíate de Jehová de todo tu corazón, y no te apoyes en tu propia prudencia." },
+  { libro: "Mateo", capitulo: 11, versiculo: 28, texto: "Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar." }
+];
+
+// Obtener el versículo del día basado en la fecha actual
+function obtenerVersiculoDelDia() {
+  const hoy = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
+  const semilla = hoy.split('-').reduce((acc, num) => acc + parseInt(num), 0); // Suma los números de la fecha
+  const indice = semilla % versiculosDestacados.length; // Índice determinista basado en la fecha
+  return versiculosDestacados[indice];
+}
+
+// Mostrar la ventana del versículo del día si es la primera visita del día
+function mostrarVersiculoDelDia() {
+  const hoy = new Date().toISOString().split('T')[0];
+  const ultimaVisita = localStorage.getItem('lastVisitDate');
+
+  if (ultimaVisita !== hoy) {
+    const versiculo = obtenerVersiculoDelDia();
+    const ventana = document.createElement('div');
+    ventana.className = 'versiculo-dia';
+
+    // Dividir el texto en líneas para que se vea como en el diseño
+    const palabras = versiculo.texto.split(' ');
+    let linea1 = '', linea2 = '';
+    const mitad = Math.ceil(palabras.length / 2);
+    linea1 = palabras.slice(0, mitad).join(' ');
+    linea2 = palabras.slice(mitad).join(' ');
+
+    ventana.innerHTML = `
+      <div class="contenido">
+        <h3>Versículo del día</h3>
+        <p class="texto-versiculo">${linea1}<br>${linea2}</p>
+        <p class="referencia">${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo}</p>
+        <div class="botones">
+          <button id="btn-compartir-dia">Compartir</button>
+          <button id="btn-copiar-dia">Copiar</button>
+          <button id="btn-cerrar-dia">Cerrar</button>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(ventana);
+
+    // Funcionalidad de los botones
+    document.getElementById('btn-compartir-dia').addEventListener('click', () => {
+      compartirVersiculoComoImagen(versiculo.libro, versiculo.capitulo, versiculo.versiculo, versiculo.texto, true);
+      localStorage.setItem('lastVisitDate', hoy);
+      document.body.removeChild(ventana);
+    });
+
+    document.getElementById('btn-copiar-dia').addEventListener('click', () => {
+      const texto = `${versiculo.texto} (${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo})`;
+      navigator.clipboard.writeText(texto).then(() => {
+        alert('Texto copiado al portapapeles');
+      }).catch(err => {
+        console.error('Error al copiar texto:', err);
+        alert('No se pudo copiar el texto');
+      });
+    });
+
+    document.getElementById('btn-cerrar-dia').addEventListener('click', () => {
+      localStorage.setItem('lastVisitDate', hoy);
+      document.body.removeChild(ventana);
+    });
+  }
+}
+
 function crearInputBusqueda() {
   const input = document.createElement("input");
   input.type = "text";
@@ -211,15 +283,15 @@ function mostrarCapitulo(index) {
   cargarResaltados();
 }
 
-async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto) {
+async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, esVersiculoDelDia = false) {
   const canvas = document.createElement('canvas');
   canvas.width = 940;
   canvas.height = 788;
   const ctx = canvas.getContext('2d');
 
-  // Cargar fondo
+  // Cargar fondo según el contexto
   const fondo = new Image();
-  fondo.src = 'images/background-versiculo.jpg';
+  fondo.src = esVersiculoDelDia ? 'images/background-versiculo-dia.jpg' : 'images/background-versiculo.jpg';
   await new Promise(resolve => fondo.onload = resolve);
   ctx.drawImage(fondo, 0, 0, 940, 788);
 
@@ -285,9 +357,9 @@ async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto) {
   });
 }
 
-async function compartirVersiculoComoImagen(libro, capitulo, versiculoNumero, texto) {
+async function compartirVersiculoComoImagen(libro, capitulo, versiculoNumero, texto, esVersiculoDelDia = false) {
   try {
-    const blob = await generarImagenVersiculo(libro, capitulo, versiculoNumero, texto);
+    const blob = await generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, esVersiculoDelDia);
     const file = new File([blob], `versiculo-${libro}-${capitulo}-${versiculoNumero}.png`, { type: 'image/png' });
 
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
@@ -520,6 +592,11 @@ btnSiguiente.addEventListener("click", () => {
   mostrarCapitulo(0);
   dropdownToggle.textContent = "Libro";
 })();
+
+// Mostrar el versículo del día al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+  mostrarVersiculoDelDia();
+});
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblia-digital-v2'; // Cambiamos el nombre para forzar una nueva instalación
+const CACHE_NAME = 'biblia-digital-v5'; // Cambiamos el nombre para forzar una nueva instalación
 const urlsToCache = [
   '/',
   '/biblia.digital/index.html',
@@ -9,6 +9,7 @@ const urlsToCache = [
   '/biblia.digital/js/appLink.js',
   '/biblia.digital/js/libros.js',
   '/biblia.digital/images/background-versiculo.jpg',
+  '/biblia.digital/images/background-versiculo-dia.jpg',
   '/biblia.digital/icons/icon-192x192.png',
   '/biblia.digital/icons/icon-512x512.png',
   '/biblia.digital/manifest.json',

@@ -57,7 +57,7 @@ export const libros = {
   "Tito": "libros/tito.js",
   "Filemón": "libros/filemon.js",
   "Hebreos": "libros/hebreos.js",
-  "Santiago": "libros/Santiago.js",
+  "Santiago": "libros/santiago.js",
   "1 Pedro": "libros/1_pedro.js",
   "2 Pedro": "libros/2_pedro.js",
   "1 Juan": "libros/1_juan.js",

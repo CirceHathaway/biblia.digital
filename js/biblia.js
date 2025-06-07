@@ -128,11 +128,34 @@ const versiculosDestacados = [
   { libro: "Proverbios", capitulo: 9, versiculo: 12, texto: "Si eres sabio, lo eres para tu propio bienestar; pero si eres arrogante, sólo tú sufrirás las consecuencias." }
 ];
 
-// Obtener el versículo del día basado en la fecha actual
+// Obtener o generar un identificador único por dispositivo
+function obtenerIdentificadorDispositivo() {
+  let idDispositivo = localStorage.getItem('deviceId');
+  if (!idDispositivo) {
+    idDispositivo = Math.random().toString(36).substr(2, 9) + navigator.userAgent.hashCode(); // Combinación única
+    localStorage.setItem('deviceId', idDispositivo);
+  }
+  return idDispositivo;
+}
+
+// Extensión de String para hashCode (simplificado)
+String.prototype.hashCode = function() {
+  let hash = 0;
+  if (this.length === 0) return hash;
+  for (let i = 0; i < this.length; i++) {
+    const char = this.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convertir a 32 bits
+  }
+  return hash;
+};
+
+// Obtener el versículo del día basado en la fecha y el dispositivo
 function obtenerVersiculoDelDia() {
   const hoy = new Date().toISOString().split('T')[0]; // Formato YYYY-MM-DD
-  const semilla = hoy.split('-').reduce((acc, num) => acc + parseInt(num), 0); // Suma los números de la fecha
-  const indice = semilla % versiculosDestacados.length; // Índice determinista basado en la fecha
+  const idDispositivo = obtenerIdentificadorDispositivo();
+  const semilla = hoy.split('-').reduce((acc, num) => acc + parseInt(num), 0) + idDispositivo.hashCode(); // Semilla única
+  const indice = Math.abs(semilla) % versiculosDestacados.length; // Índice determinista y único por dispositivo
   return versiculosDestacados[indice];
 }
 
@@ -146,7 +169,6 @@ function mostrarVersiculoDelDia() {
     const ventana = document.createElement('div');
     ventana.className = 'versiculo-dia';
 
-    // Dividir el texto en líneas para que se vea como en el diseño
     const palabras = versiculo.texto.split(' ');
     let linea1 = '', linea2 = '';
     const mitad = Math.ceil(palabras.length / 2);
@@ -167,7 +189,6 @@ function mostrarVersiculoDelDia() {
     `;
     document.body.appendChild(ventana);
 
-    // Funcionalidad de los botones
     document.getElementById('btn-compartir-dia').addEventListener('click', () => {
       compartirVersiculoComoImagen(versiculo.libro, versiculo.capitulo, versiculo.versiculo, versiculo.texto, true);
       localStorage.setItem('lastVisitDate', hoy);
@@ -386,27 +407,22 @@ async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, e
   canvas.height = 788;
   const ctx = canvas.getContext('2d');
 
-  // Cargar fondo según el contexto
   const fondo = new Image();
   fondo.src = esVersiculoDelDia ? 'images/background-versiculo-dia.jpg' : 'images/background-versiculo.jpg';
   await new Promise(resolve => fondo.onload = resolve);
   ctx.drawImage(fondo, 0, 0, 940, 788);
 
-  // Asegurar que la fuente esté cargada
   await document.fonts.load('32px "PT Serif"');
 
-  // Configurar fuente y color
   const fontFamily = '"PT Serif", serif';
-  ctx.fillStyle = '#000000'; // Color negro
+  ctx.fillStyle = '#000000';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  // Referencia (Salmos 33:11)
   ctx.font = `32px ${fontFamily}`;
   const referencia = `${libro} ${capitulo}:${versiculoNumero}`;
   const referenciaWidth = ctx.measureText(referencia).width;
 
-  // Versículo con ajuste de líneas
   ctx.font = `28px ${fontFamily}`;
   const maxWidth = 800;
   const lineHeight = 40;
@@ -425,21 +441,18 @@ async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, e
   }
   lines.push(line);
 
-  // Calcular dimensiones del rectángulo
   const paddingX = 40;
   const paddingY = 20;
   const textWidth = Math.max(referenciaWidth, ...lines.map(l => ctx.measureText(l).width));
-  const textHeight = (lines.length + 1) * lineHeight; // +1 por la referencia
+  const textHeight = (lines.length + 1) * lineHeight;
   const rectWidth = textWidth + paddingX * 2;
   const rectHeight = textHeight + paddingY * 2;
   const rectX = (940 - rectWidth) / 2;
   const rectY = (788 - rectHeight) / 2;
 
-  // Dibujar rectángulo semitransparente
   ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
   ctx.fillRect(rectX, rectY, rectWidth, rectHeight);
 
-  // Dibujar texto
   ctx.fillStyle = '#000000';
   ctx.font = `32px ${fontFamily}`;
   ctx.fillText(referencia, 470, rectY + paddingY + lineHeight / 2);
@@ -467,7 +480,6 @@ async function compartirVersiculoComoImagen(libro, capitulo, versiculoNumero, te
       });
       console.log('Versículo compartido como imagen con éxito');
     } else {
-      // Fallback: Descargar imagen
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -486,7 +498,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
   const ventana = document.createElement('div');
   ventana.className = 'ventana-destacar';
   
-  // Función para aplicar estilos comunes a la ventana
   function aplicarEstilosVentana() {
     ventana.style.position = 'fixed';
     ventana.style.top = '50%';
@@ -501,7 +512,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     ventana.style.zIndex = '1002';
   }
 
-  // Función para aplicar estilos comunes al contenido
   function aplicarEstilosContenido(contenido) {
     contenido.style.backgroundColor = '#fff';
     contenido.style.padding = '20px';
@@ -509,7 +519,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     contenido.style.textAlign = 'center';
   }
 
-  // Función para aplicar estilos a los botones
   function aplicarEstilosBoton(boton, colorFondo) {
     boton.style.backgroundColor = colorFondo;
     boton.style.color = 'white';
@@ -520,7 +529,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     boton.style.cursor = 'pointer';
   }
 
-  // Vista inicial: sin colores
   function mostrarVistaInicial() {
     ventana.innerHTML = `
       <div class="ventana-contenido">
@@ -558,7 +566,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     });
   }
 
-  // Vista de selección de colores
   function mostrarVistaColores() {
     ventana.innerHTML = `
       <div class="ventana-contenido">
@@ -605,7 +612,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     });
   }
 
-  // Mostrar la vista inicial
   mostrarVistaInicial();
 }
 
@@ -690,7 +696,6 @@ btnSiguiente.addEventListener("click", () => {
   dropdownToggle.textContent = "Libro";
 })();
 
-// Mostrar el versículo del día al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
   mostrarVersiculoDelDia();
 });

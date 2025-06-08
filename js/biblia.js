@@ -125,7 +125,15 @@ const versiculosDestacados = [
   { libro: "Romanos", capitulo: 5, versiculo: 8, texto: "Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros." },
   { libro: "S.Juan", capitulo: 1, versiculo: 16, texto: "De su plenitud todos recibimos gracia sobre gracia." },
   { libro: "S.Marcos", capitulo: 4, versiculo: 22, texto: "Porque no hay nada oculto que no llegue a descubrise, ni nada encubierto que no salga a la luz pública." },
-  { libro: "Proverbios", capitulo: 9, versiculo: 12, texto: "Si eres sabio, lo eres para tu propio bienestar; pero si eres arrogante, sólo tú sufrirás las consecuencias." }
+  { libro: "Proverbios", capitulo: 9, versiculo: 12, texto: "Si eres sabio, lo eres para tu propio bienestar; pero si eres arrogante, sólo tú sufrirás las consecuencias." },
+  { libro: "Habreos", capitulo: 6, versiculo: 19, texto: "La cual tenemos como segura y firme ancla del alma, y que penetra hasta dentro del velo." },
+  { libro: "Salmos", capitulo: 119, versiculo: 114, texto: "Mi escudero y mi escudo eres tú; en tu palabra he esperado." },
+  { libro: "Salmos", capitulo: 52, versiculo: 8, texto: "Pero yo estoy como olivo verde en la casa de Dios; En la misericordia de Dios confio eternamente y para siempre." },
+  { libro: "Salmos", capitulo: 42, versiculo: 5, texto: "¿Por qué te abates, oh alma mía y te turbas dentro de mí? Espera en Dios; porque aún he de alabarle, Salvación mía y Dios mío." },
+  { libro: "Romanos", capitulo: 15, versiculo: 13, texto: "Y el Dios de esperanza os llene de todo gozo y paz en el creer, para que abundéis en esperanza por el poder del Espíritu Santo." },
+  { libro: "Jeremías", capitulo: 29, versiculo: 11, texto: "Porque Yo sé los pensamientos que tengo acerca de vosotros, dice Jehová, pensamientos de paz, y no de mal, para daros el fin que esperáis." },
+  { libro: "Isaias", capitulo: 41, versiculo: 13, texto: "Porque Yo Jehová soy tu Dios, quien te sostiene de tu mano derecha, y te dice: No temas, Yo te ayudo." },
+  { libro: "Jeremías", capitulo: 32, versiculo: 27, texto: "He aquí que yo soy Jehová, Dios de toda carne; ¿habrá algo que sea dificil para mi?" }
 ];
 
 // Obtener o generar un identificador único por dispositivo

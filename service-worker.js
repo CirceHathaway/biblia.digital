@@ -1,4 +1,4 @@
-const CACHE_NAME = 'biblia-digital-v9'; // Cambiamos el nombre para forzar una nueva instalación
+const CACHE_NAME = 'biblia-digital-v10'; // Cambiamos el nombre para forzar una nueva instalación
 const urlsToCache = [
   '/',
   '/biblia.digital/index.html',

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Devocionales | Mi Biblia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" href="./icons/icon-192x192.png" type="image/png">
+</head>
+<body class="favoritos-page">
+
+  <!-- Encabezado -->
+  <header>
+    <div class="top-nav">
+      <h1><a href="index.html">Mi Biblia</a></h1>
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul class="menu-items" id="menuItems">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="favorito.html">Favoritos</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="devocionales.html">Devocionales</a></li>
+          <li><a id="appLink" href="#app"><span id="appLinkText">Obtener la App</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenedor de devocionales -->
+  <main>
+    <div class="versiculos" id="devocionales">
+      <h2>Devocionales</h2>
+      <button class="add-devocional-btn">+</button>
+      <div id="lista-devocionales"></div>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer2">
+    <div class="footer-redes">
+      <a href="https://www.facebook.com/profile.php?id=100076584407771" target="_blank" aria-label="Facebook" style="color: #1877F2;"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/radionuevavida19" target="_blank" aria-label="Instagram" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitch.tv/radiodigitalnuevavida" target="_blank" aria-label="Twitch" style="color: #9146FF;"><i class="fab fa-twitch"></i></a>
+      <a href="https://wa.me/+5491127005824" target="_blank" aria-label="WhatsApp" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://circehathaway.github.io/radio.digital.nueva.vida/" target="_blank">
+        <img src="images/logo-radio.png" alt="Radio Digital Nueva Vida" class="social-icon">
+      </a>
+      <a href="https://www.youtube.com/@Ecos_de_EsperanzaNV" target="_blank" aria-label="YouTube" style="color: #FF0000;"><i class="fab fa-youtube"></i></a>
+      <a href="https://music.youtube.com/watch?v=l6WYVWeSnis&si=K8mk_Cl2JZkYqUbu" target="_blank" aria-label="YouTube Music" style="color: #FF0000;"><i class="fas fa-music"></i></a>
+      <a href="https://open.spotify.com/intl-es/artist/5p1Ixdpl6I5fFb11MSeVXu?si=1N-_nxbSS1Sx5im_dbIU2w" target="_blank" aria-label="Spotify" style="color: #1DB954;"><i class="fab fa-spotify"></i></a>
+    </div>
+    <div class="footer-info">
+      <span>© 2025 | Mi Biblia</span>
+      <span>Servicio hecho por: <span style="color: red;">CirceHathaway</span></span>
+    </div>
+  </footer>
+
+  <!-- Modal para agregar/editar devocional -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <label for="devocional-titulo">Título:</label>
+      <input type="text" id="devocional-titulo" placeholder="Ingresa el título">
+
+      <label for="devocional-escritura">Escritura:</label>
+      <div>
+        <button class="format-btn" onclick="document.execCommand('bold', false, null);"><i class="fas fa-bold"></i></button>
+        <button class="format-btn" onclick="document.execCommand('italic', false, null);"><i class="fas fa-italic"></i></button>
+        <button class="format-btn" onclick="document.execCommand('underline', false, null);"><i class="fas fa-underline"></i></button>
+      </div>
+      <div id="devocional-escritura" contenteditable="true" placeholder="Escribe tu devocional aquí" style="min-height: 100px; border: 1px solid #ccc; border-radius: 4px; padding: 8px;"></div>
+
+      <label for="devocional-nombre">Nombre:</label>
+      <input type="text" id="devocional-nombre" placeholder="Ingresa tu nombre">
+
+      <button id="saveButton">Guardar</button>
+      <button onclick="cerrarModal()">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Ventana de detalle del devocional -->
+  <div id="devocional-detail" class="devocional-detail">
+    <div class="devocional-detail-content">
+      <h3 id="detail-titulo"></h3>
+      <p id="detail-escritura"></p>
+      <p id="detail-nombre"></p>
+      <button class="close-btn" onclick="cerrarDetalle()">Cerrar</button>
+      <button class="share-btn" onclick="compartirDevocional()">Compartir</button>
+    </div>
+  </div>
+
+  <!-- Script para manejar devocionales -->
+  <script type="module" src="js/appLink.js"></script>
+  
+  <script>
+    // Mostrar/ocultar menú hamburguesa en celular
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('menuItems').classList.toggle('show');
+    });
+
+    // Abrir modal para agregar devocional y ajustar altura
+    document.querySelector('.add-devocional-btn').addEventListener('click', () => {
+      document.getElementById('modal').style.display = 'flex';
+      document.getElementById('devocional-escritura').focus();
+      ajustarAlturaModal();
+      // Limpiar campos para nuevo devocional
+      document.getElementById('devocional-titulo').value = '';
+      document.getElementById('devocional-escritura').innerHTML = '';
+      document.getElementById('devocional-nombre').value = '';
+      // Configurar botón Guardar para agregar nuevo
+      const saveButton = document.getElementById('saveButton');
+      saveButton.onclick = () => guardarDevocional(-1);
+    });
+
+    // Ajustar altura del modal dinámicamente
+    function ajustarAlturaModal() {
+      const modalContent = document.querySelector('.modal-content');
+      const footerHeight = document.querySelector('footer').offsetHeight;
+      const maxHeight = window.innerHeight - footerHeight - 60; // Margen de 60px para botones y padding
+      modalContent.style.maxHeight = `${maxHeight}px`;
+      modalContent.style.overflowY = 'auto';
+    }
+
+    // Cerrar modal
+    function cerrarModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    // Guardar o actualizar devocional
+    function guardarDevocional(indexToEdit = -1) {
+      const titulo = document.getElementById('devocional-titulo').value;
+      const escritura = document.getElementById('devocional-escritura').innerHTML;
+      const nombre = document.getElementById('devocional-nombre').value;
+
+      if (titulo && escritura && nombre) {
+        const devocional = { titulo, escritura, nombre };
+        let devocionales = JSON.parse(localStorage.getItem('devocionales')) || [];
+        if (indexToEdit >= 0 && indexToEdit < devocionales.length) {
+          devocionales[indexToEdit] = devocional; // Sobrescribir el devocional existente
+        } else {
+          devocionales.push(devocional); // Agregar nuevo si indexToEdit es -1 o inválido
+        }
+        localStorage.setItem('devocionales', JSON.stringify(devocionales));
+        cargarDevocionales();
+        cerrarModal();
+      } else {
+        alert('Por favor, completa todos los campos.');
+      }
+    }
+
+    // Cargar devocionales
+    function cargarDevocionales() {
+      const listaDevocionales = document.getElementById('lista-devocionales');
+      let devocionales = JSON.parse(localStorage.getItem('devocionales')) || [];
+      listaDevocionales.innerHTML = '';
+      devocionales.forEach((devocional, index) => {
+        const preview = document.createElement('div');
+        preview.className = 'preview-container';
+        const contentDiv = document.createElement('div');
+        contentDiv.className = 'preview-content';
+        contentDiv.innerHTML = `
+          <div class="preview-title">${devocional.titulo}</div>
+          <div class="preview-author">Por ${devocional.nombre}</div>
+        `;
+        contentDiv.addEventListener('click', () => mostrarDetalle(devocional));
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'preview-actions';
+        actionsDiv.innerHTML = `
+          <button class="edit-btn" onclick="editarDevocional(${index}); event.stopPropagation();"><i class="fas fa-edit"></i></button>
+          <button class="delete-btn" onclick="eliminarDevocional(${index}); event.stopPropagation();"><i class="fas fa-trash"></i></button>
+        `;
+        preview.appendChild(contentDiv);
+        preview.appendChild(actionsDiv);
+        listaDevocionales.appendChild(preview);
+      });
+    }
+
+    // Editar devocional
+    function editarDevocional(index) {
+      const devocionales = JSON.parse(localStorage.getItem('devocionales')) || [];
+      const devocional = devocionales[index];
+      document.getElementById('devocional-titulo').value = devocional.titulo;
+      document.getElementById('devocional-escritura').innerHTML = devocional.escritura;
+      document.getElementById('devocional-nombre').value = devocional.nombre;
+      document.getElementById('modal').style.display = 'flex';
+      ajustarAlturaModal();
+      // Configurar botón Guardar para editar
+      const saveButton = document.getElementById('saveButton');
+      saveButton.onclick = () => guardarDevocional(index);
+    }
+
+    // Eliminar devocional
+    function eliminarDevocional(index) {
+      if (confirm('¿Estás seguro de eliminar este devocional?')) {
+        let devocionales = JSON.parse(localStorage.getItem('devocionales')) || [];
+        devocionales.splice(index, 1);
+        localStorage.setItem('devocionales', JSON.stringify(devocionales));
+        cargarDevocionales();
+      }
+    }
+
+    // Mostrar detalle del devocional
+    function mostrarDetalle(devocional) {
+      const footerHeight = document.querySelector('footer').offsetHeight;
+      const maxHeight = window.innerHeight - footerHeight - 40;
+      document.getElementById('detail-titulo').textContent = devocional.titulo;
+      document.getElementById('detail-escritura').innerHTML = devocional.escritura.replace(/\n/g, '<br>');
+      document.getElementById('detail-nombre').textContent = `Por ${devocional.nombre}`;
+      const detailContent = document.querySelector('.devocional-detail-content');
+      detailContent.style.maxHeight = `${maxHeight}px`;
+      detailContent.style.overflowY = 'auto';
+      document.getElementById('devocional-detail').style.display = 'flex';
+    }
+
+    // Cerrar detalle
+    function cerrarDetalle() {
+      document.getElementById('devocional-detail').style.display = 'none';
+    }
+
+    // Compartir devocional
+    function compartirDevocional() {
+      const titulo = document.getElementById('detail-titulo').textContent;
+      const escritura = document.getElementById('detail-escritura').innerText;
+      const nombre = document.getElementById('detail-nombre').textContent;
+      const shareText = `${titulo}\n${escritura}\n${nombre}\n\nCompartido desde Mi Biblia`;
+
+      if (navigator.share) {
+        navigator.share({
+          title: 'Devocional - Mi Biblia',
+          text: shareText,
+          url: window.location.href
+        }).catch(err => console.log('Error al compartir:', err));
+      } else {
+        navigator.clipboard.writeText(shareText).then(() => {
+          alert('Texto copiado al portapapeles');
+        }).catch(err => console.log('Error al copiar:', err));
+      }
+    }
+
+    // Ajustar altura al redimensionar la ventana
+    window.addEventListener('resize', () => {
+      if (document.getElementById('modal').style.display === 'flex') ajustarAlturaModal();
+      if (document.getElementById('devocional-detail').style.display === 'flex') {
+        const footerHeight = document.querySelector('footer').offsetHeight;
+        const maxHeight = window.innerHeight - footerHeight - 40;
+        document.querySelector('.devocional-detail-content').style.maxHeight = `${maxHeight}px`;
+      }
+    });
+
+    // Cargar devocionales al iniciar
+    window.onload = cargarDevocionales;
+  </script>
+
+</body>
+</html>

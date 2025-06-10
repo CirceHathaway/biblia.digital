@@ -628,6 +628,179 @@ footer.footer2 {
   background-color: #cc0000;
 }
 
+/* Devocionales */
+/* Estilos existentes... */
+
+.add-devocional-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.add-devocional-btn:hover {
+  background-color: #45a049;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1002;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  overflow-y: auto; /* Permitir scroll */
+}
+
+.modal-content label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.modal-content input, .modal-content div[contenteditable] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.format-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 20px 0; /* Más separación */
+  border-bottom: 1px solid #ddd; /* Línea divisoria */
+  padding-bottom: 10px;
+  position: relative; /* Para posicionar botones */
+}
+
+.preview-content {
+  cursor: pointer; /* Solo el contenido abre el detalle */
+}
+
+.preview-title {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.preview-author {
+  font-style: italic;
+  font-size: 14px;
+}
+
+.preview-actions {
+  display: flex;
+  justify-content: center; /* Centrar botones */
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.edit-btn, .delete-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.edit-btn i {
+  color: #4CAF50;
+}
+
+.delete-btn i {
+  color: #ff4444;
+}
+
+.edit-btn:hover i {
+  color: #45a049;
+}
+
+.delete-btn:hover i {
+  color: #cc0000;
+}
+
+.devocional-detail {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1003;
+  justify-content: center;
+  align-items: center;
+}
+
+.devocional-detail-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  text-align: left;
+  overflow-y: auto; /* Permitir scroll */
+}
+
+.devocional-detail-content h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.devocional-detail-content p {
+  margin: 10px 0;
+}
+
+.close-btn, .share-btn {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.share-btn {
+  background-color: #4CAF50; /* Color diferente para compartir */
+  margin-left: 10px;
+}
+
+.close-btn:hover {
+  background-color: #cc0000;
+}
+
+.share-btn:hover {
+  background-color: #45a049;
+}
+
 /* Media queries para móvil */
 @media (max-width: 768px) {
   .menu-toggle {

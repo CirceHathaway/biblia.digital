@@ -1,14 +1,19 @@
 /* css/styles.css */
 
 /* === Reset general === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Georgia, serif;
-  margin: 0;
   background: #f4f4f4;
   color: #333;
-  overflow-y: auto; /* Permitir desplazamiento vertical */
-  height: 100vh; /* Asegurar que el body ocupe toda la altura */
-  touch-action: pan-y; /* Permitir desplazamiento vertical táctil */
+  overflow-y: auto;
+  height: 100vh;
+  touch-action: pan-y;
 }
 
 /* === Header fijo === */
@@ -18,7 +23,7 @@ header {
   width: 100%;
   background-color: #333;
   z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .top-nav {
@@ -33,14 +38,14 @@ header {
 .top-nav h1 {
   color: #ffffff;
   margin: 0;
-  font-size: 24px;
+  font-size: 24px; /* Restaurado al tamaño original */
   flex: 1;
 }
 
 .menu-toggle {
   display: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   border: 2px solid #fff;
   background: none;
@@ -102,7 +107,7 @@ header {
   color: #ffffff;
 }
 
-/* === Selector personalizado (libros/capítulos/versículos) === */
+/* === Selector personalizado === */
 .busqueda-centrada {
   display: flex;
   justify-content: center;
@@ -125,20 +130,27 @@ header {
   font-size: 16px;
   cursor: pointer;
   background-color: #eee;
-  border: 1px solid #000; /* Borde negro */
+  border: 1px solid #000;
   border-radius: 6px;
   font-weight: bold;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
   width: 100%;
   text-align: left;
 }
 
 .dropdown-toggle:hover {
   background-color: #ddd;
+  transform: scale(1.02);
 }
 
 .dropdown.open .dropdown-content {
   display: block;
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .dropdown-content {
@@ -176,7 +188,6 @@ header {
   background-color: #f0f0f0;
 }
 
-/* Ajuste para el botón Volver */
 .dropdown-option[role="button"] {
   background-color: #ddd;
   font-weight: bold;
@@ -184,17 +195,17 @@ header {
   margin-bottom: 10px;
 }
 
-/* Botón A+ circular alineado */
+/* Botón A+ circular */
 #aumentarLetra {
   background-color: #eee;
-  border: 1px solid #000; /* Borde negro */
+  border: 1px solid #000;
   font-size: 18px;
   width: 42px;
   height: 42px;
   border-radius: 50%;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.2s, transform 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,6 +213,7 @@ header {
 
 #aumentarLetra:hover {
   background-color: #ddd;
+  transform: scale(1.1);
 }
 
 /* === Cuadrícula de capítulos === */
@@ -220,30 +232,31 @@ header {
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s;
 }
 
 .chapter-grid .chapter-item:hover {
   background-color: #f0f0f0;
+  transform: scale(1.05);
 }
 
 .version-biblia {
   font-weight: bold;
   padding: 8px 14px;
   background: #eee;
-  border: 1px solid #000; /* Borde negro */
+  border: 1px solid #000;
   border-radius: 6px;
   font-size: 16px;
 }
 
 main {
   padding-top: 15px;
-  padding-bottom: 80px; /* Añadir espacio para evitar que el footer fijo tape contenido */
+  padding-bottom: 80px;
   max-width: 900px;
   margin: auto;
   position: relative;
-  overflow-y: auto; /* Asegurar que el main permita desplazamiento */
-  touch-action: pan-y; /* Asegurar que el desplazamiento táctil funcione */
+  overflow-y: auto;
+  touch-action: pan-y;
 }
 
 .versiculos {
@@ -254,34 +267,28 @@ main {
   font-size: 18px;
   line-height: 1.6;
   transition: font-size 0.3s ease;
-  touch-action: pan-y; /* Permitir desplazamiento vertical */
-  -webkit-user-select: none; /* Desactivar selección de texto */
-  user-select: none; /* Desactivar selección de texto */
+  touch-action: pan-y;
+  user-select: none;
 }
 
-/* Ajustar el espaciado de los versículos */
 .versiculos p {
-  margin: 0.5em 0; /* Espaciado mínimo para que los versículos estén más juntos */
-  touch-action: pan-y; /* Permitir desplazamiento vertical */
-  -webkit-user-select: none; /* Desactivar selección de texto */
-  user-select: none; /* Desactivar selección de texto */
+  margin: 0.5em 0;
+  touch-action: pan-y;
+  user-select: none;
 }
 
-/* En móvil y escritorio: ajustar el espaciado del contenedor versiculo-item */
 .versiculo-item {
   margin: 0;
-  padding: 0;
-  touch-action: pan-y; /* Permitir desplazamiento vertical */
-  -webkit-user-select: none; /* Desactivar selección de texto */
-  user-select: none; /* Desactivar selección de texto */
+  padding: 0 5px;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .versiculo-item p {
   margin: 0.5em 0;
   padding: 0;
-  touch-action: pan-y; /* Permitir desplazamiento vertical */
-  -webkit-user-select: none; /* Desactivar selección de texto */
-  user-select: none; /* Desactivar selección de texto */
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .nav-capitulo {
@@ -294,12 +301,13 @@ main {
   padding: 12px 18px;
   cursor: pointer;
   border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: background 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background 0.2s, transform 0.2s;
 }
 
 .nav-capitulo:hover {
   background-color: #ddd;
+  transform: scale(1.1);
 }
 
 .izquierda {
@@ -316,7 +324,7 @@ main {
   font-size: 2rem;
   color: #ff0404;
   text-align: center;
-  margin-top: 3rem;
+  margin-top: 5rem; /* Más separado del header */
   margin-bottom: 1rem;
   font-weight: bold;
 }
@@ -392,7 +400,7 @@ footer {
   background-color: #222;
   color: #eee;
   text-align: center;
-  padding: 20px 15px 20px;
+  padding: 20px 15px;
   font-size: 20px;
   position: relative;
 }
@@ -422,27 +430,26 @@ footer.footer2 {
   text-align: center;
   padding: 20px 15px;
   font-size: 20px;
-  position: fixed; /* Fijar el footer en la parte inferior */
+  position: fixed;
   bottom: 0;
   width: 100%;
-  z-index: 1000; /* Asegurar que esté por encima de otros elementos */
-  flex-shrink: 0; /* Evitar que el footer se encoja */
-  touch-action: none; /* Evitar que el footer capture eventos de desplazamiento */
+  z-index: 1000;
+  touch-action: none;
 }
 
 .favoritos-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Aseguramos que ocupe toda la altura de la ventana */
+  min-height: 100vh;
 }
 
 .favoritos-page main {
-  flex: 1 0 auto; /* El main crece para ocupar el espacio disponible */
-  padding-bottom: 100px; /* Espacio para que el footer no tape el contenido */
+  flex: 1 0 auto;
+  padding-bottom: 120px;
 }
 
 .favoritos-page footer.footer2 {
-  flex-shrink: 0; /* Evitar que el footer se encoja */
+  flex-shrink: 0;
 }
 
 /* Estilos para favorito.html */
@@ -454,7 +461,14 @@ footer.footer2 {
   border-bottom: 1px solid #ddd;
 }
 
-/* Botón de Eliminar*/
+.favoritos-page h2 {
+  font-size: 2.5rem; /* Letra un poco más grande (antes 1rem por defecto) */
+  margin-top: 3rem; /* Más separado del header */
+  margin-bottom: 2rem; /* Más separado de los versículos favoritos */
+  text-align: center;
+}
+
+/* Botón de Eliminar */
 .eliminar-favorito {
   background: none;
   border: none;
@@ -470,15 +484,15 @@ footer.footer2 {
   background-color: #cc0000;
 }
 
-/* Estilos para la ventana emergente de "Destacar" en móvil y escritorio */
+/* Estilos para la ventana emergente de "Destacar" */
 .ventana-destacar {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  backdrop-filter: blur(5px); /* Fondo borroso */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -487,62 +501,110 @@ footer.footer2 {
 
 .ventana-contenido {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 30px; /* Ventana más grande */
+  border-radius: 10px;
   text-align: center;
+  width: 90%;
+  max-width: 400px; /* Ventana más grande */
 }
 
 .ventana-contenido p {
-  margin: 0 0 10px;
+  margin: 0 0 20px;
+}
+
+.ventana-contenido p:first-child {
+  font-family: "Monoton", sans-serif; /* Nueva tipografía */
+  font-size: 1.2rem;
+  font-weight: bold; /* "¿Qué deseas hacer con este versículo?" en negrita */
 }
 
 .color-options {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 10px;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 .color-btn {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   border: none;
   border-radius: 50%;
   cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-#btn-confirmar {
+.color-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.color-btn:focus {
+  border: 3px solid #333;
+  outline: none;
+}
+
+#btn-destacar, #btn-compartir-imagen, #btn-cancelar {
+  padding: 12px 24px; /* Botones más grandes */
+  font-size: 1.1rem;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#btn-destacar {
   background-color: #4CAF50;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
+}
+
+#btn-compartir-imagen {
+  background-color: #2196F3;
+  color: white;
 }
 
 #btn-cancelar {
   background-color: #ff4444;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  margin: 5px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-#obtenerApp {
+#btn-destacar:hover, #btn-compartir-imagen:hover, #btn-cancelar:hover {
+  transform: scale(1.05);
+}
+
+.botones-ventana {
+  display: flex;
+  justify-content: center; /* Centrar los botones en la misma línea */
+  gap: 10px; /* Espacio entre botones */
+}
+
+#btn-confirmar, #btn-cancelar-colores {
+  padding: 12px 24px; /* Botones más grandes */
+  font-size: 1.1rem;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+#btn-confirmar {
   background-color: #4CAF50;
   color: white;
-  border: none;
-  padding: 8px 16px;
-  margin-right: 10px;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
-#obtenerApp:hover {
-  background-color: #45a049;
+#btn-cancelar-colores {
+  background-color: #ff4444;
+  color: white;
+}
+
+#btn-confirmar:hover, #btn-cancelar-colores:hover {
+  transform: scale(1.05);
+}
+
+.ventana-contenido p:nth-child(2) {
+  font-family: "Monoton", sans-serif; /* Nueva tipografía */
+  font-size: 1.2rem;
+  font-weight: bold; /* "Elige un color para destacar" en negrita */
 }
 
 /* Estilos para la ventana del versículo del día */
@@ -629,7 +691,12 @@ footer.footer2 {
 }
 
 /* Devocionales */
-/* Estilos existentes... */
+.devocionales-page h2 {
+  font-size: 1.5rem; /* Letra un poco más grande (antes 1rem por defecto) */
+  margin-top: 3rem; /* Más separado del header */
+  margin-bottom: 2rem; /* Más separado de los devocionales */
+  text-align: center;
+}
 
 .add-devocional-btn {
   background-color: #4CAF50;
@@ -653,7 +720,8 @@ footer.footer2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  backdrop-filter: blur(5px); /* Fondo borroso */
   z-index: 1002;
   justify-content: center;
   align-items: center;
@@ -666,7 +734,7 @@ footer.footer2 {
   width: 90%;
   max-width: 500px;
   text-align: center;
-  overflow-y: auto; /* Permitir scroll */
+  overflow-y: auto;
 }
 
 .modal-content label {
@@ -695,14 +763,14 @@ footer.footer2 {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin: 20px 0; /* Más separación */
-  border-bottom: 1px solid #ddd; /* Línea divisoria */
+  margin: 20px 0;
+  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
-  position: relative; /* Para posicionar botones */
+  position: relative;
 }
 
 .preview-content {
-  cursor: pointer; /* Solo el contenido abre el detalle */
+  cursor: pointer;
 }
 
 .preview-title {
@@ -717,7 +785,7 @@ footer.footer2 {
 
 .preview-actions {
   display: flex;
-  justify-content: center; /* Centrar botones */
+  justify-content: center;
   gap: 10px;
   margin-top: 5px;
 }
@@ -753,7 +821,8 @@ footer.footer2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
+  backdrop-filter: blur(5px); /* Fondo borroso */
   z-index: 1003;
   justify-content: center;
   align-items: center;
@@ -766,7 +835,7 @@ footer.footer2 {
   width: 90%;
   max-width: 600px;
   text-align: left;
-  overflow-y: auto; /* Permitir scroll */
+  overflow-y: auto;
 }
 
 .devocional-detail-content h3 {
@@ -782,26 +851,29 @@ footer.footer2 {
   background-color: #ff4444;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 8px 16px;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
+  transition: transform 0.2s, background-color 0.2s;
 }
 
 .share-btn {
-  background-color: #4CAF50; /* Color diferente para compartir */
+  background-color: #4CAF50;
   margin-left: 10px;
 }
 
 .close-btn:hover {
+  transform: scale(1.05);
   background-color: #cc0000;
 }
 
 .share-btn:hover {
+  transform: scale(1.05);
   background-color: #45a049;
 }
 
-/* Media queries para móvil */
+/* Media queries */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
@@ -817,7 +889,7 @@ footer.footer2 {
     width: 220px;
     z-index: 999;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     padding: 10px 0;
   }
 
@@ -858,7 +930,7 @@ footer.footer2 {
   }
 
   main {
-    padding-bottom: 60px; /* Ajustar el padding en móvil */
+    padding-bottom: 60px;
   }
 
   .chapter-grid {
@@ -866,29 +938,29 @@ footer.footer2 {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   .dropdown-content {
-    max-height: 250px;
-    font-size: 14px;
+    max-height: 200px;
+    font-size: 12px;
   }
 
   .dropdown-toggle {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .version-biblia {
-    font-size: 14px;
-    padding: 6px 10px;
+    font-size: 12px;
+    padding: 4px 8px;
   }
 
   .nav-capitulo {
-    bottom: 140px;
-    font-size: 22px;
-    padding: 10px 14px;
+    bottom: 80px;
+    font-size: 18px;
+    padding: 8px 12px;
   }
 
   .chapter-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .footer-info {

@@ -551,19 +551,22 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     boton.style.backgroundColor = colorFondo;
     boton.style.color = 'white';
     boton.style.border = 'none';
-    boton.style.padding = '5px 10px';
-    boton.style.margin = '5px';
-    boton.style.borderRadius = '5px';
+    boton.style.padding = '8px 16px'; // Ajustado a los estilos CSS originales
+    boton.style.fontSize = '0.9rem';
+    boton.style.borderRadius = '8px';
     boton.style.cursor = 'pointer';
+    boton.style.margin = '5px'; // Mantener margen consistente
   }
 
   function mostrarVistaInicial() {
     ventana.innerHTML = `
       <div class="ventana-contenido">
         <p>¿Qué deseas hacer con este versículo?</p>
-        <button id="btn-destacar">Destacar</button>
-        <button id="btn-compartir-imagen">Compartir como imagen</button>
-        <button id="btn-cancelar">Cancelar</button>
+        <div class="botones-ventana">
+          <button id="btn-destacar">Destacar</button>
+          <button id="btn-compartir-imagen">Compartir como imagen</button>
+          <button id="btn-cancelar">Cancelar</button>
+        </div>
       </div>
     `;
     document.body.appendChild(ventana);
@@ -604,8 +607,10 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
           <button class="color-btn" data-color="#add8e6" style="background-color: #add8e6;"></button>
           <button class="color-btn" data-color="#90ee90" style="background-color: #90ee90;"></button>
         </div>
-        <button id="btn-confirmar">Confirmar</button>
-        <button id="btn-cancelar-colores">Cancelar</button>
+        <div class="botones-ventana">
+          <button id="btn-confirmar">Confirmar</button>
+          <button id="btn-cancelar-colores">Cancelar</button>
+        </div>
       </div>
     `;
 

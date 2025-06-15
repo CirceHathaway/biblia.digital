@@ -113,6 +113,11 @@
       detailContent.style.maxHeight = `${maxHeight}px`;
       detailContent.style.overflowY = 'auto';
       document.getElementById('devocional-detail').style.display = 'flex';
+
+      // Reiniciar el scroll después de un breve retraso para asegurar que el contenido esté renderizado
+      setTimeout(() => {
+        detailContent.scrollTop = 0;
+      }, 50); // Retraso de 50ms para dar tiempo al renderizado
     }
 
     // Cerrar detalle

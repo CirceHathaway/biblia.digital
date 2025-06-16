@@ -226,7 +226,6 @@ function mostrarVersiculoDelDia() {
     document.getElementById('btn-copiar-dia').addEventListener('click', () => {
       const texto = `${versiculo.texto} (${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo})`;
       navigator.clipboard.writeText(texto).then(() => {
-        alert('Texto copiado al portapapeles');
       }).catch(err => {
         console.error('Error al copiar texto:', err);
         alert('No se pudo copiar el texto');
@@ -599,7 +598,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
       const textoACopiar = `${texto} (${libro} ${capitulo}:${versiculo})`;
       navigator.clipboard.writeText(textoACopiar).then(() => {
         document.body.removeChild(ventana);
-        alert('Versículo copiado al portapapeles');
       }).catch(err => console.error('Error al copiar:', err));
     });
 
@@ -671,7 +669,6 @@ function guardarFavorito(libro, capitulo, versiculo, texto, color) {
   if (!existe) {
     favoritos.push({ libro, capitulo, versiculo, texto, color });
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
-    alert(`Versículo ${libro} ${capitulo}:${versiculo} guardado como favorito y destacado.`);
   } else {
     alert('Este versículo ya está en tus favoritos.');
   }

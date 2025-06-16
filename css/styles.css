@@ -294,7 +294,7 @@ main {
 .nav-capitulo {
   position: fixed;
   bottom: 120px;
-  z-index: 950;
+  z-index: 1001;
   background-color: #eee;
   border: none;
   font-size: 26px;
@@ -874,6 +874,7 @@ footer.footer2 {
 }
 
 /* Media queries */
+/* Media query para pantallas móviles (max-width: 768px) */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;
@@ -924,13 +925,13 @@ footer.footer2 {
   }
 
   .nav-capitulo {
-    bottom: 100px;
+    bottom: 120px; /* Aumentar a 120px para dar más espacio al footer */
     font-size: 22px;
     padding: 10px 14px;
   }
 
   main {
-    padding-bottom: 60px;
+    padding-bottom: 140px; /* Aumentar padding-bottom para evitar superposición */
   }
 
   .chapter-grid {
@@ -938,6 +939,7 @@ footer.footer2 {
   }
 }
 
+/* Media query para pantallas más pequeñas (max-width: 480px) */
 @media (max-width: 480px) {
   .dropdown-content {
     max-height: 200px;
@@ -954,7 +956,7 @@ footer.footer2 {
   }
 
   .nav-capitulo {
-    bottom: 80px;
+    bottom: 100px; /* Ajustar a 100px, pero aumentar si es necesario */
     font-size: 18px;
     padding: 8px 12px;
   }
@@ -971,5 +973,9 @@ footer.footer2 {
 
   footer {
     padding-bottom: 10px;
+  }
+
+  main {
+    padding-bottom: 120px; /* Aumentar padding-bottom para móviles pequeños */
   }
 }

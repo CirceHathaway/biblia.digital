@@ -551,11 +551,11 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     boton.style.backgroundColor = colorFondo;
     boton.style.color = 'white';
     boton.style.border = 'none';
-    boton.style.padding = '8px 16px'; // Ajustado a los estilos CSS originales
-    boton.style.fontSize = '0.9rem';
+    boton.style.padding = '12px 18px'; // Mantener tamaño reducido
+    boton.style.fontSize = '0.9rem'; // Mantener tamaño de fuente reducido
     boton.style.borderRadius = '8px';
     boton.style.cursor = 'pointer';
-    boton.style.margin = '5px'; // Mantener margen consistente
+    boton.style.margin = '5px';
   }
 
   function mostrarVistaInicial() {
@@ -564,7 +564,8 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
         <p>¿Qué deseas hacer con este versículo?</p>
         <div class="botones-ventana">
           <button id="btn-destacar">Destacar</button>
-          <button id="btn-compartir-imagen">Compartir como imagen</button>
+          <button id="btn-compartir-imagen">Imagen</button>
+          <button id="btn-copiar">Copiar</button>
           <button id="btn-cancelar">Cancelar</button>
         </div>
       </div>
@@ -577,10 +578,12 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
 
     const btnDestacar = document.getElementById('btn-destacar');
     const btnCompartirImagen = document.getElementById('btn-compartir-imagen');
+    const btnCopiar = document.getElementById('btn-copiar');
     const btnCancelar = document.getElementById('btn-cancelar');
 
     aplicarEstilosBoton(btnDestacar, '#4CAF50');
-    aplicarEstilosBoton(btnCompartirImagen, '#2196F3');
+    aplicarEstilosBoton(btnCompartirImagen, '#01717d');
+    aplicarEstilosBoton(btnCopiar, '#ff8000'); // Color similar a "Destacar" para consistencia
     aplicarEstilosBoton(btnCancelar, '#ff4444');
 
     btnDestacar.addEventListener('click', () => {
@@ -590,6 +593,14 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     btnCompartirImagen.addEventListener('click', () => {
       compartirVersiculoComoImagen(libro, capitulo, versiculo, texto);
       document.body.removeChild(ventana);
+    });
+
+    btnCopiar.addEventListener('click', () => {
+      const textoACopiar = `${texto} (${libro} ${capitulo}:${versiculo})`;
+      navigator.clipboard.writeText(textoACopiar).then(() => {
+        document.body.removeChild(ventana);
+        alert('Versículo copiado al portapapeles');
+      }).catch(err => console.error('Error al copiar:', err));
     });
 
     btnCancelar.addEventListener('click', () => {

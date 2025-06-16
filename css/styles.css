@@ -499,17 +499,35 @@ footer.footer2 {
   z-index: 1002;
 }
 
+@media (min-width: 768px) {
+  .ventana-contenido {
+    max-width: 450px; /* Restaurar el valor original para escritorio */
+    width: 90%; /* Mantener proporción */
+    padding: 1.5rem;
+  }
+
+  #btn-destacar, #btn-compartir-imagen, #btn-cancelar, #btn-copiar {
+    padding: 0.75rem 1.5rem; /* Valor base */
+    font-size: 1rem;
+  }
+
+  .botones-ventana {
+    gap: 0.625rem; /* Valor base */
+  }
+}
+
 .ventana-contenido {
   background-color: #fff;
-  padding: 30px; /* Ventana más grande */
-  border-radius: 10px;
+  padding: 1.5rem; /* Usar rem para escalabilidad */ /* 30px ventana mas grande*/
+  border-radius: 0.625rem; /* 10px en rem */
   text-align: center;
-  width: 95%;
-  max-width: 450px; /* Ventana más grande */
+  width: 90%; /* Relativo al viewport */
+  max-width: 45vw; /* 45% del ancho de la ventana, ajustable */ /*450px*/
+  box-sizing: border-box; /* Asegurar que padding no exceda el ancho */
 }
 
 .ventana-contenido p {
-  margin: 0 0 20px;
+  margin: 0 0 1.25rem; /* 20px en rem */
 }
 
 .ventana-contenido p:first-child {
@@ -521,13 +539,13 @@ footer.footer2 {
 .color-options {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: 0.9375rem; /* 15px en rem */
+  margin-bottom: 1.25rem; /* 20px en rem */
 }
 
 .color-btn {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem; /* 40px en rem */
+  height: 2.5rem; /* 40px en rem */
   border: none;
   border-radius: 50%;
   cursor: pointer;
@@ -536,19 +554,19 @@ footer.footer2 {
 
 .color-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.3); /* 0 0 5px en rem *
 }
 
 .color-btn:focus {
-  border: 3px solid #333;
+  border: 0.1875rem solid #333; /* 3px en rem */
   outline: none;
 }
 
 #btn-destacar, #btn-compartir-imagen, #btn-cancelar {
-  padding: 12px 24px; /* Botones más grandes (ajustado por CSS, pero sobrescrito por JS)*/
-  font-size: 1.1rem;
-  margin: 5px;
-  border-radius: 8px;
+  padding: 0.75rem 1.5rem; /* 12px 24px en rem, ajustado para móviles */
+  font-size: 1rem; /* 16px base, escalable */
+  margin: 0.3125rem; /* 5px en rem */
+  border-radius: 0.5rem; /* 8px en rem */
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
 }
@@ -581,6 +599,8 @@ footer.footer2 {
   display: flex;
   justify-content: center; /* Centrar los botones en la misma línea */
   gap: 10px; /* Espacio entre botones */
+  gap: 0.625rem; /* 10px en rem */
+  flex-wrap: wrap; /* Permitir que los botones se apilen en pantallas pequeñas */
 }
 
 #btn-confirmar, #btn-cancelar-colores {
@@ -961,9 +981,23 @@ footer.footer2 {
   }
 
   .nav-capitulo {
-    bottom: 130px; /* Aumentar a 110px para dar espacio al footer */
+    bottom: 160px; /* Aumentar a 110px para dar espacio al footer */
     font-size: 18px;
     padding: 8px 12px;
+  }
+
+  .ventana-contenido {
+    max-width: 85vw; /* Más espacio relativo en pantallas pequeñas */
+    padding: 1rem; /* Reducir padding */
+  }
+
+  #btn-destacar, #btn-compartir-imagen, #btn-cancelar, #btn-copiar {
+    padding: 0.5rem 1rem; /* Reducir padding en móviles */
+    font-size: 0.9rem; /* Reducir tamaño de fuente */
+  }
+
+  .botones-ventana {
+    gap: 0.5rem; /* Reducir espacio entre botones */
   }
 
   .chapter-grid {
@@ -982,5 +1016,24 @@ footer.footer2 {
 
   main {
     padding-bottom: 10px; /* Reducir a 10px para menos espacio */
+  }
+}
+
+/* Media query para pantallas muy pequeñas (ej. < 320px, como TLC 408) */
+@media (max-width: 320px) {
+  .ventana-contenido {
+    max-width: 90vw; /* Maximizar ancho en pantallas muy pequeñas */
+    padding: 0.75rem; /* Reducir aún más el padding */
+  }
+
+  #btn-destacar, #btn-compartir-imagen, #btn-cancelar, #btn-copiar {
+    padding: 0.375rem 0.75rem; /* Padding mínimo */
+    font-size: 0.8rem; /* Fuente más pequeña */
+    margin: 0.25rem; /* Margen reducido */
+  }
+
+  .botones-ventana {
+    flex-direction: column; /* Apilar botones verticalmente */
+    gap: 0.375rem; /* Espacio mínimo entre botones */
   }
 }

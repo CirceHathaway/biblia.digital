@@ -126,7 +126,7 @@ const versiculosDestacados = [
   { libro: "S.Juan", capitulo: 1, versiculo: 16, texto: "De su plenitud todos recibimos gracia sobre gracia." },
   { libro: "S.Marcos", capitulo: 4, versiculo: 22, texto: "Porque no hay nada oculto que no llegue a descubrise, ni nada encubierto que no salga a la luz pública." },
   { libro: "Proverbios", capitulo: 9, versiculo: 12, texto: "Si eres sabio, lo eres para tu propio bienestar; pero si eres arrogante, sólo tú sufrirás las consecuencias." },
-  { libro: "Habreos", capitulo: 6, versiculo: 19, texto: "La cual tenemos como segura y firme ancla del alma, y que penetra hasta dentro del velo." },
+  { libro: "Hebreos", capitulo: 6, versiculo: 19, texto: "La cual tenemos como segura y firme ancla del alma, y que penetra hasta dentro del velo." },
   { libro: "Salmos", capitulo: 119, versiculo: 114, texto: "Mi escudero y mi escudo eres tú; en tu palabra he esperado." },
   { libro: "Salmos", capitulo: 52, versiculo: 8, texto: "Pero yo estoy como olivo verde en la casa de Dios; En la misericordia de Dios confio eternamente y para siempre." },
   { libro: "Salmos", capitulo: 42, versiculo: 5, texto: "¿Por qué te abates, oh alma mía y te turbas dentro de mí? Espera en Dios; porque aún he de alabarle, Salvación mía y Dios mío." },
@@ -154,6 +154,16 @@ const versiculosDestacados = [
   { libro: "Salmos", capitulo: 18, versiculo: 16, texto: "Envió desde lo alto; me tomó, Me sacó de las muchas aguas." },
   { libro: "2 Tesalonicenses", capitulo: 3, versiculo: 3, texto: "Pero fiel es el Señor, que os afirmará y guardará del mal." },
   { libro: "S.Lucas", capitulo: 1, versiculo: 47, texto: "y mi espíritu se regocija en Dios mi salvador." },
+  { libro: "Filipenses", capitulo: 4, versiculo: 12, texto: "Sé vivir humildemente, y sé tener abundancia; en todo y por todo estoy enseñado, así para estar saciado como para tener hambre, así para tener abundancia como para padecer necesidad" },
+  { libro: "Salmos", capitulo: 19, versiculo: 7, texto: "La ley de Jehová es perfecta, que convierte el alma; El testimonio de Jehová es fiel, que hace sabio al sencillo." },
+  { libro: "Salmos", capitulo: 19, versiculo: 8, texto: "Los mandamientos de Jehová son rectos, que alegran el corazón; El precepto de Jehová es puro, que alumbra los ojos." },
+  { libro: "Salmos", capitulo: 19, versiculo: 9, texto: "El temor de Jehová es limpio, que permanece para siempre, Los juicios de Jehová son verdad, todos justos." },
+  { libro: "Salmos", capitulo: 19, versiculo: 10, texto: "Deseables son más que el oro, y más que mucho oro afinado; Y dulces más que miel, y que la que destila del panal." },
+  { libro: "S.Juan", capitulo: 14, versiculo: 2, texto: "En la casa de mi Padre mucha moradas hay; si así no fuera, yo os lo hubiera dicho; voy, pues, a preparar lugar para vosotros." },
+  { libro: "Hebreos", capitulo: 13, versiculo: 2, texto: "No os olvidéis de la hospitalidad, porque por ella algunos, sin saberlo, hospedaron ángeles." },
+  { libro: "Hebreos", capitulo: 13, versiculo: 5, texto: "Sean vuestras costumbres sin avaricia, contentos con lo que tenéis ahora; porque él dijo: No te desampararé, ni te dejaré;" },
+  { libro: "Hebreos", capitulo: 13, versiculo: 7, texto: "Acordaos de vuestros pastores, que os hablaron la palabra de Dios; considerad cuál haya sido el resultado de su conducta, e imitad su fe." },
+  { libro: "Hebreos", capitulo: 13, versiculo: 17, texto: "Obedeced a vuestros pastores, y sujetaos a ellos; porque ellos velan por vuestras almas, como quienes han de dar cuenta; para que lo hagan con alegría, y no quejándose, porque esto no os es provechoso." },
 ];
 
 // Obtener o generar un identificador único por dispositivo
@@ -541,8 +551,8 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
 
   function aplicarEstilosContenido(contenido) {
     contenido.style.backgroundColor = '#fff';
-    contenido.style.padding = '20px';
-    contenido.style.borderRadius = '8px';
+    contenido.style.padding = '1.5rem'; // Usar rem para consistencia
+    contenido.style.borderRadius = '0.625rem';
     contenido.style.textAlign = 'center';
   }
 
@@ -550,11 +560,9 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     boton.style.backgroundColor = colorFondo;
     boton.style.color = 'white';
     boton.style.border = 'none';
-    boton.style.padding = '12px 18px'; // Mantener tamaño reducido
-    boton.style.fontSize = '0.9rem'; // Mantener tamaño de fuente reducido
-    boton.style.borderRadius = '8px';
+    boton.style.borderRadius = '0.5rem';
     boton.style.cursor = 'pointer';
-    boton.style.margin = '5px';
+    boton.style.margin = '0.3125rem'; // 5px en rem
   }
 
   function mostrarVistaInicial() {
@@ -582,7 +590,7 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
 
     aplicarEstilosBoton(btnDestacar, '#4CAF50');
     aplicarEstilosBoton(btnCompartirImagen, '#01717d');
-    aplicarEstilosBoton(btnCopiar, '#ff8000'); // Color similar a "Destacar" para consistencia
+    aplicarEstilosBoton(btnCopiar, '#ff8000');
     aplicarEstilosBoton(btnCancelar, '#ff4444');
 
     btnDestacar.addEventListener('click', () => {
@@ -598,6 +606,7 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
       const textoACopiar = `${texto} (${libro} ${capitulo}:${versiculo})`;
       navigator.clipboard.writeText(textoACopiar).then(() => {
         document.body.removeChild(ventana);
+        // alert('Versículo copiado al portapapeles'); // Comentado para evitar notificación
       }).catch(err => console.error('Error al copiar:', err));
     });
 

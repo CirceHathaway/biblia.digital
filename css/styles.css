@@ -925,13 +925,13 @@ footer.footer2 {
   }
 
   .nav-capitulo {
-    bottom: 120px; /* Aumentar a 120px para dar más espacio al footer */
+    bottom: 120px; /* Ajustar a 120px como base al footer */
     font-size: 22px;
     padding: 10px 14px;
   }
 
   main {
-    padding-bottom: 140px; /* Aumentar padding-bottom para evitar superposición */
+    padding-bottom: 20px; /* Reducir a 20px para menos espacio */
   }
 
   .chapter-grid {
@@ -956,7 +956,7 @@ footer.footer2 {
   }
 
   .nav-capitulo {
-    bottom: 100px; /* Ajustar a 100px, pero aumentar si es necesario */
+    bottom: 110px; /* Aumentar a 110px para dar espacio al footer */
     font-size: 18px;
     padding: 8px 12px;
   }
@@ -976,6 +976,6 @@ footer.footer2 {
   }
 
   main {
-    padding-bottom: 120px; /* Aumentar padding-bottom para móviles pequeños */
+    padding-bottom: 10px; /* Reducir a 10px para menos espacio */
   }
 }

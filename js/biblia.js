@@ -31,7 +31,7 @@ const versiculosDestacados = [
   { libro: "S.Mateo", capitulo: 11, versiculo: 28, texto: "Venid a mí todos los que estáis trabajados y cargados, y yo os haré descansar." },
   { libro: "Proverbios", capitulo: 10, versiculo: 12, texto: "El odio despierta rencillas; Pero el amor cubrirá todas las faltas." },
   { libro: "Salmos", capitulo: 46, versiculo: 1, texto: "Dios es nuestro amparo y fortaleza, nuestro pronto auxilio en las tribulaciones." },
-  { libro: "S.Juan", capitulo: 14, versiculo: 1, texto: "No se turbe vuestro corazón; creéis en Dios, creed tambipen en mí." },
+  { libro: "S.Juan", capitulo: 14, versiculo: 1, texto: "No se turbe vuestro corazón; creéis en Dios, creed también en mí." },
   { libro: "S.Mateo", capitulo: 22, versiculo: 39, texto: "Amarás a tu prójimo como a ti mismo." },
   { libro: "Salmos", capitulo: 121, versiculo: 2, texto: "Mi socorro viene de Jehová que hizo los cielos y la tierra." },
   { libro: "S.Mateo", capitulo: 7, versiculo: 8, texto: "Porque todo aquel que pide, recibe; y el que busca, halla; y al que llama se le abrirá." },

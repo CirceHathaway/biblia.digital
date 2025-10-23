@@ -1,0 +1,73 @@
+// Auto-generated from RVC.xml — 2 Pedro 1–3
+export default [
+  // Capítulo 1
+  [
+    'Yo, Simón Pedro, siervo y apóstol de Jesucristo, envío un saludo a ustedes, que por la justicia de nuestro Dios y Salvador Jesucristo han alcanzado una fe tan preciosa como la nuestra.',
+    'Que la gracia y la paz les sea multiplicada por medio del conocimiento de Dios y de nuestro Señor Jesús.',
+    'Todas las cosas que pertenecen a la vida y a la piedad nos han sido dadas por su divino poder, mediante el conocimiento de aquel que nos llamó por su gloria y excelencia.',
+    'Por medio de ellas nos ha dado preciosas y grandísimas promesas, para que por ellas ustedes lleguen a ser partícipes de la naturaleza divina, puesto que han huido de la corrupción que hay en el mundo por causa de los malos deseos.',
+    'Por eso, ustedes deben esforzarse por añadir virtud a su fe, conocimiento a su virtud,',
+    'dominio propio al conocimiento; paciencia al dominio propio, piedad a la paciencia,',
+    'afecto fraternal a la piedad, y amor al afecto fraternal.',
+    'Si todo esto abunda en ustedes, serán muy útiles y productivos en el conocimiento de nuestro Señor Jesucristo.',
+    'Quien no tiene todo esto es corto de vista, o ciego, y ha olvidado que sus antiguos pecados fueron limpiados.',
+    'Por eso, hermanos, procuren fortalecer su llamado y elección. Si hacen esto, jamás caerán.',
+    'De esta manera se les abrirán de par en par las puertas del reino eterno de nuestro Señor y Salvador Jesucristo.',
+    'Por esta razón siempre habré de recordarles estas cosas, aun cuando ya las sepan y estén firmemente afianzados en la verdad que han recibido.',
+    'Mientras yo tenga vida, es mi obligación animarlos y recordarles todo esto,',
+    'pues sé que pronto tendré que abandonar este cuerpo, tal y como nuestro Señor Jesucristo me lo ha hecho saber.',
+    'También debo esforzarme para que después de mi partida ustedes puedan tener siempre presentes todas estas cosas.',
+    'Porque, cuando les hicimos saber que nuestro Señor Jesucristo vendrá con todo su poder, no lo hicimos siguiendo fábulas artificiosas, sino como quienes han visto su majestad con sus propios ojos.',
+    'Pues cuando él recibió de Dios Padre la honra y la gloria, desde la magnífica gloria le fue enviada una voz que decía: «Éste es mi Hijo amado, en quien me complazco.»',
+    'Y nosotros oímos esa voz que venía del cielo, mientras estábamos con él en el monte santo.',
+    'Además, contamos con la muy confiable palabra profética, a la cual ustedes hacen bien en atender, que es como una antorcha que alumbra en la oscuridad, hasta que aclare el día y el lucero de la mañana salga en el corazón de ustedes.',
+    'Pero antes que nada deben entender esto: Ninguna profecía de la Escritura es de interpretación privada,',
+    'porque la profecía nunca estuvo bajo el control de la voluntad humana, sino que los santos hombres de Dios hablaron bajo el control del Espíritu Santo.'
+  ],
+  // Capítulo 2
+  [
+    'Entre el pueblo hubo también falsos profetas, como también habrá entre ustedes falsos maestros que con disimulo introducirán herejías destructivas, y hasta llegarán a negar al Señor que los rescató, con lo que atraerán sobre sí mismos súbita destrucción.',
+    'Muchos imitarán su conducta indecente, y por causa de ellos se hablará mal del camino de la verdad.',
+    'Por su rapacidad, estos falsos maestros harán negocio con ustedes. Pero la condenación los espera desde hace mucho tiempo, y su perdición ya está en camino.',
+    'Es un hecho que Dios no perdonó a los ángeles que pecaron, sino que los arrojó al infierno y los lanzó a oscuras prisiones, donde se les vigila para llevarlos a juicio.',
+    'Y tampoco perdonó al mundo antiguo, sino que protegió a Noé, quien proclamó la justicia, y a otras siete personas, y luego envió el diluvio sobre el mundo de los impíos.',
+    'Dios también condenó a la destrucción a las ciudades de Sodoma y de Gomorra, y las redujo a cenizas, para que sirvieran de escarmiento a los futuros impíos,',
+    'pero puso a salvo al justo Lot, que vivía abrumado por la desenfrenada conducta de los malvados.',
+    '(Porque para este hombre justo, que vivía entre ellos, cada día era un tormento al ver y oír lo que esos malvados hacían.)',
+    'El Señor sabe librar de la tentación a los piadosos, y sabe también reservar a los injustos para que sean castigados en el día del juicio,',
+    'sobre todo a los que se dejan llevar por la depravada naturaleza humana, y andan en deseos impuros y en la inmundicia, con lo que desprecian la autoridad divina. Son atrevidos y arrogantes, y no tienen miedo de insultar a los poderes superiores.',
+    'Los ángeles, en cambio, aunque son mayores en fuerza y en poder, no se atreven a insultarlos ni a condenarlos delante del Señor.',
+    'Pero éstos hablan mal de cosas que no entienden; son como animales irracionales, que nacieron para ser presa de la destrucción. Por eso, su propia destrucción los destruirá,',
+    'y recibirán el castigo que merece su injusticia. Creen que el placer consiste en gozar de los deleites a plena luz del día. Son una vergüenza y una deshonra, pues mientras comen con ustedes se solazan en sus propios placeres.',
+    'Su mirada está cargada de adulterio, no se cansan de pecar, seducen a los pusilánimes, su corazón está habituado a la codicia; ¡son hijos de maldición!',
+    'Se han apartado del camino recto, se han extraviado por seguir el camino de Balaam hijo de Beor, que tanto amó el premio de la maldad',
+    'que fue reprendido por su iniquidad; ¡una bestia de carga, que no podía hablar, habló con voz humana y puso un alto a la locura del profeta!',
+    'Éstos son fuentes sin agua, nubes que arrastra la tormenta, y para siempre les espera la más densa oscuridad.',
+    'Cuando hablan, lo hacen con palabras arrogantes y vanas; mediante las pasiones humanas y el libertinaje seducen a los que habían comenzado a apartarse de los que viven en el error.',
+    'Les prometen libertad, pero ellos mismos son esclavos de la corrupción, pues todo aquel que es vencido, se vuelve esclavo del que lo venció.',
+    'Gracias al conocimiento de nuestro Señor y Salvador Jesucristo, habían logrado escapar de las contaminaciones del mundo, pero volvieron a enredarse en ellas y fueron vencidos, con lo que su estado final fue peor que el primero.',
+    'Les hubiera sido mejor no haber conocido el camino de la justicia, que volverse atrás después de haber conocido y recibido el santo mandamiento.',
+    'Pero en ellos se ha cumplido la verdad proverbial: «El perro vuelve a su vómito», y «la puerca recién lavada vuelve a revolcarse en el lodo.»'
+  ],
+  // Capítulo 3
+  [
+    'Amados hermanos, ésta es la segunda carta que les escribo, y en ambas los he animado a tener presentes, con su mente pura,',
+    'las palabras que antes pronunciaron los santos profetas, así como el mandamiento que el Señor y Salvador nos ha dado por medio de los apóstoles. Recuérdenlo.',
+    'Pero antes deben saber que en los días finales vendrá gente blasfema, que andará según sus propios malos deseos',
+    'y que dirá: «¿Qué pasó con la promesa de su venida? Desde el día en que nuestros padres murieron, todas las cosas siguen tal y como eran desde el principio de la creación.»',
+    'Pero con toda intención se olvidan de que, desde la antigüedad, fueron creados los cielos por la palabra de Dios, lo mismo que la tierra, la cual proviene del agua y subsiste por medio del agua.',
+    'Por eso el mundo de entonces fue destruido por una inundación.',
+    'Pero esa misma palabra ha reservado los cielos y la tierra que ahora existen; los ha guardado para el fuego en el día del juicio y de la destrucción de los hombres perversos.',
+    'Pero no olviden, amados hermanos, que para el Señor un día es como mil años, y mil años como un día.',
+    'El Señor no se tarda para cumplir su promesa, como algunos piensan, sino que nos tiene paciencia y no quiere que ninguno se pierda, sino que todos se vuelvan a él.',
+    'Pero el día del Señor llegará como un ladrón en la noche. Ese día los cielos desaparecerán en medio de un gran estruendo, y los elementos arderán y serán reducidos a cenizas, y la tierra y todo lo que en ella se ha hecho será quemado.',
+    'Puesto que todo será deshecho, ustedes deben vivir una vida santa y dedicada a Dios,',
+    'y esperar con ansias la venida del día de Dios. Ese día los cielos serán deshechos por el fuego, y los elementos se fundirán por el calor de las llamas.',
+    'Pero, según sus promesas, nosotros esperamos un cielo nuevo y una tierra nueva, donde reinará la justicia.',
+    'Por eso, amados hermanos, mientras esperan que esto suceda, hagan todo lo posible para que Dios los encuentre en paz, intachables e irreprensibles.',
+    'Tengan en cuenta que la paciencia de nuestro Señor es para salvación, tal y como nuestro amado hermano Pablo, según la sabiduría que le ha sido dada, les ha escrito',
+    'en casi todas sus cartas, donde habla de estas cosas, aun cuando entre ellas hay algunas que son difíciles de entender y que los ignorantes e inconstantes tuercen, como hacen también con las otras Escrituras, para su propia perdición.',
+    'Pero ustedes, amados hermanos, que ya saben todo esto, cuídense de no ser arrastrados por el error de esos malvados, para que no caigan de su firme postura.',
+    'Más bien, crezcan en la gracia y el conocimiento de nuestro Señor y Salvador Jesucristo, a quien sea dada la gloria ahora y hasta el día de la eternidad. Amén.'
+  ]
+];

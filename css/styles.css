@@ -247,6 +247,12 @@ header {
   border: 1px solid #000;
   border-radius: 6px;
   font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.version-biblia:hover {
+  background: #e6e6e6;
 }
 
 main {
@@ -554,7 +560,7 @@ footer.footer2 {
 
 .color-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.3); /* 0 0 5px en rem *
+  box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.3); /* 0 0 5px en rem */
 }
 
 .color-btn:focus {

@@ -1,5 +1,10 @@
-import { libros } from './libros.js';
+// biblia.js
 
+// === Imports de índices de libros por versión ===
+import { libros as librosRVR } from './libros.js';
+import { libros as librosRVC } from './libros/RVC/libros.js';
+
+// === Referencias al DOM ===
 const dropdown = document.getElementById("selector-libro");
 const dropdownToggle = document.getElementById("selector-toggle");
 const dropdownContent = document.getElementById("selector-content");
@@ -7,7 +12,9 @@ const versiculosDiv = document.getElementById("versiculos");
 const btnAumentar = document.getElementById("aumentarLetra");
 const btnAnterior = document.getElementById("anteriorCapitulo");
 const btnSiguiente = document.getElementById("siguienteCapitulo");
+const versionBadge = document.getElementById("versionBiblia");
 
+// === Estado general ===
 let libroActual = null;
 let capitulos = [];
 let capituloSelectIndex = 0;
@@ -18,10 +25,47 @@ let libroSeleccionado = "";
 
 let pressTimer;
 let mouseMoved = false;
-let touchMoved = false;
 
 const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+// === Gestión de versiones ===
+const VERSION_KEY = 'versionBiblia';
+let versionActual = localStorage.getItem(VERSION_KEY) || 'RVR1960';
+
+const versiones = {
+  RVR1960: librosRVR,
+  RVC: librosRVC,
+};
+
+// Si existe el badge, mostrar y permitir alternar
+if (versionBadge) {
+  versionBadge.textContent = versionActual;
+  versionBadge.title = "Cambiar versión";
+  versionBadge.style.cursor = 'pointer';
+  versionBadge.addEventListener('click', async () => {
+    versionActual = (versionActual === 'RVR1960') ? 'RVC' : 'RVR1960';
+    localStorage.setItem(VERSION_KEY, versionActual);
+    versionBadge.textContent = versionActual;
+
+    const setLibros = versiones[versionActual];
+
+    // Intentar mantener el libro/capítulo si existe
+    const existeLibro = libroSeleccionado && setLibros[libroSeleccionado];
+    if (existeLibro) {
+      await cargarCapitulos(libroSeleccionado);
+      if (capitulos.length) {
+        const idx = Math.min(capituloSelectIndex, capitulos.length - 1);
+        mostrarCapitulo(idx);
+      }
+    } else {
+      libroSeleccionado = "";
+      cargarLibros();
+      versiculosDiv.innerHTML = '<p>Selecciona un libro</p>';
+    }
+  });
+}
+
+// ====== Versículo del día ======
 // Lista predefinida de versículos destacados para el versículo del día
 const versiculosDestacados = [
   { libro: "S.Juan", capitulo: 3, versiculo: 16, texto: "Porque de tal manera amó Dios al mundo, que ha dado a su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna." },
@@ -61,7 +105,7 @@ const versiculosDestacados = [
   { libro: "Job", capitulo: 22, versiculo: 25, texto: "El todopoderoso será tu defensa, y tendrás plata en abundancia." },
   { libro: "S.Mateo", capitulo: 5, versiculo: 9, texto: "Bienaventurado los pacificadores, porque ellos serán llamados Hijos de Dios." },
   { libro: "S.Mateo", capitulo: 5, versiculo: 5, texto: "Bienaventurados los mansos, porque ellos recibirán la tierra por heredad." },
-  { libro: "Salmos", capitulo: 15, versiculo: 1-2, texto: "¿Quién morará en tu monte santo? El que anda en integridad y hace justicia, y habla verdad en su corazón." },
+  { libro: "Salmos", capitulo: 15, versiculo: "1-2", texto: "¿Quién morará en tu monte santo? El que anda en integridad y hace justicia, y habla verdad en su corazón." },
   { libro: "Apocalipsis", capitulo: 3, versiculo: 5, texto: "El que venciere será vestido de vestiduras blancas; y no borraré su nombre del libro de la vida, y confesaré su nombre delante de mi Padre, y delante de sus ángeles." },
   { libro: "Salmos", capitulo: 32, versiculo: 8, texto: "Te haré entender, y te enseñaré el camino en que debes andar; Sobre ti fijaré mis ojos." },
   { libro: "Salmos", capitulo: 32, versiculo: 10, texto: "Muchos dolores habrá para el impío; Mas al que espera en Jehová, le rodea la misericordia." },
@@ -99,7 +143,7 @@ const versiculosDestacados = [
   { libro: "S.Lucas", capitulo: 22, versiculo: 19, texto: "También tomó pan y, después de dar las gracias, lo partió, se lo dio a ellos y dijo: Esto es mi cuerpo, entregado por ustedes; hagan esto en memoria de mí." },
   { libro: "Romanos", capitulo: 15, versiculo: 5, texto: "Que el Dios que da la perseverancia y el aliento os conceda vivir en armonía los unos con los otros, según Cristo Jesús, para que a una sola voz glorifiquéis al Dios y Padre de nuestro Señor Jesucristo." },
   { libro: "Romanos", capitulo: 13, versiculo: 14, texto: "Mejor, revístanse con el Señor Jesucristo y no piensen, como piensa todo el mundo, en satisfacer sus propios deseos." },
-  { libro: "Romanos", capitulo: 12, versiculo: 11-12, texto: "No sean perezosos en lo que requiere diligencia. Sean fervientes en espíritu, sirviendo al Señor; gozándose en la esperanza, perseverando en el sufrimiento, dedicados a la oración." },
+  { libro: "Romanos", capitulo: "12", versiculo: "11-12", texto: "No sean perezosos en lo que requiere diligencia. Sean fervientes en espíritu, sirviendo al Señor; gozándose en la esperanza, perseverando en el sufrimiento, dedicados a la oración." },
   { libro: "Éxodo", capitulo: 35, versiculo: 31, texto: "Y lo ha llenado del Espíritu de Dios, de sabiduría, inteligencia y capacidad creativa." },
   { libro: "Isaias", capitulo: 12, versiculo: 2, texto: "¡Dios es mi salvación! Confiaré en él y no temeré. El Señor es mi fuerza, el Señor es mi canción; ¡él es mi salvación!" },
   { libro: "Efesios", capitulo: 2, versiculo: 10, texto: "Nosotros somos obra de Dios, creados en Jesucristo para realizar las buenas obras que Dios ya planeó de antemano para que nos ocupáramos de ellas." },
@@ -118,8 +162,8 @@ const versiculosDestacados = [
   { libro: "Gálatas", capitulo: 6, versiculo: 9, texto: "No nos cansemos de hacer el bien, porque a su debido tiempo cosecharemos si no nos damos por vencidos." },
   { libro: "Génesis", capitulo: 28, versiculo: 15, texto: "Mira, estoy contigo, te protegeré donde quiera que vayas y te volveré a traer a esta tierra. No te abandonaré y cumpliré lo que te acabo de decir." },
   { libro: "S.Juan", capitulo: 7, versiculo: 38, texto: "De aquel que cree en mí, como dice la Escritura, de su interior brotarán ríos de agua viva." },
-  { libro: "Santiago", capitulo: 1, versiculo: 2-3, texto: "Hermanos míos, considérense muy dichosos cuando tengan que enfrentarse con diversas pruebas, pues ya saben que la prueba de su fe produce perseverancia." },
-  { libro: "Salmos", capitulo: 121, versiculo: 7-8, texto: "Jehová te guardará de todo mal; Él guardará tu alma. Jehová guardará tu salida y tu entrada desde ahora y para siempre." },
+  { libro: "Santiago", capitulo: "1", versiculo: "2-3", texto: "Hermanos míos, considérense muy dichosos cuando tengan que enfrentarse con diversas pruebas, pues ya saben que la prueba de su fe produce perseverancia." },
+  { libro: "Salmos", capitulo: 121, versiculo: "7-8", texto: "Jehová te guardará de todo mal; Él guardará tu alma. Jehová guardará tu salida y tu entrada desde ahora y para siempre." },
   { libro: "Proverbios", capitulo: 16, versiculo: 3, texto: "Pon todo lo que hagas en manos del Señor, y tus planes tendrán éxito." },
   { libro: "1 Juan", capitulo: 3, versiculo: 24, texto: "El que obedece sus mandamientos permanece en Dios y Dios en él. ¿Cómo sabemos que él permanece en nosotros? Por el Espíritu que nos dio." },
   { libro: "Romanos", capitulo: 5, versiculo: 8, texto: "Mas Dios muestra su amor para con nosotros, en que siendo aún pecadores, Cristo murió por nosotros." },
@@ -177,7 +221,7 @@ function obtenerIdentificadorDispositivo() {
 }
 
 // Extensión de String para hashCode (simplificado)
-String.prototype.hashCode = function() {
+String.prototype.hashCode = function () {
   let hash = 0;
   if (this.length === 0) return hash;
   for (let i = 0; i < this.length; i++) {
@@ -208,10 +252,9 @@ function mostrarVersiculoDelDia() {
     ventana.className = 'versiculo-dia';
 
     const palabras = versiculo.texto.split(' ');
-    let linea1 = '', linea2 = '';
     const mitad = Math.ceil(palabras.length / 2);
-    linea1 = palabras.slice(0, mitad).join(' ');
-    linea2 = palabras.slice(mitad).join(' ');
+    const linea1 = palabras.slice(0, mitad).join(' ');
+    const linea2 = palabras.slice(mitad).join(' ');
 
     ventana.innerHTML = `
       <div class="contenido">
@@ -235,8 +278,7 @@ function mostrarVersiculoDelDia() {
 
     document.getElementById('btn-copiar-dia').addEventListener('click', () => {
       const texto = `${versiculo.texto} (${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo})`;
-      navigator.clipboard.writeText(texto).then(() => {
-      }).catch(err => {
+      navigator.clipboard.writeText(texto).catch(err => {
         console.error('Error al copiar texto:', err);
         alert('No se pudo copiar el texto');
       });
@@ -249,6 +291,7 @@ function mostrarVersiculoDelDia() {
   }
 }
 
+// ====== UI selector ======
 function crearInputBusqueda() {
   const input = document.createElement("input");
   input.type = "text";
@@ -287,9 +330,12 @@ function cargarLibros() {
   dropdownContent.innerHTML = '';
   estadoSelector = "libros";
   dropdownToggle.textContent = "Libro";
+
   const inputBusqueda = crearInputBusqueda();
   dropdownContent.appendChild(inputBusqueda);
-  Object.keys(libros).forEach(nombre => {
+
+  const setLibros = versiones[versionActual];
+  Object.keys(setLibros).forEach(nombre => {
     const opcion = document.createElement("div");
     opcion.className = "dropdown-option";
     opcion.textContent = nombre;
@@ -305,7 +351,8 @@ function cargarLibros() {
 }
 
 async function cargarCapitulos(nombreLibro) {
-  const ruta = libros[nombreLibro];
+  const setLibros = versiones[versionActual];
+  const ruta = setLibros[nombreLibro];
   const modulo = await import(`./${ruta}`);
   capitulos = modulo.default;
   libroActual = nombreLibro;
@@ -313,8 +360,10 @@ async function cargarCapitulos(nombreLibro) {
   estadoSelector = "capitulos";
   dropdownToggle.textContent = "Capítulo";
   dropdownContent.innerHTML = '';
+
   const grid = document.createElement("div");
   grid.className = "chapter-grid";
+
   capitulos.forEach((_, index) => {
     const btn = document.createElement("div");
     btn.className = "chapter-item";
@@ -331,6 +380,7 @@ async function cargarCapitulos(nombreLibro) {
     });
     grid.appendChild(btn);
   });
+
   dropdownContent.appendChild(grid);
   agregarBotonVolver("libros");
 }
@@ -339,9 +389,11 @@ function cargarVersiculos(indexCapitulo) {
   estadoSelector = "versiculos";
   dropdownToggle.textContent = "Versículo";
   dropdownContent.innerHTML = '';
+
   const versiculos = capitulos[indexCapitulo];
   const grid = document.createElement("div");
   grid.className = "chapter-grid";
+
   versiculos.forEach((_, i) => {
     const btn = document.createElement("div");
     btn.className = "chapter-item";
@@ -355,6 +407,7 @@ function cargarVersiculos(indexCapitulo) {
     });
     grid.appendChild(btn);
   });
+
   dropdownContent.appendChild(grid);
   agregarBotonVolver("capitulos");
 }
@@ -363,12 +416,8 @@ function cargarResaltados() {
   const favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
   favoritos.forEach(fav => {
     const versiculoId = `vers-${fav.versiculo}`;
-    let elemento;
-    if (esMovil) {
-      elemento = document.querySelector(`[data-versiculo-id="${versiculoId}"]`);
-    } else {
-      elemento = document.querySelector(`[data-versiculo-id="${versiculoId}"]`);
-    }
+    const selector = `[data-versiculo-id="${versiculoId}"]`;
+    const elemento = document.querySelector(selector);
     if (elemento && fav.libro === libroActual && fav.capitulo === (capituloSelectIndex + 1)) {
       elemento.style.backgroundColor = fav.color || '#ffff99';
     }
@@ -379,12 +428,14 @@ function mostrarCapitulo(index) {
   const versiculos = capitulos[index];
   capituloSelectIndex = index;
   versiculosDiv.innerHTML = `<h2>${libroActual} ${index + 1}</h2>`;
+
   versiculos.forEach((verso, i) => {
+    const versiculoDiv = document.createElement('div');
+    versiculoDiv.className = 'versiculo-item';
+    versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
+    versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
+
     if (esMovil) {
-      const versiculoDiv = document.createElement('div');
-      versiculoDiv.className = 'versiculo-item';
-      versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
-      versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
       let startY = 0;
       let moved = false;
       versiculoDiv.addEventListener('touchstart', (e) => {
@@ -407,12 +458,7 @@ function mostrarCapitulo(index) {
       versiculoDiv.addEventListener('touchend', () => {
         clearTimeout(pressTimer);
       });
-      versiculosDiv.appendChild(versiculoDiv);
     } else {
-      const versiculoDiv = document.createElement('div');
-      versiculoDiv.className = 'versiculo-item';
-      versiculoDiv.setAttribute('data-versiculo-id', `vers-${i + 1}`);
-      versiculoDiv.innerHTML = `<p id="vers-${i + 1}"><strong>${i + 1}</strong> ${verso}</p>`;
       versiculoDiv.addEventListener('mousedown', (e) => {
         e.preventDefault();
         mouseMoved = false;
@@ -432,9 +478,11 @@ function mostrarCapitulo(index) {
       versiculoDiv.addEventListener('contextmenu', (e) => {
         e.preventDefault();
       });
-      versiculosDiv.appendChild(versiculoDiv);
     }
+
+    versiculosDiv.appendChild(versiculoDiv);
   });
+
   cargarResaltados();
 }
 
@@ -495,8 +543,8 @@ async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, e
   ctx.fillText(referencia, 470, rectY + paddingY + lineHeight / 2);
 
   ctx.font = `28px ${fontFamily}`;
-  lines.forEach((line, i) => {
-    ctx.fillText(line, 470, rectY + paddingY + lineHeight * (i + 1.5));
+  lines.forEach((ln, i) => {
+    ctx.fillText(ln, 470, rectY + paddingY + lineHeight * (i + 1.5));
   });
 
   return new Promise(resolve => {
@@ -534,7 +582,7 @@ async function compartirVersiculoComoImagen(libro, capitulo, versiculoNumero, te
 function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv) {
   const ventana = document.createElement('div');
   ventana.className = 'ventana-destacar';
-  
+
   function aplicarEstilosVentana() {
     ventana.style.position = 'fixed';
     ventana.style.top = '50%';
@@ -551,7 +599,7 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
 
   function aplicarEstilosContenido(contenido) {
     contenido.style.backgroundColor = '#fff';
-    contenido.style.padding = '1.5rem'; // Usar rem para consistencia
+    contenido.style.padding = '1.5rem';
     contenido.style.borderRadius = '0.625rem';
     contenido.style.textAlign = 'center';
   }
@@ -562,7 +610,7 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     boton.style.border = 'none';
     boton.style.borderRadius = '0.5rem';
     boton.style.cursor = 'pointer';
-    boton.style.margin = '0.3125rem'; // 5px en rem
+    boton.style.margin = '0.3125rem';
   }
 
   function mostrarVistaInicial() {
@@ -606,7 +654,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
       const textoACopiar = `${texto} (${libro} ${capitulo}:${versiculo})`;
       navigator.clipboard.writeText(textoACopiar).then(() => {
         document.body.removeChild(ventana);
-        // alert('Versículo copiado al portapapeles'); // Comentado para evitar notificación
       }).catch(err => console.error('Error al copiar:', err));
     });
 
@@ -672,7 +719,7 @@ function destacarVersiculo(versiculoDiv, color) {
 
 function guardarFavorito(libro, capitulo, versiculo, texto, color) {
   let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-  const existe = favoritos.some(fav => 
+  const existe = favoritos.some(fav =>
     fav.libro === libro && fav.capitulo === capitulo && fav.versiculo === versiculo
   );
   if (!existe) {
@@ -696,6 +743,7 @@ function mostrarVersiculo(capIndex, versIndex) {
   }
 }
 
+// ====== Listeners de UI ======
 dropdownToggle.addEventListener("click", (e) => {
   e.stopPropagation();
   dropdown.classList.toggle("open");
@@ -735,8 +783,15 @@ btnSiguiente.addEventListener("click", () => {
   }
 });
 
+// ====== Arranque: cargar Génesis 1 de la versión activa ======
 (async function mostrarGenesis1() {
-  const ruta = libros["Génesis"];
+  const setLibros = versiones[versionActual];
+  const ruta = setLibros["Génesis"];
+  if (!ruta) {
+    // Si la versión actual no tiene Génesis cargado aún, mostrar selector
+    cargarLibros();
+    return;
+  }
   const modulo = await import(`./${ruta}`);
   capitulos = modulo.default;
   libroActual = "Génesis";
@@ -750,6 +805,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mostrarVersiculoDelDia();
 });
 
+// ====== Service Worker ======
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./service-worker.js')

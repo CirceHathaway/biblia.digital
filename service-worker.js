@@ -1,165 +1,117 @@
-const CACHE_NAME = 'biblia-digital-v33'; // Cambiamos el nombre para forzar una nueva instalación
-const urlsToCache = [
-  '/',
-  '/biblia.digital/index.html',
-  '/biblia.digital/favorito.html',
-  '/biblia.digital/contacto.html',
-  '/biblia.digital/css/styles.css',
-  '/biblia.digital/js/biblia.js',
-  '/biblia.digital/js/appLink.js',
-  '/biblia.digital/js/libros.js',
-  '/biblia.digital/images/background-versiculo.jpg',
-  '/biblia.digital/images/background-versiculo-dia.jpg',
-  '/biblia.digital/icons/icon-192x192.png',
-  '/biblia.digital/icons/icon-512x512.png',
-  '/biblia.digital/manifest.json',
-  // Archivos de libros (versículos)
-  '/biblia.digital/js/libros/genesis.js',
-  '/biblia.digital/js/libros/exodo.js',
-  '/biblia.digital/js/libros/levitico.js',
-  '/biblia.digital/js/libros/numeros.js',
-  '/biblia.digital/js/libros/deuteronomio.js',
-  '/biblia.digital/js/libros/josue.js',
-  '/biblia.digital/js/libros/jueces.js',
-  '/biblia.digital/js/libros/ruth.js',
-  '/biblia.digital/js/libros/1_samuel.js',
-  '/biblia.digital/js/libros/2_samuel.js',
-  '/biblia.digital/js/libros/1_reyes.js',
-  '/biblia.digital/js/libros/2_reyes.js',
-  '/biblia.digital/js/libros/1_cronicas.js',
-  '/biblia.digital/js/libros/2_cronicas.js',
-  '/biblia.digital/js/libros/esdras.js',
-  '/biblia.digital/js/libros/nehemias.js',
-  '/biblia.digital/js/libros/ester.js',
-  '/biblia.digital/js/libros/job.js',
-  '/biblia.digital/js/libros/salmos.js',
-  '/biblia.digital/js/libros/proverbios.js',
-  '/biblia.digital/js/libros/eclesiastes.js',
-  '/biblia.digital/js/libros/cantares.js',
-  '/biblia.digital/js/libros/isaias.js',
-  '/biblia.digital/js/libros/jeremias.js',
-  '/biblia.digital/js/libros/lamentaciones.js',
-  '/biblia.digital/js/libros/ezequiel.js',
-  '/biblia.digital/js/libros/daniel.js',
-  '/biblia.digital/js/libros/oseas.js',
-  '/biblia.digital/js/libros/joel.js',
-  '/biblia.digital/js/libros/amos.js',
-  '/biblia.digital/js/libros/abdias.js',
-  '/biblia.digital/js/libros/jonas.js',
-  '/biblia.digital/js/libros/miqueas.js',
-  '/biblia.digital/js/libros/nahum.js',
-  '/biblia.digital/js/libros/habacuc.js',
-  '/biblia.digital/js/libros/sofonias.js',
-  '/biblia.digital/js/libros/hageo.js',
-  '/biblia.digital/js/libros/zacarias.js',
-  '/biblia.digital/js/libros/malaquias.js',
-  '/biblia.digital/js/libros/mateo.js',
-  '/biblia.digital/js/libros/marcos.js',
-  '/biblia.digital/js/libros/lucas.js',
-  '/biblia.digital/js/libros/juan.js',
-  '/biblia.digital/js/libros/hechos.js',
-  '/biblia.digital/js/libros/romanos.js',
-  '/biblia.digital/js/libros/1_corintios.js',
-  '/biblia.digital/js/libros/2_corintios.js',
-  '/biblia.digital/js/libros/galatas.js',
-  '/biblia.digital/js/libros/efesios.js',
-  '/biblia.digital/js/libros/filipenses.js',
-  '/biblia.digital/js/libros/colosenses.js',
-  '/biblia.digital/js/libros/1_tesalonicenses.js',
-  '/biblia.digital/js/libros/2_tesalonicenses.js',
-  '/biblia.digital/js/libros/1_timoteo.js',
-  '/biblia.digital/js/libros/2_timoteo.js',
-  '/biblia.digital/js/libros/tito.js',
-  '/biblia.digital/js/libros/filemon.js',
-  '/biblia.digital/js/libros/hebreos.js',
-  '/biblia.digital/js/libros/santiago.js',
-  '/biblia.digital/js/libros/1_pedro.js',
-  '/biblia.digital/js/libros/2_pedro.js',
-  '/biblia.digital/js/libros/1_juan.js',
-  '/biblia.digital/js/libros/2_juan.js',
-  '/biblia.digital/js/libros/3_juan.js',
-  '/biblia.digital/js/libros/judas.js',
-  '/biblia.digital/js/libros/apocalipsis.js',
-  // Recursos externos (cacheados para offline)
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css',
-  'https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap',
+// service-worker.js — FIX offline fallback + CDNs
+const VERSION = 'v36';
+const CACHE_STATIC  = `biblia-static-${VERSION}`;
+const CACHE_RUNTIME = `biblia-runtime-${VERSION}`;
+
+// Path base del sitio (ej: /biblia.digital)
+const BASE_PATH = new URL(self.registration.scope).pathname.replace(/\/$/, '');
+
+// --- Lista de precache (solo recursos same-origin) ---
+const PRECACHE_URLS = [
+  `${BASE_PATH}/index.html`,
+  `${BASE_PATH}/favorito.html`,
+  `${BASE_PATH}/contacto.html`,
+  `${BASE_PATH}/devocionales.html`,
+  `${BASE_PATH}/manifest.json`,
+  `${BASE_PATH}/css/styles.css`,
+  `${BASE_PATH}/js/biblia.js`,
+  `${BASE_PATH}/js/appLink.js`,
+  `${BASE_PATH}/js/libros.js`,
+  `${BASE_PATH}/images/background-versiculo.jpg`,
+  `${BASE_PATH}/images/background-versiculo-dia.jpg`,
+  `${BASE_PATH}/icons/icon-192x192.png`,
+  `${BASE_PATH}/icons/icon-512x512.png`,
 ];
 
-// Instalación: Cachear todos los recursos necesarios
-self.addEventListener('install', event => {
+// Util
+const sameOrigin = (url) => {
+  try { return new URL(url).origin === self.location.origin; }
+  catch { return false; }
+};
+
+// Install: precache limpio (sin no-cors)
+self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Cache abierto');
-        // Cacheamos cada recurso individualmente para identificar cuál falla
-        const cachePromises = urlsToCache.map(url => {
-          return fetch(url, { mode: 'no-cors' }) // Usamos no-cors para evitar problemas con recursos externos
-            .then(response => {
-              if (!response.ok) {
-                console.warn(`No se pudo cachear ${url}: ${response.status} ${response.statusText}`);
-                return null; // Devolvemos null para recursos que fallan
-              }
-              return cache.put(url, response);
-            })
-            .catch(error => {
-              console.error(`Error al intentar cachear ${url}:`, error);
-              return null;
-            });
-        });
-        return Promise.all(cachePromises).then(() => {
-          console.log('Cacheo completado');
-        });
-      })
-      .catch(error => {
-        console.error('Error al abrir el caché:', error);
-      })
+    caches.open(CACHE_STATIC)
+      .then(cache => cache.addAll(PRECACHE_URLS))
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting();
 });
 
-// Activación: Limpiar cachés antiguas
-self.addEventListener('activate', event => {
+// Activate: limpia versiones viejas
+self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cache => {
-          if (cache !== CACHE_NAME) {
-            console.log('Eliminando caché antigua:', cache);
-            return caches.delete(cache);
-          }
-        })
-      );
-    })
+    caches.keys().then(keys =>
+      Promise.all(keys.map(k => {
+        if (k !== CACHE_STATIC && k !== CACHE_RUNTIME) return caches.delete(k);
+      }))
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-// Fetch: Servir recursos desde el caché si estamos offline
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Si el recurso está en caché, devolverlo
-        if (response) {
-          return response;
-        }
-        // Si no está en caché, intentar obtenerlo de la red
-        return fetch(event.request).then(networkResponse => {
-          // Si la solicitud es exitosa, cachear el recurso
-          if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
-            return networkResponse;
-          }
-          const responseToCache = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, responseToCache);
-          });
-          return networkResponse;
-        }).catch(() => {
-          // Si estamos offline y no está en caché, devolver un fallback
-          if (event.request.mode === 'navigate') {
-            return caches.match('/index.html');
-          }
-        });
+// Fetch strategies:
+// - Navegación: network-first con fallback a /biblia.digital/index.html
+// - CDNs (Google Fonts / Font Awesome): stale-while-revalidate en runtime
+// - Same-origin estáticos: cache-first con write-through
+self.addEventListener('fetch', (event) => {
+  const req = event.request;
+  const url = new URL(req.url);
+
+  // 1) Navegaciones (document)
+  if (req.mode === 'navigate') {
+    event.respondWith(
+      fetch(req).then((res) => {
+        const copy = res.clone();
+        caches.open(CACHE_RUNTIME).then(c => c.put(req, copy));
+        return res;
+      }).catch(async () => {
+        const fallback = await caches.match(`${BASE_PATH}/index.html`);
+        return fallback || new Response('Offline', { status: 503, statusText: 'Offline' });
       })
-  );
+    );
+    return;
+  }
+
+  // 2) CDNs: Google Fonts / Font Awesome
+  const isGoogleFonts = url.hostname.includes('fonts.googleapis.com') || url.hostname.includes('fonts.gstatic.com');
+  const isFontAwesome = url.hostname.includes('cdnjs.cloudflare.com');
+  if (isGoogleFonts || isFontAwesome) {
+    event.respondWith(staleWhileRevalidate(req));
+    return;
+  }
+
+  // 3) Same-origin estáticos
+  if (sameOrigin(req.url)) {
+    event.respondWith(cacheFirst(req));
+    return;
+  }
+
+  // 4) Otros: intenta red, y si falla usa caché si existe
+  event.respondWith(fetch(req).catch(() => caches.match(req)));
 });
+
+// Helpers
+async function staleWhileRevalidate(request) {
+  const cache = await caches.open(CACHE_RUNTIME);
+  const cached = await cache.match(request);
+  const network = fetch(request).then((res) => {
+    if (res && res.status === 200) cache.put(request, res.clone());
+    return res;
+  }).catch(() => undefined);
+  return cached || network || new Response('', { status: 504, statusText: 'Gateway Timeout' });
+}
+
+async function cacheFirst(request) {
+  const cached = await caches.match(request);
+  if (cached) return cached;
+  try {
+    const res = await fetch(request);
+    if (res && res.status === 200) {
+      const cache = await caches.open(CACHE_RUNTIME);
+      cache.put(request, res.clone());
+    }
+    return res;
+  } catch {
+    return cached;
+  }
+}

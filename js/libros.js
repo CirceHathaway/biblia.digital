@@ -35,6 +35,7 @@ export const libros = {
   "Nahúm": "libros/nahum.js",
   "Habacuc": "libros/habacuc.js",
   "Sofonías": "libros/sofonias.js",
+  "Hageo": "libros/hageo.js",
   "Zacarías": "libros/zacarias.js",
   "Malaquías": "libros/malaquias.js",
   // Nuevo Testamento

@@ -3,19 +3,12 @@
   "short_name": "Biblia",
   "description": "Una aplicación web para leer y destacar versículos de la Biblia Reina-Valera 1960",
   "start_url": "/biblia.digital/index.html",
+  "scope": "/biblia.digital/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#4CAF50",
   "icons": [
-  {
-    "src": "/biblia.digital/icons/icon-192x192.png",
-    "sizes": "192x192",
-    "type": "image/png"
-  },
-  {
-    "src": "/biblia.digital/icons/icon-512x512.png",
-    "sizes": "512x512",
-    "type": "image/png"
-  }
-]
+    { "src": "/biblia.digital/icons/icon-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/biblia.digital/icons/icon-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ]
 }

@@ -98,5 +98,17 @@
       document.getElementById('menuItems').classList.toggle('show');
     });
   </script>
+
+  <script>
+    // Registra el SW bajo /biblia.digital/ con el scope correcto (GitHub Pages)
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/biblia.digital/service-worker.js', { scope: '/biblia.digital/' })
+            .then(reg => console.log('SW registrado:', reg.scope))
+            .catch(err => console.error('Error registrando SW:', err));
+        });
+    }
+    </script>
+
 </body>
 </html>

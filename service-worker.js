@@ -1,5 +1,5 @@
 // service-worker.js — FIX offline fallback + CDNs
-const VERSION = 'v38';
+const VERSION = 'v39';
 const CACHE_STATIC  = `biblia-static-${VERSION}`;
 const CACHE_RUNTIME = `biblia-runtime-${VERSION}`;
 

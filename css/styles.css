@@ -117,7 +117,7 @@ header {
   flex-wrap: wrap;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
-  margin-top: 110px;
+  margin-top: 72px;
 }
 
 .dropdown {
@@ -242,17 +242,19 @@ header {
 
 .version-biblia {
   font-weight: bold;
-  padding: 8px 14px;
+  padding: 10px 14px;
   background: #eee;
-  border: 1px solid #000;
+  border: 1.5px solid #000;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
   user-select: none;
+  color: #000;
 }
 
 .version-biblia:hover {
   background: #e6e6e6;
+  transform: scale(1.1);
 }
 
 /* Menú de selección de versión */
@@ -999,7 +1001,7 @@ footer.footer2 {
 
   .version-biblia {
     font-size: 14px;
-    padding: 6px 10px;
+    padding: 8px 12px;
   }
 
   .nav-capitulo {
@@ -1030,7 +1032,7 @@ footer.footer2 {
 
   .version-biblia {
     font-size: 12px;
-    padding: 4px 8px;
+    padding: 7px 8px;
   }
 
   .nav-capitulo {

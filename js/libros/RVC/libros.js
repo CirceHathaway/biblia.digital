@@ -7,7 +7,7 @@ export const libros = {
   "Deuteronomio": "libros/RVC/deuteronomio.js",
   "Josué": "libros/RVC/josue.js",
   "Jueces": "libros/RVC/jueces.js",
-  "Rut": "libros/RVC/ruth.js",
+  "Ruth": "libros/RVC/ruth.js",
   "1 Samuel": "libros/RVC/1_samuel.js",
   "2 Samuel": "libros/RVC/2_samuel.js",
   "1 Reyes": "libros/RVC/1_reyes.js",

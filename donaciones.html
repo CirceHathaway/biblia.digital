@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Donaciones | Mi Biblia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Apoya este proyecto con una donación. Alias y CVU para transferencias." />
+  <meta name="theme-color" content="#4CAF50">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192x192.png" type="image/png">
+
+  <style>
+    /* Estilos específicos de esta página (sin tocar tu CSS global) */
+    .donaciones-main {
+      max-width: 900px;
+      margin: 100px auto 0;     /* despega del header fijo */
+      padding: 20px;
+    }
+    .donaciones-card {
+      background: #333;
+      border: 2px solid #fc6;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+    .donaciones-card h2 {
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 1.8rem;
+      color: #fc6;
+    }
+    .donacion-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #ffffff;
+    }
+    .donacion-row:last-child { border-bottom: none; }
+    .donacion-label {
+      font-weight: 700;
+      color: #fc6;
+      margin-bottom: 4px;
+    }
+    .donacion-value {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      background: #fffef8;
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: #222;
+      word-break: break-word;
+    }
+    .copy-btn {
+      background: rgb(255, 172, 7);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .15s, background-color .2s;
+      min-width: 120px;
+    }
+    .copy-btn:hover { transform: scale(1.03); background-color: rgb(227, 156, 14); }
+    .copy-btn:active { transform: scale(0.98); }
+    .hint {
+      margin-top: 10px;
+      font-size: .95rem;
+      color: #fc6;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .donaciones-main { margin-top: 90px; padding: 16px; }
+      .donaciones-card { padding: 16px; }
+      .donacion-row { grid-template-columns: 1fr; }
+      .copy-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body class="favoritos-page">
+  <!-- Header (igual al de favoritos) -->
+  <header>
+    <div class="top-nav">
+      <h1><a href="index.html">Mi Biblia</a></h1>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú"><i class="fas fa-bars"></i></button>
+      <nav>
+        <ul class="menu-items" id="menuItems">
+          <li><a href="index.html">Biblia</a></li>
+          <li><a href="favorito.html">Favoritos</a></li>
+          <li><a href="devocionales.html">Devocionales</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="https://circehathaway.github.io/radio.digital.nueva.vida/">Música</a></li>
+          <li><a href="donaciones.html">Donaciones</a></li>
+          <li><a id="appLink" href="#app"><span id="appLinkText">Obtener la App</span></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="donaciones-main">
+    <div class="donaciones-card" role="region" aria-labelledby="donaciones-title">
+      <h2 id="donaciones-title">Donaciones</h2>
+
+      <div class="donacion-row">
+        <div>
+          <div class="donacion-label">Alias</div>
+          <div id="aliasText" class="donacion-value" aria-label="Alias de cuenta">gat.esteb.sam.mp</div>
+        </div>
+        <button class="copy-btn" id="copyAlias" aria-label="Copiar alias">
+          <i class="fa-regular fa-copy" aria-hidden="true"></i>&nbsp; Copiar
+        </button>
+      </div>
+
+      <div class="donacion-row">
+        <div>
+          <div class="donacion-label">CVU</div>
+          <div id="cvuText" class="donacion-value" aria-label="CVU de cuenta">0000003100083499376568</div>
+        </div>
+        <button class="copy-btn" id="copyCVU" aria-label="Copiar CVU">
+          <i class="fa-regular fa-copy" aria-hidden="true"></i>&nbsp; Copiar
+        </button>
+      </div>
+
+      <p class="hint">¡Gracias por apoyar este proyecto! 🙌</p>
+
+      <!-- aria-live para anunciar copiado -->
+      <div id="liveRegion" style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;" aria-live="polite"></div>
+    </div>
+  </main>
+
+  <!-- Footer fijo (footer2, como en favoritos) -->
+  <footer class="footer2">
+    <div class="footer-redes">
+      <a href="https://www.facebook.com/profile.php?id=100076584407771" target="_blank" aria-label="Facebook" style="color: #1877F2;"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.instagram.com/radionuevavida19" target="_blank" aria-label="Instagram" style="color: #E1306C;"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.twitch.tv/radiodigitalnuevavida" target="_blank" aria-label="Twitch" style="color: #9146FF;"><i class="fab fa-twitch"></i></a>
+      <a href="https://wa.me/+5491127005824" target="_blank" aria-label="WhatsApp" style="color: #25D366;"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://circehathaway.github.io/radio.digital.nueva.vida/" target="_blank">
+        <img src="images/logo-radio.png" alt="Radio Digital Nueva Vida" class="social-icon">
+      </a>
+      <a href="https://www.youtube.com/@Ecos_de_EsperanzaNV" target="_blank" aria-label="YouTube" style="color: #FF0000;"><i class="fab fa-youtube"></i></a>
+      <a href="https://music.youtube.com/watch?v=l6WYVWeSnis&si=K8mk_Cl2JZkYqUbu" target="_blank" aria-label="YouTube Music" style="color: #FF0000;"><i class="fas fa-music"></i></a>
+      <a href="https://open.spotify.com/intl-es/artist/5p1Ixdpl6I5fFb11MSeVXu?si=1N-_nxbSS1Sx5im_dbIU2w" target="_blank" aria-label="Spotify" style="color: #1DB954;"><i class="fab fa-spotify"></i></a>
+    </div>
+    <div class="footer-info">
+      <span>© 2025 | Mi Biblia</span>
+      <span>Servicio hecho por: <span style="color: red;">CirceHathaway</span></span>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="js/appLink.js"></script>
+  <script>
+    // Menú hamburguesa
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('menuItems').classList.toggle('show');
+    });
+
+    // Utilidad de copiado
+    function copyText(text, btn) {
+      const live = document.getElementById('liveRegion');
+      const originalHTML = btn.innerHTML;
+      const ok = () => {
+        btn.innerHTML = '<i class="fa-solid fa-check" aria-hidden="true"></i>&nbsp; ¡Copiado!';
+        live.textContent = 'Texto copiado al portapapeles';
+        setTimeout(() => (btn.innerHTML = originalHTML), 1500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(ok).catch(fallback);
+      } else {
+        fallback();
+      }
+      function fallback() {
+        const area = document.createElement('textarea');
+        area.value = text;
+        area.setAttribute('readonly', '');
+        area.style.position = 'absolute';
+        area.style.left = '-9999px';
+        document.body.appendChild(area);
+        area.select();
+        try { document.execCommand('copy'); ok(); } catch(e) { alert('No se pudo copiar'); }
+        document.body.removeChild(area);
+      }
+    }
+
+    document.getElementById('copyAlias').addEventListener('click', () => {
+      copyText(document.getElementById('aliasText').textContent.trim(), document.getElementById('copyAlias'));
+    });
+    document.getElementById('copyCVU').addEventListener('click', () => {
+      copyText(document.getElementById('cvuText').textContent.trim(), document.getElementById('copyCVU'));
+    });
+  </script>
+
+  <script>
+    // Service Worker (opcional, mismo patrón que index)
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/biblia.digital/service-worker.js', { scope: '/biblia.digital/' })
+          .then(reg => console.log('SW registrado:', reg.scope))
+          .catch(err => console.error('Error registrando SW:', err));
+      });
+    }
+  </script>
+</body>
+</html>

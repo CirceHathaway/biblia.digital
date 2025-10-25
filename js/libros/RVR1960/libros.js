@@ -65,5 +65,5 @@ export const libros = {
   "2 Juan": "libros/RVR1960/2_juan.js",
   "3 Juan": "libros/RVR1960/3_juan.js",
   "Judas": "libros/RVR1960/judas.js",
-  "Apocalipsis": "libros/apocalipsis.js",
+  "Apocalipsis": "libros/RVR1960/apocalipsis.js",
 };

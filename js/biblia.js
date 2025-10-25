@@ -6,13 +6,19 @@
 const SUPPORTED_VERSIONS = ["RVR1960", "RVC", "NVI"];
 let libros = {}; // { "Génesis": "libros/<VER>/genesis.js", ... }
 
-const versionEl = document.querySelector(".version-biblia");
+function getVersionEl() {
+  // En móvil usamos el del header; en desktop usamos el de la sección
+  const mobileEl  = document.querySelector('#versionSelectorSlot .version-biblia');
+  const desktopEl = document.getElementById('versionBibliaDesktop');
+  return window.matchMedia('(max-width: 768px)').matches ? (mobileEl || desktopEl) : (desktopEl || mobileEl);
+}
 
 // Lee versión desde localStorage o desde el DOM; fallback RVR1960
 function getCurrentVersion() {
-  const dom = (versionEl?.textContent || "").trim();
-  const ls = localStorage.getItem("versionBiblia");
-  const v = ls || dom;
+  const el  = getVersionEl();
+  const dom = (el?.textContent || "").trim();
+  const ls  = localStorage.getItem("versionBiblia");
+  const v   = ls || dom;
   return SUPPORTED_VERSIONS.includes(v) ? v : "RVR1960";
 }
 
@@ -139,19 +145,19 @@ function mostrarVersiculoDelDia() {
 // Selector de versión (mini menú)
 // =====================
 function renderVersionPill(versionActual) {
-  if (!versionEl) return;
-  versionEl.textContent = versionActual;
+  const el = getVersionEl();
+  if (!el) return;
 
-  const container = versionEl.closest('.version-selector') || versionEl.parentElement;
-  let menu = container.querySelector('#versionMenu');
+  el.textContent = versionActual;
+
+  const container = el.closest('.version-selector') || el.parentElement;
+  let menu = container.querySelector('.version-menu'); // <— genérico
   if (!menu) {
     menu = document.createElement('div');
-    menu.id = 'versionMenu';
     menu.className = 'version-menu';
     container.appendChild(menu);
   }
 
-  // Rellena el menú sin estilos inline
   function fillMenu(actual) {
     menu.innerHTML = '';
     SUPPORTED_VERSIONS.forEach(v => {
@@ -160,7 +166,7 @@ function renderVersionPill(versionActual) {
       if (v === actual) btn.classList.add('active');
       btn.addEventListener('click', async () => {
         localStorage.setItem('versionBiblia', v);
-        versionEl.textContent = v;
+        el.textContent = v;
         menu.classList.remove('open');
         await initVersionAndHome();
       });
@@ -170,19 +176,15 @@ function renderVersionPill(versionActual) {
 
   fillMenu(versionActual);
 
-  // Abrir/cerrar
-  versionEl.onclick = (e) => {
+  el.onclick = (e) => {
     e.stopPropagation();
-    // Re-actualiza por si cambió la versión
-    fillMenu(getCurrentVersion());
+    fillMenu(getCurrentVersion()); // refresca activo
     menu.classList.toggle('open');
   };
 
-  // Cerrar haciendo click fuera
+  // Cerrar al clickear fuera
   document.addEventListener('click', (ev) => {
-    if (!container.contains(ev.target)) {
-      menu.classList.remove('open');
-    }
+    if (!container.contains(ev.target)) menu.classList.remove('open');
   });
 }
 
@@ -674,3 +676,178 @@ if ('serviceWorker' in navigator) {
       .catch(err => console.log('SW error:', err));
   });
 }
+
+/*                                                             */
+/*                       JS PARA CELULAR                       */
+/*                                                             */
+
+// ====== MODO MÓVIL/TABLET ======
+const isMobileLike = window.matchMedia('(max-width: 768px)').matches;
+
+// Elementos del header y modal móvil
+const bibleBtn = document.getElementById('bibleBtn');
+const currentRefEl = document.getElementById('current-ref');
+const selectorModal = document.getElementById('selector-modal');
+const selectorBackBtn = document.getElementById('selector-back');
+const selectorTitle = document.getElementById('selector-title');
+const selectorSearchWrap = document.getElementById('selector-search-wrap');
+const selectorSearchInput = document.getElementById('selector-search');
+const selectorBody = document.getElementById('selector-body');
+
+// Estado de navegación del modal
+let mobileState = 'libros'; // 'libros' | 'capitulos' | 'versiculos'
+let mobileLibroActual = null;
+let mobileCapIndex = 0;
+
+// Actualiza la referencia visible en la barra ("Génesis 1")
+function updateCurrentRef() {
+  if (!isMobileLike) return;
+  const cap = (capituloSelectIndex || 0) + 1;
+  currentRefEl.textContent = `${libroActual || 'Mi Biblia'} ${cap || ''}`.trim();
+}
+
+// Hookear a tus funciones existentes para refrescar la ref
+const _mostrarCapitulo_original = mostrarCapitulo;
+mostrarCapitulo = function(index) {
+  _mostrarCapitulo_original(index);
+  updateCurrentRef();
+};
+
+// Abrir/cerrar modal
+function openSelectorModal() {
+  selectorModal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  mobileShowLibros();
+  selectorSearchInput.value = '';
+}
+
+function closeSelectorModal() {
+  selectorModal.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+// Render: LIBROS
+function mobileShowLibros() {
+  mobileState = 'libros';
+  selectorTitle.textContent = 'Mi Biblia';
+  selectorSearchWrap.style.display = 'block';
+  selectorBody.innerHTML = '';
+
+  // Construimos la lista de libros a partir de "libros" (importado)
+  const all = Object.keys(libros);
+  const frag = document.createDocumentFragment();
+
+  const renderList = (items) => {
+    selectorBody.innerHTML = '';
+    items.forEach(nombre => {
+      const item = document.createElement('div');
+      item.className = 'selector-item';
+      item.textContent = nombre;
+      item.addEventListener('click', async () => {
+        await mobileShowCapitulos(nombre);
+      });
+      selectorBody.appendChild(item);
+    });
+  };
+
+  // Búsqueda
+  selectorSearchInput.oninput = () => {
+    const q = selectorSearchInput.value.trim().toLowerCase();
+    const filtered = all.filter(n => n.toLowerCase().includes(q));
+    renderList(filtered);
+  };
+
+  renderList(all);
+}
+
+// Render: CAPÍTULOS
+async function mobileShowCapitulos(nombreLibro) {
+  mobileState = 'capitulos';
+  selectorTitle.textContent = nombreLibro;
+  selectorSearchWrap.style.display = 'none';
+  selectorBody.innerHTML = '';
+
+  // Cargamos usando tu misma lógica
+  const ruta = libros[nombreLibro];
+  const modulo = await import(`./${ruta}`);
+  const caps = modulo.default;
+
+  // Guardamos en estado global para mantener consistencia
+  capitulos = caps;
+  libroActual = nombreLibro;
+
+  const grid = document.createElement('div');
+  grid.className = 'selector-grid';
+
+  caps.forEach((_, index) => {
+    const cell = document.createElement('div');
+    cell.className = 'selector-cell';
+    cell.textContent = index + 1;
+    cell.addEventListener('click', () => {
+      mobileCapIndex = index;
+      mobileShowVersiculos(nombreLibro, index);
+    });
+    grid.appendChild(cell);
+  });
+
+  selectorBody.appendChild(grid);
+}
+
+// Render: VERSÍCULOS
+function mobileShowVersiculos(nombreLibro, capIndex) {
+  mobileState = 'versiculos';
+  selectorTitle.textContent = `${nombreLibro} ${capIndex + 1}`;
+  selectorSearchWrap.style.display = 'none';
+  selectorBody.innerHTML = '';
+
+  const vers = capitulos[capIndex] || [];
+  const grid = document.createElement('div');
+  grid.className = 'selector-grid';
+
+  vers.forEach((_, i) => {
+    const cell = document.createElement('div');
+    cell.className = 'selector-cell';
+    cell.textContent = i + 1;
+    cell.addEventListener('click', () => {
+      // Al elegir versículo: cerramos modal y mostramos en la vista
+      capituloSelectIndex = capIndex;
+      versiculoSelectIndex = i;
+      _mostrarCapitulo_original(capIndex); // pinto capítulo
+      mostrarVersiculo(capIndex, i);       // scrolleo y resalto
+      closeSelectorModal();
+      updateCurrentRef();
+    });
+    grid.appendChild(cell);
+  });
+
+  selectorBody.appendChild(grid);
+}
+
+// Botón Biblia abre modal en móvil
+if (isMobileLike && bibleBtn) {
+  bibleBtn.addEventListener('click', openSelectorModal);
+}
+
+// Botón back del modal
+if (isMobileLike && selectorBackBtn) {
+  selectorBackBtn.addEventListener('click', () => {
+    if (mobileState === 'versiculos') {
+      mobileShowCapitulos(libroActual);
+    } else if (mobileState === 'capitulos') {
+      mobileShowLibros();
+    } else {
+      closeSelectorModal();
+    }
+  });
+}
+
+// Cerrar modal con ESC
+document.addEventListener('keydown', (e) => {
+  if (!isMobileLike) return;
+  if (e.key === 'Escape' && selectorModal.classList.contains('show')) {
+    closeSelectorModal();
+  }
+});
+
+// Inicializar ref visual al cargar primer capítulo
+updateCurrentRef();

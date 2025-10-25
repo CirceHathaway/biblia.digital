@@ -5,35 +5,78 @@
   <title>Biblia Reina-Valera 1960</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Una Biblia digital interactiva con modo offline y funciones de destacar y compartir versículos.">
-  <!-- Agregar meta tag para tema de la PWA -->
   <meta name="theme-color" content="#4CAF50">
   <link rel="stylesheet" href="css/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-  <!-- Iconos de Redes Sociales -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <!-- Vincular el manifest.json -->
+  <!-- PWA -->
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" href="./icons/icon-192x192.png" type="image/png">
 </head>
-<body> <!-- Agregamos una clase para identificar esta página -->
+<body>
   <!-- Encabezado -->
   <header>
     <div class="top-nav">
-      <h1><a href="index.html">Mi Biblia</a></h1>
-      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+      <!-- Botón Biblia (móvil/tablet) -->
+      <button id="bibleBtn" class="bible-btn" aria-label="Abrir selector de libros">
+        <i class="fa-solid fa-book-bible" aria-hidden="true"></i>
+      </button>
+
+      <!-- Título (escritorio) -->
+      <h1 class="desktop-only"><a href="index.html">Mi Biblia</a></h1>
+
+      <!-- Selector de versión centrado en móvil/tablet -->
+      <div id="versionSelectorSlot" class="version-slot">
+        <div class="version-selector">
+          <div class="version-biblia" id="versionBiblia" title="Cambiar versión">RVR1960</div>
+          <div class="version-menu" id="versionMenu"></div>
+        </div>
+      </div>
+
+      <!-- Menú hamburguesa -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Menú"><i class="fas fa-bars"></i></button>
+
+      <!-- Menú principal -->
       <nav>
         <ul class="menu-items" id="menuItems">
-          <li><a href="index.html">Inicio</a></li>
           <li><a href="favorito.html">Favoritos</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
           <li><a href="devocionales.html">Devocionales</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+          <li><a href="https://circehathaway.github.io/radio.digital.nueva.vida/">Música</a></li>
+          <li><a href="donaciones.html">Donaciones</a></li>
           <li><a id="appLink" href="#app"><span id="appLinkText">Obtener la App</span></a></li>
         </ul>
       </nav>
     </div>
+
+    <!-- Barra con la referencia actual (móvil/tablet) -->
+    <div class="current-ref-wrap">
+      <div id="current-ref">Génesis 1</div>
+    </div>
   </header>
 
-  <!-- Sección de selección -->
+  <!-- Modal selector móvil/tablet -->
+  <div id="selector-modal" class="selector-modal" aria-hidden="true">
+    <div class="selector-modal-inner">
+      <div class="selector-modal-header">
+        <button id="selector-back" class="selector-back" aria-label="Volver">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <h2 id="selector-title">Mi Biblia</h2>
+      </div>
+
+      <!-- Buscador (visible en vista de libros) -->
+      <div id="selector-search-wrap" class="selector-search-wrap">
+        <input id="selector-search" type="text" placeholder="Buscar libros..." />
+      </div>
+
+      <!-- Contenido dinámico (libros / capítulos / versículos) -->
+      <div id="selector-body" class="selector-body"></div>
+    </div>
+  </div>
+
+  <!-- Sección de selección (se mantiene para escritorio, se oculta en móvil por CSS) -->
   <section class="busqueda-centrada">
     <!-- Selector unificado -->
     <div class="dropdown" id="selector-libro">
@@ -41,10 +84,10 @@
       <div class="dropdown-content" id="selector-content"></div>
     </div>
 
-    <!-- Versión de la Biblia -->
-    <div class="version-selector">
-      <div class="version-biblia" id="versionBiblia" title="Cambiar versión">RVR1960</div>
-      <div class="version-menu" id="versionMenu"></div>
+    <!-- Versión de la Biblia (escritorio) -->
+    <div class="version-selector desktop-only">
+      <div class="version-biblia" id="versionBibliaDesktop" title="Cambiar versión">RVR1960</div>
+      <div class="version-menu" id="versionMenuDesktop"></div>
     </div>
 
     <!-- Botón A+ -->
@@ -80,10 +123,10 @@
     </div>
   </footer>
 
-  <!-- Script principal -->
+  <!-- Scripts -->
   <script type="module" src="js/biblia.js"></script>
-  <!-- Compartir App -->
   <script type="module" src="js/appLink.js"></script>
+
   <script>
     // Mostrar/ocultar menú hamburguesa en celular
     document.getElementById('menuToggle').addEventListener('click', () => {
@@ -101,6 +144,5 @@
       });
     }
   </script>
-
 </body>
 </html>

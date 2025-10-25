@@ -16,6 +16,17 @@ body {
   touch-action: pan-y;
 }
 
+/* Helpers de visibilidad */
+.desktop-only { display: block; }   /* visible por defecto (escritorio) */
+.mobile-only  { display: none; }    /* por si querés marcar algo solo-móvil */
+
+/* El selector de versión del header: oculto por defecto (solo móvil) */
+.version-slot {
+  flex: 1;
+  display: none;           /* <— clave: NO mostrar en desktop */
+  justify-content: center;
+}
+
 /* === Header fijo === */
 header {
   position: fixed;
@@ -914,6 +925,17 @@ footer.footer2 {
 
   main { padding-bottom: 20px; }
   .chapter-grid { grid-template-columns: repeat(3, 1fr); }
+
+  /* Ocultar cosas “solo escritorio” en móvil */
+  .desktop-only { display: none !important; }
+
+  /* Mostrar el selector de versión centrado en el header SOLO en móvil */
+  .version-slot { display: flex !important; }
+
+  /* Ya lo tenías, lo dejo para el contexto */
+  .bible-btn { display: inline-flex; }
+  .current-ref-wrap { display: block; }
+  .busqueda-centrada { display: none !important; }
 }
 
 /* Media query para pantallas más pequeñas (max-width: 480px) */
@@ -953,5 +975,200 @@ footer.footer2 {
   .botones-ventana {
     flex-direction: column;
     gap: 0.375rem;
+  }
+}
+
+/*                                                             */
+/*                       CSS PARA CELULAR                      */
+/*                                                             */
+
+/* ====== Header móvil: botón biblia y centro versión ====== */
+.bible-btn {
+  display: none; /* visible solo móvil */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.bible-btn i { color: #fff; font-size: 18px; }
+
+.version-slot {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.current-ref-wrap {
+  display: none; /* visible solo móvil */
+  background: #f8f8f8;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 8px 12px;
+}
+#current-ref {
+  text-align: center;
+  font-weight: 600;
+}
+
+/* ====== Modal selector móvil ====== */
+.selector-modal {
+  display: none; /* JS la muestra */
+  position: fixed;
+  inset: 0;
+  background: #333;
+  z-index: 2000;
+}
+.selector-modal.show { display: block; }
+
+.selector-modal-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.selector-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  background: #333;
+}
+
+/* Flecha de volver "<-" (FontAwesome) */
+.selector-back {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fc6;
+}
+
+/* Opcional: pequeño feedback al pasar o focusear */
+.selector-back:hover,
+.selector-back:focus {
+  opacity: 0.9;
+}
+
+/* Título del modal: "Mi Biblia", "Génesis 1", etc. */
+#selector-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fc6;
+}
+
+.selector-search-wrap {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+#selector-search {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background:#fff;
+  color:#000;
+}
+
+#selector-search::placeholder { 
+  color:#000; 
+}
+
+/* Contenedor lista / grids */
+.selector-body {
+  padding: 10px 12px 80px;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  background:#333;
+}
+
+.selector-item {
+  padding: 10px 6px;
+  color:#f5f5f5;
+  border-bottom: 1px solid rgba(255,255,255,0.75);
+  cursor: pointer;
+}
+
+.selector-item:hover { 
+  background:#3d3d3d; 
+}
+
+.selector-item:last-child { border-bottom: none; }
+
+/* Reusar tu grid de capítulos en el modal */
+.selector-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.selector-grid .selector-cell {
+  padding: 12px 0;
+  text-align: center;
+  background-color: #3b3b3b;
+  border:1px solid #4b4b4b;
+  color:#fff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s;
+}
+.selector-grid .selector-cell:hover {
+  background-color: #4a4a4a;
+  transform: scale(1.03);
+}
+
+/* ====== Ajustes móviles/tablets ====== */
+@media (max-width: 768px) {
+
+  /* Mostrar botón biblia y ref actual, ocultar sección original de búsqueda */
+  .bible-btn { display: inline-flex; }
+  .current-ref-wrap { display: block; }
+  .busqueda-centrada { display: none !important; }
+
+  /* Centrar y compactar el selector de versión */
+  .version-slot .version-biblia {
+    cursor: pointer;
+    user-select: none;
+  }
+  .version-slot .version-biblia:hover {
+    background: #e6e6e6;
+  }
+
+  /* Reubicar el botón A+ cerca del botón de navegación derecha */
+  #aumentarLetra {
+    position: fixed;
+    bottom: 178px; /* un poco por encima del botón derecho */
+    right: 25px;
+    z-index: 1002;
+  }
+
+  /* Ajustar grid en el modal */
+  .selector-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .selector-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Forzar que el selector de versión del HEADER no se vea en escritorio */
+@media (min-width: 769px) {
+  header .version-slot { 
+    display: none !important;
+  }
+}
+
+/* Mostrarlo sólo en móvil/tablet */
+@media (max-width: 768px) {
+  header .version-slot {
+    display: flex !important;
   }
 }

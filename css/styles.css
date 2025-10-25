@@ -318,7 +318,9 @@ header {
 .version-menu {
   position: absolute;
   top: 110%;
-  right: 0;
+  left: 50%;
+  right: auto;
+  transform: translateX(-50%);
   background: #333;              /* FONDO OSCURO */
   border: 1px solid #555;        /* borde suave para dark */
   border-radius: 10px;
@@ -879,6 +881,9 @@ footer.footer2 {
     max-width: 700px;    /* por si querés limitar el máximo */
     padding: 14px;       /* un poco más de padding */
     max-height: 70vh;    /* más alto hacia abajo en PC */
+    left: auto;
+    right: 0;
+    transform: none;
   }
 
   .version-menu button {

@@ -1,8 +1,39 @@
 // js/biblia.js
 
-// ⚠️ Ya no importamos un libros.js fijo. Se carga dinámicamente según versión.
-// import { libros } from './libros.js';
+// =====================
+// Versiones soportadas e índice por versión
+// =====================
+const SUPPORTED_VERSIONS = ["RVR1960", "RVC", "NVI"];
+let libros = {}; // { "Génesis": "libros/<VER>/genesis.js", ... }
 
+const versionEl = document.querySelector(".version-biblia");
+
+// Lee versión desde localStorage o desde el DOM; fallback RVR1960
+function getCurrentVersion() {
+  const dom = (versionEl?.textContent || "").trim();
+  const ls = localStorage.getItem("versionBiblia");
+  const v = ls || dom;
+  return SUPPORTED_VERSIONS.includes(v) ? v : "RVR1960";
+}
+
+// Carga el índice de libros de la versión (nueva convención de rutas)
+async function loadLibros(version) {
+  try {
+    // Ahora todas usan js/libros/<VERSION>/libros.js
+    const mod = await import(`./libros/${version}/libros.js`);
+    libros = mod.libros || mod.default || {};
+    if (!libros || !Object.keys(libros).length) {
+      throw new Error(`Mapa de libros vacío para ${version}`);
+    }
+  } catch (e) {
+    console.error(`[biblia] No se pudo cargar js/libros/${version}/libros.js`, e);
+    libros = {};
+  }
+}
+
+// =====================
+// Referencias UI y estado
+// =====================
 const dropdown = document.getElementById("selector-libro");
 const dropdownToggle = document.getElementById("selector-toggle");
 const dropdownContent = document.getElementById("selector-content");
@@ -10,7 +41,6 @@ const versiculosDiv = document.getElementById("versiculos");
 const btnAumentar = document.getElementById("aumentarLetra");
 const btnAnterior = document.getElementById("anteriorCapitulo");
 const btnSiguiente = document.getElementById("siguienteCapitulo");
-const versionEl = document.querySelector(".version-biblia");
 
 let libroActual = null;
 let capitulos = [];
@@ -19,65 +49,19 @@ let versiculoSelectIndex = 0;
 let fontSize = 18;
 let estadoSelector = "libros";
 let libroSeleccionado = "";
+
 let pressTimer;
 let mouseMoved = false;
-let touchMoved = false;
-
-// Nuevo: mapa dinámico de libros según versión
-let librosMap = {};
-
-const VERSIONES_SOPORTADAS = ["RVR1960", "RVC", "NVI"];
-
-function getVersionInicial() {
-  // prioridad: localStorage → HTML (.version-biblia) → RVR1960
-  const guardada = localStorage.getItem("versionBiblia");
-  if (guardada && VERSIONES_SOPORTADAS.includes(guardada)) return guardada;
-  const delHTML = (versionEl?.textContent || "").trim();
-  if (VERSIONES_SOPORTADAS.includes(delHTML)) return delHTML;
-  return "RVR1960";
-}
-
-async function cargarLibrosDeVersion(version) {
-  // Seteo visual + persistencia
-  if (versionEl) versionEl.textContent = version;
-  localStorage.setItem("versionBiblia", version);
-
-  // Cargar el index de libros de la versión
-  // Estructura esperada: js/libros/<VERSION>/libros.js exporta { libros }
-  const modulo = await import(`./libros/${version}/libros.js`);
-  librosMap = modulo.libros || {};
-
-  // Si ya había un libro seleccionado que no existe en esta versión,
-  // limpiamos selección
-  if (libroSeleccionado && !librosMap[libroSeleccionado]) {
-    libroSeleccionado = "";
-  }
-
-  // Cargar Génesis 1 por defecto si existe en la versión
-  if (librosMap["Génesis"]) {
-    await cargarCapituloInicial();
-  } else {
-    versiculosDiv.innerHTML = `<p style="padding:1rem;">No hay libros disponibles aún para ${version}.</p>`;
-  }
-}
-
-async function cargarCapituloInicial() {
-  const ruta = librosMap["Génesis"];
-  const modulo = await import(`./${ruta}`);
-  capitulos = modulo.default;
-  libroActual = "Génesis";
-  capituloSelectIndex = 0;
-  versiculoSelectIndex = 0;
-  mostrarCapitulo(0);
-  dropdownToggle.textContent = "Libro";
-}
-
 const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-// === Versículos destacados (sin cambios) ===
-const versiculosDestacados = [/* ... tu gran array intacto aquí ... */];
+// =====================
+// Versículo del día (TU lista original intacta)
+// =====================
+// Pega aquí tu const versiculosDestacados = [ ... ] completa, sin cambios:
+const versiculosDestacados = [
+  // ... TU LISTA LARGA ORIGINAL AQUÍ ...
+];
 
-// Obtener o generar un identificador único por dispositivo
 function obtenerIdentificadorDispositivo() {
   let idDispositivo = localStorage.getItem('deviceId');
   if (!idDispositivo) {
@@ -86,19 +70,16 @@ function obtenerIdentificadorDispositivo() {
   }
   return idDispositivo;
 }
-
-// Extensión de String para hashCode (simplificado)
 String.prototype.hashCode = function() {
   let hash = 0;
   if (this.length === 0) return hash;
   for (let i = 0; i < this.length; i++) {
     const char = this.charCodeAt(i);
     hash = ((hash << 5) - hash) + char;
-    hash = hash & hash;
+    hash |= 0;
   }
   return hash;
 };
-
 function obtenerVersiculoDelDia() {
   const hoy = new Date().toISOString().split('T')[0];
   const idDispositivo = obtenerIdentificadorDispositivo();
@@ -106,56 +87,116 @@ function obtenerVersiculoDelDia() {
   const indice = Math.abs(semilla) % versiculosDestacados.length;
   return versiculosDestacados[indice];
 }
-
 function mostrarVersiculoDelDia() {
   const hoy = new Date().toISOString().split('T')[0];
   const ultimaVisita = localStorage.getItem('lastVisitDate');
+  if (ultimaVisita === hoy) return;
 
-  if (ultimaVisita !== hoy) {
-    const versiculo = obtenerVersiculoDelDia();
-    const ventana = document.createElement('div');
-    ventana.className = 'versiculo-dia';
+  const versiculo = obtenerVersiculoDelDia();
+  const ventana = document.createElement('div');
+  ventana.className = 'versiculo-dia';
 
-    const palabras = versiculo.texto.split(' ');
-    const mitad = Math.ceil(palabras.length / 2);
-    const linea1 = palabras.slice(0, mitad).join(' ');
-    const linea2 = palabras.slice(mitad).join(' ');
+  const palabras = versiculo.texto.split(' ');
+  const mitad = Math.ceil(palabras.length / 2);
+  const linea1 = palabras.slice(0, mitad).join(' ');
+  const linea2 = palabras.slice(mitad).join(' ');
 
-    ventana.innerHTML = `
-      <div class="contenido">
-        <h3>Versículo del día</h3>
-        <p class="texto-versiculo">${linea1}<br>${linea2}</p>
-        <p class="referencia">${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo}</p>
-        <div class="botones">
-          <button id="btn-compartir-dia">Compartir</button>
-          <button id="btn-copiar-dia">Copiar</button>
-          <button id="btn-cerrar-dia">Cerrar</button>
-        </div>
+  ventana.innerHTML = `
+    <div class="contenido">
+      <h3>Versículo del día</h3>
+      <p class="texto-versiculo">${linea1}<br>${linea2}</p>
+      <p class="referencia">${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo}</p>
+      <div class="botones">
+        <button id="btn-compartir-dia">Compartir</button>
+        <button id="btn-copiar-dia">Copiar</button>
+        <button id="btn-cerrar-dia">Cerrar</button>
       </div>
-    `;
-    document.body.appendChild(ventana);
+    </div>
+  `;
+  document.body.appendChild(ventana);
 
-    document.getElementById('btn-compartir-dia').addEventListener('click', () => {
-      compartirVersiculoComoImagen(versiculo.libro, versiculo.capitulo, versiculo.versiculo, versiculo.texto, true);
-      localStorage.setItem('lastVisitDate', hoy);
-      document.body.removeChild(ventana);
-    });
+  document.getElementById('btn-compartir-dia').addEventListener('click', () => {
+    compartirVersiculoComoImagen(versiculo.libro, versiculo.capitulo, versiculo.versiculo, versiculo.texto, true);
+    localStorage.setItem('lastVisitDate', hoy);
+    document.body.removeChild(ventana);
+  });
 
-    document.getElementById('btn-copiar-dia').addEventListener('click', () => {
-      const texto = `${versiculo.texto} (${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo})`;
-      navigator.clipboard.writeText(texto).catch(err => {
-        console.error('Error al copiar texto:', err);
-        alert('No se pudo copiar el texto');
-      });
+  document.getElementById('btn-copiar-dia').addEventListener('click', () => {
+    const texto = `${versiculo.texto} (${versiculo.libro} ${versiculo.capitulo}:${versiculo.versiculo})`;
+    navigator.clipboard.writeText(texto).catch(err => {
+      console.error('Error al copiar texto:', err);
+      alert('No se pudo copiar el texto');
     });
+  });
 
-    document.getElementById('btn-cerrar-dia').addEventListener('click', () => {
-      localStorage.setItem('lastVisitDate', hoy);
-      document.body.removeChild(ventana);
-    });
-  }
+  document.getElementById('btn-cerrar-dia').addEventListener('click', () => {
+    localStorage.setItem('lastVisitDate', hoy);
+    document.body.removeChild(ventana);
+  });
 }
 
+// =====================
+// Selector de versión (mini menú)
+// =====================
+function renderVersionPill(versionActual) {
+  if (!versionEl) return;
+  versionEl.textContent = versionActual;
+  versionEl.onclick = null;
+
+  versionEl.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const existing = document.getElementById("version-menu");
+    if (existing) existing.remove();
+
+    const menu = document.createElement("div");
+    menu.id = "version-menu";
+    menu.style.position = "absolute";
+    const rect = versionEl.getBoundingClientRect();
+    menu.style.top = (window.scrollY + rect.bottom + 8) + "px";
+    menu.style.left = (window.scrollX + rect.left) + "px";
+    menu.style.background = "#fff";
+    menu.style.border = "1px solid #ccc";
+    menu.style.borderRadius = "6px";
+    menu.style.boxShadow = "0 4px 10px rgba(0,0,0,.15)";
+    menu.style.zIndex = "2000";
+    menu.style.minWidth = "160px";
+    menu.style.overflow = "hidden";
+
+    SUPPORTED_VERSIONS.forEach(v => {
+      const item = document.createElement("button");
+      item.textContent = v;
+      item.style.display = "block";
+      item.style.width = "100%";
+      item.style.textAlign = "left";
+      item.style.padding = "8px 12px";
+      item.style.border = "none";
+      item.style.background = v === versionActual ? "#eee" : "#fff";
+      item.style.cursor = "pointer";
+      item.addEventListener("click", async () => {
+        localStorage.setItem("versionBiblia", v);
+        menu.remove();
+        await initVersionAndHome();
+      });
+      item.addEventListener("mouseover", () => item.style.background = "#f5f5f5");
+      item.addEventListener("mouseout", () => item.style.background = (v === versionActual ? "#eee" : "#fff"));
+      menu.appendChild(item);
+    });
+
+    document.body.appendChild(menu);
+
+    const close = (ev) => {
+      if (!menu.contains(ev.target) && ev.target !== versionEl) {
+        document.removeEventListener("click", close);
+        menu.remove();
+      }
+    };
+    setTimeout(() => document.addEventListener("click", close), 0);
+  });
+}
+
+// =====================
+// Selector Libros / Capítulos / Versículos
+// =====================
 function crearInputBusqueda() {
   const input = document.createElement("input");
   input.type = "text";
@@ -196,8 +237,7 @@ function cargarLibros() {
   dropdownToggle.textContent = "Libro";
   const inputBusqueda = crearInputBusqueda();
   dropdownContent.appendChild(inputBusqueda);
-
-  Object.keys(librosMap).forEach(nombre => {
+  Object.keys(libros).forEach(nombre => {
     const opcion = document.createElement("div");
     opcion.className = "dropdown-option";
     opcion.textContent = nombre;
@@ -213,35 +253,42 @@ function cargarLibros() {
 }
 
 async function cargarCapitulos(nombreLibro) {
-  const ruta = librosMap[nombreLibro];
-  if (!ruta) return;
-  const modulo = await import(`./${ruta}`);
-  capitulos = modulo.default;
-  libroActual = nombreLibro;
-  capituloSelectIndex = 0;
-  estadoSelector = "capitulos";
-  dropdownToggle.textContent = "Capítulo";
-  dropdownContent.innerHTML = '';
-  const grid = document.createElement("div");
-  grid.className = "chapter-grid";
-  capitulos.forEach((_, index) => {
-    const btn = document.createElement("div");
-    btn.className = "chapter-item";
-    btn.textContent = index + 1;
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      capituloSelectIndex = index;
-      dropdownToggle.textContent = `Capítulo ${index + 1}`;
-      mostrarCapitulo(index);
-      cargarVersiculos(index);
-      setTimeout(() => {
-        dropdown.classList.add("open");
-      }, 0);
+  try {
+    const ruta = libros[nombreLibro];
+    if (!ruta) throw new Error("Ruta no encontrada para libro: " + nombreLibro);
+    const modulo = await import(`./${ruta}`); // rutas del índice son relativas a /js
+    capitulos = modulo.default || modulo.capitulos || [];
+    if (!Array.isArray(capitulos) || !capitulos.length) {
+      throw new Error("Lista de capítulos vacía en " + ruta);
+    }
+    libroActual = nombreLibro;
+    capituloSelectIndex = 0;
+    estadoSelector = "capitulos";
+    dropdownToggle.textContent = "Capítulo";
+    dropdownContent.innerHTML = '';
+
+    const grid = document.createElement("div");
+    grid.className = "chapter-grid";
+    capitulos.forEach((_, index) => {
+      const btn = document.createElement("div");
+      btn.className = "chapter-item";
+      btn.textContent = index + 1;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        capituloSelectIndex = index;
+        dropdownToggle.textContent = `Capítulo ${index + 1}`;
+        mostrarCapitulo(index);
+        cargarVersiculos(index);
+        setTimeout(() => dropdown.classList.add("open"), 0);
+      });
+      grid.appendChild(btn);
     });
-    grid.appendChild(btn);
-  });
-  dropdownContent.appendChild(grid);
-  agregarBotonVolver("libros");
+    dropdownContent.appendChild(grid);
+    agregarBotonVolver("libros");
+  } catch (e) {
+    console.error("[biblia] cargarCapitulos:", e);
+    versiculosDiv.innerHTML = `<p style="color:#b00">No se pudo cargar <strong>${nombreLibro}</strong>. Ver consola.</p>`;
+  }
 }
 
 function cargarVersiculos(indexCapitulo) {
@@ -296,18 +343,12 @@ function mostrarCapitulo(index) {
         startY = e.touches[0].clientY;
         moved = false;
         pressTimer = setTimeout(() => {
-          if (!moved) {
-            mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
-          }
+          if (!moved) mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
         }, 500);
       });
       versiculoDiv.addEventListener('touchmove', (e) => {
-        const currentY = e.touches[0].clientY;
-        const diffY = Math.abs(currentY - startY);
-        if (diffY > 10) {
-          moved = true;
-          clearTimeout(pressTimer);
-        }
+        const diffY = Math.abs(e.touches[0].clientY - startY);
+        if (diffY > 10) { moved = true; clearTimeout(pressTimer); }
       });
       versiculoDiv.addEventListener('touchend', () => clearTimeout(pressTimer));
     } else {
@@ -315,15 +356,10 @@ function mostrarCapitulo(index) {
         e.preventDefault();
         mouseMoved = false;
         pressTimer = setTimeout(() => {
-          if (!mouseMoved) {
-            mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
-          }
+          if (!mouseMoved) mostrarVentanaDestacar(libroActual, index + 1, i + 1, verso, versiculoDiv);
         }, 500);
       });
-      versiculoDiv.addEventListener('mousemove', () => {
-        mouseMoved = true;
-        clearTimeout(pressTimer);
-      });
+      versiculoDiv.addEventListener('mousemove', () => { mouseMoved = true; clearTimeout(pressTimer); });
       versiculoDiv.addEventListener('mouseup', () => clearTimeout(pressTimer));
       versiculoDiv.addEventListener('contextmenu', (e) => e.preventDefault());
     }
@@ -333,6 +369,9 @@ function mostrarCapitulo(index) {
   cargarResaltados();
 }
 
+// =====================
+// Compartir como imagen
+// =====================
 async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, esVersiculoDelDia = false) {
   const canvas = document.createElement('canvas');
   canvas.width = 940;
@@ -341,19 +380,17 @@ async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, e
 
   const fondo = new Image();
   fondo.src = esVersiculoDelDia ? 'images/background-versiculo-dia.jpg' : 'images/background-versiculo.jpg';
-  await new Promise(resolve => fondo.onload = resolve);
+  await new Promise(resolve => { fondo.onload = resolve; fondo.onerror = resolve; });
   ctx.drawImage(fondo, 0, 0, 940, 788);
 
-  await document.fonts.load('32px "PT Serif"');
+  try { await document.fonts.load('32px "PT Serif"'); } catch {}
 
   const fontFamily = '"PT Serif", serif';
   ctx.fillStyle = '#000000';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
 
-  ctx.font = `32px ${fontFamily}`;
   const referencia = `${libro} ${capitulo}:${versiculoNumero}`;
-  const referenciaWidth = ctx.measureText(referencia).width;
 
   ctx.font = `28px ${fontFamily}`;
   const maxWidth = 800;
@@ -364,17 +401,16 @@ async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, e
   for (let i = 0; i < words.length; i++) {
     const testLine = line + words[i] + ' ';
     const testWidth = ctx.measureText(testLine).width;
-    if (testWidth > maxWidth && i > 0) {
-      lines.push(line);
-      line = words[i] + ' ';
-    } else {
-      line = testLine;
-    }
+    if (testWidth > maxWidth && i > 0) { lines.push(line.trim()); line = words[i] + ' '; }
+    else { line = testLine; }
   }
-  lines.push(line);
+  lines.push(line.trim());
 
   const paddingX = 40;
   const paddingY = 20;
+  ctx.font = `32px ${fontFamily}`;
+  const referenciaWidth = ctx.measureText(referencia).width;
+  ctx.font = `28px ${fontFamily}`;
   const textWidth = Math.max(referenciaWidth, ...lines.map(l => ctx.measureText(l).width));
   const textHeight = (lines.length + 1) * lineHeight;
   const rectWidth = textWidth + paddingX * 2;
@@ -390,33 +426,22 @@ async function generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, e
   ctx.fillText(referencia, 470, rectY + paddingY + lineHeight / 2);
 
   ctx.font = `28px ${fontFamily}`;
-  lines.forEach((line, i) => {
-    ctx.fillText(line, 470, rectY + paddingY + lineHeight * (i + 1.5));
-  });
+  lines.forEach((l, i) => ctx.fillText(l, 470, rectY + paddingY + lineHeight * (i + 1.5)));
 
-  return new Promise(resolve => {
-    canvas.toBlob(blob => resolve(blob));
-  });
+  return new Promise(resolve => canvas.toBlob(blob => resolve(blob)));
 }
 
 async function compartirVersiculoComoImagen(libro, capitulo, versiculoNumero, texto, esVersiculoDelDia = false) {
   try {
     const blob = await generarImagenVersiculo(libro, capitulo, versiculoNumero, texto, esVersiculoDelDia);
     const file = new File([blob], `versiculo-${libro}-${capitulo}-${versiculoNumero}.png`, { type: 'image/png' });
-
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        files: [file],
-        title: `${libro} ${capitulo}:${versiculoNumero}`,
-        text: 'Comparte este versículo de Mi Biblia',
-      });
+      await navigator.share({ files: [file], title: `${libro} ${capitulo}:${versiculoNumero}`, text: 'Comparte este versículo de Mi Biblia' });
     } else {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = url;
-      a.download = `versiculo-${libro}-${capitulo}-${versiculoNumero}.png`;
-      a.click();
-      URL.revokeObjectURL(url);
+      a.href = url; a.download = `versiculo-${libro}-${capitulo}-${versiculoNumero}.png`;
+      a.click(); URL.revokeObjectURL(url);
       alert('La función de compartir no está soportada. La imagen se ha descargado.');
     }
   } catch (error) {
@@ -425,31 +450,30 @@ async function compartirVersiculoComoImagen(libro, capitulo, versiculoNumero, te
   }
 }
 
+// =====================
+// Destacar / Favoritos
+// =====================
 function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv) {
   const ventana = document.createElement('div');
   ventana.className = 'ventana-destacar';
-
   function aplicarEstilosVentana() {
     ventana.style.position = 'fixed';
-    ventana.style.top = '50%';
-    ventana.style.left = '50%';
-    ventana.style.transform = 'translate(-50%, -50%)';
-    ventana.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    ventana.style.top = '0';
+    ventana.style.left = '0';
     ventana.style.width = '100%';
     ventana.style.height = '100%';
+    ventana.style.backgroundColor = 'rgba(0,0,0,.5)';
     ventana.style.display = 'flex';
     ventana.style.alignItems = 'center';
     ventana.style.justifyContent = 'center';
     ventana.style.zIndex = '1002';
   }
-
   function aplicarEstilosContenido(contenido) {
     contenido.style.backgroundColor = '#fff';
     contenido.style.padding = '1.5rem';
     contenido.style.borderRadius = '0.625rem';
     contenido.style.textAlign = 'center';
   }
-
   function aplicarEstilosBoton(boton, colorFondo) {
     boton.style.backgroundColor = colorFondo;
     boton.style.color = 'white';
@@ -459,7 +483,7 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     boton.style.margin = '0.3125rem';
   }
 
-  function mostrarVistaInicial() {
+  function vistaInicial() {
     ventana.innerHTML = `
       <div class="ventana-contenido">
         <p>¿Qué deseas hacer con este versículo?</p>
@@ -472,7 +496,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
       </div>
     `;
     document.body.appendChild(ventana);
-
     aplicarEstilosVentana();
     const contenido = ventana.querySelector('.ventana-contenido');
     aplicarEstilosContenido(contenido);
@@ -487,36 +510,29 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     aplicarEstilosBoton(btnCopiar, '#ff8000');
     aplicarEstilosBoton(btnCancelar, '#ff4444');
 
-    btnDestacar.addEventListener('click', () => {
-      mostrarVistaColores();
-    });
-
+    btnDestacar.addEventListener('click', vistaColores);
     btnCompartirImagen.addEventListener('click', () => {
       compartirVersiculoComoImagen(libro, capitulo, versiculo, texto);
       document.body.removeChild(ventana);
     });
-
     btnCopiar.addEventListener('click', () => {
       const textoACopiar = `${texto} (${libro} ${capitulo}:${versiculo})`;
       navigator.clipboard.writeText(textoACopiar).then(() => {
         document.body.removeChild(ventana);
       }).catch(err => console.error('Error al copiar:', err));
     });
-
-    btnCancelar.addEventListener('click', () => {
-      document.body.removeChild(ventana);
-    });
+    btnCancelar.addEventListener('click', () => document.body.removeChild(ventana));
   }
 
-  function mostrarVistaColores() {
+  function vistaColores() {
     ventana.innerHTML = `
       <div class="ventana-contenido">
         <p>Elige un color para destacar</p>
         <div class="color-options">
-          <button class="color-btn" data-color="#ffff99" style="background-color: #ffff99;"></button>
-          <button class="color-btn" data-color="#ffcccb" style="background-color: #ffcccb;"></button>
-          <button class="color-btn" data-color="#add8e6" style="background-color: #add8e6;"></button>
-          <button class="color-btn" data-color="#90ee90" style="background-color: #90ee90;"></button>
+          <button class="color-btn" data-color="#ffff99" style="background-color:#ffff99;"></button>
+          <button class="color-btn" data-color="#ffcccb" style="background-color:#ffcccb;"></button>
+          <button class="color-btn" data-color="#add8e6" style="background-color:#add8e6;"></button>
+          <button class="color-btn" data-color="#90ee90" style="background-color:#90ee90;"></button>
         </div>
         <div class="botones-ventana">
           <button id="btn-confirmar">Confirmar</button>
@@ -524,7 +540,6 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
         </div>
       </div>
     `;
-
     aplicarEstilosVentana();
     const contenido = ventana.querySelector('.ventana-contenido');
     aplicarEstilosContenido(contenido);
@@ -550,24 +565,18 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
       guardarFavorito(libro, capitulo, versiculo, texto, colorSeleccionado);
       document.body.removeChild(ventana);
     });
-
-    btnCancelarColores.addEventListener('click', () => {
-      document.body.removeChild(ventana);
-    });
+    btnCancelarColores.addEventListener('click', () => document.body.removeChild(ventana));
   }
 
-  mostrarVistaInicial();
+  vistaInicial();
 }
 
 function destacarVersiculo(versiculoDiv, color) {
   versiculoDiv.style.backgroundColor = color;
 }
-
 function guardarFavorito(libro, capitulo, versiculo, texto, color) {
   let favoritos = JSON.parse(localStorage.getItem('favoritos')) || [];
-  const existe = favoritos.some(fav =>
-    fav.libro === libro && fav.capitulo === capitulo && fav.versiculo === versiculo
-  );
+  const existe = favoritos.some(f => f.libro === libro && f.capitulo === capitulo && f.versiculo === versiculo);
   if (!existe) {
     favoritos.push({ libro, capitulo, versiculo, texto, color });
     localStorage.setItem('favoritos', JSON.stringify(favoritos));
@@ -575,27 +584,23 @@ function guardarFavorito(libro, capitulo, versiculo, texto, color) {
     alert('Este versículo ya está en tus favoritos.');
   }
 }
-
 function mostrarVersiculo(capIndex, versIndex) {
   mostrarCapitulo(capIndex);
   const target = document.getElementById(`vers-${versIndex + 1}`);
   if (target) {
     target.style.backgroundColor = '#ffff99';
-    if (esMovil) {
-      target.parentElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
+    (esMovil ? target.parentElement : target).scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 }
 
-// === UI eventos ===
+// =====================
+// Eventos UI
+// =====================
 dropdownToggle.addEventListener("click", (e) => {
   e.stopPropagation();
   dropdown.classList.toggle("open");
   cargarLibros();
 });
-
 document.addEventListener("click", (e) => {
   if (!dropdown.contains(e.target)) {
     dropdown.classList.remove("open");
@@ -608,7 +613,6 @@ btnAumentar.addEventListener("click", () => {
   fontSize += 2;
   versiculosDiv.style.fontSize = `${fontSize}px`;
 });
-
 btnAnterior.addEventListener("click", () => {
   if (capituloSelectIndex > 0) {
     capituloSelectIndex--;
@@ -618,7 +622,6 @@ btnAnterior.addEventListener("click", () => {
     cargarVersiculos(capituloSelectIndex);
   }
 });
-
 btnSiguiente.addEventListener("click", () => {
   if (capituloSelectIndex < capitulos.length - 1) {
     capituloSelectIndex++;
@@ -629,120 +632,55 @@ btnSiguiente.addEventListener("click", () => {
   }
 });
 
-// === Cambio de versión clickeando en .version-biblia (ciclo) ===
-/*
-if (versionEl) {
-  versionEl.style.cursor = 'pointer';
-  versionEl.addEventListener('click', async () => {
-    const actual = (versionEl.textContent || "").trim();
-    const idx = VERSIONES_SOPORTADAS.indexOf(actual);
-    const siguiente = VERSIONES_SOPORTADAS[(idx + 1) % VERSIONES_SOPORTADAS.length];
-    await cargarLibrosDeVersion(siguiente);
-    // Reabrir selector a LIBROS para refrescar listado
+// =====================
+// Inicio: carga versión y abre cap. inicial
+// =====================
+async function initVersionAndHome() {
+  const version = getCurrentVersion();
+  renderVersionPill(version);
+  await loadLibros(version);
+
+  if (!libros || !Object.keys(libros).length) {
+    versiculosDiv.innerHTML = `<p style="color:#b00">No se pudo cargar el índice de la versión <strong>${version}</strong>.</p>`;
+    return;
+  }
+
+  try {
+    // Preferí “Génesis”, si no existe probá “Genesis”, sino el primer libro del índice
+    let libroInicio = null;
+    if (Object.prototype.hasOwnProperty.call(libros, "Génesis")) libroInicio = "Génesis";
+    else if (Object.prototype.hasOwnProperty.call(libros, "Genesis")) libroInicio = "Genesis";
+    else libroInicio = Object.keys(libros)[0];
+
+    const ruta = libros[libroInicio];
+    const modulo = await import(`./${ruta}`);
+    capitulos = modulo.default || modulo.capitulos || [];
+    if (!Array.isArray(capitulos) || !capitulos.length) {
+      throw new Error("Capítulos vacíos en " + ruta);
+    }
+    libroActual = libroInicio;
+    capituloSelectIndex = 0;
+    versiculoSelectIndex = 0;
+    mostrarCapitulo(0);
     dropdownToggle.textContent = "Libro";
-    estadoSelector = "libros";
-  });
-} */
-
-// === Menú de selección de versión ===
-let versionMenuEl = null;
-let versionWrapperEl = null;
-
-function updateVersionMenuActive(version) {
-  if (!versionMenuEl) return;
-  versionMenuEl.querySelectorAll('button').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.version === version);
-  });
+  } catch (e) {
+    console.error("[biblia] initVersionAndHome:", e);
+    versiculosDiv.innerHTML = `<p style="color:#b00">No se pudo abrir el capítulo inicial. Ver consola.</p>`;
+  }
 }
 
-function closeVersionMenu() {
-  versionMenuEl?.classList.remove('open');
-}
-
-function buildVersionMenu() {
-  if (!versionEl) return;
-
-  // Envolvemos el .version-biblia en un contenedor relativo
-  versionWrapperEl = document.createElement('div');
-  versionWrapperEl.className = 'version-selector';
-  versionEl.parentNode.insertBefore(versionWrapperEl, versionEl);
-  versionWrapperEl.appendChild(versionEl);
-
-  // Accesibilidad básica
-  versionEl.setAttribute('role', 'button');
-  versionEl.setAttribute('tabindex', '0');
-  versionEl.setAttribute('aria-haspopup', 'true');
-  versionEl.setAttribute('aria-expanded', 'false');
-
-  // Menú
-  versionMenuEl = document.createElement('div');
-  versionMenuEl.className = 'version-menu';
-
-  VERSIONES_SOPORTADAS.forEach(v => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.textContent = v;
-    btn.dataset.version = v;
-    btn.addEventListener('click', async () => {
-      await cargarLibrosDeVersion(v);
-      dropdownToggle.textContent = "Libro";
-      estadoSelector = "libros";
-      updateVersionMenuActive(v);
-      versionEl.setAttribute('aria-expanded', 'false');
-      closeVersionMenu();
-    });
-    versionMenuEl.appendChild(btn);
-  });
-
-  versionWrapperEl.appendChild(versionMenuEl);
-
-  // Toggle con click
-  versionEl.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = versionMenuEl.classList.toggle('open');
-    versionEl.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    updateVersionMenuActive((versionEl.textContent || '').trim());
-  });
-
-  // Teclado: Enter/Espacio abre-cierra; Escape cierra
-  versionEl.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      const isOpen = versionMenuEl.classList.toggle('open');
-      versionEl.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      updateVersionMenuActive((versionEl.textContent || '').trim());
-    } else if (e.key === 'Escape') {
-      closeVersionMenu();
-      versionEl.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Cerrar al clicar fuera
-  document.addEventListener('click', (e) => {
-    if (!versionWrapperEl.contains(e.target)) {
-      closeVersionMenu();
-      versionEl.setAttribute('aria-expanded', 'false');
-    }
-  });
-}
-
-// === Boot ===
 document.addEventListener('DOMContentLoaded', async () => {
+  await initVersionAndHome();
   mostrarVersiculoDelDia();
-  const versionInicial = getVersionInicial();
-  await cargarLibrosDeVersion(versionInicial);
-  buildVersionMenu();               // <-- construir menú
-  updateVersionMenuActive(versionInicial);
 });
 
-// === Service Worker ===
+// =====================
+// Service Worker (opcional)
+// =====================
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    const isGhPages = location.hostname.endsWith('github.io');
-    const basePath = isGhPages ? '/biblia.digital/' : '/';
-    const swURL = `${basePath}service-worker.js`;
-    navigator.serviceWorker.register(swURL, { scope: basePath })
-      .then(reg => console.log('Service Worker registrado con éxito:', reg.scope))
-      .catch(error => console.log('Error al registrar el Service Worker:', error));
+    navigator.serviceWorker.register('./service-worker.js')
+      .then(r => console.log('SW OK:', r))
+      .catch(err => console.log('SW error:', err));
   });
 }

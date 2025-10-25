@@ -117,7 +117,7 @@ header {
   flex-wrap: wrap;
   border-top: 1px solid #000000;
   border-bottom: 1px solid #000000;
-  margin-top: 72px;
+  margin-top: 72px; /* separacion del header */
 }
 
 .dropdown {
@@ -153,46 +153,113 @@ header {
   to { opacity: 1; }
 }
 
+/* ===== Tema oscuro para la ventana (libros/capítulos/versículos) ===== */
 .dropdown-content {
   position: absolute;
   top: 110%;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: #333;         /* fondo oscuro */
+  color: #f5f5f5;                 /* texto claro */
   border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid #444;         /* borde sutil */
   max-height: 300px;
   overflow-y: auto;
   padding: 10px;
   display: none;
   z-index: 1001;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }
 
+/* Buscador dentro del dropdown */
 .dropdown-search {
   width: 100%;
   padding: 8px 10px;
   margin-bottom: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #000000;
   border-radius: 6px;
   font-size: 15px;
+  background: #f5f5f5;
+  color: #030303;
+}
+.dropdown-search::placeholder {
+  color: #040404;
 }
 
+/* Opción de la lista (libros) */
 .dropdown-option {
   padding: 8px 12px;
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.2s;
+  color: #f5f5f5;
+  background: transparent;
 }
-
 .dropdown-option:hover {
-  background-color: #f0f0f0;
+  background-color: #444;         /* hover oscuro */
 }
 
 .dropdown-option[role="button"] {
-  background-color: #ddd;
+  background-color: #3a3a3a;
   font-weight: bold;
   text-align: center;
   margin-bottom: 10px;
+  border: 1px solid #4a4a4a;
+}
+.dropdown-option[role="button"]:hover {
+  background-color: #4a4a4a;
+}
+
+/* Scrollbar (webkit) */
+.dropdown-content::-webkit-scrollbar {
+  width: 10px;
+}
+.dropdown-content::-webkit-scrollbar-track {
+  background: #2b2b2b;
+}
+.dropdown-content::-webkit-scrollbar-thumb {
+  background: #4b4b4b;
+  border-radius: 6px;
+}
+.dropdown-content::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
+}
+
+/* === Cuadrícula de capítulos / versículos (tema oscuro) === */
+.chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding-top: 10px;
+}
+.chapter-grid .chapter-item {
+  padding: 12px 0;
+  text-align: center;
+  background-color: #3b3b3b;      /* tarjetas oscuras */
+  border: 1px solid #4b4b4b;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s, transform 0.2s;
+  color: #ffffff;                  /* texto claro */
+}
+.chapter-grid .chapter-item:hover {
+  background-color: #4a4a4a;      /* hover más claro */
+  transform: scale(1.05);
+}
+
+/* Botón "Volver" en el dropdown oscuro */
+.dropdown-back {
+  background: #3a3a3a;
+  color: #f5f5f5;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid #4a4a4a;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+.dropdown-back:hover {
+  background: #4a4a4a;
 }
 
 /* Botón A+ circular */
@@ -216,30 +283,6 @@ header {
   transform: scale(1.1);
 }
 
-/* === Cuadrícula de capítulos === */
-.chapter-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  padding-top: 10px;
-}
-
-.chapter-grid .chapter-item {
-  padding: 12px 0;
-  text-align: center;
-  background-color: #fafafa;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.chapter-grid .chapter-item:hover {
-  background-color: #f0f0f0;
-  transform: scale(1.05);
-}
-
 .version-biblia {
   font-weight: bold;
   padding: 10px 14px;
@@ -251,7 +294,6 @@ header {
   user-select: none;
   color: #000;
 }
-
 .version-biblia:hover {
   background: #e6e6e6;
   transform: scale(1.1);
@@ -262,46 +304,53 @@ header {
   position: relative;
   display: inline-block;
 }
-
 .version-menu {
   position: absolute;
   top: 110%;
   right: 0;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  min-width: 160px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background: #333;              /* FONDO OSCURO */
+  border: 1px solid #555;        /* borde suave para dark */
+  border-radius: 10px;
+  min-width: 260px;              /* más ancho base */
+  max-height: 60vh;              /* más ALTA hacia abajo */
+  overflow-y: auto;              /* scroll si se pasa */
+  box-shadow: 0 10px 22px rgba(0,0,0,0.35);
   display: none;
   z-index: 1100;
-  padding: 6px;
+  padding: 10px;                 /* más “aire” interior */
+  color: #eee;  
 }
 
 .version-menu.open {
   display: block;
-  animation: fadeIn 0.12s ease-in;
+  animation: fadeIn 0.15s ease-in;
 }
 
 .version-menu button {
   display: block;
   width: 100%;
   text-align: left;
-  padding: 8px 10px;
-  margin: 2px 0;
-  background: none;
-  border: none;
-  border-radius: 5px;
+  padding: 12px 14px;            /* botones más grandes */
+  margin: 4px 0;
+  background: transparent;
+  border: 1px solid transparent; /* para hover con borde sutil */
+  border-radius: 8px;
   cursor: pointer;
   font: inherit;
+  color: #eee;                   /* texto claro */
+  transition: background 0.15s, border-color 0.15s, transform 0.06s;
 }
 
 .version-menu button:hover {
-  background: #f3f3f3;
+  background: #444;              /* HOVER en dark */
+  border-color: #666;
 }
 
 .version-menu button.active {
-  font-weight: bold;
-  background: #e9e9e9;
+  font-weight: 700;
+  background: #555;              /* Opción activa en dark */
+  border-color: #777;
+  color: #fff;
 }
 
 main {
@@ -359,19 +408,12 @@ main {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: background 0.2s, transform 0.2s;
 }
-
 .nav-capitulo:hover {
   background-color: #ddd;
   transform: scale(1.1);
 }
-
-.izquierda {
-  left: 25px;
-}
-
-.derecha {
-  right: 25px;
-}
+.izquierda { left: 25px; }
+.derecha { right: 25px; }
 
 /* Estilo del Formulario */
 .contacto-titulo {
@@ -396,12 +438,7 @@ form {
   gap: 1.2rem;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
-
-form label {
-  font-weight: bold;
-  color: #ffffff;
-}
-
+form label { font-weight: bold; color: #ffffff; }
 form input, form select, form textarea {
   padding: 0.8rem;
   font-size: 1rem;
@@ -413,12 +450,7 @@ form input, form select, form textarea {
   width: 100%;
   box-sizing: border-box;
 }
-
-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
+form textarea { resize: vertical; min-height: 120px; }
 form button {
   padding: 0.9rem;
   font-size: 1rem;
@@ -432,23 +464,11 @@ form button {
   align-self: center;
   width: 50%;
 }
-
-form button:hover {
-  background-color: #9e1800;
-}
+form button:hover { background-color: #9e1800; }
 
 /* Centrar Mapa */
-.mapa {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
-}
-
-.mapa iframe {
-  max-width: 100%;
-  border: 0;
-  border-radius: 10px;
-}
+.mapa { display: flex; justify-content: center; margin: 1rem 0; }
+.mapa iframe { max-width: 100%; border: 0; border-radius: 10px; }
 
 /* === Footer === */
 footer {
@@ -459,17 +479,12 @@ footer {
   font-size: 20px;
   position: relative;
 }
-
-.footer-redes {
-  margin-bottom: 10px;
-}
-
+.footer-redes { margin-bottom: 10px; }
 .footer-redes a {
   margin: 0 8px;
   font-size: 25px;
   transition: color 0.3s;
 }
-
 .footer-info {
   display: flex;
   justify-content: space-between;
@@ -491,21 +506,9 @@ footer.footer2 {
   z-index: 1000;
   touch-action: none;
 }
-
-.favoritos-page {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.favoritos-page main {
-  flex: 1 0 auto;
-  padding-bottom: 120px;
-}
-
-.favoritos-page footer.footer2 {
-  flex-shrink: 0;
-}
+.favoritos-page { display: flex; flex-direction: column; min-height: 100vh; }
+.favoritos-page main { flex: 1 0 auto; padding-bottom: 120px; }
+.favoritos-page footer.footer2 { flex-shrink: 0; }
 
 /* Estilos para favorito.html */
 .favorito-item {
@@ -515,11 +518,10 @@ footer.footer2 {
   padding: 10px;
   border-bottom: 1px solid #ddd;
 }
-
 .favoritos-page h2 {
-  font-size: 2.5rem; /* Letra un poco más grande (antes 1rem por defecto) */
-  margin-top: 3rem; /* Más separado del header */
-  margin-bottom: 2rem; /* Más separado de los versículos favoritos */
+  font-size: 2.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
@@ -534,10 +536,7 @@ footer.footer2 {
   border-radius: 5px;
   transition: color 0.3s;
 }
-
-.eliminar-favorito:hover {
-  background-color: #cc0000;
-}
+.eliminar-favorito:hover { background-color: #cc0000; }
 
 /* Estilos para la ventana emergente de "Destacar" */
 .ventana-destacar {
@@ -556,135 +555,96 @@ footer.footer2 {
 
 @media (min-width: 768px) {
   .ventana-contenido {
-    max-width: 450px; /* Restaurar el valor original para escritorio */
-    width: 90%; /* Mantener proporción */
+    max-width: 450px;
+    width: 90%;
     padding: 1.5rem;
   }
-
   #btn-destacar, #btn-compartir-imagen, #btn-cancelar, #btn-copiar {
-    padding: 0.75rem 1.5rem; /* Valor base */
+    padding: 0.75rem 1.5rem;
     font-size: 1rem;
   }
-
-  .botones-ventana {
-    gap: 0.625rem; /* Valor base */
-  }
+  .botones-ventana { gap: 0.625rem; }
 }
 
 .ventana-contenido {
   background-color: #fff;
-  padding: 1.5rem; /* Usar rem para escalabilidad */ /* 30px ventana mas grande*/
-  border-radius: 0.625rem; /* 10px en rem */
+  padding: 1.5rem;
+  border-radius: 0.625rem;
   text-align: center;
-  width: 90%; /* Relativo al viewport */
-  max-width: 45vw; /* 45% del ancho de la ventana, ajustable */ /*450px*/
-  box-sizing: border-box; /* Asegurar que padding no exceda el ancho */
+  width: 90%;
+  max-width: 45vw;
+  box-sizing: border-box;
 }
-
-.ventana-contenido p {
-  margin: 0 0 1.25rem; /* 20px en rem */
-}
-
+.ventana-contenido p { margin: 0 0 1.25rem; }
 .ventana-contenido p:first-child {
-  font-family: "Monoton", sans-serif; /* Nueva tipografía */
+  font-family: "Monoton", sans-serif;
   font-size: 1.2rem;
-  font-weight: bold; /* "¿Qué deseas hacer con este versículo?" en negrita */
+  font-weight: bold;
 }
 
 .color-options {
   display: flex;
   justify-content: center;
-  gap: 0.9375rem; /* 15px en rem */
-  margin-bottom: 1.25rem; /* 20px en rem */
+  gap: 0.9375rem;
+  margin-bottom: 1.25rem;
 }
-
 .color-btn {
-  width: 2.5rem; /* 40px en rem */
-  height: 2.5rem; /* 40px en rem */
+  width: 2.5rem;
+  height: 2.5rem;
   border: none;
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-
 .color-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.3); /* 0 0 5px en rem */
+  box-shadow: 0 0 0.3125rem rgba(0, 0, 0, 0.3);
 }
-
 .color-btn:focus {
-  border: 0.1875rem solid #333; /* 3px en rem */
+  border: 0.1875rem solid #333;
   outline: none;
 }
 
 #btn-destacar, #btn-compartir-imagen, #btn-cancelar {
-  padding: 0.75rem 1.5rem; /* 12px 24px en rem, ajustado para móviles */
-  font-size: 1rem; /* 16px base, escalable */
-  margin: 0.3125rem; /* 5px en rem */
-  border-radius: 0.5rem; /* 8px en rem */
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  margin: 0.3125rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
 }
-
-#btn-destacar {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#btn-compartir-imagen {
-  background-color: #01717d;
-  color: white;
-}
-
-#btn-copiar {
-  background-color: #ff8000; 
-  color: white;
-}
-
-#btn-cancelar {
-  background-color: #ff4444;
-  color: white;
-}
-
+#btn-destacar { background-color: #4CAF50; color: white; }
+#btn-compartir-imagen { background-color: #01717d; color: white; }
+#btn-copiar { background-color: #ff8000; color: white; }
+#btn-cancelar { background-color: #ff4444; color: white; }
 #btn-destacar:hover, #btn-compartir-imagen:hover, #btn-copiar:hover, #btn-cancelar:hover {
   transform: scale(1.05);
 }
 
 .botones-ventana {
   display: flex;
-  justify-content: center; /* Centrar los botones en la misma línea */
-  gap: 10px; /* Espacio entre botones */
-  gap: 0.625rem; /* 10px en rem */
-  flex-wrap: wrap; /* Permitir que los botones se apilen en pantallas pequeñas */
+  justify-content: center;
+  gap: 10px;
+  gap: 0.625rem;
+  flex-wrap: wrap;
 }
 
 #btn-confirmar, #btn-cancelar-colores {
-  padding: 12px 24px; /* Botones más grandes */
+  padding: 12px 24px;
   font-size: 1.1rem;
   margin: 5px;
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.2s, background-color 0.2s;
 }
-
-#btn-confirmar {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#btn-cancelar-colores {
-  background-color: #ff4444;
-  color: white;
-}
-
-#btn-confirmar:hover, #btn-cancelar-colores:hover {
-  transform: scale(1.05);
-}
+#btn-confirmar { background-color: #4CAF50; color: white; }
+#btn-cancelar-colores { background-color: #ff4444; color: white; }
+#btn-confirmar:hover, #btn-cancelar-colores:hover { transform: scale(1.05); }
 
 .ventana-contenido p:nth-child(2) {
-  font-family: "Monoton", sans-serif; /* Nueva tipografía */
+  font-family: "Monoton", sans-serif;
   font-size: 1.2rem;
-  font-weight: bold; /* "Elige un color para destacar" en negrita */
+  font-weight: bold;
 }
 
 /* Estilos para la ventana del versículo del día */
@@ -700,7 +660,6 @@ footer.footer2 {
   align-items: center;
   z-index: 1002;
 }
-
 .versiculo-dia .contenido {
   background-color: white;
   padding: 20px;
@@ -709,32 +668,19 @@ footer.footer2 {
   max-width: 300px;
   width: 90%;
 }
-
-.versiculo-dia h3 {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
-
-.versiculo-dia .texto-versiculo {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  color: #333;
-}
-
+.versiculo-dia h3 { font-size: 1.3rem; margin-bottom: 1rem; color: #2c3e50; }
+.versiculo-dia .texto-versiculo { font-size: 1.1rem; margin-bottom: 0.5rem; color: #333; }
 .versiculo-dia .referencia {
   font-size: 1rem;
   font-style: italic;
   color: #7f8c8d;
   margin-bottom: 1rem;
 }
-
 .versiculo-dia .botones {
   display: flex;
   justify-content: center;
   gap: 0.5rem;
 }
-
 .versiculo-dia button {
   padding: 0.5rem 1rem;
   border: none;
@@ -742,42 +688,20 @@ footer.footer2 {
   cursor: pointer;
   font-size: 0.9rem;
 }
-
-#btn-compartir-dia {
-  background-color: #2196F3;
-  color: white;
-}
-
-#btn-copiar-dia {
-  background-color: #4CAF50;
-  color: white;
-}
-
-#btn-cerrar-dia {
-  background-color: #ff4444;
-  color: white;
-}
-
-#btn-compartir-dia:hover {
-  background-color: #1976D2;
-}
-
-#btn-copiar-dia:hover {
-  background-color: #388E3C;
-}
-
-#btn-cerrar-dia:hover {
-  background-color: #cc0000;
-}
+#btn-compartir-dia { background-color: #2196F3; color: white; }
+#btn-copiar-dia { background-color: #4CAF50; color: white; }
+#btn-cerrar-dia { background-color: #ff4444; color: white; }
+#btn-compartir-dia:hover { background-color: #1976D2; }
+#btn-copiar-dia:hover { background-color: #388E3C; }
+#btn-cerrar-dia:hover { background-color: #cc0000; }
 
 /* Devocionales */
 .devocionales-page h2 {
-  font-size: 1.5rem; /* Letra un poco más grande (antes 1rem por defecto) */
-  margin-top: 3rem; /* Más separado del header */
-  margin-bottom: 2rem; /* Más separado de los devocionales */
+  font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
-
 .add-devocional-btn {
   background-color: #4CAF50;
   color: white;
@@ -788,11 +712,7 @@ footer.footer2 {
   margin: 10px;
   font-size: 16px;
 }
-
-.add-devocional-btn:hover {
-  background-color: #45a049;
-}
-
+.add-devocional-btn:hover { background-color: #45a049; }
 .modal {
   display: none;
   position: fixed;
@@ -800,13 +720,12 @@ footer.footer2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-  backdrop-filter: blur(5px); /* Fondo borroso */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   z-index: 1002;
   justify-content: center;
   align-items: center;
 }
-
 .modal-content {
   background-color: #fff;
   padding: 20px;
@@ -816,13 +735,11 @@ footer.footer2 {
   text-align: center;
   overflow-y: auto;
 }
-
 .modal-content label {
   display: block;
   margin: 10px 0 5px;
   font-weight: bold;
 }
-
 .modal-content input, .modal-content div[contenteditable] {
   width: 100%;
   padding: 8px;
@@ -830,7 +747,6 @@ footer.footer2 {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 .format-btn {
   background: none;
   border: none;
@@ -838,7 +754,6 @@ footer.footer2 {
   margin: 0 5px;
   cursor: pointer;
 }
-
 .preview-container {
   display: flex;
   flex-direction: column;
@@ -848,28 +763,15 @@ footer.footer2 {
   padding-bottom: 10px;
   position: relative;
 }
-
-.preview-content {
-  cursor: pointer;
-}
-
-.preview-title {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-.preview-author {
-  font-style: italic;
-  font-size: 14px;
-}
-
+.preview-content { cursor: pointer; }
+.preview-title { font-weight: bold; font-size: 18px; }
+.preview-author { font-style: italic; font-size: 14px; }
 .preview-actions {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-top: 5px;
 }
-
 .edit-btn, .delete-btn {
   background: none;
   border: none;
@@ -877,22 +779,10 @@ footer.footer2 {
   cursor: pointer;
   padding: 5px;
 }
-
-.edit-btn i {
-  color: #4CAF50;
-}
-
-.delete-btn i {
-  color: #ff4444;
-}
-
-.edit-btn:hover i {
-  color: #45a049;
-}
-
-.delete-btn:hover i {
-  color: #cc0000;
-}
+.edit-btn i { color: #4CAF50; }
+.delete-btn i { color: #ff4444; }
+.edit-btn:hover i { color: #45a049; }
+.delete-btn:hover i { color: #cc0000; }
 
 .devocional-detail {
   display: none;
@@ -901,13 +791,12 @@ footer.footer2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro */
-  backdrop-filter: blur(5px); /* Fondo borroso */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   z-index: 1003;
   justify-content: center;
   align-items: center;
 }
-
 .devocional-detail-content {
   background-color: #fff;
   padding: 20px;
@@ -917,16 +806,8 @@ footer.footer2 {
   text-align: left;
   overflow-y: auto;
 }
-
-.devocional-detail-content h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.devocional-detail-content p {
-  margin: 10px 0;
-}
-
+.devocional-detail-content h3 { font-size: 24px; margin-bottom: 10px; }
+.devocional-detail-content p { margin: 10px 0; }
 .close-btn, .share-btn {
   background-color: #ff4444;
   color: white;
@@ -937,29 +818,68 @@ footer.footer2 {
   margin-top: 10px;
   transition: transform 0.2s, background-color 0.2s;
 }
-
-.share-btn {
-  background-color: #4CAF50;
-  margin-left: 10px;
-}
-
+.share-btn { background-color: #4CAF50; margin-left: 10px; }
 .close-btn:hover {
   transform: scale(1.05);
   background-color: #cc0000;
 }
-
 .share-btn:hover {
   transform: scale(1.05);
   background-color: #45a049;
 }
 
-/* Media queries */
-/* Media query para pantallas móviles (max-width: 768px) */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: flex;
+/* ====== Desktop only: ampliar selector (libro/capítulo/versículo) ====== */
+@media (min-width: 1024px) {
+  
+  .dropdown {
+    min-width: 420px; /* antes 290px */
   }
 
+  .dropdown-content {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 720px;              /* más ancho */
+    max-height: 560px;         /* más alto (antes 300px) */
+    padding: 16px;
+  }
+
+  .dropdown-search {
+    font-size: 16px;
+    padding: 10px 12px;
+  }
+
+  .dropdown-option {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+
+  .chapter-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 12px;
+  }
+
+  .chapter-grid .chapter-item {
+    padding: 14px 0;
+    font-size: 16px;
+  }
+
+  .version-menu {
+    min-width: 520px;    /* MUCHO más ancho en PC */
+    max-width: 700px;    /* por si querés limitar el máximo */
+    padding: 14px;       /* un poco más de padding */
+    max-height: 70vh;    /* más alto hacia abajo en PC */
+  }
+
+  .version-menu button {
+    padding: 14px 16px;  /* botones más cómodos en PC */
+    font-size: 16px;
+  }
+  
+}
+
+/* Media query para pantallas móviles (max-width: 768px) */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
   .menu-items {
     display: none;
     flex-direction: column;
@@ -974,15 +894,8 @@ footer.footer2 {
     padding: 10px 0;
   }
 
-  .menu-items.show {
-    display: flex;
-  }
-
-  .menu-items li {
-    display: flex;
-    justify-content: flex-start;
-  }
-
+  .menu-items.show { display: flex; }
+  .menu-items li { display: flex; justify-content: flex-start; }
   .menu-items a {
     padding: 5px 20px;
     width: 100%;
@@ -990,105 +903,55 @@ footer.footer2 {
     line-height: 1.5;
   }
 
-  .dropdown-content {
-    max-height: 250px;
-    font-size: 14px;
-  }
-
-  .dropdown-toggle {
-    font-size: 14px;
-  }
-
-  .version-biblia {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
-
+  .dropdown-content { max-height: 250px; font-size: 14px; }
+  .dropdown-toggle { font-size: 14px; }
+  .version-biblia { font-size: 14px; padding: 8px 12px; }
   .nav-capitulo {
-    bottom: 140px; /* Ajustar a 120px como base al footer */
+    bottom: 140px;
     font-size: 22px;
     padding: 10px 14px;
   }
 
-  main {
-    padding-bottom: 20px; /* Reducir a 20px para menos espacio */
-  }
-
-  .chapter-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  main { padding-bottom: 20px; }
+  .chapter-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* Media query para pantallas más pequeñas (max-width: 480px) */
 @media (max-width: 480px) {
-  .dropdown-content {
-    max-height: 200px;
-    font-size: 12px;
-  }
-
-  .dropdown-toggle {
-    font-size: 12px;
-  }
-
-  .version-biblia {
-    font-size: 12px;
-    padding: 7px 8px;
-  }
-
+  .dropdown-content { max-height: 200px; font-size: 12px; }
+  .dropdown-toggle { font-size: 12px; }
+  .version-biblia { font-size: 12px; padding: 7px 8px; }
   .nav-capitulo {
-    bottom: 160px; /* Aumentar a 110px para dar espacio al footer */
+    bottom: 160px;
     font-size: 18px;
     padding: 8px 12px;
   }
-
-  .ventana-contenido {
-    max-width: 85vw; /* Más espacio relativo en pantallas pequeñas */
-    padding: 1rem; /* Reducir padding */
-  }
-
+  .ventana-contenido { max-width: 85vw; padding: 1rem; }
   #btn-destacar, #btn-compartir-imagen, #btn-cancelar, #btn-copiar {
-    padding: 0.5rem 1rem; /* Reducir padding en móviles */
-    font-size: 0.9rem; /* Reducir tamaño de fuente */
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
-
-  .botones-ventana {
-    gap: 0.5rem; /* Reducir espacio entre botones */
-  }
-
-  .chapter-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
+  .botones-ventana { gap: 0.5rem; }
+  .chapter-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-info {
     flex-direction: column;
     align-items: center;
     gap: 5px;
   }
-
-  footer {
-    padding-bottom: 10px;
-  }
-
-  main {
-    padding-bottom: 10px; /* Reducir a 10px para menos espacio */
-  }
+  footer { padding-bottom: 10px; }
+  main { padding-bottom: 10px; }
 }
 
-/* Media query para pantallas muy pequeñas (ej. < 320px, como TLC 408) */
+/* Media query para pantallas muy pequeñas (ej. < 320px) */
 @media (max-width: 320px) {
-  .ventana-contenido {
-    max-width: 90vw; /* Maximizar ancho en pantallas muy pequeñas */
-    padding: 0.75rem; /* Reducir aún más el padding */
-  }
-
+  .ventana-contenido { max-width: 90vw; padding: 0.75rem; }
   #btn-destacar, #btn-compartir-imagen, #btn-cancelar, #btn-copiar {
-    padding: 0.375rem 0.75rem; /* Padding mínimo */
-    font-size: 0.8rem; /* Fuente más pequeña */
-    margin: 0.25rem; /* Margen reducido */
+    padding: 0.375rem 0.75rem;
+    font-size: 0.8rem;
+    margin: 0.25rem;
   }
-
   .botones-ventana {
-    flex-direction: column; /* Apilar botones verticalmente */
-    gap: 0.375rem; /* Espacio mínimo entre botones */
+    flex-direction: column;
+    gap: 0.375rem;
   }
 }

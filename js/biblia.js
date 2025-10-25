@@ -141,56 +141,48 @@ function mostrarVersiculoDelDia() {
 function renderVersionPill(versionActual) {
   if (!versionEl) return;
   versionEl.textContent = versionActual;
-  versionEl.onclick = null;
 
-  versionEl.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const existing = document.getElementById("version-menu");
-    if (existing) existing.remove();
+  const container = versionEl.closest('.version-selector') || versionEl.parentElement;
+  let menu = container.querySelector('#versionMenu');
+  if (!menu) {
+    menu = document.createElement('div');
+    menu.id = 'versionMenu';
+    menu.className = 'version-menu';
+    container.appendChild(menu);
+  }
 
-    const menu = document.createElement("div");
-    menu.id = "version-menu";
-    menu.style.position = "absolute";
-    const rect = versionEl.getBoundingClientRect();
-    menu.style.top = (window.scrollY + rect.bottom + 8) + "px";
-    menu.style.left = (window.scrollX + rect.left) + "px";
-    menu.style.background = "#fff";
-    menu.style.border = "1px solid #ccc";
-    menu.style.borderRadius = "6px";
-    menu.style.boxShadow = "0 4px 10px rgba(0,0,0,.15)";
-    menu.style.zIndex = "2000";
-    menu.style.minWidth = "160px";
-    menu.style.overflow = "hidden";
-
+  // Rellena el menú sin estilos inline
+  function fillMenu(actual) {
+    menu.innerHTML = '';
     SUPPORTED_VERSIONS.forEach(v => {
-      const item = document.createElement("button");
-      item.textContent = v;
-      item.style.display = "block";
-      item.style.width = "100%";
-      item.style.textAlign = "left";
-      item.style.padding = "8px 12px";
-      item.style.border = "none";
-      item.style.background = v === versionActual ? "#eee" : "#fff";
-      item.style.cursor = "pointer";
-      item.addEventListener("click", async () => {
-        localStorage.setItem("versionBiblia", v);
-        menu.remove();
+      const btn = document.createElement('button');
+      btn.textContent = v;
+      if (v === actual) btn.classList.add('active');
+      btn.addEventListener('click', async () => {
+        localStorage.setItem('versionBiblia', v);
+        versionEl.textContent = v;
+        menu.classList.remove('open');
         await initVersionAndHome();
       });
-      item.addEventListener("mouseover", () => item.style.background = "#f5f5f5");
-      item.addEventListener("mouseout", () => item.style.background = (v === versionActual ? "#eee" : "#fff"));
-      menu.appendChild(item);
+      menu.appendChild(btn);
     });
+  }
 
-    document.body.appendChild(menu);
+  fillMenu(versionActual);
 
-    const close = (ev) => {
-      if (!menu.contains(ev.target) && ev.target !== versionEl) {
-        document.removeEventListener("click", close);
-        menu.remove();
-      }
-    };
-    setTimeout(() => document.addEventListener("click", close), 0);
+  // Abrir/cerrar
+  versionEl.onclick = (e) => {
+    e.stopPropagation();
+    // Re-actualiza por si cambió la versión
+    fillMenu(getCurrentVersion());
+    menu.classList.toggle('open');
+  };
+
+  // Cerrar haciendo click fuera
+  document.addEventListener('click', (ev) => {
+    if (!container.contains(ev.target)) {
+      menu.classList.remove('open');
+    }
   });
 }
 
@@ -215,16 +207,14 @@ function crearInputBusqueda() {
 
 function agregarBotonVolver(destino) {
   const btn = document.createElement("button");
-  btn.textContent = "Volver";
-  btn.className = "dropdown-option";
-  btn.style.fontWeight = "bold";
-  btn.style.backgroundColor = "#ddd";
-  btn.addEventListener("click", async (e) => {
+  btn.textContent = "← Volver";
+  btn.className = "dropdown-option dropdown-back"; // clase nueva
+  btn.addEventListener("click", (e) => {
     e.stopPropagation();
     if (destino === "libros") {
       cargarLibros();
     } else if (destino === "capitulos") {
-      await cargarCapitulos(libroActual);
+      cargarCapitulos(libroActual);
     }
     dropdown.classList.add("open");
   });

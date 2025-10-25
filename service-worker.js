@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'v42';            // <-- subí la versión
+const CACHE_NAME = 'v43';            // <-- subí la versión
 const SCOPE = self.registration.scope; // termina con '/': ej. https://usuario.github.io/tu-repo/
 
 // PRECACHE: poné solo lo que sabés que EXISTE en el repo

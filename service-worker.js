@@ -1,73 +1,101 @@
 // service-worker.js
-const CACHE_NAME = 'v45';            // <-- subí la versión
-const SCOPE = self.registration.scope; // termina con '/': ej. https://usuario.github.io/tu-repo/
+const CACHE_NAME = 'mbiblia-v51';
+const SCOPE = self.registration.scope; // p.ej. https://usuario.github.io/biblia.digital/
 
-// PRECACHE: poné solo lo que sabés que EXISTE en el repo
-const PRECACHE_PATHS = [
-  '',                 // raíz del scope (equivale a index.html en GH Pages)
-  'index.html',
-  'styles.css',
-  'manifest.webmanifest',
-  'favicon.ico',
-  'images/background-versiculo.jpg',
-  'images/background-versiculo-dia.jpg',
-  'js/biblia.js',
-  'js/libros.js',
-  // agrega aquí estáticos que existan seguro (no pongas miles de libros dinámicos)
-];
-
-// Utilidad: resuelve path relativo al scope del SW (funciona en GH Pages)
+// Utilidad: resuelve un path relativo al scope del SW
 const urlFromScope = (p) => new URL(p, SCOPE).href;
 
-// -------- Install: precache con logging de errores, sin romper toda la install --------
+// Precachéa SOLO lo que sabemos que existe y es el "app shell"
+const PRECACHE_PATHS = [
+  '',                      // raíz (sirve index.html en GH Pages)
+  'index.html',
+  'css/styles.css',
+  'manifest.json',
+  'images/background-versiculo.jpg',
+  'images/background-versiculo-dia.jpg',
+  'icons/icon-192x192.png',
+  'icons/icon-512x512.png',
+  'js/biblia.js',
+
+  // Índices de versiones para poder listar libros offline
+  'js/libros/RVR1960/libros.js',
+  'js/libros/RVC/libros.js',
+  'js/libros/NVI/libros.js',
+
+  // Páginas adicionales (si las usás)
+  'favorito.html',
+  'devocionales.html',
+  'contacto.html',
+  'donaciones.html',
+];
+
+// --- INSTALL: precache robusto (sin romper si falta algo) ---
 self.addEventListener('install', (event) => {
   self.skipWaiting();
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
-    const resultados = await Promise.all(PRECACHE_PATHS.map(async (path) => {
+    await Promise.all(PRECACHE_PATHS.map(async (path) => {
       const url = urlFromScope(path);
       try {
         const resp = await fetch(url, { cache: 'reload' });
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
         await cache.put(url, resp.clone());
-        return { ok: true, url };
       } catch (err) {
-        console.warn('[SW] Precaching failed:', path, '→', err.message || err);
-        return { ok: false, url, err };
+        console.warn('[SW] Precaching omitido:', path, String(err && err.message || err));
       }
     }));
-    const fails = resultados.filter(r => !r.ok);
-    if (fails.length) {
-      console.warn(`[SW] Precaching: ${fails.length} archivo(s) omitidos por error 404/Red.`);
+  })());
+});
+
+// --- ACTIVATE: limpia caches antiguos ---
+self.addEventListener('activate', (event) => {
+  event.waitUntil((async () => {
+    const names = await caches.keys();
+    await Promise.all(names.map(n => (n !== CACHE_NAME ? caches.delete(n) : null)));
+    await self.clients.claim();
+    // (Opcional) navigation preload
+    if ('navigationPreload' in self.registration) {
+      try { await self.registration.navigationPreload.enable(); } catch {}
     }
   })());
 });
 
-// -------- Activate: borra caches viejos --------
-self.addEventListener('activate', (event) => {
-  event.waitUntil((async () => {
-    const names = await caches.keys();
-    await Promise.all(
-      names.map(n => (n !== CACHE_NAME ? caches.delete(n) : Promise.resolve()))
-    );
-    await self.clients.claim();
-  })());
+// --- Mensajes desde la app para “precalentar” libros/capítulos ---
+self.addEventListener('message', (event) => {
+  const data = event.data || {};
+  if (data.type === 'PRECACHE_BOOKS' && Array.isArray(data.urls) && data.urls.length) {
+    event.waitUntil((async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await Promise.all(data.urls.map(async (p) => {
+        const url = p.startsWith('http') ? p : urlFromScope(p);
+        try {
+          const resp = await fetch(url, { cache: 'reload' });
+          if (resp.ok) await cache.put(url, resp.clone());
+        } catch (e) {
+          console.warn('[SW] No se pudo precachear', p);
+        }
+      }));
+      if (event.ports && event.ports[0]) {
+        event.ports[0].postMessage({ ok: true, cached: data.urls.length });
+      }
+    })());
+  }
 });
 
-// -------- Fetch strategies --------
+// --- FETCH: estrategias por tipo ---
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // 1) Navegación: SPA fallback a index.html (scope-relative)
+  // 1) Navegación → try network, fallback a app-shell
   if (request.mode === 'navigate') {
     event.respondWith((async () => {
       try {
-        // Intentá red primero
-        const net = await fetch(request);
-        return net;
+        const preload = (self.registration.navigationPreload)
+          ? await event.preloadResponse
+          : null;
+        return preload || await fetch(request);
       } catch {
-        // Offline: devolvé index.html del cache del scope
         const cachedIndex = await caches.match(urlFromScope('index.html'));
         return cachedIndex || Response.error();
       }
@@ -75,7 +103,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // 2) CDNs: Google Fonts, Font Awesome, cdnjs → Stale-While-Revalidate
+  // 2) CDNs comunes (Google Fonts, cdnjs, jsdelivr, unpkg) → stale-while-revalidate
   const isCDN =
     url.hostname.includes('fonts.gstatic.com') ||
     url.hostname.includes('fonts.googleapis.com') ||
@@ -88,38 +116,30 @@ self.addEventListener('fetch', (event) => {
       const cache = await caches.open(CACHE_NAME);
       const cached = await cache.match(request);
       const fetchPromise = fetch(request)
-        .then((resp) => {
-          if (resp && resp.ok) cache.put(request, resp.clone());
-          return resp;
-        })
-        .catch(() => null); // si falla red, devolvemos lo que haya en cache
-      return cached || (await fetchPromise) || Response.error();
-    })());
-    return;
-  }
-
-  // 3) Mis recursos del mismo origen (scope): cache-first con actualización en segundo plano
-  if (url.origin === self.location.origin) {
-    event.respondWith((async () => {
-      const cache = await caches.open(CACHE_NAME);
-      const cached = await cache.match(request);
-      const fetchPromise = fetch(request)
-        .then((resp) => {
-          if (resp && resp.ok) cache.put(request, resp.clone());
-          return resp;
-        })
+        .then((resp) => { if (resp && resp.ok) cache.put(request, resp.clone()); return resp; })
         .catch(() => null);
       return cached || (await fetchPromise) || Response.error();
     })());
     return;
   }
 
-  // 4) Otros orígenes: network-first con fallback a cache
+  // 3) Mismo origen (incluye módulos import() de /js/libros/...) → cache-first con actualización en bg
+  if (url.origin === self.location.origin) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const cached = await cache.match(request);
+      const fetchPromise = fetch(request)
+        .then((resp) => { if (resp && resp.ok) cache.put(request, resp.clone()); return resp; })
+        .catch(() => null);
+      return cached || (await fetchPromise) || Response.error();
+    })());
+    return;
+  }
+
+  // 4) Otros orígenes → network-first + fallback a cache
   event.respondWith((async () => {
-    try {
-      const net = await fetch(request);
-      return net;
-    } catch {
+    try { return await fetch(request); }
+    catch {
       const cache = await caches.open(CACHE_NAME);
       const cached = await cache.match(request);
       return cached || Response.error();

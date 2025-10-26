@@ -37,6 +37,29 @@ async function loadLibros(version) {
   }
 }
 
+// === PRECALENTAR LIBROS PARA OFFLINE ===
+async function warmCacheForVersion(version) {
+  try {
+    const mod = await import(`./libros/${version}/libros.js`);
+    const indexMap = mod.libros || mod.default || {};
+    const urls = [
+      `js/libros/${version}/libros.js`,
+      ...Object.values(indexMap).map(p => `js/${p}`) // p.ej. js/libros/RVR1960/genesis.js
+    ];
+    if (navigator.serviceWorker?.controller) {
+      navigator.serviceWorker.controller.postMessage({ type: 'PRECACHE_BOOKS', urls });
+    }
+  } catch (e) {
+    console.warn('[warmCacheForVersion] No se pudo precachear', version, e);
+  }
+}
+
+async function warmCacheAllVersions() {
+  for (const v of SUPPORTED_VERSIONS) {
+    await warmCacheForVersion(v);
+  }
+}
+
 // =====================
 // Referencias UI y estado
 // =====================
@@ -445,6 +468,244 @@ async function compartirVersiculoComoImagen(libro, capitulo, versiculoNumero, te
 // =====================
 // Destacar / Favoritos
 // =====================
+
+// ---- Cache e helpers para COMPARADOR (no alteran tu flujo) ----
+const librosIndexCache = {}; // { version: { "Génesis": "libros/...js", ... }, ... }
+
+async function getLibrosIndex(version) {
+  if (!librosIndexCache[version]) {
+    const mod = await import(`./libros/${version}/libros.js`);
+    librosIndexCache[version] = mod.libros || mod.default || {};
+  }
+  return librosIndexCache[version];
+}
+function normalizar(txt) {
+  return txt.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+}
+function findLibroKey(indexMap, nombre) {
+  if (indexMap[nombre]) return nombre;
+  const n = normalizar(nombre);
+  return Object.keys(indexMap).find(k => normalizar(k) === n) || null;
+}
+async function getVersoDe(version, libroNombre, capNum, versNum) {
+  const idx = await getLibrosIndex(version);
+  const key = findLibroKey(idx, libroNombre);
+  if (!key) return null;
+  const ruta = idx[key];
+  const mod = await import(`./${ruta}`);
+  const caps = mod.default || mod.capitulos || [];
+  const cap = caps[capNum - 1] || [];
+  return cap[versNum - 1] || null;
+}
+
+// ---- Modal del COMPARADOR ----
+// Muestra a la izquierda la versión actual y a la derecha la versión elegida
+// Comparador con botones de versiones, "X" grande, bordes negros y botón "Siguiente"
+function mostrarComparador(libro, capitulo, versiculo, textoActual) {
+  // ===== Helpers locales (no ensucian el global) =====
+  const norm = s => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+  async function loadIndex(version) {
+    const mod = await import(`./libros/${version}/libros.js`);
+    return mod.libros || mod.default || {};
+  }
+
+  function findLibroKey(map, nombre) {
+    const tgt = norm(nombre);
+    return Object.keys(map).find(k => norm(k) === tgt);
+  }
+
+  async function getVerso(version, nombreLibro, cap, vers) {
+    // Si la versión pedida es la actual y ya tenés el índice cargado, reaprovechamos
+    let map;
+    if (version === getCurrentVersion() && libros && Object.keys(libros).length) {
+      map = libros;
+    } else {
+      map = await loadIndex(version);
+    }
+    const key = map[nombreLibro] ? nombreLibro : findLibroKey(map, nombreLibro);
+    if (!key) return null;
+
+    const ruta = map[key];
+    const mod  = await import(`./${ruta}`);
+    const caps = mod.default || mod.capitulos || [];
+    const arr  = caps[(cap|0) - 1] || [];
+    return arr[(vers|0) - 1] || null;
+  }
+
+  async function getVersosLen(version, nombreLibro, cap) {
+    let map;
+    if (version === getCurrentVersion() && libros && Object.keys(libros).length) {
+      map = libros;
+    } else {
+      map = await loadIndex(version);
+    }
+    const key = map[nombreLibro] ? nombreLibro : findLibroKey(map, nombreLibro);
+    if (!key) return 0;
+
+    const ruta = map[key];
+    const mod  = await import(`./${ruta}`);
+    const caps = mod.default || mod.capitulos || [];
+    const arr  = caps[(cap|0) - 1] || [];
+    return arr.length || 0;
+  }
+
+  // ===== Estado del comparador =====
+  const vActual = getCurrentVersion();
+  const otras   = SUPPORTED_VERSIONS.filter(v => v !== vActual);
+  let selVersion = null;            // versión elegida para comparar (derecha)
+  let curCap  = capitulo|0;
+  let curVers = versiculo|0;
+  let maxVersos = 0;
+
+  // ===== Overlay =====
+  const overlay = document.createElement('div');
+  overlay.className = 'ventana-destacar';
+
+  overlay.innerHTML = `
+    <div class="ventana-contenido"
+         style="max-width: 840px; width: 92%; text-align: left; position: relative; border:1px solid #000;">
+
+      <!-- Acciones arriba a la derecha: Siguiente + Cerrar -->
+      <div class="cmp-top-actions" style="position:absolute; top:8px; right:8px; display:flex; gap:8px; align-items:center;">
+        <button class="cmp-next"
+                title="Siguiente versículo"
+                style="background:#fff; border:1px solid #000; border-radius:10px; padding:10px 14px; cursor:pointer;
+                       display:flex; align-items:center; gap:8px; transition: transform .12s;">
+          <span style="font-weight:700;">Siguiente</span>
+          <i class="fa-solid fa-chevron-right" style="font-size:18px;"></i>
+        </button>
+        <button class="cmp-close-x" aria-label="Cerrar"
+                style="background:#fff; border:1px solid #000; border-radius:12px; padding:10px 12px; cursor:pointer;
+                       display:flex; align-items:center; justify-content:center; line-height:1; transition: transform .12s;">
+          <i class="fa-solid fa-xmark" style="font-size:20px;"></i>
+        </button>
+      </div>
+
+      <p id="cmp-ref" style="font-weight:700; margin:0 42px 12px 0;">Comparar — ${libro} ${curCap}:${curVers}</p>
+
+      <!-- Barra de versiones -->
+      <div id="cmp-vbar" style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px;"></div>
+
+      <!-- Paneles -->
+      <div id="cmp-panels" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+        <div class="cmp-panel" style="border:1.5px solid #000; border-radius:8px; padding:10px;">
+          <div style="font-weight:700; margin-bottom:6px;">${vActual}</div>
+          <div id="cmp-left" style="white-space:pre-wrap;">${textoActual || '(sin texto)'}</div>
+        </div>
+        <div class="cmp-panel" style="border:1.5px solid #000; border-radius:8px; padding:10px;">
+          <div id="cmp-right-title" style="font-weight:700; margin-bottom:6px;">—</div>
+          <div id="cmp-right" style="white-space:pre-wrap; color:#333;">Tocá una versión para comparar…</div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const refEl   = overlay.querySelector('#cmp-ref');
+  const leftEl  = overlay.querySelector('#cmp-left');
+  const rightEl = overlay.querySelector('#cmp-right');
+  const rightT  = overlay.querySelector('#cmp-right-title');
+
+  // Hover/close en la X
+  const closeBtn = overlay.querySelector('.cmp-close-x');
+  closeBtn.addEventListener('mouseenter', () => closeBtn.style.transform = 'scale(1.06)');
+  closeBtn.addEventListener('mouseleave', () => closeBtn.style.transform = 'none');
+  closeBtn.onclick = () => overlay.remove();
+
+  // Botón Siguiente
+  const nextBtn = overlay.querySelector('.cmp-next');
+  nextBtn.addEventListener('mouseenter', () => nextBtn.style.transform = 'scale(1.04)');
+  nextBtn.addEventListener('mouseleave', () => nextBtn.style.transform = 'none');
+  nextBtn.addEventListener('click', async () => {
+    if (!maxVersos) maxVersos = await getVersosLen(vActual, libro, curCap);
+    if (!maxVersos) return;
+
+    if (curVers < maxVersos) {
+      curVers += 1;
+    } else {
+      // opcional: no pasa de capítulo; podés hacer wrap si querés:
+      // curVers = 1;
+      return;
+    }
+
+    refEl.textContent = `Comparar — ${libro} ${curCap}:${curVers}`;
+
+    // Actualizar texto de la versión actual (izquierda)
+    leftEl.textContent = 'Cargando…';
+    try {
+      const t = await getVerso(vActual, libro, curCap, curVers);
+      leftEl.textContent = t || '(sin texto)';
+    } catch (e) {
+      console.error('getVerso izquierda', e);
+      leftEl.textContent = '(error cargando)';
+    }
+
+    // Si ya eligieron una versión para comparar, refrescar derecha
+    if (selVersion) {
+      rightEl.textContent = 'Cargando…';
+      try {
+        const tR = await getVerso(selVersion, libro, curCap, curVers);
+        rightEl.textContent = tR || '(no disponible en esta versión)';
+      } catch (e) {
+        console.error('getVerso derecha', e);
+        rightEl.textContent = '(error cargando)';
+      }
+    }
+  });
+
+  // Botones de versiones (RVR1960 / RVC / NVI) como “pills” con borde negro
+  const vbar = overlay.querySelector('#cmp-vbar');
+  otras.forEach(v => {
+    const b = document.createElement('button');
+    b.textContent = v;
+    Object.assign(b.style, {
+      padding: '10px 16px',
+      borderRadius: '8px',
+      border: '1px solid #000',
+      background: '#f5f5f5',
+      cursor: 'pointer',
+      transition: 'transform .15s, background-color .2s, box-shadow .2s, border-color .2s'
+    });
+
+    b.addEventListener('mouseenter', () => { b.style.transform = 'scale(1.04)'; });
+    b.addEventListener('mouseleave', () => { b.style.transform = 'none'; });
+
+    b.addEventListener('click', async () => {
+      // activa visualmente este botón
+      vbar.querySelectorAll('button').forEach(x => {
+        x.style.background = '#f5f5f5';
+        x.style.boxShadow  = 'none';
+        x.style.fontWeight = '400';
+        x.style.borderColor = '#000';
+      });
+      b.style.background = '#eee';
+      b.style.boxShadow  = 'inset 0 0 0 2px #000';
+      b.style.fontWeight = '700';
+
+      selVersion = v;
+      rightT.textContent = v;
+      rightEl.textContent = 'Cargando…';
+
+      try {
+        const t = await getVerso(v, libro, curCap, curVers);
+        rightEl.textContent = t || '(no disponible en esta versión)';
+      } catch (e) {
+        console.error('comparar', v, e);
+        rightEl.textContent = '(error cargando)';
+      }
+    });
+
+    vbar.appendChild(b);
+  });
+
+  // Precalcular cantidad de versículos del capítulo (para saber hasta dónde avanzar)
+  (async () => {
+    try { maxVersos = await getVersosLen(vActual, libro, curCap); } catch { maxVersos = 0; }
+  })();
+}
+
+//------------------------------------------------------------------------------
 function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv) {
   const ventana = document.createElement('div');
   ventana.className = 'ventana-destacar';
@@ -473,6 +734,12 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     boton.style.borderRadius = '0.5rem';
     boton.style.cursor = 'pointer';
     boton.style.margin = '0.3125rem';
+    // Tamaño y animación iguales a los demás
+    boton.style.padding = '0.75rem 1.5rem';
+    boton.style.fontSize = '1rem';
+    boton.style.transition = 'transform 0.2s, background-color 0.2s';
+    boton.addEventListener('mouseenter', () => { boton.style.transform = 'scale(1.05)'; });
+    boton.addEventListener('mouseleave', () => { boton.style.transform = 'none'; });
   }
 
   function vistaInicial() {
@@ -481,6 +748,7 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
         <p>¿Qué deseas hacer con este versículo?</p>
         <div class="botones-ventana">
           <button id="btn-destacar">Destacar</button>
+          <button id="btn-comparar">Comparar</button>
           <button id="btn-compartir-imagen">Imagen</button>
           <button id="btn-copiar">Copiar</button>
           <button id="btn-cancelar">Cancelar</button>
@@ -493,16 +761,23 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     aplicarEstilosContenido(contenido);
 
     const btnDestacar = document.getElementById('btn-destacar');
+    const btnComparar = document.getElementById('btn-comparar');
     const btnCompartirImagen = document.getElementById('btn-compartir-imagen');
     const btnCopiar = document.getElementById('btn-copiar');
     const btnCancelar = document.getElementById('btn-cancelar');
 
     aplicarEstilosBoton(btnDestacar, '#4CAF50');
+    aplicarEstilosBoton(btnComparar, '#5E60CE');          // ← mismo tamaño/animación que “Imagen”
     aplicarEstilosBoton(btnCompartirImagen, '#01717d');
     aplicarEstilosBoton(btnCopiar, '#ff8000');
     aplicarEstilosBoton(btnCancelar, '#ff4444');
 
     btnDestacar.addEventListener('click', vistaColores);
+    btnComparar.addEventListener('click', () => {
+      // cierro este modal y abro el comparador nuevo (sin checkboxes)
+      document.body.removeChild(ventana);
+      mostrarComparador(libro, capitulo, versiculo, texto);
+    });
     btnCompartirImagen.addEventListener('click', () => {
       compartirVersiculoComoImagen(libro, capitulo, versiculo, texto);
       document.body.removeChild(ventana);
@@ -663,8 +938,29 @@ async function initVersionAndHome() {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await initVersionAndHome();
-  mostrarVersiculoDelDia();
+
+  // Mover A+ junto al selector de versión en móvil/tablet (primero)
+  if (window.matchMedia('(max-width: 768px)').matches) {
+    const slot  = document.getElementById('versionSelectorSlot');
+    const aplus = document.getElementById('aumentarLetra');
+    if (slot && aplus && !slot.contains(aplus)) {
+      slot.appendChild(aplus);
+      aplus.setAttribute('title','Aumentar letra');
+      aplus.style.marginLeft = '8px'; // un poco de aire al lado de la versión
+    }
+  }
+
+  //TODO offline (RVR1960 + RVC + NVI), descomentá
+  await warmCacheAllVersions();
+
+  // Mostrar Versículo del Día (envuelto por si algo falla, no frena el resto)
+  try {
+    mostrarVersiculoDelDia();
+  } catch (e) {
+    console.error('Error en Versículo del día:', e);
+  }
 });
+
 
 // =====================
 // Service Worker (opcional)

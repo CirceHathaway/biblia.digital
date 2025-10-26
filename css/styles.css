@@ -428,6 +428,12 @@ main {
 .izquierda { left: 25px; }
 .derecha { right: 25px; }
 
+/* Ícono dentro de los botones de navegación (chevrons Font Awesome) */
+.nav-capitulo i {
+  font-size: 26px;
+  line-height: 1;
+}
+
 /* Estilo del Formulario */
 .contacto-titulo {
   font-family: "Monoton", sans-serif;
@@ -935,7 +941,21 @@ footer.footer2 {
   .desktop-only { display: none !important; }
 
   /* Mostrar el selector de versión centrado en el header SOLO en móvil */
-  .version-slot { display: flex !important; }
+  .version-slot { 
+    display: flex !important; 
+    align-items: center;
+    justify-content: center;
+    gap: 8px;                     /* espacio entre versión y A+ */
+  }
+
+  /* A+ inline, al lado del selector de versión (ya no fixed) */
+  #aumentarLetra {
+    position: static;             /* deja de ser fixed */
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    border-width: 1.5px;
+  }
 
   /* Ya lo tenías, lo dejo para el contexto */
   .bible-btn { display: inline-flex; }
@@ -1144,14 +1164,6 @@ footer.footer2 {
   }
   .version-slot .version-biblia:hover {
     background: #e6e6e6;
-  }
-
-  /* Reubicar el botón A+ cerca del botón de navegación derecha */
-  #aumentarLetra {
-    position: fixed;
-    bottom: 178px; /* un poco por encima del botón derecho */
-    right: 25px;
-    z-index: 1002;
   }
 
   /* Ajustar grid en el modal */

@@ -1170,6 +1170,16 @@ footer.footer2 {
   .selector-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  /* Comparador (móvil/tablet): poner "Siguiente" debajo de la "X" */
+  .cmp-top-actions {
+    flex-direction: column !important;   /* apila vertical */
+    align-items: flex-end !important;     /* pegado a la derecha */
+    gap: 8px !important;
+  }
+  /* Orden: primero la X, debajo el Siguiente */
+  .cmp-close-x { order: 0 !important; }
+  .cmp-next    { order: 1 !important; }
 }
 
 @media (max-width: 480px) {

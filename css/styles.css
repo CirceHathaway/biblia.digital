@@ -387,6 +387,13 @@ main {
   touch-action: pan-y;
   user-select: none;
 }
+.cap-subtitle {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: rgb(233, 155, 0); /* si usás tema más oscuro, podés subirlo a #666/#777 */
+}
 
 .versiculos p {
   margin: 0.5em 0;

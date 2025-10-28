@@ -6,6 +6,7 @@ import { versiculosDestacados } from './versiculosDestacados.js';
 // =====================
 const SUPPORTED_VERSIONS = ["RVR1960", "RVC", "NVI"];
 let libros = {}; // { "Génesis": "libros/<VER>/genesis.js", ... }
+let titulosCap = {}; // { "Génesis": [ "titulo 1", ... ] }
 
 function getVersionEl() {
   // En móvil usamos el del header; en desktop usamos el de la sección
@@ -36,6 +37,23 @@ async function loadLibros(version) {
     console.error(`[biblia] No se pudo cargar js/libros/${version}/libros.js`, e);
     libros = {};
   }
+}
+
+//Carga de los titulos de cada libro
+async function loadTitulos(version) {
+  try {
+    const mod = await import(`./titulos/${version}/titulos.js`);
+    titulosCap = mod.titulosCapitulos || mod.default || {};
+  } catch (e) {
+    console.warn("[biblia] Sin títulos para versión:", version, e?.message || e);
+    titulosCap = {};
+  }
+}
+
+function getTituloCapitulo(nombreLibro, capNum) {
+  const arr = titulosCap[nombreLibro];
+  if (!arr) return "";
+  return arr[capNum - 1] || "";
 }
 
 // === PRECALENTAR LIBROS PARA OFFLINE ===
@@ -346,7 +364,15 @@ function cargarResaltados() {
 function mostrarCapitulo(index) {
   const versiculos = capitulos[index];
   capituloSelectIndex = index;
-  versiculosDiv.innerHTML = `<h2>${libroActual} ${index + 1}</h2>`;
+
+  const titulo = getTituloCapitulo(libroActual, index + 1); // 👈 NUEVO
+  versiculosDiv.innerHTML = `
+    <h2>
+      ${libroActual} ${index + 1}
+      ${titulo ? `<span class="cap-subtitle"> ${titulo}</span>` : ""}
+    </h2>
+  `;
+
   versiculos.forEach((verso, i) => {
     const versiculoDiv = document.createElement('div');
     versiculoDiv.className = 'versiculo-item';
@@ -911,6 +937,7 @@ async function initVersionAndHome() {
   const version = getCurrentVersion();
   renderVersionPill(version);
   await loadLibros(version);
+  await loadTitulos(version); 
 
   if (!libros || !Object.keys(libros).length) {
     versiculosDiv.innerHTML = `<p style="color:#b00">No se pudo cargar el índice de la versión <strong>${version}</strong>.</p>`;

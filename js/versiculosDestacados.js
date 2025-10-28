@@ -140,4 +140,7 @@ export const versiculosDestacados = [
   { libro: "Hebreos", capitulo: 13, versiculo: 5, texto: "Sean vuestras costumbres sin avaricia, contentos con lo que tenéis ahora; porque él dijo: No te desampararé, ni te dejaré;" },
   { libro: "Hebreos", capitulo: 13, versiculo: 7, texto: "Acordaos de vuestros pastores, que os hablaron la palabra de Dios; considerad cuál haya sido el resultado de su conducta, e imitad su fe." },
   { libro: "Hebreos", capitulo: 13, versiculo: 17, texto: "Obedeced a vuestros pastores, y sujetaos a ellos; porque ellos velan por vuestras almas, como quienes han de dar cuenta; para que lo hagan con alegría, y no quejándose, porque esto no os es provechoso." },
+  { libro: "Salmos", capitulo: 139, versiculo: 23, texto: "Examíname, oh Dios, y conoce mi corazón; pruébame y conoce mis pensamientos." },
+  { libro: "Salmos", capitulo: 25, versiculo: 9, texto: "Encaminará a los humildes por el juicio, y enseñará a los mansos su carrera." },
+  { libro: "Proverbios", capitulo: 3, versiculo: 6, texto: "Reconócelo en todos tus caminos, Y él enderezará tus veredas." },
 ];

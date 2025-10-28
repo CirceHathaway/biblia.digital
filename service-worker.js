@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'mbiblia-v52';
+const CACHE_NAME = 'mbiblia-v53';
 const SCOPE = self.registration.scope; // p.ej. https://usuario.github.io/biblia.digital/
 
 // Utilidad: resuelve un path relativo al scope del SW
@@ -16,6 +16,7 @@ const PRECACHE_PATHS = [
   'icons/icon-192x192.png',
   'icons/icon-512x512.png',
   'js/biblia.js',
+  'js/versiculosDestacados.js',
 
   // Índices de versiones para poder listar libros offline
   'js/libros/RVR1960/libros.js',

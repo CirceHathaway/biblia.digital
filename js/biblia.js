@@ -1,5 +1,6 @@
 // js/biblia.js
 
+import { versiculosDestacados } from './versiculosDestacados.js';
 // =====================
 // Versiones soportadas e índice por versión
 // =====================
@@ -87,9 +88,7 @@ const esMovil = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i
 // Versículo del día (TU lista original intacta)
 // =====================
 // Pega aquí tu const versiculosDestacados = [ ... ] completa, sin cambios:
-const versiculosDestacados = [
-  // ... TU LISTA LARGA ORIGINAL AQUÍ ...
-];
+
 
 function obtenerIdentificadorDispositivo() {
   let idDispositivo = localStorage.getItem('deviceId');
@@ -99,6 +98,7 @@ function obtenerIdentificadorDispositivo() {
   }
   return idDispositivo;
 }
+
 String.prototype.hashCode = function() {
   let hash = 0;
   if (this.length === 0) return hash;
@@ -109,6 +109,7 @@ String.prototype.hashCode = function() {
   }
   return hash;
 };
+
 function obtenerVersiculoDelDia() {
   const hoy = new Date().toISOString().split('T')[0];
   const idDispositivo = obtenerIdentificadorDispositivo();
@@ -116,6 +117,7 @@ function obtenerVersiculoDelDia() {
   const indice = Math.abs(semilla) % versiculosDestacados.length;
   return versiculosDestacados[indice];
 }
+
 function mostrarVersiculoDelDia() {
   const hoy = new Date().toISOString().split('T')[0];
   const ultimaVisita = localStorage.getItem('lastVisitDate');
@@ -709,6 +711,7 @@ function mostrarComparador(libro, capitulo, versiculo, textoActual) {
 function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv) {
   const ventana = document.createElement('div');
   ventana.className = 'ventana-destacar';
+
   function aplicarEstilosVentana() {
     ventana.style.position = 'fixed';
     ventana.style.top = '0';
@@ -721,12 +724,14 @@ function mostrarVentanaDestacar(libro, capitulo, versiculo, texto, versiculoDiv)
     ventana.style.justifyContent = 'center';
     ventana.style.zIndex = '1002';
   }
+
   function aplicarEstilosContenido(contenido) {
     contenido.style.backgroundColor = '#fff';
     contenido.style.padding = '1.5rem';
     contenido.style.borderRadius = '0.625rem';
     contenido.style.textAlign = 'center';
   }
+  
   function aplicarEstilosBoton(boton, colorFondo) {
     boton.style.backgroundColor = colorFondo;
     boton.style.color = 'white';

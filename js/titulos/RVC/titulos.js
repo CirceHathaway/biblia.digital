@@ -445,76 +445,77 @@ export const titulosCapitulos = {
     "Reinado y derrocamiento de Joacaz",                 // 36
   ],
   "Esdras": [
-    "Edicto de Ciro y regreso", // 1
-    "Lista de repatriados", // 2
-    "Altar y cimientos del templo", // 3
-    "Oposición y suspensión", // 4
-    "Profecía y reanudación", // 5
-    "Decreto de Darío y dedicación", // 6
-    "Viaje de Esdras y su comisión", // 7
+    "El decreto de Ciro", // 1
+    "Los que volvieron con Zorobabel", // 2
+    "Restauración del altar y del culto", // 3
+    "Los adversarios detienen la obra", // 4
+    "Reedificación del templo", // 5
+    "Se halla el edicto de Ciro", // 6
+    "Esdras y sus compañeros llegan a Jerusalén", // 7
     "Compañeros y preparación del viaje", // 8
-    "Matrimonios mixtos: confesión", // 9
-    "Separación de esposas extranjeras", // 10
+    "Oración de confesión de Esdras", // 9
+    "Expulsión de las mujeres extranjeras", // 10
   ],
   "Nehemías": [
-    "Noticias y oración de Nehemías", // 1
-    "Permiso del rey y llegada", // 2
-    "Reparación del muro", // 3
-    "Burla y amenazas; vigilancia", // 4
-    "Abusos y reforma social", // 5
-    "Trampas fallidas; muro terminado", // 6
-    "Listas y organización", // 7
-    "Lectura de la Ley y fiesta", // 8
-    "Confesión y pacto", // 9
-    "Firmantes y compromiso", // 10
-    "Repoblación de Jerusalén", // 11
-    "Sacerdotes y levitas; historia del culto", // 12
-    "Reformas finales de Nehemías", // 13 
+    "Oración de Nehemías por Jerusalén", // 1
+    "Artajerjes envía a Nehemías a Jerusalén", // 2
+    "Distribución de las obras de reconstrucción", // 3
+    "Precauciones contra los enemigos; Oración de Nehemías", // 4
+    "Eliminación de la usura", // 5
+    "Intrigas de los adversarios", // 6
+    "Nehemías designa dirigentes", // 7
+    "Esdras lee la ley al pueblo", // 8
+    "Esdras confiesa los pecados de Israel", // 9
+    "El pueblo promete obedecer la ley", // 10
+    "Los habitantes de Jerusalén", // 11
+    "Sacerdotes y levitas", // 12
+    "Reformas de Nehemías", // 13 
   ],
   "Ester": [
-    "Banquete de Asuero y destitución de Vasti", // 1
-    "Ester reina; Mardoqueo descubre complot", // 2
-    "Amán exaltado y edicto contra los judíos", // 3
-    "Ester decide interceder", // 4
-    "Primer banquete de Ester", // 5
-    "Honra a Mardoqueo; caída de Amán", // 6
-    "Segundo banquete; Amán desenmascarado", // 7
-    "Nuevo edicto y victoria anunciada", // 8
-    "Purim establecido", // 9
+    "La reina Vasti desafía a Asuero", // 1
+    "Ester es proclamada reina", // 2
+    "Amán trama la destrucción de los judíos", // 3
+    "Ester promete interceder por su pueblo", // 4
+    "Ester invita al rey y a Amán a un banquete", // 5
+    "Amán se ve obligado a honrar a Mardoqueo", // 6
+    "Amán es ahorcado", // 7
+    "El decreto a favor de los judíos", // 8
+    "Los judíos destruyen a sus enemigos", // 9
     "Grandeza de Mardoqueo", // 10
   ],
   "Job": [
-    "Prueba de Job", // 1
-    "Segunda prueba y silencio de amigos", // 2
-    "Lamento de Job", // 3
-    "Elifaz: primera intervención", // 4
-    "Job responde a Elifaz (I)", // 5
-    "Job lamenta y pide muerte", // 6
-    "Bildad: justicia divina", // 7
-    "Job responde a Bildad (I)", // 8
-    "Job afirma su integridad", // 9
-    "Zofar acusa a Job", // 10
-    "Job responde a Zofar (I)", // 11
-    "Job: sabiduría y poder de Dios", // 12
-    "Job: defensa y esperanza", // 13
-    "Job: límites humanos", // 14
-    "Elifaz: teología del sufrimiento", // 15
-    "Job responde a Elifaz (II)", // 16
-    "Job: testigo en el cielo", // 17
-    "Bildad: destino del malo", // 18
-    "Job responde a Bildad (II)", // 19
-    "Zofar: prosperidad efímera del impío", // 20
-    "Job responde a Zofar (II)", // 21
-    "Elifaz: acusaciones severas", // 22
-    "Job: anhelo de audiencia", // 23
-    "Job: aparente impunidad", // 24
-    "Bildad: grandeza de Dios", // 25
-    "Job: integridad y sabiduría", // 26
-    "Job: juramento de inocencia", // 27
-    "Poema a la sabiduría", // 28
-    "Job recuerda su antigua honra", // 29
-    "Job describe su humillación", // 30
-    "Job mantiene su justicia", // 31
+    "Prólogo", // 1
+    " ", // 2
+    "Queja de Job", // 3
+    "Primera reprensión de Elifaz a Job", // 4
+    " ", // 5
+    "Job responde a Elifaz", // 6
+    " ", // 7
+    "Primera reprensión de Bildad a Job", // 8
+    "Job responde a Bildad", // 9
+    " ", // 10
+    "Primera reprensión de Sofar a Job", // 11
+    "Job responde a Sofar", // 12
+    " ", // 13
+    " ", // 14
+    "Segunda reprensión de Elifaz a Job", // 15
+    "Segunda respuesta de Job a Elifaz", // 16
+    " ", // 17
+    "Segunda reprensión de Bildad a Job", // 18
+    "Segunda respuesta de Job a Bildad", // 19
+    "Segunda reprensión de Sofar a Job", // 20
+    "Segunda respuesta de Job a Sofar", // 21
+    "Tercera reprensión de Elifaz a Job", // 22
+    "Tercera respuesta de Job a Elifaz", // 23
+    " ", // 24
+    "Tercera reprensión de Bildad a Job", // 25
+    "Tercera respuesta de Job a Bildad", // 26
+    " ", // 27
+    "Elogio de la sabiduría", // 28
+    "Job continúa su respuesta", // 29
+    " ", // 30
+    " ", // 31
+    "La juventud interviene; Primer discurso de Eliú" //32
   ],
   "Salmos": [
     "El justo y los pecadores", // 1
@@ -669,71 +670,73 @@ export const titulosCapitulos = {
     "Todo lo que respira alabe a Jehová" // 150
   ],
   "Proverbios": [
-    "Prólogo: propósito de la sabiduría", // 1
-    "Camino de la sabiduría", // 2
-    "Fidelidad y prudencia", // 3
-    "Evita el mal camino", // 4
-    "Advertencia contra la lujuria", // 5
-    "Seis cosas que aborrece el Señor", // 6
-    "Seductora y necio", // 7
-    "Sabiduría personificada", // 8
-    "Banquete de la sabiduría y la necedad", // 9
-    "Proverbios de Salomón (I)", // 10
-    "El justo y el malvado", // 11
-    "Conducta y palabras", // 12
-    "Hijo sabio y disciplina", // 13
-    "Sensatez y generosidad", // 14
-    "Respuesta blanda y orgullo", // 15
-    "Planes y caminos", // 16
-    "Mejor poco con justicia", // 17
-    "Amigo y hermano", // 18
-    "Vida y lengua", // 19
-    "Pesas y medidas; conducta", // 20
-    "Corazón y río del Señor", // 21
-    "Fama y formación", // 22
-    "Treinta dichos de sabios", // 23
-    "Más dichos de sabios", // 24
-    "Proverbios de Ezequías (I)", // 25
-    "Proverbios de Ezequías (II)", // 26
-    "Hierro con hierro", // 27
-    "Valiente y prudente", // 28
-    "Temor del hombre y confianza", // 29
-    "Palabras de Agur", // 30
-    "Rey Lemuel y mujer virtuosa", // 31
+    "Motivo de los proverbios", // 1
+    "Excelencias de la sabiduría", // 2
+    "Exhortación a la obediencia", // 3
+    "Ventajas de la sabiduría", // 4
+    "Advertencia contra la impureza", // 5
+    "Advertencias contra la pereza y la mentira", // 6
+    "Artimañas de la mujer ajena", // 7
+    "Elogio a la sabiduría", // 8
+    "La sabiduría y la mujer insensata", // 9
+    "Contraste entre el justo y el malvado", // 10
+    " ", // 11
+    " ", // 12
+    " ", // 13
+    " ", // 14
+    " ", // 15
+    "Proverbios sobre la vida y la conducta", // 16
+    " ", // 17
+    " ", // 18
+    " ", // 19
+    " ", // 20
+    " ", // 21
+    " ", // 22
+    " ", // 23
+    " ", // 24
+    "Ejemplos prácticos de conducta", // 25
+    " ", // 26
+    " ", // 27
+    " ", // 28
+    " ", // 29
+    "Las palabras de Agur", // 30
+    "Exhortación a un rey", // 31
   ],
+
   "Eclesiastés": [
-    "Vanidad de vanidades", // 1
-    "Tiempo para todo", // 2
-    "Opresiones y trabajos", // 3
-    "Votos y riquezas", // 4
-    "Riqueza y disfrute limitado", // 5
-    "Sabiduría y moderación", // 6
-    "Mejoría por contraste", // 7
-    "Obediencia y límites", // 8
-    "Todo sucede a todos", // 9
-    "Hechura de la necedad", // 10
+    "Todo es vanidad", // 1
+    " ", // 2
+    "Todo tiene su tiempo", // 3
+    " ", // 4
+    "No hagas votos a la ligera; La vanidad de la vida", // 5
+    " ", // 6
+    "La sabiduría y la insensatez", // 7
+    " ", // 8
+    " ", // 9
+    "Excelencia de la sabiduría", // 10
     "Siembra a tiempo", // 11
     "Acuérdate de tu Creador", // 12
   ],
   "Cantares": [
-    "Anhelo y elogios", // 1
-    "El amado y el huerto", // 2
-    "Búsqueda nocturna", // 3
-    "Hermosa como el alba", // 4
-    "Sueño y añoranza", // 5
-    "Bellas como Tirsa", // 6
-    "Deseo y regreso", // 7
-    "Fuerte como la muerte es el amor", // 8
+    "La esposa y las doncellas de Jerusalén", // 1
+    " ", // 2
+    "El ensueño de la esposa", // 3
+    "El esposo alaba a la esposa", // 4
+    " ", // 5
+    "Mutuo encanto del esposo y de la esposa", // 6
+    " ", // 7
+    " ", // 8
   ],
+
   "Isaías": [
-    "Visión de Judá y Jerusalén", // 1
-    "El monte de Jehová", // 2
-    "Juicio contra Judá y Jerusalén", // 3
-    "El Renuevo del Señor", // 4
-    "Cántico de la viña", // 5
-    "Llamamiento de Isaías", // 6
-    "La señal de Emanuel", // 7
-    "Aguas de Siloé y la invasión asiria", // 8
+    "Una nación pecadora", // 1
+    "Reinado universal del Señor", // 2
+    "Juicio de Dios contra Judá y Jerusalén", // 3
+    "El glorioso futuro de Jerusalén", // 4
+    "Parábola de la viña", // 5
+    "Visión y vocación de Isaías", // 6
+    "Mensaje de Isaías a Ajaz", // 7
+    "El temor del Señor", // 8
     "Un niño nos es nacido", // 9
     "Ay de Asiria, vara de mi furor", // 10
     "El retoño de Isaí", // 11

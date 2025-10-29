@@ -737,329 +737,346 @@ export const titulosCapitulos = {
     "Visión y vocación de Isaías", // 6
     "Mensaje de Isaías a Ajaz", // 7
     "El temor del Señor", // 8
-    "Un niño nos es nacido", // 9
-    "Ay de Asiria, vara de mi furor", // 10
-    "El retoño de Isaí", // 11
-    "Cántico de alabanza", // 12
-    "Profecía contra Babilonia", // 13
-    "Proverbio contra el rey de Babilonia", // 14
-    "Profecía sobre Moab (I)", // 15
-    "Profecía sobre Moab (II)", // 16
-    "Profecía sobre Damasco", // 17
-    "Mensaje sobre Etiopía", // 18
-    "Profecía contra Egipto", // 19
-    "Señal contra Egipto y Etiopía", // 20
-    "Contra Babilonia, Dumá y Arabia", // 21
-    "Profecía sobre el valle de la visión", // 22
-    "Profecía contra Tiro", // 23
-    "Juicio sobre la tierra", // 24
-    "Alabanza por la liberación", // 25
-    "Cántico de confianza", // 26
-    "La viña del Señor será guardada", // 27
-    "Ay de la corona soberbia de Efraín", // 28
-    "Ay sobre Ariel (Jerusalén)", // 29
-    "Ay de los que descienden a Egipto", // 30
-    "Jehová defenderá a Jerusalén", // 31
-    "Reinado de justicia y paz", // 32
-    "Ay del destructor; Jehová es exaltado", // 33
-    "Juicio contra Edom", // 34
-    "El desierto florecerá", // 35
-    "Senaquerib invade Judá", // 36
-    "Liberación de Jerusalén de Asiria", // 37
-    "Enfermedad y sanidad de Ezequías", // 38
-    "Embajadores de Babilonia", // 39
-    "Consolad a mi pueblo", // 40
-    "Jehová sostiene a su siervo Israel", // 41
-    "El Siervo de Jehová", // 42
-    "Yo te redimí; no temas", // 43
-    "No hay otro Dios", // 44
-    "Ciro, ungido del Señor", // 45
-    "Bel y Nebo, dioses caídos", // 46
-    "Caída de Babilonia", // 47
-    "Reprensión a Israel; salida de Babilonia", // 48
-    "El Siervo luz de las naciones", // 49
-    "Obediencia y sufrimiento del Siervo", // 50
-    "Consolación para Sion", // 51
-    "¡Qué hermosos son los pies!", // 52
-    "El Siervo sufriente", // 53
-    "Jerusalén restaurada", // 54
-    "A todos los sedientos", // 55
-    "Casa de oración para todos", // 56
-    "Paz para los contritos; contra la idolatría", // 57
-    "El verdadero ayuno", // 58
-    "Iniquidades y redención", // 59
-    "La gloria de Sion", // 60
-    "El Espíritu del Señor sobre mí", // 61
-    "Sion tendrá nuevo nombre", // 62
-    "El Vengador y las misericordias", // 63
-    "Plegaria por misericordia", // 64
-    "Cielos nuevos y tierra nueva (I)", // 65
-    "Juicio y gloria final (II)" // 66
+    "Nacimiento y reinado del Mesías", // 9
+    "Asiria, instrumento de Dios", // 10
+    "Reinado del Mesías", // 11
+    "Cántico de acción de gracias", // 12
+    "Profecía sobre Babilonia", // 13
+    "Escarnio contra el rey de Babilonia", // 14
+    "Profecía acerca de Moab", // 15
+    " ", // 16
+    "Profecía acerca de Damasco", // 17
+    "Profecía acerca de Etiopía", // 18
+    "Profecía acerca Egipto", // 19
+    "Asiria conquistará Egipto y Etiopía", // 20
+    "Profecía acerca del desierto junto al mar", // 21
+    "Profecía acerca del valle de la visión", // 22
+    "Profecía acerca de Tiro", // 23
+    "El Señor juzgará a la tierra", // 24
+    "Cántico de gratitud al Señor", // 25
+    "Cántico de confianza en el Señor", // 26
+    "Liberación y retorno de Israel", // 27
+    "Condenación de Efraín", // 28
+    "Ariel y sus enemigos", // 29
+    "De Egipto nada puede esperarse", // 30
+    "Los egipcios son hombres, no dioses", // 31
+    "El Rey justo", // 32
+    "El Señor traerá salvación", // 33
+    "La ira del Señor contra las naciones", // 34
+    "Futuro glorioso de Sión", // 35
+    "La invasión de Senaquerib", // 36
+    "Judá es librado de Senaquerib", // 37
+    "Enfermedad de Ezequías", // 38
+    "Ezequías recibe a los embajadores de Babilonia", // 39
+    "El Señor consuela a Sión", // 40
+    "Seguridad de Dios para Israel", // 41
+    "El siervo del Señor", // 42
+    "El Señor es el único Redentor", // 43
+    "El Señor es el único Dios", // 44
+    "Encargo de Dios para Ciro", // 45
+    " ", // 46
+    "Veredicto contra Babilonia", // 47
+    "Dios reprende la infidelidad de Israel", // 48
+    "Israel, siervo del Señor", // 49
+    "El Señor ayuda a quienes confían en él", // 50
+    "Palabras de consuelo para Sión", // 51
+    "Dios librará a Sión del cautiverio", // 52
+    " ", // 53
+    "El eterno amor del Señor por Israel", // 54
+    "Misericordia gratuita para todos", // 55
+    "Promesa de Dios a los que cumplen su pacto", // 56
+    "Condenación de la idolatría de Israel", // 57
+    "El ayuno verdadero", // 58
+    "Confesión del pecado de Israel", // 59
+    "La futura gloria de Sión", // 60
+    "Buenas noticias para Sión", // 61
+    " ", // 62
+    "El día de la venganza del Señor", // 63
+    " ", // 64
+    "Castigo de los rebeldes", // 65
+    "Prosperidad futura de Sión" // 66
   ],
 
   "Jeremías": [
-    "Llamamiento de Jeremías", // 1
-    "Infidelidad de Israel", // 2
-    "Llamado al arrepentimiento", // 3
-    "Viene el mal del norte", // 4
-    "Corrupción generalizada en Judá", // 5
-    "Advertencia de invasión y juicio", // 6
-    "El sermón del templo", // 7
-    "Lamento por Judá", // 8
-    "Lamento del profeta y juicio inminente", // 9
-    "Vanidad de la idolatría", // 10
-    "El pacto quebrantado", // 11
-    "Queja del profeta y respuesta divina", // 12
-    "El cinto de lino y la jarra", // 13
-    "Sequía, espada y hambre", // 14
-    "Juicios y promesa al profeta", // 15
-    "Prohibiciones al profeta; futuro retorno", // 16
-    "El corazón engañoso; santificar el sábado", // 17
-    "El alfarero y el barro", // 18
-    "La vasija quebrada y Tofet", // 19
-    "Pashur golpea a Jeremías; lamento del profeta", // 20
-    "Mensaje a la casa real de Judá", // 21
-    "Ay a los pastores; retoños justos", // 22
-    "Contra los falsos profetas", // 23
-    "Dos canastas de higos", // 24
-    "Setenta años de cautiverio", // 25
-    "Carta a los exiliados", // 29
-    "Libro de consolación: restauración de Israel", // 30
-    "Nuevo pacto", // 31
-    "Compra del campo en Anatot", // 32
-    "Clamor y promesa de restauración", // 33
-    "Advertencia a Sedequías y al pueblo", // 34
-    "Los recabitas: fidelidad ejemplar", // 35
-    "Queman el rollo de Jeremías", // 36
-    "Jeremías encarcelado", // 37
+    "Llamamiento y misión de Jeremías", // 1
+    "El Señor y la apostasía de Israel", // 2
+    " ", // 3
+    " ", // 4
+    "Impiedad de Jerusalén y de Judá", // 5
+    "El juicio contra Jerusalén y Judá", // 6
+    "El culto verdadero", // 7
+    " ", // 8
+    " ", // 9
+    "Los dioses falsos y el Dios verdadero", // 10
+    "El pacto violado", // 11
+    "Queja de Jeremías y respuesta de Dios", // 12
+    "La señal del cinturón podrido", // 13
+    "Mensaje acerca de la sequía", // 14
+    "La implacable ira de Dios contra Judá", // 15
+    "Sentencia del Señor contra Judá", // 16
+    "El pecado en el corazón de Judá", // 17
+    "La señal del alfarero y el barro", // 18
+    "La señal de la vasija rota", // 19
+    "Profecía contra Pasjur; Lamento de Jeremías", // 20
+    "Jerusalén será destruida", // 21
+    "Profecías contra los reyes de Judá", // 22
+    "Retorno del remanente; Denuncia contra los falsos profetas", // 23
+    "La señal de los higos buenos y malos", // 24
+    "Setenta años de desolación", // 25
+    "Jeremías recibe amenazas de muerte", //26
+    "La señal de los yugos", //27
+    "Falsa profecía de Jananías", //28
+    "Carta de Jeremías a los cautivos", // 29
+    "Dios anuncia el retorno de los cautivos", // 30
+    "El nuevo pacto", // 31
+    "Jeremías compra el terreno de Janamel", // 32
+    "Restauración de Jerusalén", // 33
+    "Jeremías amonesta a Sedequías", // 34
+    "Obediencia de los recabitas", // 35
+    "El rey quema el rollo", // 36
+    "Jeremías es encarcelado", // 37
     "Jeremías en la cisterna", // 38
     "Caída de Jerusalén", // 39
-    "Jeremías liberado; Gedalías gobernador", // 40
-    "Asesinato de Gedalías y huida", // 41
-    "Desobediencia del remanente", // 42
-    "Bajan a Egipto contra el mandato", // 43
-    "Juicio contra los idólatras en Egipto", // 44
-    "Palabra a Baruc", // 45
-    "Juicios a naciones: Egipto", // 46
-    "Filistea", // 47
-    "Moab", // 48
-    "Amón, Edom, Damasco, Cedar, Hazor y Elam", // 49
-    "Contra Babilonia (I)", // 50
-    "Contra Babilonia (II); fin del exilio", // 51
-    "Apéndice histórico: Sedequías y Joaquín" // 52
+    "Jeremías y el remanente con Gedalías", // 40
+    " ", // 41
+    "Mensaje a Johanán", // 42
+    "La emigración a Egipto", // 43
+    "Jeremías profetiza a los judíos en Egipto", // 44
+    "Mensaje de Jeremías a Baruc", // 45
+    "Profecías acerca de Egipto", // 46
+    "Profecía acerca de los filisteos", // 47
+    "Profecía acerca de Moab", // 48
+    "Profecía acerca de los amonitas, Edom, Damasco, Cedar, Hazor y Elam", // 49
+    "Profecía contra Babilonia", // 50
+    "Sentencia del Señor contra Babilonia", // 51
+    "Reinado de Sedequías" // 52
+  ],
+
+  "Lamentaciones": [
+    "Jerusalén lamenta su caída", // 1
+    "El castigo de Sión", // 2
+    "La misericordia de Dios es constante", // 3
+    "La caída de Jerusalén", // 4
+    "Oración del pueblo afligido" // 5
   ],
 
   "Ezequiel": [
-    "Visión de la gloria de Dios", // 1
-    "Llamamiento y comisión del profeta", // 2
-    "El rollo y la casa rebelde", // 3
-    "Acciones simbólicas del asedio", // 4
-    "Señales de juicio inminente", // 5
-    "Abominaciones en el templo", // 8
-    "Gloria que se aparta; juicio a Jerusalén", // 9
-    "Carbones encendidos; gloria que se mueve", // 10
-    "Príncipes condenados; gloria se aleja", // 11
-    "Parábola del pan cocido y del caldero", // 12
-    "Condena contra los falsos profetas", // 13 
-    "Juicio contra los idólatras que consultan al profeta", // 14
-    "Jerusalén es como una vid inútil", // 15
+    "La visión de la gloria divina", // 1
+    "Llamamiento de Ezequiel", // 2
+    " ", // 3
+    "Predicción del sitio de Jerusalén", // 4
+    " ", // 5
+    "Profecía contra los montes de Israel", //6
+    "Anuncio del fin",  //7
+    "Visión de las abominaciones en Jerusalén", // 8
+    "Visión de la muerte de los culpables", // 9
+    "La gloria de Dios abandona el templo", // 10
+    "Reprensión de los príncipes malvados", // 11
+    "Salida de Ezequiel en señal del cautiverio", // 12
+    "Condenación de los falsos profetas", // 13 
+    "Castigo contra los idólatras", // 14
+    "Jerusalén, una vid inútil", // 15
     "Infidelidad de Jerusalén", // 16
-    "La aguda parábola de las aguilas y la vid", // 17
-    "El alma que peca morirá", // 18
-    "Lamentación por los príncipes de Israel", // 19
-    "Historia de rebeldía de Israel", // 20
-    "Espada contra Jerusalén", // 21
-    "Dos hermanas: Ohola y Oholibá", // 23
-    "Caldero hirviente; muerte de la esposa del profeta", // 24
-    "Contra Amón, Moab, Edom y Filistea", // 25
-    "Oráculos contra Tiro (I)", // 26
-    "Lamento sobre Tiro (II)", // 27
-    "Caída del rey de Tiro", // 28
-    "Contra Egipto (I): Nilo y faraón", // 29
-    "Contra Egipto (II): quebrada su soberbia", // 30
-    "Faraón como cedro abatido", // 31
-    "Llanto por Egipto en el Seol", // 32
-    "Atalaya y responsabilidad", // 33
-    "El Buen Pastor", // 34
-    "Contra Seir/Edom", // 35
-    "Montes de Israel restaurados", // 36
-    "Huesos secos que viven", // 37
-    "Gog de Magog (I)", // 38
-    "Gog de Magog (II)", // 39
-    "Visión del nuevo templo (I)", // 40
-    "El santuario y sus medidas (II)", // 41
-    "Atrios, cámaras y mesa (III)", // 42
-    "Gloria retorna; ley del templo (IV)", // 43
-    "Altar y ministerio levítico (V)", // 44
-    "Porciones de tierra y ofrendas (VI)", // 45
-    "Fiestas y provisiones del príncipe (VII)", // 46
-    "Aguas que sanan; límites (VIII)", // 47
-    "Distribución de la tierra y la ciudad (IX)" // 48
+    "Parábola de las águilas y la vid", // 17
+    "El que peque morirá", // 18
+    "Lamentación sobre los príncipes de Israel", // 19
+    "Modo de proceder de Dios con Israel", // 20
+    "La espada afilada del Señor", // 21
+    "Los pecados de Jerusalén", //22
+    "Las dos hermanas", // 23
+    "Parábola de la olla hirviente; Muerte de la esposa de Ezequiel", // 24
+    "Profecía contra Amón, Moab, Edom y Filistea", // 25
+    "Profecía contra Tiro", // 26
+    " ", // 27
+    "Profecía contra Sidón", // 28
+    "Profecías contra Egipto", // 29
+    " ", // 30
+    " ", // 31
+    " ", // 32
+    "El deber del atalaya", // 33
+    "Profecía contra los pastores de Israel", // 34
+    "Profecía contra el monte de Seír", // 35
+    "Restauración futura de Israel", // 36
+    "El valle de los huesos secos", // 37
+    "Profecía contra Gog", // 38
+    " ", // 39
+    "La visión del templo", // 40
+    " ", // 41
+    " ", // 42
+    "La gloria del Señor llena el templo; ley del templo", // 43
+    " ", // 44
+    " ", // 45
+    " ", // 46
+    "El agua saludable; Reparto y límites de la tierra", // 47
+    " " // 48
   ],
 
   "Daniel": [
-    "Fidelidad en Babilonia", // 1
-    "Sueño de la estatua", // 2
-    "Horno de fuego", // 3
-    "Humillación de Nabucodonosor", // 4
-    "Belsasar y la escritura en la pared", // 5
-    "Foso de los leones", // 6
+    "Daniel y sus compañeros en Babilonia", // 1
+    "Daniel interpreta el sueño de Nabucodonosor", // 2
+    "Rescatados del horno de fuego", // 3
+    "La locura de Nabucodonosor", // 4
+    "La escritura en la pared", // 5
+    "Daniel en el foso de los leones", // 6
     "Visión de las cuatro bestias", // 7
-    "Carnero y macho cabrío", // 8
-    "Oración y las setenta semanas", // 9
-    "Visión del hombre vestido de lino", // 10
-    "Conflicto de reyes (Norte y Sur)", // 11
-    "Tiempo del fin y la resurrección" // 12
+    "Visión del carnero y del macho cabrío", // 8
+    "Oración de Daniel por su pueblo", // 9
+    "Visión de Daniel junto al río", // 10
+    "Los reyes del norte y del sur", // 11
+    "El tiempo del fin" // 12
   ],
 
   "Oseas": [
-    "Matrimonio de Oseas y Gomer", // 1
-    "Infidelidad y restauración", // 2
-    "Regreso al Señor", // 3
-    "Controversia con Israel", // 4
-    "Juicio por apostasía", // 5
-    "Arrepentimiento efímero", // 6
-    "Iniquidad de Efraín", // 7
-    "Trompeta de juicio", // 8
-    "Castigo y compasión", // 9
-    "Dios ama al hijo", // 11
-    "Contienda con Judá e Israel", // 12
-    "Llamado final al arrepentimiento" // 14
+    "Oseas, su esposa infiel y sus hijos", // 1
+    "El amor del Señor por un pueblo infiel", // 2
+    "Oseas y la adúltera", // 3
+    "Controversia del Señor con Israel", // 4
+    "Apostasía y castigo de Israel", // 5
+    " ", // 6
+    "Iniquidad y rebelión de Israel", // 7
+    "Reprensión de la idolatría de Israel", // 8
+    "La infidelidad de Israel será castigada", // 9
+    " ", //10
+    "Dios se compadece de su obstinado pueblo", // 11
+    "Reprensión de la falsedad y opresión de Efraín", // 12
+    "Anuncio de la destrucción total de Efraín",  //13
+    "Israel debe volverse al Señor" // 14
   ],
 
   "Joel": [
-    "Plaga de langostas y llamado", // 1
-    "El día de Jehová se acerca", // 2
-    "Juicio a las naciones y restauración" // 3
+    "La plaga de langostas", // 1
+    " ", // 2
+    "Juicio del Señor sobre las naciones" // 3
   ],
 
   "Amós": [
-    "Juicios a las naciones", // 1
-    "Contra Moab, Judá e Israel", // 2
-    "Contra la opresión en Israel", // 3
-    "Vacas de Basán y santidad fingida", // 4
-    "Busquen al Señor y vivan", // 5
-    "Ay de los confiados en Sion", // 6
-    "Visiones: langostas y fuego", // 7
-    "Visiones: plomada y cestas", // 8
-    "Restauración del tabernáculo de David" // 9
+    "Juicios contra las naciones vecinas", // 1
+    "Juicio contra Israel", // 2
+    "El rugido del león; Destrucción de Samaria", // 3
+    "A pesar del castigo, Israel no aprende", // 4
+    "Llamado al arrepentimiento", // 5
+    "Destrucción de Israel", // 6
+    "Tres visiones de destrucción", // 7
+    "El cesto con fruta de verano; Se acerca el juicio contra Israel", // 8
+    "Los ineludibles juicios del Señor; Restauración futura de Israel" // 9
   ],
 
   "Abdías": [
-    "Juicio a Edom y el día de Jehová" // 1
+    "La humillación de Edom; La exaltación de Israel" // 1
   ],
 
   "Jonás": [
-    "Llamado y huida", // 1
-    "Oración desde el pez", // 2
+    "Jonás huye de Dios", // 1
+    "Oración de Jonás", // 2
     "Nínive se arrepiente", // 3
-    "El enojo de Jonás y la planta" // 4
+    "El enojo de Jonás" // 4
   ],
 
   "Miqueas": [
-    "Juicio contra Samaria y Jerusalén", // 1
-    "Ay de los opresores", // 2
-    "Líderes y profetas reprendidos", // 3
-    "Sion y la ley desde Jerusalén", // 4
-    "El gobernante de Belén", // 5
-    "Controversia de Jehová con su pueblo", // 6
-    "Lamento y esperanza" // 7
+    " ", // 1
+    "¡Ay de los que oprimen a los pobres!", // 2
+    "Acusación contra los dirigentes de Israel", // 3
+    "Reinado universal del Señor", // 4
+    "El reinado del libertador desde Belén", // 5
+    "Controversia del Señor contra Israel", // 6
+    "Corrupción moral de Israel" // 7
   ],
 
   "Nahúm": [
-    "Juicio anunciado contra Nínive", // 1
-    "Sitio y caída de Nínive", // 2
-    "¡Ay de la ciudad sanguinaria!" // 3
+    "Anuncio de la caída de Nínive", // 1
+    "Destrucción total de Nínive", // 2
+    " " // 3
   ],
 
   "Habacuc": [
-    "Queja por la injusticia", // 1
-    "El justo por la fe vivirá", // 2
-    "Oración: aviva tu obra" // 3
+    "Habacuc se queja de la injusticia", // 1
+    "El Señor responde a Habacuc", // 2
+    "Oración de Habacuc" // 3
   ],
 
   "Sofonías": [
-    "Día de Jehová sobre Judá", // 1
-    "Llamado a buscar al Señor", // 2
-    "Restauración de un pueblo humilde" // 3
+    "El día de la ira del Señor", // 1
+    "Juicios contra las naciones vecinas", // 2
+    "Pecado y redención de Jerusalén" // 3
   ],
 
   "Hageo": [
-    "Consideren sus caminos: reedifiquen", // 1
-    "La gloria postrera del templo" // 2
+    "Exhortación a edificar el templo", // 1
+    "La gloria del nuevo templo" // 2
   ],
 
   "Zacarías": [
-    "Llamado al retorno; visiones (I)", // 1
-    "Cuernos y carpinteros; cordel de medir", // 2
-    "Josué, el sumo sacerdote", // 3
-    "Candelabro y olivos", // 4
-    "Rollo volador y efa", // 5
-    "Carros y coronación", // 6
-    "Ayunos convertidos en gozo", // 7
-    "Sion restaurada", // 8
-    "Entrada del Rey humilde", // 9
-    "Redención y pastores", // 10
-    "Dos varas: Gracia y Unión", // 11
-    "Jerusalén sitiada y salvada", // 12
-    "Fuente abierta; pastor herido", // 13
-    "Día del Señor y su reinado" // 14
+    "Llamamiento a volverse al Señor", // 1
+    "Llamamiento a los cautivos", // 2
+    "Visión del sumo sacerdote Josué", // 3
+    "El candelabro de oro y los olivos", // 4
+    "El rollo en vuelo", // 5
+    "Los cuatro carros; Coronación simbólica de Josué", // 6
+    "El ayuno que Dios no aprueba", // 7
+    "Dios promete restaurar a Jerusalén", // 8
+    "El castigo para las naciones vecinas", // 9
+    "El Señor salvará a su pueblo", // 10
+    "Los pastores inútiles", // 11
+    "Liberación futura de Jerusalén", // 12
+    "El pastor del Señor será herido", // 13
+    "Jerusalén y las naciones" // 14
   ],
 
   "Malaquías": [
-    "Amor de Dios y queja sacerdotal", // 1
-    "Pacto con Leví y fidelidad conyugal", // 2
-    "El mensajero del pacto", // 3
-    "El sol de justicia y el día grande" // 4
+    "El amor del Señor por Jacob", // 1
+    "Reprensión de la infidelidad de Israel", // 2
+    "El pago de los diezmos", // 3
+    "La llegada del día del Señor" // 4
   ],
 
   "Mateo": [
-    "Genealogía y nacimiento", // 1
-    "Magos y huida a Egipto", // 2
-    "Juan y bautismo de Jesús", // 3
-    "Tentación y comienzo", // 4
-    "Sermón del monte I", // 5
-    "Sermón del monte II", // 6
-    "Sermón del monte III", // 7
-    "Milagros y llamado", // 8
-    "Paralítico y discípulos", // 9
-    "Misión de los doce", // 10
-    "Juan duda; denuncias", // 11
-    "Señor del sábado", // 12
-    "Parábolas del reino", // 13
-    "Muerte de Juan; panes", // 14
-    "Tradición y fe", // 15
-    "Confesión y transfiguración", // 16
-    "Grandeza y perdón", // 17
-    "Matrimonio y riquezas", // 18
-    "Trabajadores de la viña", // 19
-    "Entrada triunfal y juicio", // 20
-    "Parábolas y piedra angular", // 21
-    "Ayes a los fariseos", // 22
-    "Señales del fin", // 23
-    "Vírgenes y talentos", // 24
-    "Juicio a las naciones", // 25
-    "Pasión: arresto y juicio", // 26
-    "Crucifixión y sepultura", // 27
-    "Resurrección y Gran Comisión" // 28
+    "Genealogía de Jesucristo", // 1
+    "La visita de los sabios", // 2
+    "Predicación de Juan el Bautista", // 3
+    "Tentación de Jesús", // 4
+    "El Sermón del monte: Las bienaventuranzas", // 5
+    "Jesús y la limosna; la oración; el ayuno", // 6
+    "El juzgar a los demás", // 7
+    "Jesús sana a un leproso", // 8
+    "Jesús sana a un paralítico", // 9
+    "Elección de los doce apóstoles", // 10
+    "Los mensajeros de Juan el Bautista", // 11
+    "Los discípulos recogen espigas en el día de reposo", // 12
+    "Parábola del sembrador", // 13
+    "Muerte de Juan el Bautista", // 14
+    "La verdadera contaminación", // 15
+    "La demanda de una señal", // 16
+    "La transfiguración", // 17
+    "¿Quién es el mayor?", // 18
+    "Jesús enseña sobre el divorcio", // 19
+    "La viña y los viñadores", // 20
+    "La entrada triunfal en Jerusalén", // 21
+    "Parábola de la fiesta de bodas", // 22
+    "Jesús acusa a escribas y fariseos", // 23
+    "Jesús predice la destrucción del templo", // 24
+    "Parábola de las diez vírgenes", // 25
+    "El complot para prender a Jesús", // 26
+    "Jesús ante Pilato", // 27
+    "La resurrección" // 28
   ],
 
   "Marcos": [
-    "Inicio del evangelio", // 1
-    "Sábado y controversias", // 2
-    "Parábolas y tormenta", // 4
-    "Endemoniado y hija de Jairo", // 5
-    "Doce enviados; multiplicación", // 6
-    "Tradición y fe gentiles", // 7
-    "Confesión y transfiguración", // 8
-    "Servicio y tropiezos", // 9
-    "Divorcio, riqueza y servicio", // 10
-    "Entrada a Jerusalén", // 11
-    "Ayes y preguntas", // 12
-    "Discurso del monte de los Olivos", // 13
-    "Última cena y arresto", // 14
-    "Crucifixión y sepultura", // 15
-    "Resurrección y envío" // 16
+    "Predicación de Juan el Bautista", // 1
+    "Jesús sana a un paralítico", // 2
+    "El hombre de la mano atrofiada",  //3
+    "Parábola del sembrador", // 4
+    "El endemoniado geraseno", // 5
+    "Jesús en Nazaret", // 6
+    "Lo que contamina al hombre", // 7
+    "Alimentación de los cuatro mil", // 8
+    "La transfiguración", // 9
+    "Jesús enseña sobre el divorcio", // 10
+    "La entrada triunfal en Jerusalén", // 11
+    "Los labradores malvados", // 12
+    "Jesús predice la destrucción del templo", // 13
+    "El complot para aprehender a Jesús", // 14
+    "Jesús ante Pilato", // 15
+    "La resurrección" // 16
   ],
 
   "Lucas": [

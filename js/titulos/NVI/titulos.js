@@ -229,34 +229,34 @@ export const titulosCapitulos = {
   ],
 
   "Jueces": [
-    "Conquistas y fracasos iniciales de las tribus",         // 1
-    "El ángel de Jehová en Boquim; ciclo de los jueces",     // 2
+    "Israel continúa su lucha contra los cananeos",         // 1
+    "El ángel del Señor en Boquín; Desobediencia y derrota",     // 2
     "Otoniel, Aod y Samgar",                                 // 3
-    "Débora y Barac contra Sísara",                          // 4
-    "Cántico de Débora y Barac",                             // 5
-    "Llamado de Gedeón",                                     // 6
-    "Gedeón y los trescientos",                              // 7
-    "Persecución de Madián; efod de Gedeón",                 // 8
-    "Abimelec, su reinado y caída",                          // 9
-    "Tola y Jair; opresión amonita",                         // 10
+    "Débora",                          // 4
+    "La canción de Débora",                             // 5
+    "Gedeón",                                     // 6
+    "Gedeón derrota a los madianitas",                              // 7
+    "Zeba y Zalmuna; Muerte de Gedeón",                 // 8
+    "Abimélec",                          // 9
+    "Tola; Yair; Jefté",                         // 10
     "Jefté y su voto",                                       // 11
-    "Conflicto con Efraín; Ibzán, Elón y Abdón",             // 12
-    "Anuncio del nacimiento de Sansón",                      // 13
-    "Sansón y el enigma en Timnat",                          // 14
-    "Sansón derrota a los filisteos con una quijada",        // 15
-    "Sansón y Dalila; caída y muerte",                       // 16
-    "Miqueas, su ídolo y un levita",                         // 17
-    "Los danitas roban el ídolo y migran",                   // 18
-    "El levita y su concubina en Gabaa",                     // 19
-    "Guerra contra Benjamín",                                // 20
-    "Esposas para Benjamín; fin del libro"                   // 21
+    "Jefté y Efraín; Ibsán, Elón y Abdón",             // 12
+    "Nacimiento de Sansón",                      // 13
+    "Matrimonio de Sansón",                          // 14
+    "Sansón se venga de los filisteos",        // 15
+    "Sansón y Dalila; Muerte de Sansón",                       // 16
+    "Los ídolos de Micaías",                         // 17
+    "La tribu de Dan se establece en Lais",                   // 18
+    "El levita y su concubina",                     // 19
+    "Los israelitas derrotan a los benjamitas",                                // 20
+    "Esposas para los benjamitas"                   // 21
   ],
 
   "Rut": [
-    "Noemí y Rut; regreso a Belén",                          // 1
-    "Rut espiga en el campo de Booz",                        // 2
-    "Rut en la era; el pariente redentor",                   // 3
-    "Redención, boda y linaje de David"                      // 4
+    "Noemí y Rut",                          // 1
+    "Encuentro de Rut con Booz",                        // 2
+    "Rut y Booz en la era",                   // 3
+    "Matrimonio de Booz y Rut"                      // 4
   ],
 
   "1 Samuel": [

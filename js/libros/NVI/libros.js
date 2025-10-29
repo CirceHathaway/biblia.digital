@@ -5,4 +5,6 @@ export const libros = {
   "Números": "libros/NVI/numeros.js",
   "Deuteronomio": "libros/NVI/deuteronomio.js",
   "Josué": "libros/NVI/josue.js",
+  "Jueces": "libros/NVI/jueces.js",
+  "Ruth": "libros/NVI/ruth.js",
 };

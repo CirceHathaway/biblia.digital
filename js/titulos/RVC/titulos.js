@@ -1080,286 +1080,293 @@ export const titulosCapitulos = {
   ],
 
   "Lucas": [
-    "Anuncios y nacimientos", // 1
-    "Niñez de Jesús y Juan", // 2
-    "Bautismo y genealogía", // 3
-    "Tentación y ministerio", // 4
-    "Llamado y milagros", // 5
-    "Sábado y llamados", // 6
-    "Centurión y Nain", // 7
-    "Sembrador y familia", // 8
-    "Misión y transfiguración", // 9
-    "Setenta enviados", // 10
-    "Enseñanzas de oración", // 11
-    "Amonestaciones y avaricia", // 12
-    "Arrepentimiento y fruto", // 13
-    "Banquete y costo", // 14
-    "Parábolas de perdidos", // 15
-    "Mayordomo y leprosos", // 16
-    "Perseverancia y reino", // 17
-    "Juez injusto y fariseo", // 18
-    "Zaqueo y entrada", // 19
-    "Controversias en el templo", // 20
-    "Discurso escatológico", // 21
-    "Cena y arresto", // 22
-    "Juicio y crucifixión", // 23
-    "Resurrección y Emaús" // 24
+    "Dedicatoria a Teófilo", // 1
+    "Nacimiento de Jesús", // 2
+    "Predicación de Juan el Bautista", // 3
+    "Tentación de Jesús", // 4
+    "La pesca milagrosa", // 5
+    "Los discípulos espigan en el día de reposo", // 6
+    "Jesús sana al siervo de un centurión; Jesús resucita al hijo de la viuda de Naín", // 7
+    "Mujeres que servían a Jesús; Parábola del sembrador", // 8
+    "Misión de los doce discípulos", // 9
+    "Misión de los setenta y dos", // 10
+    "Jesús y la oración", // 11
+    "La levadura de los fariseos; A quién se debe temer", // 12
+    "Arrepiéntanse o perecerán", // 13
+    "Jesús sana a un enfermo; Los convidados a las bodas", // 14
+    "Parábola de la oveja perdida", // 15
+    "Parábola del mayordomo infiel", // 16
+    "Ocasiones de caer; Auméntanos la fe", // 17
+    "Parábola de la viuda y el juez injusto", // 18
+    "Jesús y Zaqueo", // 19
+    "La autoridad de Jesús", // 20
+    "La ofrenda de la viuda", // 21
+    "El complot para matar a Jesús", // 22
+    "Jesús ante Pilato", // 23
+    "La resurrección" // 24
   ],
 
   "Juan": [
-    "Verbo y primeros discípulos", // 1
-    "Bodas y templo", // 2
-    "Nicodemo y nuevo nacimiento", // 3
-    "Samaritana y oficial", // 4
-    "Betesda y autoridad", // 5
-    "Panes, mar y vida", // 6
-    "Fiesta y controversia", // 7
-    "Adúltera y luz del mundo", // 8
-    "Ciego sanado", // 9
-    "Buen Pastor", // 10
-    "Lázaro resucitado", // 11
-    "Ungimiento y entrada", // 12
-    "Lavatorio y mandamiento nuevo", // 13
-    "Consuelo y camino", // 14
-    "Vid verdadera", // 15
-    "Obra del Espíritu", // 16
-    "Oración sacerdotal", // 17
-    "Arresto y juicio", // 18
-    "Crucifixión y sepultura", // 19
-    "Resurrección y envío", // 20
-    "Reinstalación de Pedro" // 21
+    "La Palabra hecha carne", // 1
+    "Las bodas de Caná", // 2
+    "Jesús y Nicodemo", // 3
+    "Jesús y la mujer samaritana", // 4
+    "El paralítico de Betesda", // 5
+    "Alimentación de los cinco mil", // 6
+    "Incredulidad de los hermanos de Jesús", // 7
+    "Adúltera; Jesús, la luz del mundo", // 8
+    "Jesús sana a un ciego de nacimiento", // 9
+    "Parábola del redil; Jesús, el buen pastor", // 10
+    "Muerte de Lázaro; Jesús, la resurrección y la vida", // 11
+    "Jesús es ungido en Betania", // 12
+    "Jesús lava los pies de sus discípulos", // 13
+    "Jesús, el camino al Padre", // 14
+    "Jesús, la vid verdadera", // 15
+    "La obra del Espíritu Santo", // 16
+    "Jesús ora por sus discípulos", // 17
+    "Arresto de Jesús", // 18
+    "Crucifixión y muerte de Jesús", // 19
+    "La resurrección", // 20
+    "Jesús se aparece a siete de sus discípulos" // 21
   ],
 
   "Hechos": [
-    "Ascensión y Pentecostés", // 1
-    "Sanidad y arresto", // 3
-    "Ananías y persecución", // 5
-    "Siete y Esteban", // 6
-    "Esteban martirizado", // 7
-    "Samaria y etíope", // 8
+    "La promesa del Espíritu Santo", // 1
+    "La llegada del Espíritu Santo", // 2
+    "Curación de un cojo",  //3
+    "Pedro y Juan ante el concilio", //4
+    "Ananías y Safira", // 5
+    "Elección de siete diáconos; Arresto de Esteban", // 6
+    "Defensa y muerte de Esteban", // 7
+    "Saulo persigue a la iglesia", // 8
     "Conversión de Saulo", // 9
-    "Cornelio y Pedro", // 10
-    "Antioquía y liberación", // 12
-    "Primer viaje misionero", // 13
-    "Concilio de Jerusalén", // 15
-    "Segundo viaje: Macedonia", // 16
-    "Atenas y Corinto", // 17
-    "Éfeso y disturbio", // 19
-    "Viaje a Jerusalén", // 20
-    "Arresto en Jerusalén", // 21
-    "Defensas ante el Sanedrín", // 22
-    "Ante Félix y Festo", // 24
-    "Ante Agripa", // 26
-    "Naufragio hacia Roma", // 27
-    "Roma: predicación final" // 28
+    "Pedro y Cornelio", // 10
+    "Informe de Pedro a la iglesia de Jerusalén", //11
+    "Muerte de Jacobo; encarcelamiento de Pedro", // 12
+    "Bernabé y Saulo comienzan su primer viaje misionero", // 13
+    "Pablo y Bernabé en Iconio", //14
+    "El concilio en Jerusalén", // 15
+    "Timoteo acompaña a Pablo y a Silas", // 16
+    "El alboroto en Tesalónica", // 17
+    "Pablo en Corinto",  //18
+    "Pablo en Éfeso", // 19
+    "Viaje de Pablo a Macedonia y a Grecia", // 20
+    "Viaje de Pablo a Jerusalén; Arresto de Pablo en el templo", // 21
+    "Pablo relata su conversión", // 22
+    "Complot contra Pablo",  //23
+    "Defensa de Pablo ante Félix", // 24
+    "Pablo apela a César", //25
+    "Defensa de Pablo ante Agripa", // 26
+    "Pablo es enviado a Roma", // 27
+    "Pablo en la isla de Malta; Pablo predica en Roma" // 28
   ],
 
   "Romanos": [
-    "Evangelio y culpabilidad", // 1
-    "Juicio imparcial de Dios", // 2
-    "Justificación por la fe", // 3
-    "Abraham, ejemplo de fe", // 4
-    "Paz y vida en Cristo", // 5
+    "Saludo", // 1
+    "El justo juicio de Dios", // 2
+    "La justicia viene por medio de la fe", // 3
+    "El ejemplo de Abrahán", // 4
+    "Resultados de la justificación", // 5
     "Muertos al pecado", // 6
-    "La lucha con la ley", // 7
-    "Vida en el Espíritu", // 8
-    "Soberanía y elección", // 9
-    "Israel y la justicia", // 10
-    "Resto y misericordia", // 11
-    "Culto racional y dones", // 12
-    "Autoridades y amor", // 13
-    "Fuertes y débiles", // 14
-    "Planes y saludos", // 15
-    "Saludos finales" // 16
+    "Analogía tomada del matrimonio; El pecado que mora en mí", // 7
+    "Viviendo en el Espíritu", // 8
+    "La elección de Israel", // 9
+    " ", // 10
+    "El remanente de Israel", // 11
+    "Deberes cristianos", // 12
+    " ", // 13
+    "Los débiles en la fe", // 14
+    "El evangelio a los no judíos", // 15
+    "Saludos personales" // 16
   ],
 
   "1 Corintios": [
-    "Divisiones y cruz", // 1
-    "Sabiduría de Dios", // 2
-    "Carnalidad y siervos", // 3
-    "Administradores y disciplina", // 4
-    "Caso de inmoralidad", // 5
-    "Pleitos y pureza", // 6
-    "Matrimonio y llamado", // 7
-    "Ídolos y libertad", // 8
-    "Derechos del apóstol", // 9
-    "Ejemplos y advertencias", // 10
-    "Orden en la adoración", // 11
-    "Dones y un solo cuerpo", // 12
-    "El amor superior", // 13
-    "Profecía y orden", // 14
-    "Resurrección de los muertos", // 15
-    "Colecta y despedida" // 16
+    "Saludo", // 1
+    "Sabiduría de Dios; La revelación por el Espíritu de Dios", // 2
+    "Colaboradores de Dios", // 3
+    "El ministerio de los apóstoles", // 4
+    "Un caso de inmoralidad sexual", // 5
+    "Litigios en presencia de los incrédulos", // 6
+    "Problemas matrimoniales", // 7
+    "Las ofrendas a los ídolos", // 8
+    "Los derechos de un apóstol", // 9
+    "Amonestaciones contra la idolatría", // 10
+    "Atavío de las mujeres", // 11
+    "Dones espirituales", // 12
+    "La preeminencia del amor", // 13
+    "El hablar en lenguas", // 14
+    "La resurrección de los muertos", // 15
+    "La ofrenda para los santos" // 16
   ],
 
   "2 Corintios": [
-    "Consuelo en tribulaciones", // 1
-    "Perdón y triunfo en Cristo", // 2
-    "Ministro del nuevo pacto", // 3
-    "Tesoros en vasos de barro", // 4
-    "Vida y reconciliación", // 5
-    "Cooperadores y santidad", // 6
-    "Arrepentimiento y gozo", // 7
-    "Generosidad macedonia", // 8
-    "Siembra y cosecha", // 9
-    "Defensa del ministerio", // 10
-    "Apostolado y debilidad", // 11
-    "Aguijón y gracia", // 12
-    "Exhortaciones finales" // 13
+    "Saludo; Aflicciones de Pablo", // 1
+    "Pablo perdona al ofensor", // 2
+    "Ministros del nuevo pacto", // 3
+    "Vivimos por la fe", // 4
+    "El ministerio de la reconciliación", // 5
+    "Somos templo del Dios viviente", // 6
+    "Regocijo de Pablo ante el arrepentimiento de los corintios", // 7
+    "La ofrenda para los santos", // 8
+    " ", // 9
+    "Pablo defiende su ministerio", // 10
+    " ", // 11
+    "El aguijón en el cuerpo", // 12
+    "Saludos y doxología final" // 13
   ],
 
   "Gálatas": [
-    "Evangelio y llamado", // 1
-    "Pablo y los apóstoles", // 2
-    "Fe y promesa", // 3
-    "Hijos y herederos", // 4
-    "Libertad en Cristo", // 5
-    "Nueva creación" // 6
+    "Saludo; No hay otro evangelio", // 1
+    "Pablo reprende a Pedro en Antioquía", // 2
+    "El Espíritu se recibe por la fe", // 3
+    " ", // 4
+    "Firmes en la libertad", // 5
+    " " // 6
   ],
 
   "Efesios": [
-    "Elección y redención", // 1
-    "Vida en Cristo", // 2
-    "Misterio revelado", // 3
-    "Unidad y crecimiento", // 4
-    "Vida nueva en amor", // 5
-    "Armadura de Dios" // 6
+    "Saludo; Bendiciones espirituales en Cristo", // 1
+    "Salvados por su gracia", // 2
+    "Ministerio de Pablo a los no judíos", // 3
+    "La unidad del Espíritu; La nueva vida en Cristo", // 4
+    "Pórtense como hijos de luz", // 5
+    "La armadura de Dios" // 6
   ],
 
   "Filipenses": [
-    "Acción de gracias y cadenas", // 1
-    "Humildad de Cristo", // 2
-    "Conocer a Cristo", // 3
-    "Alegría y suficiencia" // 4
+    "Saludo; Oración de Pablo por los creyentes", // 1
+    "Humillación y exaltación de Cristo", // 2
+    "Prosigo al blanco", // 3
+    "Regocíjense en el Señor siempre" // 4
   ],
 
   "Colosenses": [
-    "Supremacía de Cristo", // 1
-    "Plenitud en Él", // 2
-    "Vida nueva en Cristo", // 3
-    "Oración y misión" // 4
+    "Saludo; Pablo pide sabiduría espiritual para los colosenses", // 1
+    "Plenitud de vida en Cristo", // 2
+    "La vida antigua y la nueva", // 3
+    " " // 4
   ],
 
   "1 Tesalonicenses": [
-    "Conversión y ejemplo", // 1
-    "Ministerio y afecto", // 2
-    "Fe fortalecida", // 3
-    "Santidad y esperanza", // 4
-    "Día del Señor" // 5
+    "Saludo; Ejemplo de los tesalonicenses", // 1
+    "Ministerio de Pablo en Tesalónica", // 2
+    " ", // 3
+    "La vida agradable a Dios", // 4
+    "Pablo exhorta a los hermanos" // 5
   ],
 
   "2 Tesalonicenses": [
-    "Consuelo en persecución", // 1
-    "El hombre de pecado", // 2
-    "Exhortaciones finales" // 3
+    "Saludo; El juicio de Dios al volver Cristo", // 1
+    "Manifestación del hombre de pecado", // 2
+    "Que la palabra de Dios sea glorificada" // 3
   ],
 
   "1 Timoteo": [
-    "Encargo y falsas doctrinas", // 1
-    "Oración y roles", // 2
-    "Obispos y diáconos", // 3
-    "Apostasía y piedad", // 4
-    "Ancianos y viudas", // 5
-    "Siervos de Dios" // 6
+    "Saludo; Advertencia contra falsas doctrinas", // 1
+    "Instrucciones sobre la oración", // 2
+    "Requisitos de los obispos; Requisitos de los diáconos", // 3
+    "Predicción de la apostasía; Un buen ministro de Jesucristo", // 4
+    "Deberes hacia los demás", // 5
+    "Piedad y contentamiento; La buena batalla de la fe" // 6
   ],
 
   "2 Timoteo": [
-    "No te avergüences", // 1
-    "Esfuérzate en la gracia", // 2
-    "Tiempos peligrosos", // 3
-    "La buena batalla" // 4
+    "Saludo; Testificando de Cristo", // 1
+    "Un buen soldado de Jesucristo", // 2
+    "Carácter de los hombres en los postreros días", // 3
+    "Predica la palabra" // 4
   ],
 
   "Tito": [
-    "Ancianos y doctrina sana", // 1
-    "Vida sobria y ejemplo", // 2
-    "Buenas obras por gracia" // 3
+    "Saludo; Requisitos de ancianos y obispos", // 1
+    "Enseñanza de la sana doctrina", // 2
+    "Justificados por gracia" // 3
   ],
 
   "Filemón": [
-    "Onésimo y la reconciliación" // 1
+    "Saludo; El amor y la fe de Filemón" // 1
   ],
 
   "Hebreos": [
-    "Superior a los ángeles", // 1
-    "Advertencia y gloria", // 2
-    "Moisés y el reposo", // 3
-    "Sumo sacerdote fiel", // 4
-    "Madurez y esperanza", // 5
-    "Melquisedec y pacto", // 6
-    "Sacerdocio perfecto", // 7
-    "Pacto mejor y santuario", // 8
-    "Sacrificio único", // 9
-    "Vida de fe y perseverancia", // 10
-    "Ejemplos de fe", // 11
-    "Carrera y disciplina", // 12
-    "Exhortaciones y gracia" // 13
+    "Dios ha hablado por su Hijo", // 1
+    "Una salvación tan grande; El autor de la salvación", // 2
+    "Jesús, superior a Moisés; El reposo del pueblo de Dios", // 3
+    "Jesús el gran sumo sacerdote", // 4
+    "Advertencia contra la apostasía", // 5
+    " ", // 6
+    "El sacerdocio de Melquisedec", // 7
+    "El mediador de un nuevo pacto", // 8
+    "El sacrificio de Cristo quita el pecado", // 9
+    "Advertencia a los pecadores deliberados", // 10
+    "La fe", // 11
+    "Con la mirada fija en Jesús", // 12
+    "Deberes cristianos" // 13
   ],
 
   "Santiago": [
-    "Pruebas y sabiduría", // 1
-    "Fe y obras", // 2
-    "Lengua y sabiduría", // 3
-    "Amistad con el mundo", // 4
-    "Paciencia y oración" // 5
+    "Saludo; La sabiduría que viene de Dios", // 1
+    "Amonestación contra la discriminación", // 2
+    "La lengua", // 3
+    "La amistad con el mundo", // 4
+    "Contra los ricos opresores" // 5
   ],
 
   "1 Pedro": [
-    "Esperanza viva", // 1
-    "Pueblo santo", // 2
-    "Sufrir por justicia", // 3
-    "Buena administración", // 4
-    "Apacentad el rebaño" // 5
+    "Saludo; Una esperanza viva", // 1
+    "La piedra viva; El pueblo de Dios", // 2
+    "Deberes conyugales; Una buena conciencia", // 3
+    "Buenos administradores de la gracia de Dios", // 4
+    "Cuidando de la grey de Dios" // 5
   ],
 
   "2 Pedro": [
-    "Crecimiento y certeza", // 1
-    "Falsos maestros", // 2
-    "Promesa y paciencia" // 3
+    "Saludo; Partícipes de la naturaleza divina", // 1
+    "Falsos profetas y falsos maestros", // 2
+    "El día del Señor se acerca" // 3
   ],
 
   "1 Juan": [
-    "Comunión y luz", // 1
-    "Abogado y mandamiento", // 2
+    "La palabra de vida", // 1
+    "Cristo, nuestro abogado; El nuevo mandamiento", // 2
     "Hijos de Dios", // 3
-    "Probar los espíritus", // 4
-    "Fe que vence" // 5
+    "El Espíritu de Dios y el espíritu del anticristo", // 4
+    "La fe que vence al mundo; El testimonio del Espíritu" // 5
   ],
 
   "2 Juan": [
-    "Verdad y amor" // 1
+    "Permanezcan en la doctrina de Cristo" // 1
   ],
 
   "3 Juan": [
-    "Cooperadores de la verdad" // 1
+    "Saludo; Elogio de la hospitalidad de Gayo" // 1
   ],
 
   "Judas": [
-    "Contender por la fe" // 1
+    "Saludo; Falsas doctrinas y falsos maestros" // 1
   ],
 
   "Apocalipsis": [
-    "Gloria del Hijo del Hombre", // 1
+    "La revelación de Jesucristo", // 1
     "Cartas a siete iglesias (I)", // 2
     "Cartas a siete iglesias (II)", // 3
-    "Trono en el cielo", // 4
-    "El Cordero y el libro", // 5
-    "Sellos: juicio inicial", // 6
-    "Multitud y sellados", // 7
-    "Trompetas: juicios", // 8
-    "Ángel y dos testigos", // 9
-    "Séptima trompeta", // 10
-    "La mujer y el dragón", // 11
-    "Bestias y la marca", // 12
-    "Cordero y tres ángeles", // 13
-    "Copas preparadas", // 14
-    "Copas derramadas", // 15
-    "Babilonia, la ramera", // 16
-    "Caída de Babilonia", // 17
-    "Aleluya y bodas", // 18
-    "Mil años y juicio", // 19
-    "Cielo nuevo y tierra nueva", // 20
-    "Jerusalén celestial", // 21
-    "¡Vengo pronto!" // 22
+    "La adoración celestial", // 4
+    "El rollo y el Cordero", // 5
+    "Los sellos", // 6
+    "Los 144 mil sellados; La multitud vestida de ropas blancas", // 7
+    "El séptimo sello; Las trompetas", // 8
+    " ", // 9
+    "El ángel con el librito", // 10
+    "Los dos testigos", // 11
+    "La mujer y el dragón", // 12
+    "Las dos bestias", // 13
+    "El cántico de los 144.000; El mensaje de los tres ángeles", // 14
+    "Las siete últimas plagas", // 15
+    "Las copas de ira", // 16
+    "Condenación de la gran ramera", // 17
+    "La caída de Babilonia", // 18
+    "Alabanzas en el cielo", // 19
+    "Los mil años", // 20
+    "Cielo nuevo y tierra nueva", // 21
+    "La inminente venida de Cristo" // 22
   ]
 };

@@ -260,37 +260,37 @@ export const titulosCapitulos = {
   ],
 
   "1 Samuel": [
-    "Nacimiento de Samuel",                                  // 1
-    "Cántico de Ana; hijos de Elí",                          // 2
-    "Jehová llama a Samuel",                                 // 3
-    "El arca es tomada; muerte de Elí",                      // 4
-    "Dagón y el arca en Filistea",                           // 5
-    "El arca regresa a Israel",                              // 6
-    "Samuel juez; Eben-ezer",                                // 7
-    "Israel pide rey",                                       // 8
-    "Saúl es ungido",                                        // 9
-    "Saúl proclamado rey",                                   // 10
-    "Jabes de Galaad es libertada",                          // 11
+    "Nacimiento de Samuel; Ana dedica a Samuel",                                  // 1
+    "Oración de Ana",                          // 2
+    "El Señor llama a Samuel",                                 // 3
+    "Los filisteos capturan el arca; Muerte de Elí",                      // 4
+    "El arca en Asdod y Ecrón",                           // 5
+    "Los filisteos devuelven el arca a Israel",                              // 6
+    "Samuel derrota a los filisteos en Mizpa",                                // 7
+    "Los israelitas piden un rey",                                       // 8
+    "Samuel unge a Saúl",                                        // 9
+    "Saúl es proclamado rey",                                   // 10
+    "Saúl libera la ciudad de Jabés",                          // 11
     "Discurso de despedida de Samuel",                       // 12
-    "Imprudencia de Saúl; amenaza filistea",                 // 13
-    "Hazañas de Jonatán; victoria",                          // 14
-    "Saúl desobediente con Amalec y es desechado",           // 15
-    "David es ungido; sirve a Saúl",                         // 16
-    "David vence a Goliat",                                  // 17
-    "Amistad con Jonatán; celos de Saúl",                    // 18
-    "David huye; Saúl lo persigue",                          // 19
-    "Pacto renovado entre David y Jonatán",                  // 20
-    "David en Nob y Gat",                                    // 21
-    "Adulam; matanza de sacerdotes",                         // 22
-    "Keila y el desierto de Zif",                            // 23
-    "David perdona a Saúl en la cueva",                      // 24
-    "Nabal y Abigail",                                       // 25
-    "David perdona a Saúl por segunda vez",                  // 26
+    "Samuel reprende a Saúl",                 // 13
+    "Israel derrota a los filisteos; El juramento de Saúl",                          // 14
+    "El Señor rechaza a Saúl",           // 15
+    "Samuel unge a David",                         // 16
+    "David y Goliat",                                  // 17
+    "Envidia de Saúl",                    // 18
+    "Saúl intenta matar a David",                          // 19
+    "David y Jonatán",                  // 20
+    "David en Nob",                                    // 21
+    "David huye a Adulán y a Mizpa",                         // 22
+    "David libera la ciudad de Queilá",                            // 23
+    "David perdona la vida a Saúl",                      // 24
+    "David, Nabal y Abigaíl",                                       // 25
+    "David perdona la vida a Saúl",                  // 26
     "David entre los filisteos",                             // 27
-    "Saúl consulta a la adivina de Endor",                   // 28
-    "Rechazan a David en la batalla",                        // 29
-    "Saqueo de Siclag y recuperación",                       // 30
-    "Muerte de Saúl y sus hijos"                             // 31
+    "Saúl y la adivina de Endor",                   // 28
+    "Los filisteos desconfían de David",                        // 29
+    "David derrota a los amalecitas",                       // 30
+    "Muerte de Saúl"                             // 31
   ],
 
   "2 Samuel": [

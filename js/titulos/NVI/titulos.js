@@ -294,30 +294,30 @@ export const titulosCapitulos = {
   ],
 
   "2 Samuel": [
-    "Lamento de David por Saúl y Jonatán",                   // 1
-    "David rey de Judá; Is-boset en Israel",                 // 2
-    "Abner y Joab; fortalecimiento de David",                // 3
-    "Muerte de Is-boset",                                    // 4
-    "David rey de todo Israel; Jerusalén",                   // 5
-    "El arca a Jerusalén; Uza",                              // 6
-    "Pacto eterno con David",                                // 7
+    "Noticia de la muerte de Saúl'",                   // 1
+    "David es ungido rey de Judá",                 // 2
+    "Hijos de David nacidos en Hebrón",                // 3
+    "Asesinato de Isboset",                                    // 4
+    "David es ungido rey de Israel",                   // 5
+    "David lleva el arca a Jerusalén",                              // 6
+    "Promesa de Dios a David",                                // 7
     "Victorias de David",                                    // 8
-    "Mefi-boset favorecido",                                 // 9
-    "Guerra con Amón y Siria",                               // 10
+    "David y Mefiboset",                                 // 9
+    "David derrota a los amonitas",                               // 10
     "David y Betsabé",                                       // 11
-    "Natán reprende; nace Salomón",                          // 12
-    "Amnón y Tamar; venganza de Absalón",                    // 13
-    "Absalón vuelve a Jerusalén",                            // 14
-    "Rebelión de Absalón",                                   // 15
-    "David huye; Simei e Husai",                             // 16
-    "Consejo de Ahitofel; derrota de Absalón",               // 17
+    "Natán reprende a David",                          // 12
+    "Amnón y Tamar",                    // 13
+    "Absalón regresa a Jerusalén",                            // 14
+    "Absalón conspira contra David",                                   // 15
+    "David y Siba",                             // 16
+    " ",               // 17
     "Muerte de Absalón",                                     // 18
-    "Regreso de David; disputas",                            // 19
-    "Rebelión de Seba",                                      // 20
-    "Gabaonitas y gigantes filisteos",                       // 21
-    "Cántico de David",                                      // 22
-    "Últimas palabras y valientes de David",                 // 23
-    "Censo y peste; altar en la era de Arauna"               // 24
+    "David regresa a Jerusalén",                            // 19
+    "Sabá se rebela contra David",                                      // 20
+    "Los gabaonitas se vengan",                       // 21
+    "Salmo de David",                                      // 22
+    "Últimas palabras de David",                 // 23
+    "David hace un censo militar; David construye un altar"               // 24
   ],
 
   "1 Reyes": [

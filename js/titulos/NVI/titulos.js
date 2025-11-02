@@ -338,39 +338,39 @@ export const titulosCapitulos = {
     "Asa en Judá; reyes en Israel",                          // 15
     "Omri y Acab en Israel",                                 // 16
     "Elías y la viuda de Sarepta; sequía",                   // 17
-    "Elías en el Carmelo contra Baal",                       // 18
-    "Elías en Horeb; llamado de Eliseo",                     // 19
-    "Acab y Ben-adad",                                       // 20
-    "La viña de Nabot",                                      // 21
-    "Micaías profetiza; muerte de Acab"                      // 22
+    "Elías y Abdías",                       // 18
+    "Elías huye a Horeb",                     // 19
+    "Ben Adad ataca a Samaria",                                       // 20
+    "El viñedo de Nabot",                                      // 21
+    "Micaías profetiza contra Acab"                      // 22
   ],
 
   "2 Reyes": [
-    "Elías y Ocozías; fuego del cielo",                      // 1
-    "Elías es arrebatado; ministerio de Eliseo",             // 2
-    "Guerra contra Moab",                                    // 3
-    "Milagros de Eliseo: aceite, Sunamita, etc.",            // 4
-    "Naamán es sanado; castigo a Guehazí",                   // 5
-    "Hacha flotante; sitio de Samaria",                      // 6
-    "Fin del sitio; leprosos llevan la noticia",             // 7
-    "Hazael y Jehú en el plan de Dios",                      // 8
-    "Jehú ungido; muerte de Joram y Jezabel",                // 9
-    "Jehú extermina la casa de Acab",                        // 10
-    "Atalía usurpa; Joás rey",                               // 11
-    "Reinado de Joás y reparaciones",                        // 12
-    "Joacaz y Joás; muerte de Eliseo",                       // 13
-    "Amasías; Jeroboam II",                                  // 14
-    "Azarías (Uzías) y otros reyes",                         // 15
-    "Acaz en Judá; alianza con Asiria",                      // 16
-    "Caída de Samaria; origen de los samaritanos",           // 17
-    "Ezequías; Senaquerib invade",                           // 18
-    "Oración y liberación",                                  // 19
-    "Enfermedad de Ezequías; mensajeros babilonios",         // 20
-    "Manasés y Amón",                                        // 21
-    "Josías y el libro de la ley",                           // 22
-    "Reforma y muerte de Josías",                            // 23
-    "Sitios de Jerusalén y deportación",                     // 24
-    "Caída de Jerusalén; Gedalías; exilio"                   // 25
+    "El juicio del Señor contra Ocozías",                      // 1
+    "Elías es llevado al cielo; Eliseo purifica el agua",             // 2
+    "Los moabitas se rebelan",                                    // 3
+    "El aceite de la viuda",            // 4
+    "Eliseo sana a Naamán",                   // 5
+    "El milagro del hacha",                      // 6
+    "Liberación de Samaria",             // 7
+    "La sunamita recupera su terreno",                      // 8
+    "Jehú ungido rey de Israel",                // 9
+    "Jehú extermina a la familia de Acab",                        // 10
+    "Atalía y Joás",                               // 11
+    "Joás, rey de Judá",                        // 12
+    "Joacaz, rey de Israel; Muerte de Eliseo",                       // 13
+    "Amasías, rey de Judá; Jeroboán II, rey de Israel",      // 14
+    "Uzías, rey de Judá",                         // 15
+    "Acaz, rey de Judá",                      // 16
+    "Oseas, rey de Israel;El pecado de Israel",           // 17
+    "Ezequías, rey de Judá",                           // 18
+    "Isaías profetiza la liberación de Jerusalén",                                  // 19
+    "Enfermedad de Ezequías; Mensajeros de Babilonia",         // 20
+    "Manasés, rey de Judá",                                        // 21
+    "Josías, rey de Judá",                           // 22
+    "Renovación del pacto",                            // 23
+    " ",                     // 24
+    " "                   // 25
   ],
 
   "1 Crónicas": [

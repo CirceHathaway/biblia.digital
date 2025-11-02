@@ -374,35 +374,35 @@ export const titulosCapitulos = {
   ],
 
   "1 Crónicas": [
-    "Genealogías desde Adán",                                // 1
-    "Genealogías de Israel y Judá",                          // 2
-    "Descendencia de David",                                 // 3
-    "Judá y Simeón",                                         // 4
-    "Rubén, Gad y Manasés",                                  // 5
-    "Leví: sacerdotes y levitas",                            // 6
-    "Isacar, Benjamín, Neftalí, Manasés, Efraín y Aser",     // 7
-    "Benjamín",                                              // 8
-    "Repobladores y oficios; genealogías sacerdotales",      // 9
+    "Descendientes de Adán; Noé; Sem; Abraham; Esaú; Seír",                                // 1
+    "Hijos de Israel; Descendientes de Judá; Descendientes de Caleb",                          // 2
+    "Hijos de David; Descendientes de Salomón",                                 // 3
+    "Descendientes de Judá; Descendientes de Simeón",                                         // 4
+    "Descendientes de Rubén, Gad y Manasés",                                  // 5
+    "Descendientes de Leví; Ciudades de los levitas",                            // 6
+    "Descendientes de Isacar, Benjamín, Neftalí, Manasés, Efraín y Aser",     // 7
+    "Descendientes de Benjamín",                                              // 8
+    "Los que regresaron a Jerusalén",      // 9
     "Muerte de Saúl",                                        // 10
-    "David rey; los valientes",                              // 11
+    "Proclamación de David como rey de Israel",                              // 11
     "Guerreros que se unieron a David",                      // 12
-    "Traslado del arca; Uza",                                // 13
-    "Victorias de David",                                    // 14
-    "Arca llevada con orden",                                // 15
-    "Cántico ante el arca",                                  // 16
-    "Pacto con David",                                       // 17
-    "Nuevas victorias",                                      // 18
-    "Guerra con Amón y Siria",                               // 19
-    "Conquista y gigantes",                                  // 20
-    "Censo de David; altar",                                 // 21
+    "Traslado del arca a la casa de Obed Edom",                                // 13
+    "Palacio y familia de David; David derrota a los filisteos",                                    // 14
+    "David lleva el arca a Jerusalén",                                // 15
+    "Salmo de David",                                  // 16
+    "Promesa de Dios a David",                                       // 17
+    "Victorias de David",                                      // 18
+    "Guerra contra los amonitas",                               // 19
+    "Conquista de Rabá; Guerra contra los filisteos",                                  // 20
+    "David hace un censo militar",                                 // 21
     "Preparativos para el templo",                           // 22
-    "Organización de levitas",                               // 23
-    "Turnos de sacerdotes",                                  // 24
-    "Músicos y cantores levitas",                            // 25
-    "Porteros y tesoreros",                                  // 26
-    "Oficiales y ejércitos",                                 // 27
-    "Encargo de David a Salomón",                            // 28
-    "Ofrendas y muerte de David"                             // 29
+    "Los levitas",                               // 23
+    "Organización del servicio sacerdotal",                                  // 24
+    "Organización de los músicos",                            // 25
+    "Organización de los porteros",                                  // 26
+    "Divisiones del ejército",                                 // 27
+    "Instrucciones para la construcción del templo",                            // 28
+    "Ofrendas para el templo; Muerte de David"                             // 29
   ],
 
   "2 Crónicas": [

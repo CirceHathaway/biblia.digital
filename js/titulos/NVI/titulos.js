@@ -407,41 +407,41 @@ export const titulosCapitulos = {
 
   "2 Crónicas": [
     "Salomón pide sabiduría",                                // 1
-    "Preparativos para el templo",                           // 2
+    "Preparativos para la construcción del templo",                           // 2
     "Construcción del templo",                               // 3
     "Mobiliario del templo",                                 // 4
-    "El arca es llevada al templo",                          // 5
-    "Oración de dedicación de Salomón",                      // 6
-    "Gloria de Jehová y fiestas",                            // 7
-    "Obras y dominios de Salomón",                           // 8
-    "Reina de Sabá; riqueza de Salomón",                     // 9
+    "El arca del pacto",                          // 5
+    " ",                      // 6
+    "Dedicación del templo",                            // 7
+    "Otras actividades de Salomón",                           // 8
+    "La reina de Sabá visita a Salomón",                     // 9
     "División del reino",                                     // 10
-    "Roboam fortalece Judá",                                 // 11
-    "Sisac invade; humillación",                             // 12
-    "Abías y Jeroboam",                                      // 13
-    "Reformas de Asa",                                       // 14
-    "Profecía de Azarías y pacto",                           // 15
-    "Asa confía en Siria",                                   // 16
-    "Josafat y su organización",                             // 17
-    "Con Acab y Micaías",                                    // 18
+    "la familia de David",                                 // 11
+    "Sisac invade Jerusalén",                             // 12
+    "Abías, rey de Judá",                                      // 13
+    "Asá, rey de Judá",                                       // 14
+    "Reformas de Asá",                           // 15
+    " ",                                   // 16
+    "Josafat, rey de Judá",                             // 17
+    "Micaías profetiza contra Acab",                                    // 18
     "Reformas de justicia",                                  // 19
-    "Victoria contra Moab y Amón",                           // 20
-    "Joram rey de Judá",                                     // 21
-    "Ocozías y Atalía",                                      // 22
-    "Joiada restaura el reino",                              // 23
-    "Joás repara el templo; caída",                          // 24
-    "Amasías",                                               // 25
-    "Uzías",                                                 // 26
-    "Jotam",                                                 // 27
-    "Acaz",                                                  // 28
-    "Ezequías reforma el culto",                             // 29
-    "Gran Pascua restaurada",                                // 30
+    "Josafat derrota a Moab y Amón",                           // 20
+    "Jorán, rey de Judá",                                     // 21
+    "Ocozías, rey de Judá",                                      // 22
+    " ",                              // 23
+    "Joás, rey de Judá",                          // 24
+    "Amasías, rey de Judá",                                               // 25
+    "Uzías, rey de Judá",                                                 // 26
+    "Jotán, rey de Judá",                                                 // 27
+    "Acaz, rey de Judá",                                                  // 28
+    "Ezequías, rey de Judá",                             // 29
+    "Celebración de la Pascua",                                // 30
     "Organización del culto",                                // 31
-    "Senaquerib; enfermedad de Ezequías",                    // 32
-    "Manasés y Amón",                                        // 33
-    "Josías y el libro",                                     // 34
-    "Pascua de Josías; su muerte",                           // 35
-    "Caída; edicto de Ciro"                                  // 36
+    "Senaquerib invade Judá",                    // 32
+    "Manasés, rey de Judá",                                        // 33
+    "Josías, rey de Judá; Hallazgo del libro de la Ley",                                     // 34
+    "Celebración de la Pascua",                           // 35
+    "Joacaz, rey de Judá; Decreto de Ciro"                                  // 36
   ],
 
   "Esdras": [

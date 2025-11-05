@@ -12,4 +12,5 @@ export const libros = {
   "1 Reyes": "libros/NVI/1_reyes.js",
   "2 Reyes": "libros/NVI/2_reyes.js",
   "1 Crónicas": "libros/NVI/1_cronicas.js",
+  "2 Crónicas": "libros/NVI/1_cronicas.js",
 };

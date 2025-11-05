@@ -9,6 +9,7 @@ export const libros = {
   "Ruth": "libros/NVI/ruth.js",
   "1 Samuel": "libros/NVI/1_samuel.js",
   "2 Samuel": "libros/NVI/2_samuel.js",
+  "1 Reyes": "libros/NVI/1_reyes.js",
   "2 Reyes": "libros/NVI/2_reyes.js",
   "1 Crónicas": "libros/NVI/1_cronicas.js",
 };

@@ -321,25 +321,25 @@ export const titulosCapitulos = {
   ],
 
   "1 Reyes": [
-    "Adonías se exalta; Salomón proclamado",                 // 1
-    "Últimas órdenes de David; reino afirmado",              // 2
-    "Salomón pide sabiduría; juicio de las dos mujeres",     // 3
-    "Organización del reino de Salomón",                     // 4
-    "Preparativos para el templo",                           // 5
-    "Construcción del templo",                               // 6
-    "Palacio y utensilios",                                  // 7
-    "Dedicación del templo",                                 // 8
-    "Dios aparece a Salomón; obras",                         // 9
-    "La reina de Sabá; gloria de Salomón",                   // 10
-    "Caída de Salomón; adversarios; anuncio de división",    // 11
-    "División del reino: Roboam y Jeroboam",                 // 12
-    "El profeta de Judá en Betel",                           // 13
-    "Reyes de Judá e Israel; juicio a Jeroboam",             // 14
-    "Asa en Judá; reyes en Israel",                          // 15
-    "Omri y Acab en Israel",                                 // 16
-    "Elías y la viuda de Sarepta; sequía",                   // 17
-    "Elías y Abdías",                       // 18
-    "Elías huye a Horeb",                     // 19
+    "Adonías usurpa el trono",                 // 1
+    "Últimas instrucciones de David; Salomón consolida el reino",              // 2
+    "Salomón pide sabiduría; Un gobernante sabio",     // 3
+    "Administración del reino; Prosperidad de Salomón; La sabiduría de Salomón",                     // 4
+    "Preparativos para la construcción del templo",          // 5
+    "Salomón construye el templo",                               // 6
+    "Salomón construye su palacio; Mobiliario del templo",                                  // 7
+    "Traslado del arca al templo; Dedicación del templo",                                 // 8
+    "Pacto de Dios con Salomón",                         // 9
+    "La reina de Sabá visita a Salomón; El esplendor de Salomón",                   // 10
+    "Las mujeres de Salomón; Los adversarios de Salomón",    // 11
+    "División del reino; Los becerros de oro en Betel y Dan",                 // 12
+    "El hombre de Dios que llegó de Judá",                           // 13
+    "Profecía de Ahías contra Jeroboán",             // 14
+    "Abías, rey de Judá",                          // 15
+    " ",                                 // 16
+    "Elías es alimentado por los cuervos; La viuda de Sarepta",                   // 17
+    "Elías y Abdías; Elías en el monte Carmelo",                       // 18
+    "Elías huye a Horeb; El llamamiento de Eliseo",                     // 19
     "Ben Adad ataca a Samaria",                                       // 20
     "El viñedo de Nabot",                                      // 21
     "Micaías profetiza contra Acab"                      // 22

@@ -15,4 +15,6 @@ export const libros = {
   "2 Crónicas": "libros/NVI/2_cronicas.js",
   "Esdras": "libros/NVI/esdras.js",
   "Nehemías": "libros/NVI/nehemias.js",
+  "Ester": "libros/NVI/ester.js",
+  "Job": "libros/NVI/job.js",
 };

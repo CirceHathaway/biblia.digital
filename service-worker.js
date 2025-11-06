@@ -1,5 +1,5 @@
 // service-worker.js
-const CACHE_NAME = 'mbiblia-v55';
+const CACHE_NAME = 'mbiblia-v56';
 const SCOPE = self.registration.scope; // p.ej. https://usuario.github.io/biblia.digital/
 
 // Utilidad: resuelve un path relativo al scope del SW

@@ -861,11 +861,12 @@ footer.footer2 {
     min-width: 420px; /* antes 290px */
   }
 
+  /* ventana de libros/cap/ver */
   .dropdown-content {
     left: 50%;
     transform: translateX(-50%);
     width: 720px;              /* más ancho */
-    max-height: 560px;         /* más alto (antes 300px) */
+    max-height: 500px;         /* más alto (antes 300px) */
     padding: 16px;
   }
 

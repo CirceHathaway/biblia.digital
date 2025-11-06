@@ -474,61 +474,61 @@ export const titulosCapitulos = {
   ],
 
   "Ester": [
-    "Banquete de Asuero; Vashti depuesta",                   // 1
-    "Ester es reina; complot descubierto",                   // 2
-    "Hamán trama contra los judíos",                         // 3
-    "Ayuno y plan de Ester",                                 // 4
-    "Banquetes de Ester; exaltación de Mardoqueo",           // 5
-    "Mardoqueo honrado",                                     // 6
-    "Caída de Hamán",                                        // 7
-    "Nuevo edicto; gozo de los judíos",                      // 8
-    "Venganza y establecimiento de Purim",                   // 9
+    "Destitución de la reina Vasti",                   // 1
+    "Elección de Ester como reina; Conspiración contra Asuero",                   // 2
+    "Conspiración de Amán contra los judíos",                         // 3
+    "Acuerdo entre Mardoqueo y Ester",                                 // 4
+    "Petición de Ester al rey Asuero",           // 5
+    "Exaltación de Mardoqueo",                                     // 6
+    "Humillación y muerte de Amán",                                        // 7
+    "Edicto real en favor de los judíos",                      // 8
+    "Triunfo de los judíos",                   // 9
     "Grandeza de Mardoqueo"                                  // 10
   ],
 
   "Job": [
-    "Piedad de Job y pruebas",                                // 1
-    "Nueva prueba; llagas; amigos",                           // 2
-    "Lamento de Job",                                         // 3
+    "Prólogo; Primera prueba de Job",                                // 1
+    "Segunda prueba de Job",                           // 2
+    "Primer discurso de Job",                                         // 3
     "Primer discurso de Elifaz",                              // 4
-    "Elifaz aconseja; Dios disciplina",                       // 5
-    "Job responde a Elifaz",                                  // 6
-    "Job se queja de su dolor",                               // 7
+    " ",                       // 5
+    "Segundo discurso de Job",                                  // 6
+    "¿No puede mi paladar discernir la maldad?",                               // 7
     "Primer discurso de Bildad",                              // 8
-    "Job: grandeza de Dios",                                  // 9
-    "Job: Dios como adversario",                              // 10
+    "Tercer discurso de Job",                                  // 9
+    " ",                              // 10
     "Primer discurso de Zofar",                               // 11
-    "Job: sabiduría y poder divinos",                         // 12
-    "Job desea contender con Dios",                           // 13
-    "La fragilidad del hombre",                               // 14
+    "Cuarto discurso de Job",                         // 12
+    " ",                           // 13
+    " ",                               // 14
     "Segundo discurso de Elifaz",                             // 15
-    "Job: testigo en los cielos",                             // 16
-    "Job: desesperanza",                                      // 17
+    "Quinto discurso de Job",                             // 16
+    " ",                                      // 17
     "Segundo discurso de Bildad",                             // 18
-    "Job: mi Redentor vive",                                   // 19
+    "Sexto discurso de Job",                                   // 19
     "Segundo discurso de Zofar",                              // 20
-    "Job: prosperidad de los impíos",                         // 21
+    "Séptimo discurso de Job",                         // 21
     "Tercer discurso de Elifaz",                              // 22
-    "Job: anhela a Dios",                                     // 23
-    "Job: injusticias en la tierra",                          // 24
-    "Tercer discurso de Bildad (breve)",                      // 25
-    "Job: poder de Dios sobre el caos",                       // 26
-    "Job: integridad y destino del malo",                     // 27
-    "Himno a la sabiduría",                                   // 28
-    "Job recuerda su antigua gloria",                         // 29
-    "Job describe su miseria",                                // 30
-    "Juramento de inocencia",                                 // 31
-    "Eliú aparece y se enoja",                                // 32
-    "Eliú (1): Dios habla al hombre",                         // 33
-    "Eliú (2): justicia de Dios",                             // 34
-    "Eliú (3): orgullo del hombre",                           // 35
-    "Eliú (4): grandeza de Dios",                             // 36
-    "Eliú (5): la tormenta se acerca",                        // 37
-    "Dios responde desde el torbellino (1)",                  // 38
-    "Dios responde (2): los animales",                        // 39
-    "Dios responde (3): Behemot; Job se humilla",             // 40
-    "Leviatán",                                               // 41
-    "Job se arrepiente; restauración"                         // 42
+    "Octavo discurso de Job",                                     // 23
+    " ",                          // 24
+    "Tercer discurso de Bildad",                      // 25
+    "Interrupción de Job",                       // 26
+    "Noveno discurso de Job",                     // 27
+    "Elogio de la sabiduría",                                   // 28
+    "Soliloquio de Job",                         // 29
+    " ",                                // 30
+    " ",                                 // 31
+    "Intervención de Eliú",                                // 32
+    "Primer discurso de Eliú",                         // 33
+    "Segundo discurso de Eliú",                             // 34
+    "Tercer discurso de Eliú",                           // 35
+    "Cuarto discurso de Eliú",                             // 36
+    " ",                        // 37
+    "Respuesta de Dios",                  // 38
+    " ",                        // 39
+    " ",             // 40
+    " ",                                               // 41
+    "Respuesta de Job; Epílogo"                         // 42
   ],
   
   "Salmos": [

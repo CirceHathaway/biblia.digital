@@ -445,32 +445,32 @@ export const titulosCapitulos = {
   ],
 
   "Esdras": [
-    "Edicto de Ciro y regreso",                              // 1
-    "Lista de los repatriados",                              // 2
-    "Altar y cimientos del templo",                          // 3
-    "Oposición y obra detenida",                             // 4
-    "Se reanuda la construcción",                            // 5
-    "El templo es terminado y dedicado",                     // 6
-    "Esdras recibe comisión",                                // 7
-    "Los que suben con Esdras y el viaje",                   // 8
-    "Confesión por matrimonios mixtos",                      // 9
-    "Separación y reforma"                                   // 10
+    "Decreto de Ciro",                              // 1
+    "Lista de los que regresaron",                              // 2
+    "Restauración del altar; Se comienza la reconstrucción del templo",                          // 3
+    "Oposición samaritana",                             // 4
+    "Se reinicia la reconstrucción del templo",                            // 5
+    "Decreto de Darío",                     // 6
+    "Esdras llega a Jerusalén; Oración de Esdras",                                // 7
+    "Lista de los que regresaron con Esdras; El regreso a Jerusalén",                   // 8
+    "Esdras confiesa el pecado del pueblo",                      // 9
+    "El pueblo reconoce su pecado"                                   // 10
   ],
 
   "Nehemías": [
-    "Informe y oración; decisión de reconstruir",            // 1
-    "Permiso del rey; comienzo de la obra",                  // 2
-    "Puertas y tramos del muro",                             // 3
-    "Oposición y vigilancia",                                // 4
-    "Injusticia interna; se corrige",                        // 5
-    "Trampas de los enemigos; muro concluido",               // 6
-    "Registro de repatriados",                               // 7
-    "Lectura de la ley por Esdras",                          // 8
-    "Confesión nacional y pacto",                            // 9
-    "Compromisos del pacto",                                 // 10
-    "Habitantes de Jerusalén y ciudades",                    // 11
-    "Sacerdotes; dedicación del muro",                       // 12
-    "Reformas finales de Nehemías"                           // 13
+    "Nehemías ora por su pueblo",            // 1
+    "Nehemías vuelve a Jerusalén",                  // 2
+    "Se inicia la reconstrucción",                             // 3
+    "Se obstaculiza la reconstrucción",                                // 4
+    "Nehemías defiende a los pobre",                        // 5
+    "Nueva oposición de los enemigos; Termina la reconstrucción de la muralla",               // 6
+    "Plan para defender a Jerusalén",                               // 7
+    "La fiesta de las Enramadas",                          // 8
+    "Los israelitas confiesan sus pecados",                            // 9
+    "El pueblo se compromete a obedecer la ley ",                                 // 10
+    "Los que se establecieron en Jerusalén",                    // 11
+    "Sacerdotes y levitas repatriados",                       // 12
+    "Reforma final de Nehemías"                           // 13
   ],
 
   "Ester": [

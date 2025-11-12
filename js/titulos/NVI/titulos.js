@@ -534,154 +534,154 @@ export const titulosCapitulos = {
   "Salmos": [
     "El justo y los pecadores", // 1
     "El dominio del ungido de Jehova", // 2
-    "Oración matutina de confianza de Dios", // 3
-    "Oración vespertina de confianza de Dios", // 4
-    "Oración pidiendo protección", // 5
-    "Oración en angustia", // 6
-    "Clamor por justicia contra el calumniador", // 7
-    "La gloria de Dios y la dignidad del hombre", // 8
-    "Acción de gracias por la justicia de Dios", // 9
-    "Plegaria pidiendo castigo a los malos", // 10
-    "Jehová es refugio del justo", // 11
-    "Plegaria pidiendo ayuda contra los mentirosos", // 12
-    "Plegaria pidiendo la misericordia de Dios", // 13
-    "La necedad del impío", // 14
-    "El ciudadano del reino de Dios", // 15
-    "Jehová es la porción del justo", // 16
-    "Súplica pidiendo protección", // 17
-    "Acción de gracias por la victoria", // 18
-    "Las obras y la palabra de Dios", // 19
-    "Oración por la victoria del rey", // 20
-    "Alabanza por la victoria del rey", // 21
-    "Clamor de angustia y alabanza por la liberación", // 22
-    "Jehová es mi pastor", // 23
-    "Entrada del Rey de gloria", // 24
-    "Plegaria pidiendo dirección, perdón y protección", // 25
-    "Declaración de integridad", // 26
-    "Jehová es mi luz y mi salvación", // 27
-    "Súplica pidiendo ayuda", // 28
-    "La voz de Jehová en la tormenta", // 29
-    "Acción de gracias por haber sido librado", // 30
-    "Plegaria de confianza", // 31
-    "La dicha del perdón", // 32
-    "Alabanza al Creador y Gobernador", // 33
-    "Alabanzas por la liberación divina", // 34
-    "Plegaria pidiendo castigo de los calumniadores", // 35
-    "La maldad del impío", // 36
-    "El camino de los malos", // 37
-    "Oración de penitente", // 38
-    "La brevedad de la vida", // 39
-    "Acción de gracias y súplica", // 40
-    "Oración de enfermo traicionado", // 41
-    "Como el ciervo brama por las aguas", // 42
-    "Hazme justicia, oh Dios", // 43
-    "Plegaria recordando antiguas liberaciones", // 44
-    "Cántico de las bodas del Rey", // 45
-    "Dios es nuestro amparo y fortaleza", // 46
-    "Dios, el Rey de toda la tierra", // 47
-    "Sion, ciudad de Dios", // 48
-    "Contra la confianza en las riquezas", // 49
-    "Dios juzga a su pueblo", // 50
-    "Ten piedad de mí, oh Dios", // 51
-    "La maldad del poderoso", // 52
-    "Insensatez de los impíos", // 53
-    "Plegaria pidiendo ayuda", // 54
-    "Contra la traición de un amigo", // 55
-    "En Dios he confiado; no temeré", // 56
-    "Misericordia en la persecución", // 57
-    "Contra jueces inicuos", // 58
-    "Librado de enemigos sanguinarios", // 59
-    "Oración después de la derrota", // 60
-    "Dios, refugio y torre fuerte", // 61
-    "Solo en Dios espera mi alma", // 62
-    "Dios, mi Dios eres tú", // 63
-    "Plegaria pidiendo protección", // 64
-    "Acción de gracias por la bondad en la tierra", // 65
-    "Alabanza por sus grandes obras", // 66
-    "Dios bendiga a las naciones", // 67
-    "Procesión triunfal de Dios", // 68
-    "Clamor de angustia", // 69
-    "Oh Dios, acude a librarme", // 70
-    "Oración del anciano", // 71
-    "Dominio universal del rey", // 72
-    "Prosperidad aparente de los impíos", // 73
-    "Lamentación por la ruina del santuario", // 74
-    "Dios es juez justo", // 75
-    "Dios es temible", // 76
-    "En el día de mi angustia busqué al Señor", // 77
-    "Infidelidad de Israel y misericordias de Dios", // 78
-    "Lamentación por la ruina de Jerusalén", // 79
-    "Restaúranos, oh Dios", // 80
-    "Exhortación a la obediencia", // 81
-    "Dios preside en la congregación", // 82
-    "Contra los enemigos coligados", // 83
-    "Anhelo por los atrios de Jehová", // 84
-    "Jehová mostrará su misericordia", // 85
-    "Oración pidiendo la misericordia de Dios", // 86
-    "De Sion se dirá: todos han nacido en ella", // 87
-    "Clamor desde lo profundo de la aflicción", // 88
-    "Pacto de Dios con David y su fidelidad", // 89
-    "Oración de Moisés: eternidad de Dios y fragilidad humana", // 90
-    "El que habita al abrigo del Altísimo", // 91
-    "Bueno es alabarte, oh Jehová", // 92
-    "Jehová reina", // 93
-    "Venganza contra los opresores", // 94
-    "Venid, adoremos y postrémonos", // 95
-    "Cantad a Jehová cántico nuevo", // 96
-    "Jehová reina; alegrense la tierra", // 97
-    "Canten alegres todos los confines", // 98
-    "Jehová reina; Él es santo", // 99
-    "Exhortación a la gratitud", // 100
+    "Salmo de David, cuando huía de su hijo Absalón.", // 3
+    "Al director musical. Acompáñese con instrumentos de cuerda. Salmo de David.", // 4
+    "Al director musical. Acompáñese con flautas. Salmo de David.", // 5
+    "Al director musical. Acompáñese con instrumentos de cuerda. Sobre la octava. Salmo de David.", // 6
+    "Sigaión de David, que elevó al Señor acerca de Cus el benjaminita.", // 7
+    "Al director musical. Sígase la tonada de «La canción del lagar». Salmo de David.", // 8
+    "Al director musical. Sígase la tonada de «La muerte del hijo». Salmo de David.", // 9
+    " ", // 10
+    "Al director musical. Salmo de David.", // 11
+    "Al director musical. Sobre la octava. Salmo de David.", // 12
+    "Al director musical. Salmo de David.", // 13
+    "Al director musical. Salmo de David.", // 14
+    "Salmo de David", // 15
+    "Mictam de David", // 16
+    "Oración de David", // 17
+    "Al director musical. De David, siervo del Señor. David dedicó al Señor la letra de esta canción cuando el Señor lo libró de las manos de todos sus enemigos y de las manos de Saúl. Dijo así:", // 18
+    "Al director musical. Salmo de David.", // 19
+    "Al director musical. Salmo de David.", // 20
+    "Al director musical. Salmo de David.", // 21
+    "Al director musical. Sígase la tonada de «La cierva de la aurora». Salmo de David.", // 22
+    "Salmo de David", // 23
+    "Salmo de David", // 24
+    "Salmo de David", // 25
+    "Salmo de David", // 26
+    "Salmo de David", // 27
+    "Salmo de David", // 28
+    "Salmo de David", // 29
+    "Cántico para la dedicación de la casa. Salmo de David.", // 30
+    "Al director musical. Salmo de David.", // 31
+    "Salmo de David. Masquil.", // 32
+    " ", // 33
+    "Salmo de David, cuando fingió estar demente ante Abimélec, por lo cual éste lo arrojó de su presencia.", // 34
+    "Salmo de David", // 35
+    "Al director musical. De David, el siervo del Señor.", // 36
+    "Salmo de David", // 37
+    "Salmo de David, para las ofrendas memoriales.", // 38
+    "Al director musical. Para Jedutún. Salmo de David.", // 39
+    "Al director musical. Salmo de David.", // 40
+    "Al director musical. Salmo de David.", // 41
+    "Al director musical. Masquil de los hijos de Coré.", // 42
+    " ", // 43
+    "Al director musical. Masquil de los hijos de Coré.", // 44
+    "Al director musical. Sígase la tonada de «Los lirios». Masquil de los hijos de Coré. Canto nupcial.", // 45
+    "Al director musical. De los hijos de Coré. Canción según alamot.", // 46
+    "Al director musical. Salmo de los hijos de Coré.", // 47
+    "Canción. Salmo de los hijos de Coré.", // 48
+    "Al director musical. Salmo de los hijos de Coré.", // 49
+    "Salmo de Asaf.", // 50
+    "Al director musical. Salmo de David, cuando el profeta Natán fue a verlo por haber cometido David adulterio con Betsabé.", // 51
+    "Al director musical. Masquil de David, cuando Doeg el edomita fue a informarle a Saúl: «David ha ido a la casa de Ajimélec.»", // 52
+    "Al director musical. Según majalat. Masquil de David.", // 53
+    "Al director musical. Acompáñese con instrumentos de cuerda. Masquil de David, cuando gente de Zif fue a decirle a Saúl: «¿No estará David escondido entre nosotros?»", // 54
+    "Al director musical. Acompáñese con instrumentos de cuerda. Masquil de David.", // 55
+    "Al director musical. Sígase la tonada de «La tórtola en los robles lejanos». Mictam de David, cuando los filisteos lo apresaron en Gat.", // 56
+    "Al director musical. Sígase la tonada de «No destruyas». Mictam de David, cuando David había huido de Saúl y estaba en una cueva.", // 57
+    "Al director musical. Sígase la tonada de «No destruyas». Mictam de David.", // 58
+    "Al director musical. Sígase la tonada de «No destruyas». Mictam de David, cuando Saúl había ordenado que vigilaran la casa de David con el propósito de matarlo.", // 59
+    "Al director musical. Sígase la tonada de «El lirio del pacto». Mictam didáctico de David, cuando luchó contra los arameos del noroeste de Mesopotamia y de Siria central, y cuando Joab volvió y abatió a doce mil edomitas en el valle de la Sal.", // 60
+    "Al director musical. Acompáñese con instrumentos de cuerda. De David.", // 61
+    "Al director musical. Para Jedutún. Salmo de David.", // 62
+    "Salmo de David, cuando estaba en el desierto de Judá.", // 63
+    "Al director musical. Salmo de David.", // 64
+    "Al director musical. Salmo de David. Cántico.", // 65
+    "Al director musical. Cántico. Salmo.", // 66
+    "Al director musical. Acompáñese con instrumentos de cuerda. Salmo. Cántico.", // 67
+    "Al director musical. Salmo de David. Cántico.", // 68
+    "Al director musical. Sígase la tonada de «Los lirios». De David.", // 69
+    "Al director musical. Petición de David.", // 70
+    " ", // 71
+    "De Salomón", // 72
+    "Salmo de Asaf", // 73
+    "Masquil de Asaf", // 74
+    "Al director musical. Sígase la tonada de «No destruyas». Salmo de Asaf. Cántico.", // 75
+    "Al director musical. Acompáñese con instrumentos de cuerda. Salmo de Asaf. Cántico.", // 76
+    "Al director musical. Para Jedutún. Salmo de Asaf", // 77
+    "Masquil de Asaf", // 78
+    "Salmo de Asaf", // 79
+    "Al director musical. Sígase la tonada de «Los lirios del pacto». Salmo de Asaf.", // 80
+    "Al director musical. Sígase la tonada de «La canción del lagar». Salmo de Asaf.", // 81
+    "Salmo de Asaf", // 82
+    "Cántico. Salmo de Asaf", // 83
+    "Al director musical. Sígase la tonada de «La canción del lagar». Salmo de los hijos de Coré.", // 84
+    "Al director musical. Salmo de los hijos de Coré.", // 85
+    "Oración de David", // 86
+    "Salmo de los hijos de Coré. Cántico.", // 87
+    "Cántico. Salmo de los hijos de Coré. Al director musical. Según majalat leannot. Masquil de Hemán el ezraíta.", // 88
+    "Masquil de Etán el ezraíta", // 89
+    "Oración de Moisés, hombre de Dios", // 90
+    "", // 91
+    "Salmo para cantarse en sábado", // 92
+    " ", // 93
+    " ", // 94
+    " ", // 95
+    " ", // 96
+    " ", // 97
+    " ", // 98
+    " ", // 99
+    "Salmo de David", // 100
     "Misericordia y juicio cantaré", // 101
-    "Oración del afligido", // 102
-    "Bendice, alma mía, a Jehová", // 103
-    "Grandeza de Jehová en la creación", // 104
-    "Fidelidad de Dios hacia Israel", // 105
-    "Pecados del pueblo y misericordia de Dios", // 106
-    "Alabad a Jehová por su misericordia", // 107
-    "Mi corazón está dispuesto", // 108
-    "Contra los enemigos traicioneros", // 109
-    "Juramento del Señor a mi Señor", // 110
-    "Grandes son las obras de Jehová", // 111
-    "Bienaventurado el que teme a Jehová", // 112
-    "Alabad, siervos de Jehová", // 113
-    "Cuando salió Israel de Egipto", // 114
+    "Oración de un afligido que, a punto de desfallecer, da rienda suelta a su lamento ante el Señor.", // 102
+    "Salmo de David", // 103
+    " ", // 104
+    " ", // 105
+    " ", // 106
+    " ", // 107
+    "Cántico. Salmo de David.", // 108
+    "Al director musical. Salmo de David.", // 109
+    "Salmo de David", // 110
+    " ", // 111
+    " ", // 112
+    " ", // 113
+    " ", // 114
     "No a nosotros, oh Jehová, sino a tu nombre", // 115
     "Amo a Jehová, pues ha oído mi voz", // 116
     "Alabad a Jehová, naciones todas", // 117
     "Alabad a Jehová porque él es bueno", // 118
-    "Excelencias de la ley de Jehová", // 119
-    "Clamor en mi angustia", // 120
-    "Jehová es tu guardador", // 121
-    "Yo me alegré con los que me decían", // 122
-    "A ti alcé mis ojos", // 123
-    "De no haber estado Jehová por nosotros", // 124
-    "Los que confían en Jehová", // 125
-    "Jehová hizo volver la cautividad", // 126
-    "Si Jehová no edificare la casa", // 127
-    "Bienaventurado el que teme a Jehová", // 128
-    "Mucho me han angustiado", // 129
-    "De lo profundo, oh Jehová, a ti clamo", // 130
-    "Como niño destetado está mi alma", // 131
-    "Recuerdo del arca en Sion", // 132
-    "Mirad cuán bueno y cuán delicioso", // 133
-    "Bendecid a Jehová, todos sus siervos", // 134
-    "Alabad el nombre de Jehová", // 135
-    "Porque para siempre es su misericordia", // 136
-    "Junto a los ríos de Babilonia", // 137
-    "Te alabaré con todo mi corazón", // 138
-    "Omnisciencia y omnipresencia de Dios", // 139
-    "Líbrame, oh Jehová, del hombre malo", // 140
-    "Jehová, a ti he clamado", // 141
-    "Mi voz clama a Jehová", // 142
-    "Oye mi oración, oh Jehová", // 143
-    "Bendito sea Jehová, mi roca", // 144
-    "Alabanza por la grandeza del Señor", // 145
-    "Alaba, oh alma mía, a Jehová", // 146
-    "Bueno es cantar alabanzas a nuestro Dios", // 147
-    "Alabad a Jehová desde los cielos", // 148
-    "Cántico nuevo de los santos", // 149
-    "Todo lo que respira alabe a Jehová" // 150
+    " ", // 119
+    "Cántico de los peregrinos", // 120
+    "Cántico de los peregrinos", // 121
+    "Cántico de los peregrinos. De David.", // 122
+    "Cántico de los peregrinos.", // 123
+    "Cántico de los peregrinos", // 124
+    "Cántico de los peregrinos", // 125
+    "Cántico de los peregrinos", // 126
+    "Cántico de los peregrinos. De Salomón", // 127
+    "Cántico de los peregrinos", // 128
+    "Cántico de los peregrinos", // 129
+    "Cántico de los peregrinos", // 130
+    "Cántico de los peregrinos. De David.", // 131
+    "Cántico de los peregrinos", // 132
+    "Cántico de los peregrinos. De David.", // 133
+    "Cántico de los peregrinos", // 134
+    " ", // 135
+    " ", // 136
+    " ", // 137
+    "Salmo de David", // 138
+    "Al director musical. Salmo de David.", // 139
+    "Al director musical. Salmo de David.", // 140
+    "Salmo de David", // 141
+    "Masquil de David. Cuando estaba en la cueva. Oración.", // 142
+    "Salmo de alabanza. De David.", // 143
+    "Salmo de alabanza. De David.", // 144
+    "Salmo de alabanza. De David", // 145
+    " ", // 146
+    " ", // 147
+    " ", // 148
+    " ", // 149
+    " " // 150
   ],
 
   "Proverbios": [

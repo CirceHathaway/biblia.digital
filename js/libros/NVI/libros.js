@@ -20,4 +20,6 @@ export const libros = {
   "Salmos": "libros/NVI/salmos.js",
   "Proverbios": "libros/NVI/proverbios.js",
   "Eclesiastés": "libros/NVI/eclesiastes.js",
+  "Cantares": "libros/NVI/cantares.js",
+  "Isaías": "libros/NVI/isaias.js",
 };

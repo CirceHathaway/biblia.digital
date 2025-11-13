@@ -734,29 +734,29 @@ export const titulosCapitulos = {
   ],
 
   "Cantares": [
-    "Anhelo y afecto",                                        // 1
-    "La esposa en el banquete del rey",                       // 2
-    "Búsqueda nocturna; el carro de Salomón",                 // 3
-    "Belleza de la amada; huerto cerrado",                    // 4
-    "Sueño y ausencia; búsqueda",                             // 5
-    "Elogios y triunfo del amor",                             // 6
-    "Danza de Mahanaim; más elogios",                         // 7
-    "Amor fuerte como la muerte; conclusión"                  // 8
+    "Primer Canto",                                        // 1
+    " ",                       // 2
+    " ",                 // 3
+    " ",                    // 4
+    " ",                             // 5
+    " ",                             // 6
+    " ",                         // 7
+    " "                  // 8
   ],
 
   "Isaías": [
-    "Reprensión a Judá; llamado a razonar", // 1
-    "Visión de los postreros días; Sion exaltada", // 2
-    "Juicio sobre Judá y Jerusalén", // 3
-    "Resto purificado; rama de Jehová", // 4
-    "Canto de la viña y ayes", // 5
-    "Llamado de Isaías; Santo, santo, santo", // 6
-    "Emanuel señalado a Acaz", // 7
-    "Maher-salal-has-baz; piedra de tropiezo", // 8
-    "Un niño nos es nacido; luz en Galilea", // 9
-    "Asiria, vara de la ira de Jehová", // 10
-    "Retoño de Isaí y reino de paz", // 11
-    "Cántico de salvación", // 12
+    "Judá, nación rebelde", // 1
+    "El monte del Señor; El día del Señor", // 2
+    "Juicio sobre Jerusalén y Judá", // 3
+    "El renuevo del Señor", // 4
+    "El canto a la viña; Maldiciones contra los explotadores", // 5
+    "La misión de Isaías", // 6
+    "La señal de Emanuel", // 7
+    "Asiria, el instrumento del Señor; Hay que temer a Dios", // 8
+    "Nos ha nacido un niño; El enojo del Señor contra Israel", // 9
+    "Juicio de Dios sobre Asiria; El remanente de Israel", // 10
+    "El retoño de Isaí", // 11
+    "Canciones de alabanza", // 12
     "Profecía contra Babilonia", // 13
     "Caída del rey de Babilonia; proverbio contra él", // 14
     "Profecía contra Moab (1)", // 15

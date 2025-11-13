@@ -685,52 +685,52 @@ export const titulosCapitulos = {
   ],
 
   "Proverbios": [
-    "Propósito del libro; principio de sabiduría",            // 1
-    "Camino del sabio y del impío",                           // 2
-    "Confía en Jehová de todo corazón",                       // 3
-    "Herencia de la sabiduría",                               // 4
-    "Advertencia contra la inmoralidad (1)",                  // 5
-    "Advertencias varias; pereza y maldad",                   // 6
-    "Advertencia contra la mujer extraña (2)",                // 7
-    "La sabiduría personificada",                             // 8
+    "Prólogo: Propósito y tema; Exhortaciones a buscar la sabiduría Advertencia contra el engaño; Advertencia contra el rechazo a la sabiduría",            // 1
+    "Ventajas de la sabiduría",                           // 2
+    "Otras ventajas de la sabiduría",                       // 3
+    "La sabiduría es lo máximo",                               // 4
+    "Advertencia contra el adulterio",                  // 5
+    "Advertencia contra la insensatez; Advertencia contra el adulterio",                   // 6
+    "Advertencia contra la mujer adúltera",                // 7
+    "Llamado de la sabiduría",                             // 8
     "Invitación de la sabiduría y de la necedad",             // 9
-    "Proverbios de Salomón (I)",                              // 10
-    "Pesas falsas y rectitud",                                // 11
-    "Virtud y diligencia",                                    // 12
-    "La disciplina y la lengua",                              // 13
-    "Prudencia y temor de Jehová",                            // 14
-    "Respuesta suave; corazón entendido",                     // 15
-    "El hombre propone; Dios dispone",                        // 16
-    "Amistad, pleitos y cordura",                             // 17
-    "Lengua, riqueza y amistad",                              // 18
-    "Conducta prudente y disciplina",                         // 19
-    "Integridad y medidas justas",                            // 20
-    "Soberanía de Jehová en la vida",                         // 21
-    "Dichos de los sabios (I)",                               // 22
-    "Más dichos: disciplina y riquezas",                      // 23
-    "Dichos de los sabios (II)",                              // 24
-    "Proverbios copiados por los de Ezequías (I)",            // 25
-    "Proverbios copiados por los de Ezequías (II)",           // 26
-    "Amistad, orgullo y prudencia",                           // 27
-    "Justicia, riqueza y confianza",                          // 28
-    "Disciplina y gobierno",                                  // 29
-    "Palabras de Agur",                                       // 30
-    "Palabras de Lemuel; mujer virtuosa"                      // 31
+    " ",                              // 10
+    " ",                                // 11
+    " ",                                    // 12
+    " ",                              // 13
+    " ",                            // 14
+    " ",                     // 15
+    " ",                        // 16
+    " ",                             // 17
+    " ",                              // 18
+    " ",                         // 19
+    " ",                            // 20
+    " ",                         // 21
+    "Los treinta dichos de los sabios",                               // 22
+    " ",                      // 23
+    " ",                              // 24
+    "Más proverbios de Salomón",            // 25
+    " ",           // 26
+    " ",                           // 27
+    " ",                          // 28
+    " ",                                  // 29
+    "Dichos de Agur",                                       // 30
+    "Dichos del rey Lemuel; Epílogo: Acróstico a la mujer ejemplar"                      // 31
   ],
 
   "Eclesiastés": [
-    "Vanidad de vanidades; propósito",                        // 1
-    "Placer y sabiduría a prueba",                            // 2
-    "Todo tiene su tiempo",                                   // 3
-    "Opresiones, trabajo y soledad",                          // 4
-    "Votos, riquezas y contentamiento",                       // 5
-    "Vanidad de las riquezas",                                // 6
-    "Sabiduría y moderación",                                 // 7
-    "Autoridad del rey y juicio divino",                      // 8
-    "Tiempo y ocasión; la muerte",                            // 9
-    "Insensatez y sabiduría práctica",                        // 10
-    "Siembra y juventud",                                     // 11
-    "Acuérdate del Creador; conclusión"                       // 12
+    "Discurso inicial",                        // 1
+    " ",                            // 2
+    "Hay un tiempo para todo",                                   // 3
+    "Opresores y oprimidos; Juventud y sabiduría",                          // 4
+    "Hay que cumplir los votos; Futilidad de las riquezas",                       // 5
+    "¿Qué sentido tiene la vida?",                                // 6
+    "Nueva escala de valores",                                 // 7
+    "La obediencia al rey; Sinrazones de la vida",                      // 8
+    "Un destino común",                            // 9
+    "Dichos de sabiduría",                        // 10
+    " ",                                     // 11
+    " "                       // 12
   ],
 
   "Cantares": [

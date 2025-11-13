@@ -18,4 +18,6 @@ export const libros = {
   "Ester": "libros/NVI/ester.js",
   "Job": "libros/NVI/job.js",
   "Salmos": "libros/NVI/salmos.js",
+  "Proverbios": "libros/NVI/proverbios.js",
+  "Eclesiastés": "libros/NVI/eclesiastes.js",
 };

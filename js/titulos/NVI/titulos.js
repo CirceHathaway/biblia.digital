@@ -758,59 +758,59 @@ export const titulosCapitulos = {
     "El retoño de Isaí", // 11
     "Canciones de alabanza", // 12
     "Profecía contra Babilonia", // 13
-    "Caída del rey de Babilonia; proverbio contra él", // 14
-    "Profecía contra Moab (1)", // 15
-    "Profecía contra Moab (2)", // 16
-    "Contra Damasco e Israel", // 17
-    "Oráculo sobre Etiopía", // 18
-    "Contra Egipto; altar a Jehová en Egipto", // 19
-    "Señal de Isaías; desnudo por Asiria", // 20
-    "Caída de Babilonia anunciada; Dumá y Arabia", // 21
-    "Sebna y Eliaquim; el valle de la visión", // 22
+    " ", // 14
+    "Profecía contra Moab", // 15
+    " ", // 16
+    "Profecía contra Damasco", // 17
+    "Profecía contra Etiopía", // 18
+    "Profecía contra Egipto", // 19
+    "Profecía contra Egipto y Cus", // 20
+    "Profecía contra Babilonia; Profecía contra Edom; Profecía contra Arabia", // 21
+    "Profecía contra Jerusalén", // 22
     "Profecía contra Tiro", // 23
-    "Juicio universal sobre la tierra", // 24
-    "Cántico de victoria; banquete en el monte", // 25
-    "Cántico de confianza; resurrección y paz", // 26
-    "Viña de Jehová; castigo a Leviatán", // 27
-    "Ay de Efraín; piedra angular en Sion", // 28
-    "Ay de Ariel (Jerusalén); asombro y ceguedad", // 29
-    "Ay de los que confían en Egipto; quietud y confianza", // 30
-    "Jehová pelea por Sion; no desciendan a Egipto", // 31
-    "Rey justo y Espíritu derramado", // 32
-    "Ay del destructor; Jehová exaltado", // 33
-    "Juicio contra Edom; día de venganza", // 34
-    "Camino de santidad; gozo de los redimidos", // 35
-    "Senaquerib invade; discurso de Rabsaces", // 36
-    "Oración de Ezequías; caída de Asiria", // 37
-    "Enfermedad y sanidad de Ezequías; cántico", // 38
-    "Embajadores de Babilonia; anuncio del exilio", // 39
-    "Consolad a mi pueblo; voz que clama en el desierto", // 40
-    "Jehová y los ídolos; el siervo escogido", // 41
-    "El Siervo de Jehová; luz a las naciones", // 42
-    "No temas, yo te redimí", // 43
-    "No hay otro Dios; Ciro nombrado", // 44
-    "Ciro, ungido de Jehová; salvación", //45
-    "Bel y Nebo se desploman; impotencia de los ídolos", // 46
-    "Caída de Babilonia; humillación", // 47
-    "Reprensión a Israel; salid de Babilonia", // 48
-    "Llamamiento del Siervo; luz hasta lo postrero", // 49
-    "Lengua de sabios; rostro como pedernal", // 50
-    "Consolación a Sion; justicia cercana", // 51
-    "Despierta, Sion; hermosos pies que anuncian paz", // 52
-    "El Siervo sufriente", // 53
-    "Ensanchad el sitio de vuestra tienda; pacto de paz", // 54
-    "Venid a las aguas; palabra que no vuelve vacía", // 55
-    "Casa de oración para todos; atalayas ciegos", // 56
-    "Contra la idolatría; el Alto y Sublime habita con el humilde",// 57
-    "El verdadero ayuno y el día de reposo", // 58
-    "Pecado y redención; la armadura de Jehová", // 59
-    "Gloria de Sion; naciones a su luz", // 60
-    "El Ungido proclama buenas nuevas", // 61
-    "Sion restaurada; no callaré", // 62
-    "Venganza y misericordia; oración de recuerdo", // 63
-    "¡Ojalá rompieses los cielos!; alfarero y barro", // 64
-    "Cielos nuevos y tierra nueva; destino de siervos e idólatras",// 65
-    "Verdadero culto; parto de Sion; gloria final" // 66
+    "Juicio universal", // 24
+    "Canto de alabanza al Señor", // 25
+    "Canto de victoria", // 26
+    "Liberación de Israel", // 27
+    "Ay de Efraín", // 28
+    "Ay de la Ciudad de David", // 29
+    "Ay de la nación obstinada", // 30
+    "Ay de los que confían en Egipto", // 31
+    "El reino de justicia; Las mujeres de Jerusalén", // 32
+    "Angustia y auxilio", // 33
+    "Juicio contra las naciones", // 34
+    "La alegría de los redimidos", // 35
+    "Senaquerib amenaza a Jerusalén", // 36
+    "Se profetiza la liberación de Jerusalén; Oración de Ezequías; Muerte de Senaquerib", // 37
+    "Enfermedad de Ezequías; Escrito de Ezequías", // 38
+    "Mensajeros de Babilonia", // 39
+    "Consuelo para el pueblo de Dios", // 40
+    "El amparo de Israel", // 41
+    "El siervo del Señor; Canción de alabanza al Señor; Israel ciego y sordo", // 42
+    "El único Salvador de Israel; La misericordia de Dios y la infidelidad de Israel", // 43
+    "Israel, el escogido; El Señor y los ídolos; Jerusalén vuelve a ser habitada", // 44
+    " ", //45
+    "Los dioses de Babilonia", // 46
+    "La caída de Babilonia", // 47
+    "El Israel obstinado; Liberación de Israel", // 48
+    "El Siervo del Señor; Restauración de Israel", // 49
+    "El pecado de Israel y la obediencia del Siervo", // 50
+    "Salvación eterna para Sión; La copa de la ira de Dios", // 51
+    " ", // 52
+    " ", // 53
+    "La futura gloria de Sión", // 54
+    "Invitación a los sedientos", // 55
+    "Salvación para los demás; La acusación de Dios contra los malvados", // 56
+    " ",// 57
+    "El verdadero ayuno", // 58
+    "Pecado, confesión y redención", // 59
+    "La gloria de Sión", // 60
+    "El año del favor del Señor", // 61
+    "El nuevo nombre de Sión", // 62
+    "El día de la venganza y la redención de Dios; Alabanza y oración", // 63
+    " ", // 64
+    "Juicio y salvación; Un cielo nuevo y una tierra nueva",// 65
+    "Juicio y esperanza" // 66
   ],
 
   "Jeremías": [

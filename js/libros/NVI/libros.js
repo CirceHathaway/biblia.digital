@@ -37,4 +37,7 @@ export const libros = {
   "Sofonías": "libros/NVI/sofonias.js",
   "Hageo": "libros/NVI/hageo.js",
   "Malaquías": "libros/NVI/malaquias.js",
+  "Zacarías": "libros/NVI/zacarias.js",
+  "Malaquías": "libros/NVI/malaquias.js",
+  "Mateo": "libros/NVI/mateo.js",
 };

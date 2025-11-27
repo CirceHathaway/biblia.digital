@@ -1022,58 +1022,58 @@ export const titulosCapitulos = {
   ],
 
   "Zacarías": [
-    "Un llamado a volver al Señor", // 1
-    "Cuernos y carpinteros; el varón con el cordel", // 2
-    "Josué el sumo sacerdote; el Renuevo", // 3
-    "Candelero y olivos; no con ejército sino con mi Espíritu", // 4
-    "Rollo volador y efa; maldad llevada a Sinar", // 5
-    "Carros de caballos; coronación del Renuevo", // 6
-    "Ayunos convertidos en gozo; nación de verdad y paz", // 7
-    "Sion amada; pueblos vienen a buscar a Jehová", // 8
-    "Oráculos contra Hadrac; rey humilde sobre un asno", // 9
-    "Redil y pastores; Jehová visita su rebaño", // 10
-    "Pastor insensato; vara de Gracia y Ataduras", // 11
-    "Jerusalén copa temblorosa; derramamiento de gracia y súplica",// 12
-    "Fuente abierta; herido el pastor, dispersas las ovejas", // 13
-    "Día de Jehová: Monte de los Olivos; reino del Rey" // 14
+    "Un llamado a volver al Señor; El hombre entre los arrayanes", // 1
+    "El hombre con el cordel de medir", // 2
+    "Ropas limpias para el sumo sacerdote", // 3
+    "El candelabro de oro y los dos olivos", // 4
+    "El rollo que volaba; La mujer en un recipiente", // 5
+    "Los cuatro carros; La corona para Josué", // 6
+    "Justicia y misericordia en lugar de ayuno", // 7
+    "El Señor promete bendecir a Jerusalén", // 8
+    "Juicio contra los enemigos de Israel; El rey de Sión; Restauración de Israel", // 9
+    "El Señor cuidará de Judá", // 10
+    " ", // 11
+    "Destrucción de los enemigos de Jerusalén; Lamento por el que fue traspasado",// 12
+    "Limpieza del pecado; El pastor herido, las ovejas dispersas", // 13
+    "El reinado venidero del Señor" // 14
   ],
 
   "Malaquías": [
-    "Amor de Jehová y reprensión a sacerdotes", // 1
-    "Pacto de Leví profanado; matrimonio y divorcio", // 2
-    "El mensajero del pacto; diezmos y ofrendas", // 3
-    "Libro de memoria; sol de justicia; juicio final" // 4
+    "El amor de Dios por su pueblo; El culto al Señor", // 1
+    "Juicio contra los sacerdotes; Deslealtad de Judá; Acusaciones contra Judá", // 2
+    "Fidelidad en las ofrendas; Insolencia de Judá", // 3
+    "El día del Señor" // 4
   ],
 
   "Mateo": [
-    "Genealogía y nacimiento", // 1
-    "Magos y huida a Egipto", // 2
-    "Juan y bautismo de Jesús", // 3
-    "Tentación y comienzo", // 4
-    "Sermón del monte I", // 5
-    "Sermón del monte II", // 6
-    "Sermón del monte III", // 7
-    "Milagros y llamado", // 8
-    "Paralítico y discípulos", // 9
-    "Misión de los doce", // 10
-    "Juan duda; denuncias", // 11
-    "Señor del sábado", // 12
-    "Parábolas del reino", // 13
-    "Muerte de Juan; panes", // 14
-    "Tradición y fe", // 15
-    "Confesión y transfiguración", // 16
-    "Grandeza y perdón", // 17
-    "Matrimonio y riquezas", // 18
-    "Trabajadores de la viña", // 19
-    "Entrada triunfal y juicio", // 20
-    "Parábolas y piedra angular", // 21
-    "Ayes a los fariseos", // 22
-    "Señales del fin", // 23
-    "Vírgenes y talentos", // 24
-    "Juicio a las naciones", // 25
-    "Pasión: arresto y juicio", // 26
-    "Crucifixión y sepultura", // 27
-    "Resurrección y Gran Comisión" // 28
+    "Genealogía de Jesucristo; Nacimiento de Jesucristo", // 1
+    "Visita de los sabios; La huida a Egipto; El regreso a Israel", // 2
+    "Juan el Bautista prepara el camino; Bautismo de Jesús", // 3
+    "Tentación de Jesús; Jesús comienza a predicar; Jesús llama a sus primeros discípulos; Jesús sana a los enfermos", // 4
+    "Las Bienaventuranzas", // 5
+    "El dar a los necesitados", // 6
+    "El juzgar a los demás", // 7
+    "Jesús sana a un leproso; La fe del Centurión; Jesús sana a muchos enfermos; Lo que cuesta seguir a Jesús", // 8
+    "Jesús sana a un paralítico; Llamamiento de Mateo; Preguntan a Jesús sobre el ayuno; Una niña muerta y una mujer enferma", // 9
+    "Jesús envía a los doce", // 10
+    "Jesús y Juan el Bautista; Reproches contra ciudades no arrepentidas; Descanso para los cansados", // 11
+    "Señor del sábado; El siervo escogido por Dios; Jesús y Beelzebú; La señal de Jonás", // 12
+    "Parábola del sembrador; Jesús explica la parábola del sembrador; Parábola de la mala hierba; Parábolas de la semilla de mostaza y de la levadura", // 13
+    "Decapitación de Juan el Bautista; Jesús alimenta a los cinco mil; Jesús camina sobre el agua", // 14
+    "Lo limpio y lo impuro; La fe de la mujer cananea; Jesús alimenta a cuatro mil", // 15
+    "Le piden a Jesús una señal; La levadura de los fariseos y de los saduceos; La confesión de Pedro; Jesús predice su muerte", // 16
+    "La transfiguración; Jesús sana a un muchacho endemoniado; El impuesto del Templo", // 17
+    "El más importante en el reino de los cielos; Parábola de la oveja perdida; El hermano que peca contra ti; Parábola del siervo despiadado", // 18
+    "El divorcio; Jesús y los niños; El joven rico", // 19
+    "Parábola de los viñadores; Jesús predice de nuevo su muerte; La petición de una madre; Dos ciegos reciben la vista", // 20
+    "La entrada triunfal; Jesús en el Templo; Se seca la higuera; La autoridad de Jesús puesta en duda", // 21
+    "Parábola del banquete de bodas; El pago de impuestos al césar; El matrimonio en la resurrección", // 22
+    "Jesús critica la hipocresía", // 23
+    "Señales del fin del mundo", // 24
+    "Parábola de las diez jóvenes; Parábola de las monedas de oro; Las ovejas y las cabras", // 25
+    "La conspiración contra Jesús; Judas acuerda traicionar a Jesús; La Cena del Señor; Jesús predice la negación de Pedro; Jesús en Getsemaní", // 26
+    "Judas se ahorca; Jesús ante Pilato; Los soldados se burlan de Jesús; La crucifixión; Muerte de Jesús; Sepultura de Jesús", // 27
+    "La resurrección; La gran comisión" // 28
   ],
 
   "Marcos": [

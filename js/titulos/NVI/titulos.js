@@ -814,183 +814,215 @@ export const titulosCapitulos = {
   ],
 
   "Jeremías": [
-    "Llamamiento de Jeremías; vara de almendro y caldera", // 1
-    "Cisternas rotas; Israel abandona a su Dios", // 2
-    "Apostasía y llamado al arrepentimiento", // 3
+    "Llamamiento de Jeremías", // 1
+    "Israel abandona a Dios", // 2
+    "La infidelidad de Israel", // 3
     "Juicio del norte; limpieza del corazón", // 4
-    "Corrupción general; juicio inminente", // 5
-    "Asedio anunciado; buscad las sendas antiguas", // 6
-    "Sermón del templo; ejemplo de Silo", // 7
-    "Dolor del profeta; ¿no hay bálsamo en Galaad?", // 8
-    "Lamento y advertencia; gloriarse en conocer a Jehová", // 9
-    "Vanidad de los ídolos; disciplina del Padre", // 10
-    "Pacto quebrantado; complot en Anatot", // 11
-    "Queja del profeta; por qué prosperan los malos", // 12
-    "Cinto de lino y vasijas; orgullo abatido", // 13
-    "Sequía y oración; falsos profetas", // 14
-    "Lamentos y comisión renovada", // 15
-    "Prohibiciones al profeta; pesca de hombres de naciones", // 16
-    "Corazón engañoso; árbol junto a aguas; sábado", // 17
-    "El alfarero y el barro", // 18
-    "Vasija rota en Tofet", // 19
-    "Azotes de Pasur; queja ardiente del profeta", // 20
+    "La corrupción de Jerusalén y de Judá", // 5
+    "Jerusalén es sitiada", // 6
+    "La religión falsa e inútil; El valle de la Matanza", // 7
+    " ", // 8
+    "Pecado y castigo", // 9
+    "Dios y los ídolos; Destrucción inminente; Oración de Jeremías", // 10
+    "Violación del pacto", // 11
+    "Queja de Jeremías; Respuesta de Dios", // 12
+    "El cinturón de lino; Los cántaros rotos; Advertencia oportuna", // 13
+    "Sequía, hambre y espada", // 14
+    " ", // 15
+    "Mensaje de juicio", // 16
+    " ", // 17
+    "Parábola del alfarero", // 18
+    " ", // 19
+    "Jeremías y Pasur; Quejas de Jeremías", // 20
+    "Dios rechaza la petición de Sedequías", //21
+    "Juicio contra reyes malvados", //22
+    "El Rey justo; Profetas mentirosos; Profecías falsas", //23
+    "Dos canastas de higos", //24
+    "Setenta años de cautiverio; La copa de la ira divina", //25
+    "Jeremías bajo amenaza de muerte", //26
+    "Parábola del yugo", //27
+    "Jananías, el falso profeta", //28
+    "Carta a los exiliados; Mensaje de Semaías",  //29
+    "Restauración de Israel",  //30
+    " ",  //31
+    "Parábola del terreno",  //32
+    "Promesas de restauración",  //33
+    "Advertencia al rey Sedequías; Liberación para los esclavos",  //34
+    "El ejemplo de los recabitas",  //35
+    "El rey Joacim quema el rollo de Jeremías",  //36
+    "Encarcelamiento de Jeremías",  //37
+    "Jeremías en la cisterna; Sedequías interroga a Jeremías; Sedequías interroga a Jeremías",  //38
+    "La caída de Jerusalén",  //39
+    "Liberación de Jeremías;Asesinato de Guedalías", //40
+    "Huida a Egipto",  //41
+    " ", //42
+    " ", //43
+    "Desastre causado por la idolatría", //44
+    "Mensaje para Baruc", //45
+    "Mensaje para Egipto",  //46
+    "Mensaje para los filisteos",  //47
+    "Mensaje para Moab",  //48
+    "Mensaje para Amón; Mensaje para Edom; Mensaje para Damasco; Mensaje para Cedar y Jazor; Mensaje para Elam",  //49
+    "Mensaje para Babilonia", //50
+    " ",  //51
+    "La caída de Jerusalén; Liberación del rey Joaquín" //52
   ],
 
   "Lamentaciones": [
-    "¡Cómo ha quedado sola la ciudad!", // 1
-    "Ira de Jehová sobre Sion", // 2
-    "Esperanza en medio del duelo: grande es tu fidelidad", // 3
-    "Hijos de Sion tenidos por barro; culpa de los profetas", // 4
-    "Acuérdate de nosotros, oh Jehová; restáuranos" // 5
+    " ", // 1
+    " ", // 2
+    " ", // 3
+    " ", // 4
+    " " // 5
   ],
 
   "Ezequiel": [
-    "Visión de gloria: carro y querubines", // 1
-    "Llamamiento y comisión; rollo dulce-amargo", // 2
-    "Atalaya; mudez del profeta", // 3
-    "Sitial del asedio: Jerusalén cercada en señal", // 4
-    "Cabello dividido; juicio por tercios", // 5
+    " ", // 1
+    "Llamamiento de Ezequiel", // 2
+    "Advertencia a Israel", // 3
+    "Anuncio del sitio a Jerusalén", // 4
+    " ", // 5
     "Profecía contra los montes de Israel", // 6
-    "El fin viene sobre la tierra", // 7
-    "Abominaciones en el templo", // 8
-    "Marca en la frente; juicio en Jerusalén", // 9
-    "La gloria se aparta del templo", // 10
-    "Príncipes juzgados; corazón nuevo prometido", // 11
-    "Señal de deportación; proverbios y refranes anulados", // 12
-    "Contra falsos profetas y profetisas", // 13
-    "Ídolos en el corazón; juicio inevitable", // 14
-    "La vid inútil para leña", // 15
-    "Historia de Jerusalén: esposa infiel", // 16
-    "Parábola de las águilas y la vid; pacto quebrantado", // 17
-    "El alma que pecare, esa morirá", // 18
-    "Endecha por los príncipes de Israel", // 19
-    "Rebelión en el desierto: historia y juicio", // 20
-    "La espada de Jehová; juicio a Amón también", // 21
-    "Pecados de Jerusalén; horno encendido", // 22
-    "Ohola y Oholiba; lujurias de Samaria y Jerusalén", // 23
-    "Olla hirviente; muerte de la esposa del profeta", // 24
-    "Contra Amón, Moab, Edom y Filistea", // 25
-    "Contra Tiro: anuncio del sitio", // 26
-    "Endecha sobre Tiro, la comerciante del mar", // 27
-    "Príncipe y rey de Tiro; profecía sobre Sidón", // 28
-    "Contra Egipto: el gran cocodrilo", // 29
-    "Día de Jehová contra Egipto y sus aliados", // 30
-    "El cedro de Asiria derribado", // 31
-    "Endechas sobre Faraón y su caída", // 32
-    "Atalaya renovado; responsabilidad personal", // 33
-    "Contra los pastores; yo mismo apacentaré", // 34
-    "Monte Seir (Edom) desolado", // 35
-    "Corazón nuevo; montes de Israel bendecidos", // 36
-    "Valle de huesos secos; dos palos uno", // 37
-    "Gog de Magog contra Israel", // 38
-    "Derrota de Gog; purificación de la tierra", // 39
-    "Visión del nuevo templo (medidas I)", // 40
-    "Visión del templo (medidas II)", // 41
-    "Cámaras, atrios y ordenanzas", // 42
-    "Gloria vuelve al templo; ley del altar", // 43
-    "Puertas, sacerdotes y levitas; estatutos", // 44
-    "Porciones sagradas y del príncipe", // 45
-    "Culto del príncipe; normas del santuario", // 46
-    "Río que sana; límites y reparto", // 47
-    "Distribución de la tierra; la ciudad: Jehová Sama" // 48
+    "El fin ha llegado", // 7
+    "Idolatría en el Templo", // 8
+    "El castigo de los culpables", // 9
+    "La gloria del Señor abandona el Templo", // 10
+    "Juicio contra los líderes de Israel", // 11
+    "Símbolo del exilio", // 12
+    "Condena a los falsos profetas; Condena a las profetisas", // 13
+    "Contra la idolatría; Contra falsas esperanzas", // 14
+    "Jerusalén, una vid inútil", // 15
+    "Infidelidad de Jerusalén", // 16
+    "La vid y el águila", // 17
+    "La responsabilidad personal", // 18
+    "Lamento por los príncipes de Israel", // 19
+    "Historia de una rebelión; Juicio y restauración; Profecía contra el sur", // 20
+    "La espada justiciera", // 21
+    "Los pecados de Jerusalén", // 22
+    "Las dos hermanas adúlteras", // 23
+    "La olla hirviente; Muerte de la esposa de Ezequiel", // 24
+    "Profecía contra Amón; Profecía contra Edom; Profecía contra los filisteos", // 25
+    "Profecía contra Tiro", // 26
+    "Lamento por la caída de Tiro", // 27
+    "Profecía contra el rey de Tiro; Profecía contra Sidón", // 28
+    "Profecía contra Egipto", // 29
+    "Lamento por Egipto", // 30
+    "El cedro del Líbano", // 31
+    "Lamento por el faraón", // 32
+    "El profeta, centinela de su pueblo; La caída de Jerusalén", // 33
+    "Pastores y ovejas", // 34
+    "Profecía contra Edom", // 35
+    "Profecía sobre las montañas de Israel", // 36
+    "El valle de los huesos secos; Unificación de Judá e Israel", // 37
+    "Profecía contra Gog", // 38
+    "Derrota de Gog", // 39
+    "Visión del Templo futuro; El nuevo Templo", // 40
+    " ", // 41
+    "Las habitaciones para los sacerdotes", // 42
+    "La gloria del Señor vuelve al templo; El altar", // 43
+    "Deberes de levitas y sacerdotes; Los levitas", // 44
+    "División de la tierra", // 45
+    " ", // 46
+    "El río del Templo; Los límites del país", // 47
+    "Reparto de la tierra; Las puertas de Jerusalén" // 48
   ],
 
   "Daniel": [
-    "Fidelidad de Daniel y sus amigos en Babilonia", // 1
-    "Estatua de cuatro metales; reino eterno", // 2
-    "Horno de fuego; uno como Hijo de Dios", // 3
-    "Árbol grande y humillación de Nabucodonosor", // 4
-    "Escritura en la pared; caída de Babilonia", // 5
-    "Foso de los leones", // 6
-    "Cuatro bestias y el Hijo del Hombre", // 7
-    "Carnero y macho cabrío; explicación", // 8
-    "Oración; setenta semanas determinadas", // 9
-    "Visión junto al río; ser glorioso", // 10
-    "Conflictos del norte y sur; rey altivo", // 11
-    "Tiempo del fin; resurrección y sellado" // 12
+    "Daniel en Babilonia", // 1
+    "El sueño del rey Nabucodonosor; Daniel interpreta el sueño del rey", // 2
+    "El horno en llamas", // 3
+    "Nabucodonosor, árbol caído; Daniel interpreta el sueño del rey; El cumplimiento del sueño", // 4
+    "La escritura en la pared", // 5
+    "Daniel en el foso de los leones", // 6
+    "Las cuatro bestias; Canto al Anciano; La interpretación del sueño", // 7
+    "Visión del carnero y del macho cabrío", // 8
+    "Oración de Daniel; Las setenta semanas", // 9
+    "Daniel junto al río Tigris", // 10
+    "Los reyes del norte y del sur; El rey se exalta a sí mismo", // 11
+    "La hora final" // 12
   ],
 
   "Oseas": [
-    "Matrimonio de Oseas; hijos por señal", // 1
-    "Pleito de Jehová con su pueblo; promesa de restauración", // 2
-    "Oseas redime a Gomer", // 3
-    "Controversia con Israel; deslealtad", // 4
-    "Juicio sobre sacerdotes y príncipes", // 5
-    "Arrepentimiento superficial; misericordia deseada", // 6
-    "Iniquidad de Efraín; trato con Asiria", // 7
-    "Trompeta: juicio por el becerro", // 8
-    "Israel como vid frondosa pero vacía", // 9
-    "Corazón dividido; arado de justicia", // 10
-    "Amor paternal de Dios; cuerdas de amor", // 11
-    "Jacob como ejemplo; contienda y esperanza", // 12
-    "Acerca de la idolatría y la destrucción", // 13
-    "Exhortación final: convertíos; sanidad y rocío" // 14
+    "La esposa y los hijos de Oseas", // 1
+    "Castigo y restauración de Israel", // 2
+    "Oseas se reconcilia con su esposa", // 3
+    "Pleito contra Israel", // 4
+    "Juicio contra Israel", // 5
+    "Impenitencia de Israel", // 6
+    " ", // 7
+    "Siembran vientos y cosechan torbellinos", // 8
+    "El castigo a Israel", // 9
+    " ", // 10
+    "El amor de Dios por Israel; El pecado de Israel", // 11
+    " ", // 12
+    "La ira del Señor contra Israel", // 13
+    "Arrepentimiento para traer bendición" // 14
   ],
 
   "Joel": [
-    "Plaga de langostas; llamado al ayuno", // 1
-    "Tocad trompeta en Sion; rasgad vuestro corazón", // 2
-    "Juicio de las naciones en el valle de Josafat; derramamiento" // 3
+    "La invasión de langostas; Llamado al arrepentimiento", // 1
+    "Un ejército de langostas; Exhortación al arrepentimiento; La respuesta del Señor; El día del Señor", // 2
+    "El juicio de las naciones; Bendiciones para el pueblo de Dios" // 3
   ],
 
   "Amós": [
-    "Rugido de Jehová; juicios a las naciones", // 1
-    "Contra Judá e Israel: injusticias", // 2
-    "Llamado a oír: opresión y culto vacío", // 3
-    "Vacas de Basán; hambre de oír la palabra", // 4
-    "Buscadme y viviréis; aborrecimiento del mal", // 5
-    "Ay de los reposados en Sion", // 6
-    "Visiones: langostas, fuego y plomada", // 7
-    "Canastillo de fruta; fin de Israel", // 8
-    "Restauración del tabernáculo de David" // 9
+    "Juicio contra las naciones vecinas", // 1
+    "Juicio contra Israel", // 2
+    "Vocación del profeta Amós; El castigo a Israel", // 3
+    " ", // 4
+    "Advertencias y lamentos", // 5
+    " ", // 6
+    "Tres visiones; Amasías contra Amós", // 7
+    "Cuarta visión y advertencias", // 8
+    "Quinta visión; Restauración de Israel" // 9
   ],
 
   "Abdías": [
-    "Contra Edom; el día de Jehová y Sion liberada" // 1
+    "Orgullo y caída de Edom" // 1
   ],
 
   "Jonás": [
-    "Huida de Jonás y gran pez", // 1
-    "Oración desde el vientre; salvación es de Jehová", // 2
-    "Jonás predica en Nínive; arrepentimiento", // 3
-    "Disgusto de Jonás y lección de la calabacera" // 4
+    "Jonás desobedece al Señor", // 1
+    "Oración de Jonás", // 2
+    "Jonás obedece al Señor", // 3
+    "Enojo de Jonás" // 4
   ],
 
   "Miqueas": [
-    "Juicio sobre Samaria y Jerusalén", // 1
-    "Ayes por despojo; contra falsos profetas", // 2
-    "Jefes y profetas reprendidos", // 3
-    "Sion y su futuro glorioso; paz", // 4
-    "De Belén saldrá el gobernante; liberación", // 5
-    "Plebiscito de Jehová; qué pide Dios", // 6
-    "Miseria por el pecado y esperanza en el Dios de mi salvación" // 7
+    "La venida del Señor; Lamento de Miqueas", // 1
+    "El castigo a los ricos opresores; Falsos profetas; Promesa de liberación", // 2
+    "El castigo a los gobernantes corruptos; Contraste entre el profeta falso y el verdadero; El gobierno corrupto, causa de la caída de Sión", // 3
+    "Futura exaltación de Sión; Futura restauración de Sión; Castigo y triunfo de Sión", // 4
+    "Humillación y exaltación de la dinastía davídica; El remanente; Purificación de un pueblo idólatra y belicoso", // 5
+    "Querella de Dios contra su pueblo; Castigo por delitos económicos y sociales", // 6
+    "Lamento ante una sociedad corrupta; Esperanza de redención" // 7
   ],
 
   "Nahúm": [
-    "Jehová celoso y vengador; contra Nínive", // 1
-    "Destrucción de Nínive descrita", // 2
-    "¡Ay de la ciudad sanguinaria!" // 3
+    "Manifestación del Señor; Destrucción de Nínive; Liberación del opresor; Anuncio de la victoria sobre Nínive", // 1
+    "La destrucción de Nínive; Caída y saqueo de Nínive; La bestia salvaje morirá", // 2
+    "Descripción del fin de Nínive; Destrucción total de Nínive; Defensa inútil" // 3
   ],
 
   "Habacuc": [
-    "Queja por la injusticia; caldeos instrumento de juicio", // 1
-    "Respuesta: el justo por su fe vivirá; ayes", // 2
-    "Oración de Habacuc; en tu ira acuérdate de la misericordia" // 3
+    "La primera queja de Habacuc; La respuesta del Señor; La segunda queja de Habacuc", // 1
+    "La respuesta del Señor", // 2
+    "La oración de Habacuc" // 3
   ],
 
   "Sofonías": [
-    "Día de Jehová cercano; llamado al arrepentimiento", // 1
-    "Juicio a naciones; exhortación a buscar a Jehová", // 2
-    "Restauración y gozo en Sion" // 3
+    "Advertencia sobre la destrucción venidera; Juicio contra Judá; El gran día del Señor", // 1
+    "Juicio contra los filisteos; Juicio contra Moab y Amón; Juicio contra Cus; Juicio contra Asiria", // 2
+    "El futuro de Jerusalén" // 3
   ],
 
   "Hageo": [
-    "Considerad vuestros caminos; reedificad la casa", // 1
-    "La gloria postrera será mayor; Zorobabel anillo de sello" // 2
+    "Primer mensaje: Exhortación a reedificar el templo", // 1
+    "Segundo mensaje: La presencia del Señor; Tercer mensaje: Consulta a los sacerdotes; Cuarto mensaje: Promesas a Zorobabel" // 2
   ],
 
   "Zacarías": [
-    "Volveos a mí; visión de caballos entre mirtos", // 1
+    "Un llamado a volver al Señor", // 1
     "Cuernos y carpinteros; el varón con el cordel", // 2
     "Josué el sumo sacerdote; el Renuevo", // 3
     "Candelero y olivos; no con ejército sino con mi Espíritu", // 4

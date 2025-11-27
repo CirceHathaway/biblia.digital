@@ -47,7 +47,7 @@ export default [
     'Los videntes quedarán en vergüenza; los adivinos serán humillados. Dios les tapará la boca, pues no les dará respuesta.',
     'Yo, en cambio, estoy lleno de poder, lleno del Espíritu del Señor, y lleno de justicia y de fuerza, para echarle en cara a Jacob su delito; para reprocharle a Israel su pecado.',
     'Escuchen esto ustedes, gobernantes del pueblo de Jacob, y autoridades del reino de Israel, que abominan la justicia y tuercen el derecho,',
-    'que edifican a *Sión con sangre y a Jerusalén con injusticia.',
+    'que edifican a Sión con sangre y a Jerusalén con injusticia.',
     'Sus gobernantes juzgan por soborno, sus sacerdotes instruyen por paga, y sus profetas predicen por dinero; para colmo, se apoyan en el Señor, diciendo: «¿No está el Señor entre nosotros? ¡No vendrá sobre nosotros ningún mal!»',
     'Por lo tanto, por culpa de ustedes Sión será como un campo arado; Jerusalén quedará en ruinas, y el monte del templo se volverá un matorral.'
   ],
@@ -55,7 +55,7 @@ export default [
   // Miqueas 4
   [
     'En los últimos días, el monte del templo del Señor será puesto sobre la cumbre de las montañas y elevado por encima de las colinas. Entonces los pueblos marcharán hacia ella,',
-    'y muchas naciones se acercarán, diciendo: «Vengan, subamos al monte del Señor, a la casa del Dios de Jacob. Dios mismo nos instruirá en sus *caminos, y así andaremos en sus sendas.» Porque de Sión viene la instrucción; de Jerusalén, la palabra del Señor.',
+    'y muchas naciones se acercarán, diciendo: «Vengan, subamos al monte del Señor, a la casa del Dios de Jacob. Dios mismo nos instruirá en sus caminos, y así andaremos en sus sendas.» Porque de Sión viene la instrucción; de Jerusalén, la palabra del Señor.',
     'Dios mismo juzgará entre muchos pueblos, y administrará justicia a naciones poderosas y lejanas. Convertirán en azadones sus espadas, y en hoces sus lanzas. Ya no alzará su espada nación contra nación, ni se adiestrarán más para la guerra.',
     'Cada uno se sentará bajo su parra y su higuera; y nadie perturbará su solaz el Señor Todopoderoso lo ha dicho.',
     'Todos los pueblos marchan en nombre de sus dioses, pero nosotros marchamos en el nombre del Señor, en el nombre de nuestro Dios, desde ahora y para siempre.',

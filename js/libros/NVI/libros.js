@@ -29,7 +29,7 @@ export const libros = {
   "Oseas": "libros/NVI/oseas.js",
   "Joel": "libros/NVI/joel.js",
   "Amós": "libros/NVI/amos.js",
-  "Abdías": "libros/NVI/adbias.js",
+  "Abdías": "libros/NVI/abdias.js",
   "Jonás": "libros/NVI/jonas.js",
   "Miqueas": "libros/NVI/miqueas.js",
   "Nahúm": "libros/NVI/nahum.js",
